@@ -1,0 +1,36 @@
+{
+  "name": "ptm",
+  "version": "1.0.0",
+  "description": "Penta Travel Management",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/shahadat_cloud/ptm.git"
+  },
+  "keywords": [
+    "penta",
+    "global",
+    "limited"
+  ],
+  "author": "Shahadat Hossain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/shahadat_cloud/ptm/issues"
+  },
+  "homepage": "https://gitlab.com/shahadat_cloud/ptm#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^7.12.1",
+    "validator": "^11.1.0"
+  }
+}
