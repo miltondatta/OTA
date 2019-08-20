@@ -1,11 +1,14 @@
 const express = require('express');
 const app     = express();
 const pg      = require('pg');
+const bodyParser = require('body-parser');
 
 //Get routes directory
 const users =   require('./routes/api/users');
 
-
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 //Get DB config
@@ -36,7 +39,7 @@ app.use('/api/users/', users);
 
 
 
-app.get('/', (req, res) => res.send("Hello World"));
+app.get('/', (req, res) => res.send("Hello World: Penta Travel Management"));
 
 
 
