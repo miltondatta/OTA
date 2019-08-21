@@ -1,14 +1,6 @@
 const express   =   require('express');
 const router    =   express.Router();
-const pg        = require('pg');
-
-//Get DB config
-const conString     = require('../../config/keys').PostgreURI;
-const dbConnect     = new pg.Client(conString);
-dbConnect
-    .connect()
-    .then(() => console.log('Postgres Database Connected'))
-    .catch(err => console.log('Error to connect in database'));
+const dbConnect = require('../../config/db');
 
 /*
     @route          GET api/users/test/
@@ -53,7 +45,7 @@ router.post('/registration', (req, res) => {
 });
 
 
-router.post('/all', (req, res) => {
+router.get('/all', (req, res) => {
     dbConnect.query('SELECT * FROM users', (error, results) => {
         if (error) {
             throw error;

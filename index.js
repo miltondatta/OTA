@@ -1,49 +1,25 @@
 const express = require('express');
-const app     = express();
-const pg      = require('pg');
+const app = express();
+
+// DB Connection
+const db = require('./config/db');
+
 const bodyParser = require('body-parser');
 
-//Get routes directory
-const users =   require('./routes/api/users');
-
 // Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-//Get DB config
-const conString    =   require('./config/keys').PostgreURI;
-
-//Connect to postgres
-const dbConnect = new pg.Client(conString);
-dbConnect
-    .connect()
-    .then(() => console.log('Postgres Database Connected'))
-    .catch(err => console.log('Error to connect in database'));
-
-
-
-
-
-   /*   Mongodb connect example
-   pg
-    .connect(db)
-    .then(() => console.log('Postgres Connected'))
-    .catch(err => console.log('Error to connect in database'));  */
-
-
+//Get routes directory
+const users = require('./routes/api/users');
 
 //Use Routes
+app.get('/', (req, res) => res.send("Hello World: Penta Travel Management"));
 app.use('/api/users/', users);
 
 
-
-
-app.get('/', (req, res) => res.send("Hello World: Penta Travel Management"));
-
-
-
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
 
