@@ -1,6 +1,6 @@
 // const {Client} = require('pg');
 const Sequelize = require('sequelize');
-const conString = require('./default').PostgreURI;
+const conString = require('./config').development;
 
 //Connect to postgres
 /*const dbConnect = new Client(conString);
