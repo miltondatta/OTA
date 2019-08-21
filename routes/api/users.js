@@ -1,6 +1,7 @@
 const express   =   require('express');
 const router    =   express.Router();
-const dbConnect = require('../../config/db');
+const users_controller  =   require('../../controllers/usersController');
+//const dbConnect = require('../../config/db');
 
 /*
     @route          GET api/users/test/
@@ -11,8 +12,6 @@ const dbConnect = require('../../config/db');
 router.get('/test', (req, res) => res.json({ msg: 'Users route working!'}));
 
 
-
-
 /*
     @route          GET api/users/registration/
     @desc           Login users route
@@ -20,6 +19,11 @@ router.get('/test', (req, res) => res.json({ msg: 'Users route working!'}));
  */
 
 
+router.post('/registration', users_controller.store);
+
+
+
+/*
 router.post('/registration', (req, res) => {
     const { name, email, password, mobile } =   req.body;
     dbConnect.query('INSERT INTO users(name, email, password, mobile) VALUES($1, $2, $3, $4)', [name, email, password, mobile], (error, results) => {
@@ -28,7 +32,7 @@ router.post('/registration', (req, res) => {
         }
         console.log(results);
         return res.status(200).json(`User added with ID: ${results.insertId}`);
-    });
+    });  */
 
     //
     //console.log();
@@ -42,7 +46,7 @@ router.post('/registration', (req, res) => {
     //res.setHeader('Content-Type', 'text/plain')
     //res.write('you posted:\n')
     //res.end(JSON.stringify(req.body.name, null, 2))
-});
+//});
 
 
 router.get('/all', (req, res) => {

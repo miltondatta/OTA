@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // DB Connection
-const db = require('./config/db');
+//const db = require('./config/db');
 
 const bodyParser = require('body-parser');
 
