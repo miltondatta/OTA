@@ -47,7 +47,17 @@ exports.login = async (req, res) => {
         //Check password
         bcrypt.compare(password, user.password).then(isMatch => {
            if(isMatch){
-               return res.json({ msg: 'You have successfully login!' });
+               const payload    =   { id:user.id, name:user.name, email:user.email };
+               jwt.sign(
+                   payload,
+                   'secret',
+                   { expiresIn: 3600 },
+                   (err, token) => {
+                       res.json({
+                           success:true,
+                           token:'ptm' + token
+                       });
+                   });
            } else {
                return res.json({ msg: 'Your password is incorrect!' });
            }
