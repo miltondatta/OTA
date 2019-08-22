@@ -1,30 +1,38 @@
 'use strict';
+const faker = require('faker');
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+    up: (queryInterface, Sequelize) => {
 
-      //Add altering commands here.
-      //Return a promise to correctly handle asynchronicity.
+        //Add altering commands here.
+        //Return a promise to correctly handle asynchronicity.
 
-      //Example:
+        //Example:
+        for (var i = 0; i < 100; i++) {
+            const operators = [3, 7, 8, 9];
+            const select_operator = operators[Math.floor(Math.random() * operators.length)];
+            const number = '01' + select_operator + (Math.floor(10000000 + Math.random() * (99999999 - 10000000)));
 
-      return queryInterface.bulkInsert('users', [{
-        name: 'John Doe',
-        email: 'demo@demo.com',
-        password: '123456',
-        mobile: '01551807064',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }], {});
-  },
+            var result = queryInterface.bulkInsert('users', [{
+                name: faker.name.findName(),
+                email: faker.internet.email(),
+                password: '123456',
+                mobile: number,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }], {});
+        }
 
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
+        return result;
+    },
 
-      Example: */
+    down: (queryInterface, Sequelize) => {
+        /*
+          Add reverting commands here.
+          Return a promise to correctly handle asynchronicity.
 
-      return queryInterface.bulkDelete('users', null, {});
-  }
+          Example: */
+
+        return queryInterface.bulkDelete('users', null, {});
+    }
 };
