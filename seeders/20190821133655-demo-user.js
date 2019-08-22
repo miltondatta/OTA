@@ -8,7 +8,7 @@ module.exports = {
 
       //Example:
 
-      return queryInterface.bulkInsert('Users', [{
+      return queryInterface.bulkInsert('users', [{
         name: 'John Doe',
         email: 'demo@demo.com',
         password: '123456',
@@ -25,6 +25,6 @@ module.exports = {
 
       Example: */
 
-      return queryInterface.bulkDelete('Users', null, {});
+      return queryInterface.bulkDelete('users', null, {});
   }
 };
