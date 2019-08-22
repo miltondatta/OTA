@@ -11,13 +11,21 @@ exports.store = async (req, res) => {
     user.findOne({ where: { email } }).then(results => {
       if(results) {
           return res.status(400).json({ msg: 'Email already exist!' });
+      } else {
+          bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(password, salt, (err, hash) => {
+                  user.create({ name:name, email:email, password:hash, mobile:mobile }).then(results => {
+                      return res.status(200).json({ msg: 'User created successfully!' });
+                  });
+              });
+          });
       }
     });
 
-    const salt  =   await bcrypt.genSalt(10);
-    user.create({ name:name, email:email, password:await bcrypt.hashSync(password, salt), mobile:mobile }).then(results => {
-      return res.status(200).json({ msg: 'User created successfully!' });
-    });
+
+
+
+
 
     /*
     user.findAll({}).then((data) => {
