@@ -1,8 +1,7 @@
-const express   =   require('express');
-const router    =   express.Router();
+const express           =   require('express');
+const router            =   express.Router();
 const users_controller  =   require('../../controllers/usersController');
-//const dbConnect = require('../../config/db');
-const User = require('../../models').user;
+const User              = require('../../models').user;
 
 /*
     @route          GET api/users/test/

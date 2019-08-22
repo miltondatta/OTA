@@ -1,6 +1,7 @@
 const {sequelize, Sequelize}     = require('../models/index');
 const user                       = require('../models').user;
 const bcrypt                     = require('bcryptjs');
+const jwt                        = require('jsonwebtoken');
 
 exports.store = async (req, res) => {
     const { name, email, password, mobile } =  req.body;
