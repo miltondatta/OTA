@@ -1,9 +1,6 @@
 const {sequelize, Sequelize}     = require('../models/index');
 const user                       = require('../models').user;
 const bcrypt                     = require('bcryptjs');
-//const user_model    = require('../models/user');
-
-//console.log(sequelize);
 
 exports.store = async (req, res) => {
     const { name, email, password, mobile } =  req.body;
@@ -22,11 +19,6 @@ exports.store = async (req, res) => {
       }
     });
 
-
-
-
-
-
     /*
     user.findAll({}).then((data) => {
         console.log(data);
@@ -41,4 +33,23 @@ exports.store = async (req, res) => {
         return results;
     }); */
 
+};
+
+
+exports.login = async (req, res) => {
+    const {email, password } =  req.body;
+    user.findOne({ where: { email } }).then(user => {
+        if(!user) {
+            return res.status(400).json({ msg: 'Email not found!' });
+        }
+
+        //Check password
+        bcrypt.compare(password, user.password).then(isMatch => {
+           if(isMatch){
+               return res.json({ msg: 'You have successfully login!' });
+           } else {
+               return res.json({ msg: 'Your password is incorrect!' });
+           }
+        });
+    });
 };

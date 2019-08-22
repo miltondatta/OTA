@@ -12,16 +12,20 @@ const User = require('../../models').user;
 
 router.get('/test', (req, res) => res.json({ msg: 'Users route working!'}));
 
-
 /*
     @route          GET api/users/registration/
     @desc           Login users route
     @access         Public
  */
-
-
 router.post('/registration', users_controller.store);
 
+
+/*
+    @route          POST api/users/login/
+    @desc           Login users route
+    @access         Public
+ */
+router.post('/login', users_controller.login);
 
 
 /*
@@ -71,13 +75,9 @@ router.get('/all', (req, res) => {
 
 
 
-/*
-    @route          POST api/users/login/
-    @desc           Login users route
-    @access         Public
- */
 
-router.post('/login', (req, res) => res.json({ msg: 'Users route working!'}));
+
+
 
 
 
