@@ -2,6 +2,7 @@ const express   =   require('express');
 const router    =   express.Router();
 const users_controller  =   require('../../controllers/usersController');
 //const dbConnect = require('../../config/db');
+const User = require('../../models').user;
 
 /*
     @route          GET api/users/test/
@@ -50,12 +51,22 @@ router.post('/registration', (req, res) => {
 
 
 router.get('/all', (req, res) => {
-    dbConnect.query('SELECT * FROM users', (error, results) => {
+    /*dbConnect.query('SELECT * FROM users', (error, results) => {
         if (error) {
             throw error;
         }
         return res.status(200).json(results.rows);
-    });
+    });*/
+
+    try {
+        const body = {name: "Plabon", email: "plabonjoseph@gmail.com", password: "123456", phone: "01878736648"};
+        const result = User.create(body);
+        // const result = User.findAll();
+        return res.json({msg: "User Created Successfully!"});
+    } catch (err) {
+        console.error(err);
+        return res.status(400).json({msg: 'Server Error!'});
+    }
 });
 
 
