@@ -1,5 +1,7 @@
-const express = require('express');
-const app = express();
+const express   =   require('express');
+const app       =   express();
+const dotenv    =   require('dotenv');
+dotenv.config();
 
 // DB Connection
 //const db = require('./config/db');
@@ -15,7 +17,7 @@ app.use(bodyParser.json());
 const users = require('./routes/api/users');
 
 //Use Routes
-app.get('/', (req, res) => res.send("Hello World: Penta Travel Management"));
+app.get('/', (req, res) => res.send("Hello World: Node JS"));
 app.use('/api/users/', users);
 
 
