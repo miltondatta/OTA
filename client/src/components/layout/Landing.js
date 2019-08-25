@@ -1305,7 +1305,7 @@ export class Landing extends Component {
 					</div>
 
 
-					{/*<div className="footerbg sfix2">
+					<div className="footerbg sfix2">
 						<div className="container">
 							<footer>
 								<div className="footer">
@@ -1322,7 +1322,7 @@ export class Landing extends Component {
 								</div>
 							</footer>
 						</div>
-					</div>*/}
+					</div>
 				</div>
 			</Fragment>
         )
