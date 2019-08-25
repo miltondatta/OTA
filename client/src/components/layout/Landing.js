@@ -32,14 +32,14 @@ export class Landing extends Component {
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>Flying from</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 
 								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<span class="opensans size13"><b>To</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 							</div>
@@ -96,7 +96,7 @@ export class Landing extends Component {
 
 							<div class="col-md-4 pt-6">
 								<span class="opensans size18" >Where do you want to go?</span>
-								<input type="text" class="form-control" placeholder="Greece">
+								<input type="text" class="form-control" placeholder="Greece"/>
 							</div>
 
 							<div class="col-md-4">
@@ -246,14 +246,14 @@ export class Landing extends Component {
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>Picking up</b></span>
-										<input type="text" class="form-control" placeholder="Airport, address">
+										<input type="text" class="form-control" placeholder="Airport, address"/>
 									</div>
 								</div>
 
 								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<span class="opensans size13"><b>Dropping off</b></span>
-										<input type="text" class="form-control" placeholder="Airport, address">
+										<input type="text" class="form-control" placeholder="Airport, address"/>
 									</div>
 								</div>
 							</div>
@@ -396,14 +396,14 @@ export class Landing extends Component {
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>Flying from</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 
 								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<span class="opensans size13"><b>To</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 							</div>
@@ -553,14 +553,14 @@ export class Landing extends Component {
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>Flying from</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 
 								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<span class="opensans size13"><b>To</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 							</div>
@@ -765,7 +765,7 @@ export class Landing extends Component {
 						<div id="hotelcar2" class="tab-pane fade">
 							<div class="col-md-4 pt-6">
 								<span class="opensans size18" >Where do you want to go?</span>
-								<input type="text" class="form-control" placeholder="Greece">
+								<input type="text" class="form-control" placeholder="Greece"/>
 							</div>
 
 							<div class="col-md-4">
@@ -914,14 +914,14 @@ export class Landing extends Component {
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>Flying from</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 
 								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<span class="opensans size13"><b>To</b></span>
-										<input type="text" class="form-control" placeholder="City or airport">
+										<input type="text" class="form-control" placeholder="City or airport"/>
 									</div>
 								</div>
 							</div>
