@@ -20,6 +20,8 @@ exports.store = async(req, res) => {
         }
     });
 
+//
+
     /*
     user.findAll({}).then((data) => {
         console.log(data);
