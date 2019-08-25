@@ -4,11 +4,11 @@
   "description": "Penta Travel Management",
   "main": "index.js",
   "scripts": {
-    "ptm-client-install": "npm install --prefix ptm-client",
+    "client-install": "npm install --prefix client",
     "start": "node index.js",
     "server": "nodemon index.js",
-    "ptm-client": "npm start --prefix ptm-client",
-    "dev": "concurrently \"npm run server\" \"npm run ptm-client\""
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
