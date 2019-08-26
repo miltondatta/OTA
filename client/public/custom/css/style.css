@@ -1,0 +1,9 @@
+.login-fullwidith {
+    height: 420px;
+}
+
+.login-wrap {
+    margin-left: calc(50% - 186px) !important;
+    margin-top: 50px;
+}
+

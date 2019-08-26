@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 
-export class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <div className="navbar-wrapper2 navbar-fixed-top">

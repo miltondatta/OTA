@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
- export class Register extends Component {
+class Register extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <Fragment>
+                <div class="container breadcrub"></div>
+                <div class="container">
+                    <div class="container pagecontainer offset-0">
+                        <h1> Register </h1>
+                    </div>
+                </div>
+            </Fragment>
         )
     }
 }
