@@ -15,12 +15,12 @@ export class Navbar extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link to="index.html" className="navbar-brand"><img src={logo} alt="Travel Agency Logo" className="logo" /></Link>
+                <Link to={'/'} className="navbar-brand"><img src={logo} alt="Travel Agency Logo" className="logo" /></Link>
               </div>
               <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
                   <li className="dropdown active">
-                    <Link data-toggle="dropdown" className="dropdown-toggle" to="index.html">Home <span className="badge indent0">1</span><b className="lightcaret mt-2"></b></Link>
+                    <Link data-toggle="dropdown" className="dropdown-toggle" to={'/'}>Home <span className="badge indent0">1</span><b className="lightcaret mt-2"></b></Link>
                     <ul className="dropdown-menu posright-0">
                       <li>
                         <div className="row dropwidth01">
@@ -62,16 +62,8 @@ export class Navbar extends Component {
                   <li><Link to="#">Vacations</Link></li>
                   <li><Link to="#">Cars</Link></li>
                   <li><Link to="#">Cruises</Link></li>
-                  <li><Link to="#">Last minute</Link></li>
-                  <li><Link to="#">Early booking</Link></li>
-                  <li className="dropdown">
-                    <Link data-toggle="dropdown" className="dropdown-toggle" to="#">Deals<b className="lightcaret mt-2"></b></Link>
-                    <ul className="dropdown-menu">
-                      <li className="dropdown-header">Aligned Right Dropdown</li>
-                      <li><Link to="#">Sample Link 1</Link></li>
-                      <li><Link to="#">Sample Link 2</Link></li>
-                    </ul>
-                  </li>
+                  <li><Link to={'/register'}>Register</Link></li>
+                  <li><Link to={'/login'}>Login</Link></li>
                 </ul>
               </div>
             </div>
