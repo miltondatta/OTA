@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router }  from 'react-router-dom';
+import { BrowserRouter as Router, Route }  from 'react-router-dom';
 
 // Component
 import Navbar from './components/layout/Navbar';
@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
     <Navbar/>
-    <Landing/>
+        <Route exact path='/' component={Landing}/>
     <Footer/>
    </Router>
   );
