@@ -1304,24 +1304,6 @@ export class Landing extends Component {
 						</div>
 					</div>
 
-					{/*<div className="footerbg sfix2">
-						<div className="container">
-							<footer>
-								<div className="footer">
-									<a href="#" className="social1"><img src="../../travel/images/icon-facebook.png" alt=""/></a>
-									<a href="#" className="social2"><img src="../../travel/images/icon-twitter.png" alt=""/></a>
-									<a href="#" className="social3"><img src="../../travel/images/icon-gplus.png" alt=""/></a>
-									<a href="#" className="social4"><img src="../../travel/images/icon-youtube.png" alt=""/></a>
-									<br/><br/>
-									Copyright &copy; 2013 <a href="#">Travel Agency</a> All rights reserved. <a
-									href="http://titanicthemes.com/">TitanicThemes.com</a>
-									<br/><br/>
-									<a href="#top" id="gotop2" className="gotop"><img src="../../travel/images/spacer.png"
-																					  alt=""/></a>
-								</div>
-							</footer>
-						</div>
-					</div>*/}
                     <div className="footerbgblack">
                         <div className="container">
                             <div className="col-md-3">
