@@ -2,8 +2,6 @@
 			function onBgresize() {
 				var $gfwidth = window.innerWidth;
 				var $gfheight = window.innerHeight / 2 + 150;
-
-				alert(100);
 				
 				var $loginw = $('.login-wrap').width();
 				var $loginh = $('.login-wrap').height();

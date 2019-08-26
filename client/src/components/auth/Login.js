@@ -18,7 +18,7 @@ export class Login extends Component {
                             <div className="logmargfix">
                                 <div className="chpadding50">
                                     <div className="alignbottom">
-                                        <button className="btn-search4" type="submit" onclick="errorMessage()">Submit</button>
+                                        <button className="btn-search4" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,12 +1,12 @@
-var tpj = jQuery;
-tpj.noConflict();
+//var tpj = jQuery;
+//$.noConflict();
 
-tpj(document).ready(function () {
+$(document).ready(function () {
 
-    if (tpj.fn.cssOriginal != undefined)
-        tpj.fn.css = tpj.fn.cssOriginal;
+    if ($.fn.cssOriginal != undefined)
+        $.fn.css = $.fn.cssOriginal;
 
-    tpj('.fullscreenbanner').revolution(
+    $('.fullscreenbanner').revolution(
         {
             delay: 9000,
             startwidth: 1170,
