@@ -1338,7 +1338,7 @@ button:hover.next2   img {width:14px;height:18px; display:block; background:url(
 
 
 /*BLACK FOOTER*/
-.footerbgblack{width:100%; background:#15262f;padding:60px 0; margin-top:80px; overflow:hidden;}
+.footerbgblack{width:100%; background:#15262f;padding:60px 0; margin-top:0px; overflow:hidden;}
 .footerbg3black{width:100%; background:#12222a;padding:30px 0; overflow:hidden;}
 .footerbg3black a{color:#999;}
 .footerbg3black a:hover{color:#0099cc; text-decoration:none;}

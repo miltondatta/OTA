@@ -9,9 +9,9 @@ export class Login extends Component {
                     <div className="login-wrap">
                         <div className="login-c1">
                             <div className="cpadding50">
-                                <input type="text" className="form-control logpadding" placeholder="Email" />
+                                <input type="text" name="email" className="form-control logpadding" placeholder="Email" />
                                 <br />
-                                <input type="text" className="form-control logpadding" placeholder="Password" />
+                                <input type="text" name="password" className="form-control logpadding" placeholder="Password" />
                             </div>
                         </div>
                         <div className="login-c2">
