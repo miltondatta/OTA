@@ -5,9 +5,9 @@ class Landing extends Component {
 	render() {
 		return (
 			<Fragment>
-				<div class="container breadcrub"></div>
-				<div class="container">
-					<div class="container pagecontainer offset-0">
+				<div className="container breadcrub"></div>
+				<div className="container">
+					<div className="container pagecontainer offset-0">
 						<h1> Landing </h1>
 					</div>
 				</div>

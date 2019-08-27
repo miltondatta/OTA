@@ -4,13 +4,13 @@ class Register extends Component {
     render() {
         return (
             <Fragment>
-                <div class="container breadcrub"></div>
-                <div class="container">
-                    <div class="container pagecontainer offset-0">
-                        <h1> Register </h1>
-                    </div>
-                </div>
-            </Fragment>
+				<div className="container breadcrub"></div>
+				<div className="container">
+					<div className="container pagecontainer offset-0">
+						<h1> Register </h1>
+					</div>
+				</div>
+			</Fragment>
         )
     }
 }
