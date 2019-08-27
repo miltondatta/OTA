@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 class Footer extends Component {
     render() {
@@ -7,8 +8,8 @@ class Footer extends Component {
                 <div className="footerbgblack">
                     <div className="container">
                         <div className="col-md-3">
-                            <a href="#"><img src="../../travel/images/logosmal2.png" alt /></a><br />
-                            <span className="grey2">© 2019  |  <a href="#">Privacy Policy</a><br />
+                            <Link to={'/'}><img src="../../travel/images/logosmal2.png" alt="" /></Link><br />
+                            <span className="grey2">© 2019  |  <Link to={'/'}>Privacy Policy</Link><br />
                                 All Rights Reserved </span>
                         </div>
                         <div className="col-md-3 grey">
@@ -20,16 +21,16 @@ class Footer extends Component {
                             <span className="ftitleblack">Parnerships</span>
                             <br />
                             <ul className="footerlistblack">
-                                <li><a href="#">Weddings</a></li>
-                                <li><a href="#">Accessible Travel</a></li>
+                                <li><Link to={'/'}>Weddings</Link></li>
+                                <li><Link to={'/'}>Accessible Travel</Link></li>
                             </ul>
                         </div>
                         <div className="col-md-3">
                             <div className="scont">
-                                <a href="#" className="social1b"><img src="../../travel/images/icon-facebook.png" alt /></a>
-                                <a href="#" className="social2b"><img src="../../travel/images/icon-twitter.png" alt /></a>
-                                <a href="#" className="social3b"><img src="../../travel/images/icon-gplus.png" alt /></a>
-                                <a href="#" className="social4b"><img src="../../travel/images/icon-youtube.png" alt /></a>
+                                <Link to={'/'} className="social1b"><img src="../../travel/images/icon-facebook.png" alt=""  /></Link>
+                                <Link to={'/'} className="social2b"><img src="../../travel/images/icon-twitter.png"  alt="" /></Link>
+                                <Link to={'/'} className="social3b"><img src="../../travel/images/icon-gplus.png" alt="" /></Link>
+                                <Link to={'/'} className="social4b"><img src="../../travel/images/icon-youtube.png"  alt="" /></Link>
                             </div>
                         </div>
                     </div>

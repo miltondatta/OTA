@@ -57,7 +57,7 @@ class Landing extends Component {
 						<div className="col-md-12">
 							<div className="bs-example bs-example-tabs cstyle04">
 								<ul className="nav nav-tabs" id="myTab">
-									<li onclick="mySelectUpdate()" className="active"><a data-toggle="tab" href="#air2"><span className="flight"></span><span className="hidetext">Air</span>&nbsp;</a></li>
+									<li onclick="mySelectUpdate()" className="active"><Link data-toggle="tab" to="#air2"><span className="flight"></span><span className="hidetext">Air</span>&nbsp;</Link></li>
 								</ul>
 								<div className="tab-content2" id="myTabContent">
 									<div id="air2" className="tab-pane fade active in">
@@ -121,7 +121,7 @@ class Landing extends Component {
 									</div>
 								</div>
 								<div className="searchbg2">
-									<div className="left ca01"><a href="#">Advanced +</a></div>
+									<div className="left ca01"><Link to="#">Advanced +</Link></div>
 									<form action="#">
 										<button type="submit" className="btn-search right mr30">Search</button>
 									</form>

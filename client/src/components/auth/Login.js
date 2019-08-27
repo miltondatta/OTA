@@ -10,16 +10,16 @@ class Login extends Component {
                     <div className="login-wrap">
                         <div className="login-c1">
                             <div className="cpadding50">
-                                <input type="text" className="form-control logpadding" placeholder="Email" />
+                                <input type="text" className="form-control logpadding" placeholder="Email" required/>
                                 <br />
-                                <input type="text" className="form-control logpadding" placeholder="Password" />
+                                <input type="text" className="form-control logpadding" placeholder="Password" required/>
                             </div>
                         </div>
                         <div className="login-c2">
                             <div className="logmargfix">
                                 <div className="chpadding50">
                                     <div className="alignbottom">
-                                        <button className="btn-search4" type="submit" onclick="errorMessage()">Submit</button>
+                                        <button className="btn-search4" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </div>
