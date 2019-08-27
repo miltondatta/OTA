@@ -127,7 +127,7 @@ ul.droplist li:hover.inactive {
 
 @media (min-width: 992px) {
     .navbar-wrapper2 {
-        min-height: 110px;
+        min-height: 80px;
         background: white;
         border-bottom: 0px solid #cccccc;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.13);
@@ -136,7 +136,7 @@ ul.droplist li:hover.inactive {
 
     .mtnav {
         position: relative;
-        top: 30px;
+        top: 10px;
     }
 
     .mtslide {
@@ -3465,7 +3465,7 @@ span.cruise-ico {
 
 @media (min-width: 992px) {
     .breadcrub {
-        margin-top: 130px;
+        margin-top: 80px;
         color: #ccc;
     }
 }
