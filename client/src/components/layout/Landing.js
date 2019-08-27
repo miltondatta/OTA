@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import slider1 from '../../assets/img/slider1.jpg';
 import slider2 from '../../assets/img/slider2.jpg';
-import slider3 from '../../assets/img/slider4.jpg';
+import slider3 from '../../assets/img/slider3.jpg';
 
 
 const sliderContent = [
@@ -45,7 +45,6 @@ class Landing extends Component {
 						sliderContent.map((article, index) => <div key={index}
 							className="slider-content"
 							style={{ background: `url('${article.image}') no-repeat center center` }}  >
-
 							<div className="inner">
 								<h2>{article.title}  </h2>
 								<div>{article.description} </div>
@@ -53,50 +52,49 @@ class Landing extends Component {
 						</div>
 						)}
 				</Slider>
-
-				<div class="container mt-130 z-index100">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="bs-example bs-example-tabs cstyle04">
-								<ul class="nav nav-tabs" id="myTab">
-									<li onclick="mySelectUpdate()" class="active"><a data-toggle="tab" href="#air2"><span class="flight"></span><span class="hidetext">Air</span>&nbsp;</a></li>
+				<div className="container mt-130 z-index100">
+					<div className="row">
+						<div className="col-md-12">
+							<div className="bs-example bs-example-tabs cstyle04">
+								<ul className="nav nav-tabs" id="myTab">
+									<li onclick="mySelectUpdate()" className="active"><a data-toggle="tab" href="#air2"><span className="flight"></span><span className="hidetext">Air</span>&nbsp;</a></li>
 								</ul>
-								<div class="tab-content2" id="myTabContent">
-									<div id="air2" class="tab-pane fade active in">
-										<div class="col-md-4">
-											<div class="w50percent">
-												<div class="wh90percent textleft">
-													<span class="opensans size13"><b>Flying from</b></span>
-													<input type="text" class="form-control" placeholder="City or airport" />
+								<div className="tab-content2" id="myTabContent">
+									<div id="air2" className="tab-pane fade active in">
+										<div className="col-md-4">
+											<div className="w50percent">
+												<div className="wh90percent textleft">
+													<span className="opensans size13"><b>Flying from</b></span>
+													<input type="text" className="form-control" placeholder="City or airport" />
 												</div>
 											</div>
-											<div class="w50percentlast">
-												<div class="wh90percent textleft right">
-													<span class="opensans size13"><b>To</b></span>
-													<input type="text" class="form-control" placeholder="City or airport" />
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="w50percent">
-												<div class="wh90percent textleft">
-													<span class="opensans size13"><b>Departing</b></span>
-													<input type="text" class="form-control mySelectCalendar" id="datepicker3" placeholder="mm/dd/yyyy" />
-												</div>
-											</div>
-											<div class="w50percentlast">
-												<div class="wh90percent textleft right">
-													<span class="opensans size13"><b>Returning</b></span>
-													<input type="text" class="form-control mySelectCalendar" id="datepicker4" placeholder="mm/dd/yyyy" />
+											<div className="w50percentlast">
+												<div className="wh90percent textleft right">
+													<span className="opensans size13"><b>To</b></span>
+													<input type="text" className="form-control" placeholder="City or airport" />
 												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<div class="room1" >
-												<div class="w50percent">
-													<div class="wh90percent textleft">
-														<span class="opensans size13"><b>Adult</b></span>
-														<select class="form-control mySelectBoxClass">
+										<div className="col-md-4">
+											<div className="w50percent">
+												<div className="wh90percent textleft">
+													<span className="opensans size13"><b>Departing</b></span>
+													<input type="text" className="form-control mySelectCalendar" id="datepicker3" placeholder="mm/dd/yyyy" />
+												</div>
+											</div>
+											<div className="w50percentlast">
+												<div className="wh90percent textleft right">
+													<span className="opensans size13"><b>Returning</b></span>
+													<input type="text" className="form-control mySelectCalendar" id="datepicker4" placeholder="mm/dd/yyyy" />
+												</div>
+											</div>
+										</div>
+										<div className="col-md-4">
+											<div className="room1" >
+												<div className="w50percent">
+													<div className="wh90percent textleft">
+														<span className="opensans size13"><b>Adult</b></span>
+														<select className="form-control mySelectBoxclassName">
 															<option>1</option>
 															<option selected>2</option>
 															<option>3</option>
@@ -105,10 +103,10 @@ class Landing extends Component {
 														</select>
 													</div>
 												</div>
-												<div class="w50percentlast">
-													<div class="wh90percent textleft right">
-														<span class="opensans size13"><b>Child</b></span>
-														<select class="form-control mySelectBoxClass">
+												<div className="w50percentlast">
+													<div className="wh90percent textleft right">
+														<span className="opensans size13"><b>Child</b></span>
+														<select className="form-control mySelectBoxclassName">
 															<option>0</option>
 															<option selected>1</option>
 															<option>2</option>
@@ -122,16 +120,16 @@ class Landing extends Component {
 										</div>
 									</div>
 								</div>
-								<div class="searchbg2">
-									<div class="left ca01"><a href="#">Advanced +</a></div>
+								<div className="searchbg2">
+									<div className="left ca01"><a href="#">Advanced +</a></div>
 									<form action="#">
-										<button type="submit" class="btn-search right mr30">Search</button>
+										<button type="submit" className="btn-search right mr30">Search</button>
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>			
 			</Fragment>
 		)
 	}
