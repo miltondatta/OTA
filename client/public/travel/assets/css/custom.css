@@ -552,7 +552,7 @@ a:hover.green2 {
 }
 
 /*bg*/
-.sliderbg {
+/*.sliderbg {
     position: fixed;
     background: url('../../rs-plugin/assets/slider-bg.png') #333 scroll center center;
 }
@@ -562,7 +562,7 @@ a:hover.green2 {
     background: url('../../images/bg.jpg') #0d73a5 scroll center -50px no-repeat;
     Width: 100%;
     height: 720px;
-}
+}*/
 
 
 /*ROLLOVER*/
@@ -2615,7 +2615,7 @@ a:hover.prev img {
 }
 
 
-.next {
+/*.next {
     width: 34px;
     height: 55px;
     float: right;
@@ -2624,9 +2624,9 @@ a:hover.prev img {
     position: absolute;
     top: 60px;
     right: -11px;
-}
+}*/
 
-.next:hover {
+/*.next:hover {
     background: #72bf66;
 }
 
@@ -2643,7 +2643,7 @@ a:hover.next img {
     height: 18px;
     display: block;
     background: url('../../images/sprite.png') 0px -54px;
-}
+}*/
 
 
 .pager {
@@ -3886,7 +3886,6 @@ ul.hotelpreferences {
     height: 28px;
     background: url('') #fff;
     border: 2px solid #efefef;
-    border: 2px solid #ebebeb;
     padding: 5px;
     color: #999;
     -webkit-border-radius: 4px;
@@ -4396,7 +4395,7 @@ ul.hpref-text {
     }
 }
 
-.details-slider2 {
+/*.details-slider2 {
     height: 734px;
     overflow: hidden;
 }
@@ -4406,7 +4405,7 @@ ul.hpref-text {
         height: 534px;
         overflow: hidden;
     }
-}
+}*/
 
 
 span.icon-quote {
