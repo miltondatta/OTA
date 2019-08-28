@@ -60,7 +60,7 @@ exports.login = async(req, res) => {
                         });
                     });
             } else {
-                return res.json({ msg: 'Your password is incorrect!' });
+                return res.status(400).json({ msg: 'Your password is incorrect!' });
             }
         });
     });
