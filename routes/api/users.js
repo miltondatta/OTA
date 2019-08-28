@@ -12,11 +12,11 @@ const User              = require('../../models').user;
 router.get('/test', (req, res) => res.json({ msg: 'Users route working!'}));
 
 /*
-    @route          GET api/users/registration/
+    @route          GET api/users/register/
     @desc           Login users route
     @access         Public
  */
-router.post('/registration', users_controller.store);
+router.post('/register', users_controller.store);
 
 
 /*

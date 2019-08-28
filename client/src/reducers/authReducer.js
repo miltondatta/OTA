@@ -1,6 +1,6 @@
 const initialState = {
     isAuthenticated: false,
-    user: { }
+    user: {}
 };
 
 export default function(state = initialState, action) {
