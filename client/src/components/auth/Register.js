@@ -1,23 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import '../../assets/css/register.css';
+
+// Redux
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 
-
-
-
 class Register extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             name: '',
             email: '',
             mobile: '',
             password: '',
             password2: '',
-            errors: {}
+            errors: {},
+            pass_match: true
         };
 
         this.onChange   =   this.onChange.bind(this);
@@ -28,8 +29,20 @@ class Register extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+
     onSubmit(e){
         e.preventDefault();
+
+        // Check Confirm Password
+        if(this.state.password2 !== '') {
+            const password = this.state.password;
+            const password2 = this.state.password2;
+            if(password !== password2) {
+                this.setState({pass_match: false});
+                return;
+            }
+            if(password === password2) this.setState({pass_match: true});
+        }
 
         const newUser   =   {
             name: this.state.name,
@@ -37,17 +50,17 @@ class Register extends Component {
             mobile: this.state.mobile,
             password: this.state.password,
             password2: this.state.password2,
-        }
+        };
 
         this.props.registerUser(newUser, this.props.history);
     }
 
 
-
     render() {
+        const password_matched = this.state.pass_match ? '' : 'password_not_matched';
         return (
             <Fragment>
-                <div className="container breadcrub"></div>
+                <div className="container breadcrub"> </div>
                 <div className="register-fullwidith">
                     <form onSubmit={this.onSubmit}>
                         <div className="register-wrap">
@@ -73,7 +86,7 @@ class Register extends Component {
                                         onChange={this.onChange}
                                         placeholder="Enter Password" required /> <br />
 
-                                    <input type="password" className="form-control logpadding"
+                                    <input type="password" className={`form-control logpadding ${password_matched}`}
                                         name="password2" value={this.state.password2}
                                         onChange={this.onChange}
                                         placeholder="Confirm Password" required /> <br />
@@ -105,7 +118,9 @@ Register.propTypes  =   {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors  
+  errors: state.errors
 });
 
-export default connect(mapStateToProps, { registerUser }) (withRouter(Register));
+const mapDispatchToProps = { registerUser };
+
+export default connect(mapStateToProps, mapDispatchToProps) (withRouter(Register));
