@@ -5,3 +5,15 @@
 .wh33percent_right_area{
     float: right;
 }
+
+.flightIcon{
+    margin-right: 5px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    transition: .2s;
+    color: #0f3e68;
+}
+
+.searchArea{
+    margin-top: 15px;
+}

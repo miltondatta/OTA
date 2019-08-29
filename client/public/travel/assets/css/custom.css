@@ -1683,7 +1683,7 @@ a:visited.booknow {
         display: inline-block;
     }
 
-    #myTab2 > li > a > span.hidetext {
+    #myTab2 > li .hideText {
         display: inline-block;
     }
 }
