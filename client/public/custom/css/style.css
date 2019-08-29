@@ -2,8 +2,15 @@
     height: 420px;
 }
 
+
+@media (min-width: 600px) {
+    .login-wrap {
+        width: 450px;
+    }
+}
+
 .login-wrap {
-    margin-left: calc(50% - 186px) !important;
+    margin-left: calc(50% - 250px) !important;
     margin-top: 50px;
 }
 
@@ -13,9 +20,9 @@
 }
 
 .register-wrap {
-    width: 372px;
+    width: 450px;
     background: transparent;
-    margin-left: calc(50% - 186px) !important;
+    margin-left: calc(50% - 225px) !important;
     margin-top: 50px;
     position: absolute;
 }
