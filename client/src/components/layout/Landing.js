@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import DatePicker from "react-datepicker";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane, faCity, faPlaneDeparture} from "@fortawesome/free-solid-svg-icons";
 
@@ -36,7 +35,7 @@ class Landing extends Component {
                             <div className="bs-example bs-example-tabs cstyle04">
                                 <ul className="nav nav-tabs" id="myTab">
                                     <li onClick={() => this.setState({
-                                        oneWay: !this.state.oneWay,
+                                        oneWay: true,
                                         roundTrip: false,
                                         multiCity: false
                                     })} className={this.state.oneWay && 'active'}>
@@ -47,7 +46,7 @@ class Landing extends Component {
                                     </Link>
                                     </li>
                                     <li onClick={() => this.setState({
-                                        roundTrip: !this.state.roundTrip,
+                                        roundTrip: true,
                                         oneWay: false,
                                         multiCity: false
                                     })} className={this.state.roundTrip && 'active'}>
@@ -58,7 +57,7 @@ class Landing extends Component {
                                     </Link>
                                     </li>
                                     <li onClick={() => this.setState({
-                                        multiCity: !this.state.multiCity,
+                                        multiCity: true,
                                         roundTrip: false,
                                         oneWay: false
                                     })} className={this.state.multiCity && 'active'}>
@@ -77,11 +76,6 @@ class Landing extends Component {
                                         </form>
                                     </div>
                                 </div>
-                                {/*<div className="">
-                                    <form action="#">
-                                        <button type="submit" className="btn-search right mr30">Search</button>
-                                    </form>
-                                </div>*/}
                             </div>
                         </div>
                     </div>
