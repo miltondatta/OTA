@@ -1,7 +1,7 @@
-const express           =   require('express');
-const router            =   express.Router();
-const users_controller  =   require('../../controllers/usersController');
-const User              = require('../../models').user;
+const express           =  require('express');
+const router            =  express.Router();
+const users_controller  =  require('../../controllers/usersController');
+const User              =  require('../../models').user;
 
 /*
     @route          GET api/users/test/
@@ -71,15 +71,6 @@ router.get('/all', (req, res) => {
         return res.status(400).json({msg: 'Server Error!'});
     }
 });
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router;
