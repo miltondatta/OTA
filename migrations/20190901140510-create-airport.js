@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       latitude_deg: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DOUBLE
       },
       longitude_deg: {
-        type: Sequelize.STRING
+        type: Sequelize.DOUBLE
       },
       elevation_ft: {
         type: Sequelize.INTEGER
