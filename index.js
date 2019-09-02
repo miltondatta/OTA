@@ -15,13 +15,18 @@ app.use(bodyParser.json());
 
 //Get routes directory
 const users     = require('./routes/api/users');
-const amadeus   = require('./routes/amadeus');
+const amadeus   = require('./routes/api/amadeus');
+const global    = require('./routes/api/global');
+
 
 //Use Routes
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
 app.use('/api/users/', users);
 
 app.use('/api/amadeus/', amadeus);
+
+app.use('/api/global/', global);
+
 
 
 const port = process.env.PORT || 5000;
