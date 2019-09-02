@@ -11,7 +11,7 @@ exports.test = async (req, res) => {
 exports.get_airports = (req, res) => {
     airport.findAll({
         attributes: ['name', 'iso_country', 'iso_region', 'iata_code'],
-        where: { iata_code: { [Op.like]: req.query.airport_search + '%' } }
+        where: { iata_code: { [Op.like]: req.query.airport_search.toUpperCase() + '%' } }
     }).then(airports => {
         return res.json(airports);
     }).catch(err => {
