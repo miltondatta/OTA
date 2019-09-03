@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import footer_logo from '../../assets/img/footer-logo.png';
 
 class Footer extends Component {
     render() {
@@ -8,7 +9,7 @@ class Footer extends Component {
                 <div className="footerbgblack">
                     <div className="container">
                         <div className="col-md-3">
-                            <Link to={'/'}><img src="../../travel/images/logosmal2.png" alt="" /></Link><br />
+                            <Link to={'/'}><img className="footer-logo" src={footer_logo} alt="" /></Link><br />
                             <span className="grey2">© 2019  |  <Link to={'/'}>Privacy Policy</Link><br />
                                 All Rights Reserved </span>
                         </div>

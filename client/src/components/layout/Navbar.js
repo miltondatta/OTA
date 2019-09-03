@@ -45,7 +45,7 @@ class Navbar extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link to={'/'} className="navbar-brand"><img src={logo} alt="Travel Agency Logo" className="logo" /></Link>
+                <Link to={'/'}><img src={logo} alt="Travel Agency Logo" className="logo" /></Link>
               </div>
               <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
