@@ -68,3 +68,7 @@
 img.logo {
     width: 190px;
 }
+
+.footer-logo {
+     width: 140px !important;
+}
