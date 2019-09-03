@@ -59,3 +59,12 @@
 .register-c2 {
     height: 420px !important;
 }
+
+
+.navbar-brand {
+    padding: 0px 15px 0px 0 !important;
+}
+
+img.logo {
+    width: 190px;
+}
