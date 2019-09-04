@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import DatePicker from "react-datepicker";
 
+import AirAutocomplete from './AirAutocomplete';
+
 
 class OneWay extends Component {
     constructor(props) {
@@ -18,8 +20,8 @@ class OneWay extends Component {
                     <div className="w50percent">
                         <div className="wh90percent textleft">
                             <span className="opensans size13"><b>Flying from</b></span>
-                            <input type="text" className="form-control"
-                                   placeholder="City or airport"/>
+                            <AirAutocomplete
+                            />
                         </div>
                     </div>
                     <div className="w50percentlast">

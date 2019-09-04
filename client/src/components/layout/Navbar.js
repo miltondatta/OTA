@@ -17,8 +17,6 @@ class Navbar extends Component {
 
     const { isAuthenticated, user } = this.props.auth;
 
-    console.log(this.props.auth);
-
     const authLinks = (
       <Fragment>
         <li><Link to="">{ user ? 'Welcome, ' + user.name : '' }</Link></li>

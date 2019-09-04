@@ -10,6 +10,7 @@ exports.test = async (req, res) => {
 
 exports.get_airports = (req, res) => {
     airport.findAll({
+        limit: 20,
         attributes: ['name', 'iso_country', 'iso_region', 'iata_code'],
         where: { iata_code: { [Op.like]: req.query.airport_search.toUpperCase() + '%' } }
     }).then(airports => {

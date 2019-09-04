@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from 'react';
-import {Link} from 'react-router-dom';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPaperPlane, faCity, faPlaneDeparture} from "@fortawesome/free-solid-svg-icons";
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane, faCity, faPlaneDeparture } from "@fortawesome/free-solid-svg-icons";
 
 // Css
 import '../../assets/css/landing.css';
@@ -42,7 +42,7 @@ class Landing extends Component {
                                         <Link data-toggle="tab" to="#">
                                             <FontAwesomeIcon icon={faPlaneDeparture} className={'flightIcon'} />
                                             <span
-                                        className="hideText">One Way</span>&nbsp;
+                                                className="hideText">One Way</span>&nbsp;
                                     </Link>
                                     </li>
                                     <li onClick={() => this.setState({
@@ -51,7 +51,7 @@ class Landing extends Component {
                                         multiCity: false
                                     })} className={this.state.roundTrip && 'active'}>
                                         <Link data-toggle="tab"
-                                                           to="#">
+                                            to="#">
                                             <FontAwesomeIcon icon={faPaperPlane} className={'flightIcon'} />
                                             <span className="hideText">Round Trip</span>&nbsp;
                                     </Link>
