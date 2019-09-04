@@ -2590,7 +2590,7 @@ img.dealthumb {
     float: left;
     margin-left: 10px;
     background: #15262f;
-    position: absolute;
+    position: unset;
     top: 60px;
     left: -10px;
 }

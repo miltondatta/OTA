@@ -1,13 +1,14 @@
 import React, {Component, Fragment} from 'react';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker2';
+import moment from 'moment';
 
 
 class RoundTrip extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            departure: new Date(),
-            return: new Date()
+            departure: moment(),
+            return: moment()
         };
     }
 
@@ -35,17 +36,21 @@ class RoundTrip extends Component {
                     <div className="wh33percent wh33percent_left_area">
                         <div className="wh90percent textleft right">
                             <span className="opensans size13"><b>Departure</b></span>
-                            <DatePicker className="form-control mySelectBoxclassName"
-                                        selected={this.state.departure}
-                                        onChange={date => this.setState({departure: date})}/>
+                            <DatePicker timePicker={false}
+                                        className="form-control"
+                                        inputFormat="DD/MM/YYYY"
+                                        onChange={date => this.setState({ departure: date })}
+                                        value={this.state.departure} />
                         </div>
                     </div>
                     <div className="wh33percent wh33percent_left_area">
                         <div className="wh90percent textleft right">
                             <span className="opensans size13"><b>Return</b></span>
-                            <DatePicker className="form-control mySelectBoxclassName"
-                                        selected={this.state.return}
-                                        onChange={date => this.setState({return: date})}/>
+                            <DatePicker timePicker={false}
+                                        className="form-control"
+                                        inputFormat="DD/MM/YYYY"
+                                        onChange={date => this.setState({ return: date })}
+                                        value={this.state.return} />
                         </div>
                     </div>
                     <div className="wh33percent wh33percent_right_area">

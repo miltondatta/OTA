@@ -63,6 +63,7 @@ class FlightList extends Component {
                                 <li><Link to="#">5</Link></li>
                                 <li><Link to="#">&raquo;</Link></li>
                             </ul>
+                            <Link to={'/flight-payment'} className="bluebtn" style={{textDecoration: 'none'}}>Proceed Payment</Link>
                         </div>
                     </div>
                 </div>
