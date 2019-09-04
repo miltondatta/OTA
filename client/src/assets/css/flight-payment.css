@@ -15,3 +15,11 @@
 .collapsebtn3 {
     outline: none;
 }
+
+.showTicketDetails {
+    display: none !important;
+}
+
+.passenger-gender {
+    padding-top: 15px;
+}

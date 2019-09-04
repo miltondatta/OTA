@@ -5,7 +5,6 @@ import {faPaperPlane, faCity, faPlaneDeparture} from "@fortawesome/free-solid-sv
 
 // Css
 import '../../assets/css/landing.css';
-import 'react-datepicker/dist/react-datepicker.css';
 
 // Component
 import SliderComponent from "../landing/Slider";
@@ -71,7 +70,7 @@ class Landing extends Component {
                                     <RoundTrip roundTrip={this.state.roundTrip} />
                                     <MultiCity multiCity={this.state.multiCity} />
                                     <div className={'searchArea'}>
-                                        <form action="#">
+                                        <form action="/flight-list">
                                             <button type="submit" className="btn-search right mr30">Search</button>
                                         </form>
                                     </div>

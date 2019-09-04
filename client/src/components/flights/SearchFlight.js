@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker2';
+import moment from 'moment';
 
 class SearchFlight extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            departure: new Date(),
-            return: new Date()
+            departure: moment(),
+            return: moment()
         };
     }
 
@@ -30,18 +31,22 @@ class SearchFlight extends Component {
                 <div className="w50percent">
                     <div className="wh90percent textleft">
                         <span className="opensans size13">Departure</span>
-                        <DatePicker className="form-control mySelectBoxclassName"
-                                    selected={this.state.departure}
-                                    onChange={date => this.setState({departure: date})}/>
+                        <DatePicker timePicker={false}
+                                    className="form-control"
+                                    inputFormat="DD/MM/YYYY"
+                                    onChange={date => this.setState({ departure: date })}
+                                    value={this.state.departure} />
                     </div>
                 </div>
                 {this.props.roundTrip &&
                     <div className="w50percentlast">
                         <div className="wh90percent textleft right">
                             <span className="opensans size13">Return</span>
-                            <DatePicker className="form-control mySelectBoxclassName"
-                                        selected={this.state.return}
-                                        onChange={date => this.setState({return: date})}/>
+                            <DatePicker timePicker={false}
+                                        className="form-control"
+                                        inputFormat="DD/MM/YYYY"
+                                        onChange={date => this.setState({ return: date })}
+                                        value={this.state.return} />
                         </div>
                     </div>
                 }

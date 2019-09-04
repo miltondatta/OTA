@@ -72,3 +72,11 @@ img.logo {
 .footer-logo {
      width: 140px !important;
 }
+
+.tether-element{
+    z-index: 1031 !important;
+}
+
+.selectToday {
+    display: none !important;
+}
