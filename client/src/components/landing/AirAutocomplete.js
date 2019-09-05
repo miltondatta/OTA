@@ -32,7 +32,7 @@ class AirAutocomplete extends Component {
             .get('/api/global/get_airports?airport_search=' + search_value)
             .then(res => {  
                 res.data.forEach(element => {
-                    filteredSuggestions.push(element.iata_code + " - " + element.name);
+                    filteredSuggestions.push(element.iata_code + ", " + element.name + ", " + element.iso_country);
                 });
 
                 this.setState({
@@ -95,6 +95,7 @@ class AirAutocomplete extends Component {
         return (
             <Fragment>
                 <input type="text"
+                    name={this.props.name}
                     className="form-control"
                     placeholder="City or airport"
                     onChange={this.onChange}

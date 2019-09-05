@@ -11,17 +11,29 @@ class OneWay extends Component {
         this.state = {
             departure: moment()
         };
+        this.onSubmit = this.onSubmit.bind(this);
     }
+
+
+    onSubmit(e){
+     //   console.log(this.props);
+        console.log(this.state);
+        e.preventDefault();
+        alert(200);
+    }
+
 
     render() {
         return (
             this.props.oneWay &&
             <div>
+                <form onSubmit={this.onSubmit}>
                 <div className="col-md-8">
                     <div className="wh66percent wh33percent_left_area">
                         <div className="wh90percent textleft">
                             <span className="opensans size13"><b>Flying from</b></span>
                             <AirAutocomplete
+                            name={'origin'}
                             />
                         </div>
                     </div>
@@ -82,6 +94,7 @@ class OneWay extends Component {
                         <div className="wh90percent textleft">
                             <span className="opensans size13"><b>Flying to</b></span>
                             <AirAutocomplete
+                            name={'destination'}
                             />
                         </div>
                     </div>
@@ -105,24 +118,13 @@ class OneWay extends Component {
                 <div className="col-md-2">
                     <div className="w100percent">
                         <div className="wh90percent">
-                        <span className="opensans size13"><b> &nbsp; </b></span>
-                                <form action="/flight-list">
-                                    <button type="submit" className="btn-search right mr30">Search</button>
-                                </form>
+                        <span className="opensans size13"><b> &nbsp; </b></span>                           
+                            <button type="submit" className="btn-search right mr30">Search</button>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-            </div>
+            </form>
+        </div>
         )
     }
 
