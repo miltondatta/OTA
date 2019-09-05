@@ -31,9 +31,10 @@ class AirAutocomplete extends Component {
          axios
             .get('/api/global/get_airports?airport_search=' + search_value)
             .then(res => {  
-                res.data.map((airport, index) => {
-                  filteredSuggestions.push(airport.iata_code + " - " + airport.name);
+                res.data.forEach(element => {
+                    filteredSuggestions.push(element.iata_code + " - " + element.name);
                 });
+
                 this.setState({
                     activeSuggestion: 0,
                     filteredSuggestions,

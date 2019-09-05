@@ -1054,7 +1054,7 @@ img.imgpos1 {
   */
     text-transform: uppercase;
     margin-left: 30px;
-    margin-top: 12px;
+ /*   margin-top: 12px;  */
 
     border: 1px solid #d75124;
     background: #e35121;

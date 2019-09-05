@@ -15,7 +15,7 @@
     border-top-width: 0;
     list-style: none;
     margin-top: 0;
-    max-height: 143px;
+    max-height: 200px;
     overflow-y: auto;
     padding-left: 0;
     width: calc(300px + 1rem);
@@ -24,7 +24,7 @@
   .suggestions li {
     padding: 0.5rem;
   }
-  
+
   .suggestion-active,
   .suggestions li:hover {
     background-color: #008f68;
@@ -36,4 +36,6 @@
   .suggestions li:not(:last-of-type) {
     border-bottom: 1px solid #999;
   }
+
+
   

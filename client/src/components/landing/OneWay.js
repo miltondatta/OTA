@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import DatePicker from 'react-datepicker2';
 import moment from 'moment';
 
@@ -17,44 +17,26 @@ class OneWay extends Component {
         return (
             this.props.oneWay &&
             <div>
-                <div className="col-md-4">
-                    <div className="w50percent">
+                <div className="col-md-8">
+                    <div className="wh66percent wh33percent_left_area">
                         <div className="wh90percent textleft">
                             <span className="opensans size13"><b>Flying from</b></span>
                             <AirAutocomplete
                             />
                         </div>
                     </div>
-                    <div className="w50percentlast">
-                        <div className="wh90percent textleft right">
-                            <span className="opensans size13"><b>Flying To</b></span>
-                            <input type="text" className="form-control"
-                                   placeholder="City or airport"/>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4">
-                    <div className="w50percent">
-                        <div className="wh90percent textleft right">
+                    <div className="wh33percent wh33percent_left_area">
+                        <div className="wh90percent textleft">
                             <span className="opensans size13"><b>Departure</b></span>
                             <DatePicker timePicker={false}
-                                        className="form-control"
-                                        inputFormat="DD/MM/YYYY"
-                                        onChange={date => this.setState({ departure: date })}
-                                        value={this.state.departure} />
-                        </div>
-                    </div>
-                    <div className="w50percentlast">
-                        <div className="wh90percent textleft right">
-                            <span className="opensans size13"><b>Class</b></span>
-                            <select name="economy_class"
-                                    className="form-control mySelectBoxclassName" id="">
-                                <option value="1">Economy Class</option>
-                                <option value="2">Business Class</option>
-                            </select>
+                                className="form-control"
+                                inputFormat="DD/MM/YYYY"
+                                onChange={date => this.setState({ departure: date })}
+                                value={this.state.departure} />
                         </div>
                     </div>
                 </div>
+
                 <div className="col-md-4">
                     <div className="room1">
                         <div className="wh33percent wh33percent_left_area">
@@ -93,6 +75,53 @@ class OneWay extends Component {
                         </div>
                     </div>
                 </div>
+
+
+                <div className="col-md-8">
+                    <div className="wh66percent wh33percent_left_area">
+                        <div className="wh90percent textleft">
+                            <span className="opensans size13"><b>Flying to</b></span>
+                            <AirAutocomplete
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="col-md-2">
+                    <div className="w100percent">
+                        <div className="wh90percent">
+                            <span className="opensans size13"><b>Class</b></span>
+                            <select name="economy_class"
+                                className="form-control mySelectBoxclassName" id="">
+                                <option value="1">Economy Class</option>
+                                <option value="2">Business Class</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="col-md-2">
+                    <div className="w100percent">
+                        <div className="wh90percent">
+                        <span className="opensans size13"><b> &nbsp; </b></span>
+                                <form action="/flight-list">
+                                    <button type="submit" className="btn-search right mr30">Search</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
             </div>
         )
     }

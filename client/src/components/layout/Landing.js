@@ -69,11 +69,6 @@ class Landing extends Component {
                                     <OneWay oneWay={this.state.oneWay} />
                                     <RoundTrip roundTrip={this.state.roundTrip} />
                                     <MultiCity multiCity={this.state.multiCity} />
-                                    <div className={'searchArea'}>
-                                        <form action="/flight-list">
-                                            <button type="submit" className="btn-search right mr30">Search</button>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
