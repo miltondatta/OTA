@@ -24,6 +24,13 @@
   .suggestions li {
     padding: 0.5rem;
   }
+  
+  ul.suggestions {
+    display: block;
+    z-index: 999;
+    position: absolute;
+    background: #edc58f;
+  }
 
   .suggestion-active,
   .suggestions li:hover {
