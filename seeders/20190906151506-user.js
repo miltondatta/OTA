@@ -3,9 +3,8 @@ const faker = require('faker');
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-
-        //Add altering commands here.
-        //Return a promise to correctly handle asynchronicity.
+        // Add altering commands here.
+        // Return a promise to correctly handle asynchronicity.
 
         //Example:
         for (var i = 0; i < 100; i++) {
@@ -27,12 +26,11 @@ module.exports = {
     },
 
     down: (queryInterface, Sequelize) => {
-        /*
-          Add reverting commands here.
-          Return a promise to correctly handle asynchronicity.
+          // Add reverting commands here.
+          // Return a promise to correctly handle asynchronicity.
 
-          Example: */
+          // Example:
+          return queryInterface.bulkDelete('users', null, {});
 
-        return queryInterface.bulkDelete('users', null, {});
     }
 };
