@@ -34,9 +34,9 @@ exports.flight_dates = (req, res) => {
 //Get flight data for a departure date
 exports.flight_offers = (req, res) => {
     amadeus.shopping.flightOffers.get({
-        origin: 'NYC',
-        destination: 'MAD',
-        departureDate: '2019-09-03'
+        origin: req.query.origin,
+        destination: req.query.destination,
+        departureDate: req.query.departure
     }).then(function (response) {
         return res.json(response);
     }).catch(function (responseError) {

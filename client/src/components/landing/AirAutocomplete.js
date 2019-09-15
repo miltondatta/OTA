@@ -24,10 +24,8 @@ class AirAutocomplete extends Component {
     }
 
     onChange(e) {
-
         let filteredSuggestions = [];
         let search_value = e.currentTarget.value;
-
          axios
             .get('/api/global/get_airports?airport_search=' + search_value)
             .then(res => {  
@@ -55,6 +53,7 @@ class AirAutocomplete extends Component {
             showSuggestions: false,
             userInput: e.currentTarget.innerText
         });
+        this.props.handlerFromParant(e.currentTarget.innerText); 
     }
 
 
@@ -95,6 +94,8 @@ class AirAutocomplete extends Component {
         return (
             <Fragment>
                 <input type="text"
+                    required
+                    autocomplete="off"
                     name={this.props.name}
                     className="form-control"
                     placeholder="City or airport"
