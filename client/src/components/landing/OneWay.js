@@ -10,7 +10,7 @@ class OneWay extends Component {
     constructor(props) {
         super(props);
         this.handleOriginData = this.handleOriginData.bind(this);
-        this.handleDestinationData  =   this.handleDestinationData.bind(this);
+        this.handleDestinationData = this.handleDestinationData.bind(this);
         this.state = {
             departure: moment(),
             origin: '',
@@ -37,15 +37,15 @@ class OneWay extends Component {
         let org = this.state.origin;
         let des = this.state.destination;
         let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
-        
+
         axios
-        .get('api/amadeus/flight_offers?' + userParams)
-        .then(res => {  
-           console.log(res);
-        })
-        .catch(err =>
-            console.log("Error: " + err)
-        );
+            .get('api/amadeus/flight_offers?' + userParams)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err =>
+                console.log("Error: " + err)
+            );
     }
 
 
