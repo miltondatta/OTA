@@ -9,7 +9,9 @@ class SearchResult extends Component {
         super(props);
         this.state = {
             toggleSearchResult: false,
-            toggleReturnSearchResult: false
+            toggleReturnSearchResult: false,
+            toggleDeparture: false,
+            toogleDepartureTwo: false
         }
     }
 
@@ -28,7 +30,7 @@ class SearchResult extends Component {
                             <li className="ft2">
                                 <div className="radio radiomargin0">
                                     <label>
-                                        <input type="radio" checked="" value="option1" id="optionsRadios1"
+                                        <input type="radio" checked={this.state.toggleDeparture} onClick={() => this.setState({toggleDeparture: !this.state.toggleDeparture}) } value="option1" id="optionsRadios1"
                                                name="optionsFradios"/>
                                         Departure
                                     </label>
@@ -101,7 +103,7 @@ class SearchResult extends Component {
                             <li className="ft2">
                                 <div className="radio radiomargin0">
                                     <label>
-                                        <input type="radio" checked="" value="option2" id="optionsRadios2"
+                                        <input type="radio" checked={this.state.toogleDepartureTwo} onClick={() => this.setState({toogleDepartureTwo: !this.state.toogleDepartureTwo}) } value="option2" id="optionsRadios2"
                                                name="optionsFradios2" />
                                             Departure
                                     </label>

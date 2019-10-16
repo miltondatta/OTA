@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import InputRange from "react-input-range";
+import {Accordion, Button} from "react-bootstrap";
 import 'react-input-range/lib/css/index.css';
 
 class PriceRange extends Component {
@@ -13,13 +14,15 @@ class PriceRange extends Component {
     render() {
         return (
             <Fragment>
-                <button type="button" className="collapsebtn" data-toggle="collapse" data-target="#collapse2">
-                    Price range <span className="collapsearrow"></span>
-                </button>
+                <Accordion>
+                    <Accordion.Toggle as={Button} className="collapsebtn" eventKey={0}>
+                        Price range <span className="collapsearrow"></span>
+                    </Accordion.Toggle>
 
-                <div id="collapse2" className="collapse in">
-                    <div className="padding20">
-                        <div className="layout-slider wh100percent">
+                    <Accordion.Collapse eventKey={0}>
+                        <div id="collapse2" className="collapse in">
+                            <div className="padding20">
+                                <div className="layout-slider wh100percent">
                             <span className="cstyle09">
                                 <InputRange
                                     maxValue={1000}
@@ -27,9 +30,11 @@ class PriceRange extends Component {
                                     value={this.state.value}
                                     onChange={value => this.setState({value})}/>
                             </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </Accordion.Collapse>
+                </Accordion>
             </Fragment>
         )
     }
