@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import DatePicker from 'react-datepicker2';
 import moment from 'moment';
 

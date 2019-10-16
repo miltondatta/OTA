@@ -80,3 +80,11 @@ img.logo {
 .selectToday {
     display: none !important;
 }
+
+input[type=radio] {
+    width: 15px;
+}
+
+input[type=checkbox] {
+    width: 15px;
+}
