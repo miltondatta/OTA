@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component, Fragment} from 'react';
 
 // Image
 import tarom from '../../assets/img/tarom.png';
@@ -17,7 +17,7 @@ class SearchResult extends Component {
         return (
             <Fragment>
                 <div id="ticketid0123" className="offset-2">
-                    <div className="fblueline"><b>Bucharest</b> Otopeni <span className="farrow"></span>
+                    <div className="fblueline"><b>Bucharest</b> Otopeni <span className="farrow"> </span>
                         <b>London</b> Heathrow
                     </div>
                     <div className="frow1">
@@ -151,9 +151,9 @@ class SearchResult extends Component {
                                 </button>
                             </li>
                         </ul>
-                        <div className="clearfix"></div>
+                        <div className="clearfix"> </div>
                         <br/><br/>
-                        <div className="clearfix"></div>
+                        <div className="clearfix"> </div>
                     </div>
                     }
                     <div className="fselect">

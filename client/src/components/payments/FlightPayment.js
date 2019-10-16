@@ -42,10 +42,12 @@ class FlightPayment extends Component {
                             <br/>
                             <ul className="nav navigation-tabs">
                                 <li className={this.state.card && 'active'}>
-                                    <Link to="#card" onClick={() => this.setState({card: true, paypal: false})}>Credit/Debit card</Link>
+                                    <Link to="#card" onClick={() => this.setState({card: true, paypal: false})}>Credit/Debit
+                                        card</Link>
                                 </li>
                                 <li className={this.state.paypal && 'active'}>
-                                    <Link to="#paypal" onClick={() => this.setState({paypal: true, card: false})}>Paypal</Link>
+                                    <Link to="#paypal"
+                                          onClick={() => this.setState({paypal: true, card: false})}>Paypal</Link>
                                 </li>
                             </ul>
                             <div className="tab-content4">
