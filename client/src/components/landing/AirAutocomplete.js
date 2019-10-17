@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import '../../assets/css/air-auto-complete.css';
 
 class AirAutocomplete extends Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
