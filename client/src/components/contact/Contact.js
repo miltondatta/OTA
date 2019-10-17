@@ -20,13 +20,13 @@ class Contact extends Component {
                                     <Form.Group className="col-md-6"
                                                 controlId="formGridEmail">
                                         <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Name"/>
+                                        <Form.Control type="text" placeholder="Enter Name" required/>
                                     </Form.Group>
 
                                     <Form.Group className="col-md-6 pr-0"
                                                 controlId="formGridPassword">
                                         <Form.Label>Phone</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Phone Number"/>
+                                        <Form.Control type="text" placeholder="Enter Phone Number" required/>
                                     </Form.Group>
                                 </Form.Row>
 
@@ -34,13 +34,13 @@ class Contact extends Component {
                                     <Form.Group className="col-md-6"
                                                 controlId="formGridEmail">
                                         <Form.Label>Email</Form.Label>
-                                        <Form.Control type="email" placeholder="Enter email"/>
+                                        <Form.Control type="email" placeholder="Enter email" required/>
                                     </Form.Group>
 
                                     <Form.Group className="col-md-6 pr-0"
                                                 controlId="formGridPassword">
                                         <Form.Label>Address</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Address"/>
+                                        <Form.Control type="text" placeholder="Enter Address" required/>
                                     </Form.Group>
                                 </Form.Row>
 
