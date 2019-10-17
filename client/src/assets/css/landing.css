@@ -17,3 +17,7 @@
 .searchArea{
     margin-top: 15px;
 }
+
+.form-control {
+    padding: 12px 0px 12px 12px !important;
+}

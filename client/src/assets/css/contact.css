@@ -18,6 +18,11 @@
     padding-bottom: 130px;
 }
 
+.contact-area input {
+    color: #000;
+    font-weight: bold;
+}
+
 .contact-area button {
     padding: 8px 15px;
     margin-left: 15px;

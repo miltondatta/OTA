@@ -18,7 +18,7 @@
     max-height: 200px;
     overflow-y: auto;
     padding-left: 0;
-    width: calc(410px + 1rem);
+    width: calc(340px + 1rem);
   }
   
   .suggestions li {

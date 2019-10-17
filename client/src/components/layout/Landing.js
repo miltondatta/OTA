@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane, faCity, faPlaneDeparture } from "@fortawesome/free-solid-svg-icons";
+import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPaperPlane, faCity, faPlaneDeparture} from "@fortawesome/free-solid-svg-icons";
 
 // Css
 import '../../assets/css/landing.css';
@@ -27,7 +27,7 @@ class Landing extends Component {
     render() {
         return (
             <Fragment>
-                <SliderComponent />
+                <SliderComponent/>
                 <div className="container mt-130 z-index100">
                     <div className="row">
                         <div className="col-md-12">
@@ -39,10 +39,10 @@ class Landing extends Component {
                                         multiCity: false
                                     })} className={this.state.oneWay && 'active'}>
                                         <Link data-toggle="tab" to="#">
-                                            <FontAwesomeIcon icon={faPlaneDeparture} className={'flightIcon'} />
+                                            <FontAwesomeIcon icon={faPlaneDeparture} className={'flightIcon'}/>
                                             <span
                                                 className="hideText">One Way</span>&nbsp;
-                                    </Link>
+                                        </Link>
                                     </li>
                                     <li onClick={() => this.setState({
                                         roundTrip: true,
@@ -50,10 +50,10 @@ class Landing extends Component {
                                         multiCity: false
                                     })} className={this.state.roundTrip && 'active'}>
                                         <Link data-toggle="tab"
-                                            to="#">
-                                            <FontAwesomeIcon icon={faPaperPlane} className={'flightIcon'} />
+                                              to="#">
+                                            <FontAwesomeIcon icon={faPaperPlane} className={'flightIcon'}/>
                                             <span className="hideText">Round Trip</span>&nbsp;
-                                    </Link>
+                                        </Link>
                                     </li>
                                     <li onClick={() => this.setState({
                                         multiCity: true,
@@ -61,14 +61,14 @@ class Landing extends Component {
                                         oneWay: false
                                     })} className={this.state.multiCity && 'active'}>
                                         <Link data-toggle="tab" to="#">
-                                            <FontAwesomeIcon icon={faCity} className={'flightIcon'} />
+                                            <FontAwesomeIcon icon={faCity} className={'flightIcon'}/>
                                             <span className="hideText">Multi City</span>&nbsp;
-                                    </Link></li>
+                                        </Link></li>
                                 </ul>
                                 <div className="tab-content2" id="myTabContent">
-                                    <OneWay oneWay={this.state.oneWay} />
-                                    <RoundTrip roundTrip={this.state.roundTrip} />
-                                    <MultiCity multiCity={this.state.multiCity} />
+                                    <OneWay oneWay={this.state.oneWay}/>
+                                    <RoundTrip roundTrip={this.state.roundTrip}/>
+                                    <MultiCity multiCity={this.state.multiCity}/>
                                 </div>
                             </div>
                         </div>
@@ -79,4 +79,4 @@ class Landing extends Component {
     }
 }
 
-export default Landing
+export default Landing;
