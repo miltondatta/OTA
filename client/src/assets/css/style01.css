@@ -1313,3 +1313,18 @@ img.logo2 {
 .right0 {
     right: 0px;
 }
+
+.card {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.card-header {
+    border-bottom: 1px solid #cccccc;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 30px 10px;
+}

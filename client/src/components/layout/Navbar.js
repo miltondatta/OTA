@@ -34,6 +34,7 @@ class Navbar extends Component {
             <Fragment>
                 <li><Link to={'/login'}>LOGIN</Link></li>
                 <li><Link to={'/register'}>REGISTER</Link></li>
+                <li><Link to={'/contact'}>CONTACT</Link></li>
             </Fragment>
         );
 
