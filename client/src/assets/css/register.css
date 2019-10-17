@@ -1,3 +1,11 @@
 .password_not_matched{
     border: 1px solid red;
 }
+
+.marginTopDecrease {
+    margin-top: -8px;
+}
+
+.fade {
+    opacity: 1;
+}

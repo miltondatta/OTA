@@ -1,12 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import DatePicker from 'react-datepicker2';
 import moment from 'moment';
-import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCity, faPaperPlane, faPlaneDeparture} from "@fortawesome/free-solid-svg-icons";
-import OneWay from "./OneWay";
-import RoundTrip from "./RoundTrip";
-import SliderComponent from "./Slider";
 
 
 class MultiCity extends Component {

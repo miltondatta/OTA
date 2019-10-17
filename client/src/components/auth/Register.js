@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
+import {Alert} from "react-bootstrap";
 
 // Css
 import '../../assets/css/register.css';
@@ -72,12 +73,23 @@ class Register extends Component {
 
     render() {
         const password_matched = this.state.pass_match ? '' : 'password_not_matched';
+        const marginTop = this.state.errors.msg ? 'marginTopDecrease' : '';
         return (
             <Fragment>
                 <div className="container breadcrub"></div>
                 <div className="register-fullwidith">
+                    {this.state.errors.msg &&
+                    <div className="row" style={{paddingTop: '30px'}}>
+                        <div className="col-md-4"></div>
+                        <div className="col-md-4">
+                            <Alert variant={'danger'}>
+                                {this.state.errors.msg}
+                            </Alert>
+                        </div>
+                    </div>
+                    }
                     <form onSubmit={this.onSubmit}>
-                        <div className="register-wrap">
+                        <div className={`register-wrap ${marginTop}`}>
                             <div className="register-c1">
                                 <div className="cpadding50">
                                     <input type="text" className="form-control logpadding"
@@ -103,7 +115,11 @@ class Register extends Component {
                                     <input type="password" className={`form-control logpadding ${password_matched}`}
                                            name="password2" value={this.state.password2}
                                            onChange={this.onChange}
-                                           placeholder="Confirm Password" required/> <br/>
+                                           placeholder="Confirm Password" required/>
+                                    {!this.state.pass_match &&
+                                    <span style={{color: 'red', fontSize: '12px'}}>Confirm password did not matched with password!</span>
+                                    }
+                                    <br/>
                                 </div>
                             </div>
                             <div className="register-c2">

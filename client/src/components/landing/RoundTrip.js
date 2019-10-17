@@ -1,8 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import DatePicker from 'react-datepicker2';
 import moment from 'moment';
-import AirAutocomplete from "./AirAutocomplete";
-
 
 class RoundTrip extends Component {
     constructor(props) {
