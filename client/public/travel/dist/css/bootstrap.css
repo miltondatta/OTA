@@ -62,7 +62,7 @@ a:hover {
 h1 {
   margin: 0.67em 0;
   font-size: 2em;
-  
+
 }
 
 abbr[title] {
@@ -1080,11 +1080,11 @@ pre code {
   .container {
     max-width: 970px;
   }
-  
+
   .navbar-nav > li{
   margin-left:7px;
   }
-  
+
   .col-md-1,
   .col-md-2,
   .col-md-3,
@@ -1251,7 +1251,7 @@ pre code {
   .navbar-nav > li{
   margin-left:25px;
   }
-  
+
   .col-lg-1,
   .col-lg-2,
   .col-lg-3,
@@ -3265,7 +3265,7 @@ input[type="button"].btn-block {
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
-  
+
 }
 
 .dropdown-menu .divider {
@@ -3285,7 +3285,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
   border-bottom:1px solid #efefef;
 
-  transition: all .2s ease-in-out;  
+  transition: all .2s ease-in-out;
 }
 
 .dropdown-menu > li > a:hover,

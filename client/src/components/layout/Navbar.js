@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../actions/authActions';
 
+// CSs
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import logo from '../../assets/img/logo.png';
 
 class Navbar extends Component {
@@ -25,7 +28,7 @@ class Navbar extends Component {
 
         const authLinks = (
             <Fragment>
-                <li><Link to="">{user ? 'Welcome, ' + user.name : ''}</Link></li>
+                <li><Link to="/profile">{user ? 'Welcome, ' + user.name : ''}</Link></li>
                 <li><Link to="" onClick={this.onLogoutClick.bind(this)}>LOGOUT</Link></li>
             </Fragment>
         );

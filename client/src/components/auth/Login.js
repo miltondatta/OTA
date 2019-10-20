@@ -85,7 +85,7 @@ class Login extends Component {
                                     <input type="password" className="form-control logpadding"
                                            name="password" value={this.state.password}
                                            onChange={this.onChange}
-                                           minLength="5"
+                                           minLength="4"
                                            placeholder="Enter Your Password" required/> <br/>
 
                                 </div>

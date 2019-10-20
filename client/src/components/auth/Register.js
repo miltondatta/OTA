@@ -110,7 +110,7 @@ class Register extends Component {
                                     <input type="password" className="form-control logpadding"
                                            name="password" value={this.state.password}
                                            onChange={this.onChange}
-                                           placeholder="Enter Password" required/> <br/>
+                                           placeholder="Enter Password" required minLength={'4'}/> <br/>
 
                                     <input type="password" className={`form-control logpadding ${password_matched}`}
                                            name="password2" value={this.state.password2}

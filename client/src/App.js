@@ -15,6 +15,7 @@ import Register from './components/auth/Register';
 import FlightList from './components/flights/FlightList';
 import FlightPayment from './components/payments/FlightPayment';
 import Contact from "./components/contact/Contact";
+import Profile from "./components/profile/Profile";
 
 
 // Check for token
@@ -49,6 +50,7 @@ function App() {
         <Route exact path='/flight-list' component={FlightList}/>
         <Route exact path='/flight-payment' component={FlightPayment}/>
         <Route exact path='/contact' component={Contact}/>
+        <Route exact path='/profile' component={Profile}/>
      <Footer/>
    </Router>
    </Provider>
