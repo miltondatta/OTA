@@ -11,9 +11,11 @@
 .contact-area {
     background-image: url('../../assets/img/contact.jpg');
     background-position: center center;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     color: #ffffff;
+    max-width: 100%;
+    height: auto;
 }
 
 .contact-area-container {
