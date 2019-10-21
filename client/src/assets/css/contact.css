@@ -1,6 +1,5 @@
 .form-control {
-    padding: 20px 0px 20px 12px;
-    border-radius: 6px;
+    width: 100%;
 }
 
 .card {
@@ -13,7 +12,7 @@
     background-position: center center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    color: #ffffff;
+    color: #ffffff !important;
     max-width: 100%;
     height: auto;
 }
@@ -24,15 +23,12 @@
 }
 
 .contact-area input {
-    color: #000;
+    color: #fff !important;
     font-weight: bold;
 }
 
 .contact-area button {
-    padding: 8px 15px;
-    margin-left: 15px;
-    margin-top: 15px;
-    color: #000;
+    color: #fff;
     font-weight: bold;
 }
 
