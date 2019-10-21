@@ -28,7 +28,7 @@ class Landing extends Component {
         return (
             <Fragment>
                 <SliderComponent/>
-                <div className="container mt-130 z-index100">
+                {/*<div className="container mt-130 z-index100">
                     <div className="row">
                         <div className="col-md-12">
                             <div className="bs-example bs-example-tabs cstyle04">
@@ -73,7 +73,7 @@ class Landing extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*/}
             </Fragment>
         )
     }

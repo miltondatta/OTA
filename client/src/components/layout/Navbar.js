@@ -1,17 +1,16 @@
 import React from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
-import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu} from '@material-ui/core';
+import {AppBar, Toolbar, IconButton,Typography, InputBase, Badge, MenuItem, Menu, Button} from '@material-ui/core';
+import { spacing } from '@material-ui/system';
 
-
-import MenuIcon from '@material-ui/icons/Menu';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import {Link} from 'react-router-dom';
 
 import logo from '../../assets/img/logo.png';
-import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -22,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         display: 'none',
+        fontSize:'17px',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
@@ -73,6 +73,20 @@ const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
+    headerMenu:{
+        fontSize:'17px',
+        color:'#ffffff',
+        textDecoration:'none',
+        marginRight:'8px'
+    },
+    titleName: {
+        display: 'none',
+        fontSize:'17px',
+        marginRight:'8px',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+    },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -109,10 +123,10 @@ export default function PrimarySearchAppBar() {
             keepMounted
             transformOrigin={{vertical: 'top', horizontal: 'right'}}
             open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
+            onClose={handleMenuClose}>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
         </Menu>
     );
 
@@ -125,8 +139,7 @@ export default function PrimarySearchAppBar() {
             keepMounted
             transformOrigin={{vertical: 'top', horizontal: 'right'}}
             open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-        >
+            onClose={handleMobileMenuClose}>
             <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="secondary">
@@ -148,8 +161,7 @@ export default function PrimarySearchAppBar() {
                     aria-label="account of current user"
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
-                    color="inherit"
-                >
+                    color="inherit">
                     <AccountCircle/>
                 </IconButton>
                 <p>Profile</p>
@@ -161,11 +173,6 @@ export default function PrimarySearchAppBar() {
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar>
-
-                    {/*<Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
-                    </Typography>*/}
-
                     <Link to={'/'}><img src={logo} alt="Travel Agency Logo" className="logo"/></Link>
 
                     <div className={classes.search}>
@@ -182,25 +189,27 @@ export default function PrimarySearchAppBar() {
                         />
                     </div>
                     <div className={classes.grow}/>
+
+                    <Typography  className={classes.titleName} variant="h6" >
+                        Hello, Shuvo
+                    </Typography>
+
+                    <Typography variant="h6" noWrap>
+                        <Link to={'#'} className={classes.headerMenu}>Home</Link>
+                    </Typography>
+
+                    <Typography variant="h6" noWrap>
+                        <Link to={'/login'} className={classes.headerMenu}>Login</Link>
+                    </Typography>
+
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon/>
-                            </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon/>
-                            </Badge>
-                        </IconButton>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
+                            color="inherit">
                             <AccountCircle/>
                         </IconButton>
                     </div>
@@ -210,8 +219,7 @@ export default function PrimarySearchAppBar() {
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
-                            color="inherit"
-                        >
+                            color="inherit">
                             <MoreIcon/>
                         </IconButton>
                     </div>
