@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
-
+import Proptypes from 'prop-types';
+import {connect} from "react-redux";
+import {logoutUser} from "../../actions/authActions";
 
 import {Link} from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
@@ -16,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function PrimarySearchAppBar() {
+function Navbar({logoutUser, auth: {isAuthenticated}}) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -29,6 +31,12 @@ export default function PrimarySearchAppBar() {
         setAnchorEl(null);
     };
 
+    const guestLinks = (
+        <Fragment>
+            <li><Link to={'/contact'}>Contact</Link></li>
+            <li><Link to={'/login'}>Login</Link></li>
+        </Fragment>
+    );
 
     return (
         <div className={classes.root}>
@@ -40,9 +48,9 @@ export default function PrimarySearchAppBar() {
                 <Grid item sm={9} className={'menu-bar'}>
                     <ul>
                         <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/contact'}>Contact</Link></li>
-                        <li><Link to={'/login'}>Login</Link></li>
+                        {!isAuthenticated && guestLinks}
                     </ul>
+                    {isAuthenticated &&
                     <div>
                         <IconButton
                             aria-label="account of current user"
@@ -66,12 +74,30 @@ export default function PrimarySearchAppBar() {
                             }}
                             open={open}
                             onClose={handleClose}>
-                            <li><Link class={'profile-menu'} to={'/contact'}>Profile</Link></li>
-                            <li><Link class={'profile-menu'} to={'/logout'}>Logout</Link></li>
+                            <li><Link className={'profile-menu'} to={'/profile'}>Profile</Link></li>
+                            <li><Link className={'profile-menu'} to={'#'} onClick={e => {
+                                e.preventDefault();
+                                logoutUser();
+                                setAnchorEl(null);
+                            }}>Logout</Link></li>
                         </Menu>
                     </div>
+                    }
                 </Grid>
             </Grid>
         </div>
     );
 }
+
+
+Navbar.propTypes = {
+    logoutUser: Proptypes.func.isRequired,
+    auth: Proptypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+const mapDispatchToProps = {logoutUser};
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../actions/authActions';
 
-// CSs
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-import logo from '../../assets/img/logo.png';
-
 class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +38,7 @@ class Navbar extends Component {
 
 
         return (
-            {/*<div className="navbar-wrapper2 navbar-fixed-top">
+            <div className="navbar-wrapper2 navbar-fixed-top">
                 <div className="container">
                     <div className="navbar mtnav">
                         <div className="container offset-3">
@@ -65,7 +60,7 @@ class Navbar extends Component {
                         </div>
                     </div>
                 </div>
-            </div>*/}
+            </div>
         )
     }
 }
