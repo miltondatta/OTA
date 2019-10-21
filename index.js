@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 //Get routes directory
 const users         = require('./routes/api/users');
 const amadeus       = require('./routes/api/amadeus');
-const travelport    = require('./routes/api/travelport');
+//const travelport    = require('./routes/api/travelport');
 const global        = require('./routes/api/global');
 
 
@@ -26,7 +26,7 @@ app.use('/api/users/', users);
 
 app.use('/api/amadeus/', amadeus);
 
-app.use('/api/travelport/', travelport);
+//app.use('/api/travelport/', travelport);
 
 app.use('/api/global/', global);
 
