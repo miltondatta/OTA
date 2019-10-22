@@ -48,3 +48,22 @@
     white-space: nowrap;
     letter-spacing: 0.00938em;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #000 !important;
+    font-weight: 400;
+}
+
+.dropdown-menu {
+    left: -100% !important;
+}
+
+.navbar-toggler {
+    background-color: #929090 !important;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-nav {
+        padding-left: 15px !important;
+    }
+}
