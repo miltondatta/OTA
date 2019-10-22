@@ -46,7 +46,7 @@ class Contact extends Component {
                                             </Form.Group>
                                         </Form.Row>
 
-                                        <Button className={'contact-button'} variant="info" type="submit">
+                                        <Button variant="info" type="submit">
                                             Submit
                                         </Button>
                                     </Form>
