@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Alert} from "react-bootstrap";
+import {Alert, Button, Card, Form} from "react-bootstrap";
 
 // Redux
 import {loginUser} from '../../actions/authActions';
@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 
 // Css
 import '../../assets/css/register.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Login extends Component {
     constructor(props) {
@@ -58,51 +59,54 @@ class Login extends Component {
 
 
     render() {
-        const marginTop = this.state.errors.msg ? 'marginTopDecrease' : '';
         return (
-            <Fragment>
-                <div className="container breadcrub"></div>
-                <div className="login-fullwidith">
+            <div className="login-area">
+                <div className="container login-area-container">
                     {this.state.errors.msg &&
                     <div className="row" style={{paddingTop: '30px'}}>
-                        <div className="col-md-4"></div>
-                        <div className="col-md-4">
+                        <div className="offset-md-2 col-md-8">
                             <Alert variant={'danger'}>
                                 {this.state.errors.msg}
                             </Alert>
                         </div>
                     </div>
                     }
-                    <form onSubmit={this.onSubmit}>
-                        <div className={`login-wrap ${marginTop}`}>
-                            <div className="login-c1">
-                                <div className="cpadding50">
-                                    <input type="email" className="form-control logpadding"
-                                           name="email" value={this.state.email}
-                                           onChange={this.onChange}
-                                           placeholder="Enter Your Email" required/> <br/>
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2">
+                            <Card>
+                                <Card.Header>
+                                    <h3>Login</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    <Form onSubmit={this.onSubmit}>
+                                        <Form.Row>
+                                            <Form.Group className="col-md-12"
+                                                        controlId="formGridEmail">
+                                                <Form.Label htmlFor={'email'}>Email Address</Form.Label>
+                                                <Form.Control type="text" name={'email'} id={'email'} value={this.state.email}
+                                                              onChange={this.onChange} placeholder="Enter Email"
+                                                              required/>
+                                            </Form.Group>
 
-                                    <input type="password" className="form-control logpadding"
-                                           name="password" value={this.state.password}
-                                           onChange={this.onChange}
-                                           minLength="4"
-                                           placeholder="Enter Your Password" required/> <br/>
+                                            <Form.Group className="col-md-12 pr-0"
+                                                        controlId="formGridPassword">
+                                                <Form.Label htmlFor={'password'}>Phone</Form.Label>
+                                                <Form.Control type="password" name={'password'} id={'password'}
+                                                              value={this.state.password} onChange={this.onChange}
+                                                              placeholder="Enter Phone Number" required/>
+                                            </Form.Group>
+                                        </Form.Row>
 
-                                </div>
-                            </div>
-                            <div className="login-c2">
-                                <div className="logmargfix">
-                                    <div className="chpadding50">
-                                        <div className="alignbottom">
-                                            <button className="btn-search4" type="submit">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <Button className={'login-button'} variant="info" type="submit">
+                                            Submit
+                                        </Button>
+                                    </Form>
+                                </Card.Body>
+                            </Card>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </Fragment>
+            </div>
         )
     }
 }

@@ -1,4 +1,17 @@
-.password_not_matched{
+.login-area {
+    background-image: url('../../assets/img/contact.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+.login-area-container {
+    padding-top: 230px;
+    padding-bottom: 160px;
+}
+
+.password_not_matched {
     border: 1px solid red;
 }
 

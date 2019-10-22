@@ -1,70 +1,64 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import {FormControl, Input, Button, InputLabel, CardHeader} from '@material-ui/core';
+import React, {Component} from 'react';
+import {Form, Button, Card} from "react-bootstrap";
 
 // Css
 import '../../assets/css/contact.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const useStyles = makeStyles({
-    card: {
-        maxWidth: '40%',
-        margin: '0 auto',
-        background: '#0f3e68',
-        opacity: 0.5
-    },
-    media: {
-        height: 'auto',
-    },
-    cardHeader:{
-        color: '#000',
-        padding: '15px 0px',
-        textAlign: 'center',
-        borderBottom: '1px solid #eee'
-    }
-});
+class Contact extends Component {
+    render() {
+        return (
+            <div className="contact-area">
+                <div className="container contact-area-container">
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2">
+                            <Card>
+                                <Card.Header>
+                                    <h3>Contact Us</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    <Form>
+                                        <Form.Row>
+                                            <Form.Group className="col-md-6"
+                                                        controlId="formGridEmail">
+                                                <Form.Label>Name</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter Name" required/>
+                                            </Form.Group>
 
-export default function MediaCard() {
-    const classes = useStyles();
+                                            <Form.Group className="col-md-6 pr-0"
+                                                        controlId="formGridPassword">
+                                                <Form.Label>Phone</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter Phone Number" required/>
+                                            </Form.Group>
+                                        </Form.Row>
 
-    return (
-        <div className={'contact-area'}>
-            <div className={'contact-area-container'}>
-                <Card className={classes.card}>
-                    <CardHeader
-                        title={'Contact Us'}
-                        className={classes.cardHeader}>
-                    </CardHeader>
-                    <CardActionArea>
-                        <CardContent>
-                            <FormControl className={'form-control'}>
-                                <InputLabel htmlFor="name">Name</InputLabel>
-                                <Input id="name" name={'name'} type={'text'}/>
-                            </FormControl>
-                            <FormControl className={'form-control'}>
-                                <InputLabel htmlFor="phone">Phone Number</InputLabel>
-                                <Input id="phone" name={'phone'} type={'text'}/>
-                            </FormControl>
-                            <FormControl className={'form-control'}>
-                                <InputLabel htmlFor="email">Email address</InputLabel>
-                                <Input id="email" name={'email'} type={'email'}/>
-                            </FormControl>
-                            <FormControl className={'form-control'}>
-                                <InputLabel htmlFor="address">Address</InputLabel>
-                                <Input id="address" name={'address'} type={'text'}/>
-                            </FormControl>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions style={{justifyContent: 'center'}}>
-                        <Button variant="contained" color="primary" className={classes.button}>
-                            Login
-                        </Button>
-                    </CardActions>
-                </Card>
+                                        <Form.Row>
+                                            <Form.Group className="col-md-6"
+                                                        controlId="formGridEmail">
+                                                <Form.Label>Email</Form.Label>
+                                                <Form.Control type="email" placeholder="Enter email" required/>
+                                            </Form.Group>
+
+                                            <Form.Group className="col-md-6 pr-0"
+                                                        controlId="formGridPassword">
+                                                <Form.Label>Address</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter Address" required/>
+                                            </Form.Group>
+                                        </Form.Row>
+
+                                        <Button variant="info" type="submit">
+                                            Submit
+                                        </Button>
+                                    </Form>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        )
+    }
 }
+
+
+export default Contact;
