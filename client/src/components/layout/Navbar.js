@@ -17,8 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-
-function Navbar({logoutUser, auth: {isAuthenticated}}) {
+function Navbar({logoutUser, auth: {isAuthenticated,user}}) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -33,8 +32,15 @@ function Navbar({logoutUser, auth: {isAuthenticated}}) {
 
     const guestLinks = (
         <Fragment>
+            <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/contact'}>Contact</Link></li>
             <li><Link to={'/login'}>Login</Link></li>
+        </Fragment>
+    );
+
+    const authLinks = (
+        <Fragment>
+            <li>Hi, {user.name}</li>
         </Fragment>
     );
 
@@ -47,8 +53,8 @@ function Navbar({logoutUser, auth: {isAuthenticated}}) {
 
                 <Grid item sm={9} className={'menu-bar'}>
                     <ul>
-                        <li><Link to={'/'}>Home</Link></li>
                         {!isAuthenticated && guestLinks}
+                        {isAuthenticated && authLinks}
                     </ul>
                     {isAuthenticated &&
                     <div>
