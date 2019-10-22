@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
-import {Alert} from "react-bootstrap";
+import {Link, withRouter} from 'react-router-dom';
+import {Alert, Button, Card, Form} from "react-bootstrap";
 
 // Css
 import '../../assets/css/register.css';
@@ -73,68 +73,90 @@ class Register extends Component {
 
     render() {
         const password_matched = this.state.pass_match ? '' : 'password_not_matched';
-        const marginTop = this.state.errors.msg ? 'marginTopDecrease' : '';
         return (
-            <Fragment>
-                <div className="container breadcrub"></div>
-                <div className="register-fullwidith">
-                    {this.state.errors.msg &&
-                    <div className="row" style={{paddingTop: '30px'}}>
-                        <div className="col-md-4"></div>
-                        <div className="col-md-4">
-                            <Alert variant={'danger'}>
-                                {this.state.errors.msg}
-                            </Alert>
+            <div className="register-area">
+                <div className="register-overlay">
+                    <div className="container register-area-container">
+                        {this.state.errors.msg &&
+                        <div className="row">
+                            <div className="offset-md-2 col-md-8">
+                                <Alert variant={'danger'}>
+                                    {this.state.errors.msg}
+                                </Alert>
+                            </div>
+                        </div>
+                        }
+                        <div className="row">
+                            <div className="col-md-8 offset-md-2">
+                                <Card>
+                                    <Card.Header>
+                                        <h3>Register</h3>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <Form onSubmit={this.onSubmit}>
+                                            <Form.Row>
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridEmail">
+                                                    <Form.Label>Name</Form.Label>
+                                                    <Form.Control type="text" name={'name'} value={this.state.name}
+                                                                  onChange={this.onChange} placeholder="Enter Name"
+                                                                  required/>
+                                                </Form.Group>
+
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridEmail">
+                                                    <Form.Label>Email Address</Form.Label>
+                                                    <Form.Control type="text" name={'email'} value={this.state.email}
+                                                                  onChange={this.onChange} placeholder="Enter Email"
+                                                                  required/>
+                                                </Form.Group>
+
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridEmail">
+                                                    <Form.Label>Mobile Number</Form.Label>
+                                                    <Form.Control type="text" name={'mobile'} value={this.state.mobile}
+                                                                  onChange={this.onChange}
+                                                                  placeholder="Enter Mobile Number"
+                                                                  required/>
+                                                </Form.Group>
+
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridPassword">
+                                                    <Form.Label>Password</Form.Label>
+                                                    <Form.Control type="password" name={'password'}
+                                                                  value={this.state.password} onChange={this.onChange}
+                                                                  placeholder="Enter Password" required/>
+                                                </Form.Group>
+
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridPassword">
+                                                    <Form.Label>Confirm Password</Form.Label>
+                                                    <Form.Control type="password" className={`${password_matched}`}
+                                                                  name={'password2'}
+                                                                  value={this.state.password2} onChange={this.onChange}
+                                                                  placeholder="Enter Confirm Password" required/>
+                                                    {!this.state.pass_match &&
+                                                    <span style={{color: 'red', fontSize: '12px'}}>Confirm password did not matched with password!</span>
+                                                    }
+                                                </Form.Group>
+                                            </Form.Row>
+
+                                            <Button variant="info" type="submit">
+                                                Submit
+                                            </Button>
+
+                                            <p className={'pb-0 mb-0 pt-2'}>Already a member? <Link
+                                                to={'/login'}>
+                                                Sign In
+                                            </Link></p>
+                                        </Form>
+                                    </Card.Body>
+                                </Card>
+                            </div>
                         </div>
                     </div>
-                    }
-                    <form onSubmit={this.onSubmit}>
-                        <div className={`register-wrap ${marginTop}`}>
-                            <div className="register-c1">
-                                <div className="cpadding50">
-                                    <input type="text" className="form-control logpadding"
-                                           name="name" value={this.state.name}
-                                           onChange={this.onChange}
-                                           placeholder="Enter Name" required/> <br/>
-
-                                    <input type="text" className="form-control logpadding"
-                                           name="email" value={this.state.email}
-                                           onChange={this.onChange}
-                                           placeholder="Enter Email" required/> <br/>
-
-                                    <input type="text" className="form-control logpadding"
-                                           name="mobile" value={this.state.mobile}
-                                           onChange={this.onChange}
-                                           placeholder="Enter Mobile" required/> <br/>
-
-                                    <input type="password" className="form-control logpadding"
-                                           name="password" value={this.state.password}
-                                           onChange={this.onChange}
-                                           placeholder="Enter Password" required minLength={'4'}/> <br/>
-
-                                    <input type="password" className={`form-control logpadding ${password_matched}`}
-                                           name="password2" value={this.state.password2}
-                                           onChange={this.onChange}
-                                           placeholder="Confirm Password" required/>
-                                    {!this.state.pass_match &&
-                                    <span style={{color: 'red', fontSize: '12px'}}>Confirm password did not matched with password!</span>
-                                    }
-                                    <br/>
-                                </div>
-                            </div>
-                            <div className="register-c2">
-                                <div className="logmargfix">
-                                    <div className="chpadding50">
-                                        <div className="alignbottom">
-                                            <button className="btn-search4" type="submit">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
-            </Fragment>
+            </div>
         )
     }
 }

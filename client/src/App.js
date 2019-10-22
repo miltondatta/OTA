@@ -17,6 +17,9 @@ import FlightPayment from './components/payments/FlightPayment';
 import Contact from "./components/contact/Contact";
 import Profile from "./components/profile/Profile";
 
+// Css
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // Check for token
 if (localStorage.jwtToken) {
