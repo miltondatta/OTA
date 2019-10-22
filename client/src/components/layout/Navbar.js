@@ -80,7 +80,10 @@ function Navbar({logoutUser, auth: {isAuthenticated,user}}) {
                             }}
                             open={open}
                             onClose={handleClose}>
-                            <li><Link className={'profile-menu'} to={'/profile'}>Profile</Link></li>
+                            <li><Link className={'profile-menu'} to={'/profile'} onClick={e => {
+                                setAnchorEl(null);
+                            }}
+                            >Profile</Link></li>
                             <li><Link className={'profile-menu'} to={'#'} onClick={e => {
                                 e.preventDefault();
                                 logoutUser();
