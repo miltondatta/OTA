@@ -1,4 +1,4 @@
-.login-area {
+.login-area, .register-area{
     background-image: url('../../assets/img/contact.jpg');
     background-position: center center;
     background-size: cover;
@@ -6,13 +6,18 @@
     color: #ffffff;
 }
 
-.login-area-container {
+.login-area-container, .register-area-container{
     padding-top: 230px;
     padding-bottom: 160px;
 }
 
+.register-overlay, .login-overlay {
+    background-color: #000;
+    opacity: 0.6;
+}
+
 .password_not_matched {
-    border: 1px solid red;
+    border: 1px solid red !important;
 }
 
 .marginTopDecrease {
@@ -21,4 +26,8 @@
 
 .fade {
     opacity: 1;
+}
+
+.card-header {
+    border-bottom: 1px solid #cccccc !important;
 }

@@ -6,6 +6,11 @@
     color: #ffffff;
 }
 
+.contact-overlay {
+    background-color: #000;
+    opacity: 0.6;
+}
+
 .contact-area-container {
     padding-top: 230px;
     padding-bottom: 160px;
@@ -13,9 +18,8 @@
 
 .card {
     background: #0f3e68 !important;
-    opacity: 0.7 !important;
 }
 
 .card-header {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc !important;
 }
