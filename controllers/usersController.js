@@ -49,7 +49,7 @@ exports.login = async(req, res) => {
         //Check password
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
-                const payload = { id: user.id, name: user.name, email: user.email };
+                const payload = { id: user.id, name: user.name, email: user.email, mobile: user.mobile };
                 jwt.sign(
                     payload,
                     'secret', { expiresIn: 3600 },
