@@ -1,6 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Alert} from "react-bootstrap";
+import {Alert, Button, Card, Form} from "react-bootstrap";
+import {Link} from 'react-router-dom';
 
 // Redux
 import {loginUser} from '../../actions/authActions';
@@ -58,51 +59,60 @@ class Login extends Component {
 
 
     render() {
-        const marginTop = this.state.errors.msg ? 'marginTopDecrease' : '';
         return (
-            <Fragment>
-                <div className="container breadcrub"></div>
-                <div className="login-fullwidith">
-                    {this.state.errors.msg &&
-                    <div className="row" style={{paddingTop: '30px'}}>
-                        <div className="col-md-4"></div>
-                        <div className="col-md-4">
-                            <Alert variant={'danger'}>
-                                {this.state.errors.msg}
-                            </Alert>
+            <div className="login-area">
+                <div className="login-overlay">
+                    <div className="container login-area-container">
+                        {this.state.errors.msg &&
+                        <div className="row">
+                            <div className="offset-md-2 col-md-8">
+                                <Alert variant={'danger'}>
+                                    {this.state.errors.msg}
+                                </Alert>
+                            </div>
+                        </div>
+                        }
+                        <div className="row">
+                            <div className="col-md-8 offset-md-2">
+                                <Card>
+                                    <Card.Header>
+                                        <h3>Login</h3>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <Form onSubmit={this.onSubmit}>
+                                            <Form.Row>
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridEmail">
+                                                    <Form.Label>Email Address</Form.Label>
+                                                    <Form.Control type="text" name={'email'} value={this.state.email}
+                                                                  onChange={this.onChange} placeholder="Enter Email"
+                                                                  required/>
+                                                </Form.Group>
+
+                                                <Form.Group className="col-md-12"
+                                                            controlId="formGridPassword">
+                                                    <Form.Label>Password</Form.Label>
+                                                    <Form.Control type="password" name={'password'}
+                                                                  value={this.state.password} onChange={this.onChange}
+                                                                  placeholder="Enter Password" required/>
+                                                </Form.Group>
+                                            </Form.Row>
+
+                                            <Button variant="info" type="submit">
+                                                Submit
+                                            </Button>
+                                            <p className={'pb-0 mb-0 pt-2'}>Not a member yet? <Link
+                                                to={'/register'}>
+                                                Join now
+                                            </Link></p>
+                                        </Form>
+                                    </Card.Body>
+                                </Card>
+                            </div>
                         </div>
                     </div>
-                    }
-                    <form onSubmit={this.onSubmit}>
-                        <div className={`login-wrap ${marginTop}`}>
-                            <div className="login-c1">
-                                <div className="cpadding50">
-                                    <input type="email" className="form-control logpadding"
-                                           name="email" value={this.state.email}
-                                           onChange={this.onChange}
-                                           placeholder="Enter Your Email" required/> <br/>
-
-                                    <input type="password" className="form-control logpadding"
-                                           name="password" value={this.state.password}
-                                           onChange={this.onChange}
-                                           minLength="4"
-                                           placeholder="Enter Your Password" required/> <br/>
-
-                                </div>
-                            </div>
-                            <div className="login-c2">
-                                <div className="logmargfix">
-                                    <div className="chpadding50">
-                                        <div className="alignbottom">
-                                            <button className="btn-search4" type="submit">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
-            </Fragment>
+            </div>
         )
     }
 }

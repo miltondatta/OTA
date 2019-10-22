@@ -35,6 +35,7 @@ function Navbar({logoutUser, auth: {isAuthenticated}}) {
         <Fragment>
             <li><Link to={'/contact'}>Contact</Link></li>
             <li><Link to={'/login'}>Login</Link></li>
+            <li><Link to={'/register'}>Register</Link></li>
         </Fragment>
     );
 

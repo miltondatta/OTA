@@ -1,20 +1,14 @@
-.form-control {
-    width: 100%;
-}
-
-.card {
-    background: #0f3e68;
-    opacity: 0.5;
-}
-
 .contact-area {
     background-image: url('../../assets/img/contact.jpg');
     background-position: center center;
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    color: #ffffff !important;
-    max-width: 100%;
-    height: auto;
+    color: #ffffff;
+}
+
+.contact-overlay {
+    background-color: #000;
+    opacity: 0.6;
 }
 
 .contact-area-container {
@@ -22,13 +16,10 @@
     padding-bottom: 160px;
 }
 
-.contact-area input {
-    color: #fff !important;
-    font-weight: bold;
+.card {
+    background: #0f3e68 !important;
 }
 
-.contact-area button {
-    color: #fff;
-    font-weight: bold;
+.card-header {
+    border-bottom: 1px solid #cccccc !important;
 }
-
