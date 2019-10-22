@@ -36,12 +36,12 @@ class Profile extends Component {
                                         <Form.Group controlId="formGridEmail"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Email</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" value={user.email}/>
+                                            <Form.Control type="email" placeholder="Enter email" value={user.email} onChange={this.onChange}/>
                                         </Form.Group>
                                         <Form.Group controlId="formGridMobileNo"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Mobile No</Form.Label>
-                                            <Form.Control type="mobile" placeholder="Enter Mobile No" value={user.mobile}/>
+                                            <Form.Control type="mobile" placeholder="Enter Mobile No" value={user.mobile} onChange={this.onChange}/>
                                         </Form.Group>
                                     </Form.Row>
                                 </Form>
