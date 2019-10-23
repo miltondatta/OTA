@@ -52,7 +52,6 @@ class OneWay extends Component {
 
     render() {
         return (
-            this.props.oneWay &&
             <form onSubmit={this.onSubmit}>
                 <div className="row">
                     <div className="col-xs-12 col-sm-6 col-lg-4">
@@ -68,7 +67,7 @@ class OneWay extends Component {
                         />
                     </div>
 
-                    <div className="col-xs-6 col-lg-4">
+                    <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="departure" className={'d-block mb-1'}><b>Departure</b></label>
                         <DatePicker timePicker={false}
                                     name={'departure'}
@@ -92,7 +91,7 @@ class OneWay extends Component {
                         </select>
                     </div>
 
-                    <div className="col-xs-6 col-lg-4">
+                    <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="child" className={'d-block mb-1'}><b>Child</b></label>
                         <select className="form-control" name={'child'} id={'child'}>
                             <option>0</option>
@@ -104,7 +103,7 @@ class OneWay extends Component {
                         </select>
                     </div>
 
-                    <div className="col-xs-6 col-lg-4">
+                    <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="infant" className={'d-block mb-1'}><b>Infant</b></label>
                         <select className="form-control" name={'infant'} id={'infant'}>
                             <option>0</option>

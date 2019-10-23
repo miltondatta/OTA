@@ -1,52 +1,5 @@
 .logo {
     width: 190px;
-    padding-left: 5%;
-}
-
-.nav-header {
-    background-color: #fff;
-    justify-content: space-around !important;
-}
-
-.menu-bar {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 2%;
-}
-
-.menu-bar ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-}
-
-.menu-bar ul li {
-    margin-right: 15px;
-}
-
-.menu-bar ul li a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-}
-
-.menu-bar ul li a:hover {
-    color: #0f3e68;
-}
-
-.profile-menu {
-    text-decoration: none;
-    text-align: left;
-    display: block;
-    padding: 6px 18px;
-    color: #000;
-    font-size: 1rem;
-    box-sizing: border-box;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    white-space: nowrap;
-    letter-spacing: 0.00938em;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -60,6 +13,10 @@
 
 .navbar-toggler {
     background-color: #929090 !important;
+}
+
+.navbar-toggler:focus {
+    outline: none !important;
 }
 
 @media screen and (max-width: 992px) {

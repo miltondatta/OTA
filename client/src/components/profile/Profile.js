@@ -22,7 +22,7 @@ function Profile({auth: {isAuthenticated, user}}) {
             email: !user.email ? '' : user.email,
             mobile: !user.mobile ? '' : user.mobile
         });
-    }, []);
+    }, [user.name, user.email, user.mobile]);
 
     const {name, email, mobile} = formData;
 
