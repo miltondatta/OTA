@@ -90,10 +90,28 @@ ul.footerlistblack li a:hover {
     text-align: center;
 }
 
-.footerArrow{
+.fa-angle-right{
     color: whitesmoke;
-    font-size: 13px !important;
+    font-size: 11px !important;
     background: #4e5b6c;
     border-radius: 50%;
     margin-right: 5px;
+    width: 1.2em !important;
+    height: 1.2em !important;
+}
+
+.footerLogo {
+    width: 140px !important;
+}
+
+@media screen and (max-width: 992px) {
+    .partnership, .socials {
+        padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .customer-support, .partnership, .socials {
+        padding-top: 15px;
+    }
 }
