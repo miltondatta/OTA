@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane, faCity, faPlaneDeparture} from "@fortawesome/free-solid-svg-icons";
+import {Tab, Tabs} from "react-bootstrap";
 
 // Css
 import '../../assets/css/landing.css';
@@ -19,8 +20,8 @@ class Landing extends Component {
             departure: new Date(),
             return: new Date(),
             oneWay: true,
-            roundTrip: false,
-            multiCity: false
+            roundTrip: true,
+            multiCity: true
         };
     }
 
@@ -74,6 +75,25 @@ class Landing extends Component {
                         </div>
                     </div>
                 </div>*/}
+                <div className="trip-search-area py-5">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <Tabs defaultActiveKey="oneway" id="uncontrolled-tab-example">
+                                    <Tab eventKey="oneway" title="One Way">
+                                        <OneWay oneWay={this.state.oneWay}/>
+                                    </Tab>
+                                    <Tab eventKey="round-trip" title="Round Trip">
+                                        <RoundTrip roundTrip={this.state.roundTrip}/>
+                                    </Tab>
+                                    <Tab eventKey="multi-city" title="Multi City">
+                                        <MultiCity multiCity={this.state.multiCity}/>
+                                    </Tab>
+                                </Tabs>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </Fragment>
         )
     }

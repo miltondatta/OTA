@@ -1,47 +1,61 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
+import {Tabs, Tab, Form, Button} from "react-bootstrap";
+import {Redirect} from 'react-router-dom';
+
+// Redux
 import Proptypes from 'prop-types';
 import {connect} from "react-redux";
-import {Tabs, Tab, Form, Button, Card} from "react-bootstrap";
+
+// Css
 import '../../assets/css/profile.css'
 
-class Profile extends Component {
+function Profile({auth: {isAuthenticated, user}}) {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        mobile: ''
+    });
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            email: '',
-            mobile: '',
-        };
+    useEffect(() => {
+        setFormData({
+            name: !user.name ? '' : user.name,
+            email: !user.email ? '' : user.email,
+            mobile: !user.mobile ? '' : user.mobile
+        });
+    }, []);
 
-         this.onChange = this.onChange.bind(this);
-        // this.onSubmit = this.onSubmit.bind(this);
-    }
+    const {name, email, mobile} = formData;
 
-    render() {
-        const {isAuthenticated,user} = this.props.auth;
-        return (
+    const onChange = e => {
+        setFormData({...formData, [e.target.name]: e.target.value});
+    };
+
+    return (
+        isAuthenticated ?
             <div className="register-area">
                 <div className="register-overlay">
                     <div className="container profile-area-container">
-                        <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
-                            <Tab eventKey="home" title="Profile">
+                        <Tabs defaultActiveKey="profile" transition={false} id="noanim-tab-example">
+                            <Tab eventKey="profile" title="Profile">
                                 <Form>
                                     <Form.Row>
                                         <Form.Group controlId="formGridName"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Name</Form.Label>
-                                            <Form.Control type="text" placeholder="Enter Name" value={user.name} onChange={this.onChange}/>
+                                            <Form.Control type="text" placeholder="Enter Name" name={'name'}
+                                                          value={name} onChange={e => onChange(e)}/>
                                         </Form.Group>
                                         <Form.Group controlId="formGridEmail"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Email</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" value={user.email} onChange={this.onChange}/>
+                                            <Form.Control type="email" placeholder="Enter email" name={'email'}
+                                                          value={email} onChange={e => onChange(e)}/>
                                         </Form.Group>
                                         <Form.Group controlId="formGridMobileNo"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Mobile No</Form.Label>
-                                            <Form.Control type="mobile" placeholder="Enter Mobile No" value={user.mobile} onChange={this.onChange}/>
+                                            <Form.Control type="mobile" placeholder="Enter Mobile No" name={'mobile'}
+                                                          value={mobile} onChange={e => onChange(e)}/>
                                         </Form.Group>
                                     </Form.Row>
                                 </Form>
@@ -77,8 +91,8 @@ class Profile extends Component {
                     </div>
                 </div>
             </div>
-        );
-    }
+            : <Redirect to={'/'}/>
+    );
 }
 
 Profile.propTypes = {

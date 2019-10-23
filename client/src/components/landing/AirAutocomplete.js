@@ -92,8 +92,7 @@ class AirAutocomplete extends Component {
         return (
             <Fragment>
                 <input type="text"
-                    required
-                    autocomplete="off"
+                    required autoComplete="off"
                     name={this.props.name}
                     className="form-control"
                     placeholder="City or airport"
