@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react'
 import {Badge, Button} from "react-bootstrap";
+import {withRouter} from 'react-router-dom';
 
 // Image
 import BS from '../../assets/img/BS.gif';
@@ -9,7 +10,7 @@ import VQ from '../../assets/img/VQ.gif'
 import {faPlaneDeparture, faPlaneArrival, faClock} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const SingleFlightList = () => {
+const SingleFlightList = ({history}) => {
     return (
         <Fragment>
             <div className="single-flight-list">
@@ -41,7 +42,7 @@ const SingleFlightList = () => {
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
                                 <span className="single-flight-amount">BDT 5,015</span>
-                                <Button variant="warning">Select</Button>
+                                <Button variant="warning" onClick={() => history.push('/flight-payment')}>Select</Button>
                             </div>
                         </div>
                     </div>
@@ -157,4 +158,4 @@ const SingleFlightList = () => {
 };
 
 
-export default SingleFlightList;
+export default withRouter(SingleFlightList);

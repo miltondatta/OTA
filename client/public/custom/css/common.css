@@ -24,3 +24,7 @@
         padding-left: 15px !important;
     }
 }
+
+.selectToday {
+    display: none !important;
+}
