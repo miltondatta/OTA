@@ -1,71 +1,71 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Button, Tab, Tabs} from "react-bootstrap";
 
 // Css
-import '../../assets/css/style01.css';
 import '../../assets/css/flight-list.css';
 
 // Component
-import Sorting from "./Sorting";
-import SearchResult from "./SearchResult";
-import ChooseFlight from "./ChooseFlight";
-import PriceRange from "./PriceRange";
-import Connection from "./Connection";
-import Airlines from "./Airlines";
-import DepartureTime from "./DepartureTime";
+import OneWay from "../landing/OneWay";
+import RoundTrip from "../landing/RoundTrip";
+import MultiCity from "../landing/MultiCity";
 
 class FlightList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modifySearch: false
+        };
+    }
+
     render() {
         return (
-            <div className="container flight-list-container">
-                <div className="container pagecontainer offset-0">
-                    <div className="col-md-3 filters offset-0">
-                        <ChooseFlight />
-                        <div className="line2"> </div>
-
-                        <div className="padding20title"><h3 className="opensans dark">Filter by</h3></div>
-                        <div className="line2"> </div>
-
-                        <Connection />
-                        <div className="line2"> </div>
-
-                        <PriceRange />
-                        <div className="line2"> </div>
-
-                        <Airlines />
-                        <div className="line2"> </div>
-
-                        <DepartureTime />
-                        <div className="line2"> </div>
-                        <div className="clearfix"> </div>
-                        <br/>
-                        <br/>
-                        <br/>
-                    </div>
-                    <div className="rightcontent col-md-9 offset-0">
-                        <Sorting />
-                        <br/><br/>
-                        <div className="clearfix"> </div>
-                        <div className="itemscontainer offset-1">
-                            <SearchResult />
-                            <div className="clearfix"> </div>
-                            <div className="offset-2">
-                                <hr className="featurette-divider3"/>
-                            </div>
+            <div className={'flight-list-area'}>
+                <div className="container flight-list-area-container">
+                    <div className="row trip-searched-area">
+                        <div className="col-md-2">
+                            <span className={'trip-searched-header'}>Departure</span>
+                            <p className={'trip-searched-header-text'}>Dhaka (DAC)</p>
                         </div>
-                        <div className="hpadding20">
-                            <ul className="pagination right paddingbtm20">
-                                <li className="disabled"><Link to="#">&laquo;</Link></li>
-                                <li><Link to="#">1</Link></li>
-                                <li><Link to="#">2</Link></li>
-                                <li><Link to="#">3</Link></li>
-                                <li><Link to="#">4</Link></li>
-                                <li><Link to="#">5</Link></li>
-                                <li><Link to="#">&raquo;</Link></li>
-                            </ul>
-                            <Link to={'/flight-payment'} className="bluebtn" style={{textDecoration: 'none'}}>Proceed Payment</Link>
+                        <div className="col-md-2">
+                            <span className={'trip-searched-header'}>Destination</span>
+                            <p className={'trip-searched-header-text'}>Chittagong (CGP)</p>
+                        </div>
+                        <div className="col-md-2">
+                            <span className={'trip-searched-header'}>One Way Trip</span>
+                            <p className={'trip-searched-header-text'}>Sat, Oct 26, 2019</p>
+                        </div>
+                        <div className="col-md-2">
+                            <span className={'trip-searched-header'}>Class</span>
+                            <p className={'trip-searched-header-text'}>Business</p>
+                        </div>
+                        <div className="col-md-2">
+                            <span className={'trip-searched-header'}>Passengers</span>
+                            <p className={'trip-searched-header-text'}>Chittagong (CGP)</p>
+                        </div>
+                        <div className="col-md-2">
+                            <Button variant="warning" onClick={() => this.setState({modifySearch: !this.state.modifySearch})}>Modify
+                                Search</Button>
                         </div>
                     </div>
+
+                    {this.state.modifySearch &&
+                    <div className="row pb-3">
+                        <div className="col-md-12">
+                            <Tabs defaultActiveKey="oneway" id="uncontrolled-tab-example">
+                                <Tab eventKey="oneway" title="One Way">
+                                    <OneWay/>
+                                </Tab>
+                                <Tab eventKey="round-trip" title="Round Trip">
+                                    <RoundTrip/>
+                                </Tab>
+                                <Tab eventKey="multi-city" title="Multi City">
+                                    <MultiCity/>
+                                </Tab>
+                            </Tabs>
+                        </div>
+                    </div>
+                    }
+
                 </div>
             </div>
         )

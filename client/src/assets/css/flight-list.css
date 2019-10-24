@@ -1,20 +1,22 @@
-.flight-list-container{
-    padding-top: 80px;
-    padding-bottom: 30px;
+.flight-list-area {
+    padding: 50px 0px;
+    background-color: #F1F1F1;
 }
 
-.marginRight5{
-    margin-right: 5px;
+.flight-list-area-container {
+    background-color: #fff;
 }
 
-.marginTop5{
-    margin-top: 5px;
+.trip-searched-area {
+    padding: 25px;
 }
 
-.btn-search3{
-    bottom: 8px;
+.trip-searched-header {
+    font-size: 14px;
+    color: #e4ac56;
+    font-weight: 500;
 }
 
-.wh100percent{
-    padding-top: 10px;
+.trip-searched-header-text {
+    color: #80724b;
 }

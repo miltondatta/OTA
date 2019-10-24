@@ -1,9 +1,11 @@
 .contact-area {
     background-image: url('../../assets/img/contact.jpg');
     background-position: center center;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     color: #ffffff;
+    width: 100%;
+    height: auto;
 }
 
 .contact-overlay {
@@ -12,7 +14,7 @@
 }
 
 .contact-area-container {
-    padding-top: 230px;
+    padding-top: 120px;
     padding-bottom: 160px;
 }
 

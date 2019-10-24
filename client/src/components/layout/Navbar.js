@@ -27,7 +27,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
 
     return (
         <Navbar collapseOnSelect expand="lg" variant="dark">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand p-0" to="/">
                 <img src={logo} alt="Travel Agency Logo" className="logo"/>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
