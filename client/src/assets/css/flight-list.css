@@ -1,14 +1,17 @@
 .flight-list-area {
-    padding: 50px 0px;
+    padding: 20px 0px 50px 0px;
     background-color: #F1F1F1;
 }
 
-.flight-list-area-container {
+
+/* Trip Searched Area */
+.trip-searched-area {
+    padding: 25px;
     background-color: #fff;
 }
 
-.trip-searched-area {
-    padding: 25px;
+.modify-searched-area {
+    background-color: #fff;
 }
 
 .trip-searched-header {
@@ -19,4 +22,90 @@
 
 .trip-searched-header-text {
     color: #80724b;
+}
+
+.trip-searched-header-text .fa-male {
+    font-size: 22px;
+}
+
+
+/* Filter Area */
+.filter-area {
+    max-width: 23% !important;
+}
+
+@media screen and (max-width: 767px) {
+    .filter-area {
+        max-width: 100% !important;
+    }
+
+    .flight-list-show-area {
+        margin-left: 0% !important;
+        margin-top: 2%;
+    }
+}
+
+.single-filter {
+    background-color: #fff;
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.input-range {
+    width: 90% !important;
+}
+
+
+/* Flight List Show Area*/
+.flight-list-show-area {
+    margin-left: 2%;
+}
+
+.single-flight-list {
+    background-color: #fff;
+    padding: 15px 0px 15px 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .single-flight-list-mobile {
+        padding-top: 6px;
+    }
+}
+
+.single-flight-list .badge {
+    height: 20px !important;
+    margin-top: 5px;
+}
+
+.single-flight-name {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.single-flight-departure-time {
+    font-size: 13px;
+    color: #80724b;
+    font-weight: 500;
+}
+
+.single-flight-departure-icon {
+    color: #80724b;
+}
+
+.single-flight-departure-text {
+    font-size: 14px;
+    padding-left: 8px;
+    font-weight: 500;
+    color: #e4ac56;
+}
+
+.single-flight-amount {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e4ac56;
+    display: block;
 }
