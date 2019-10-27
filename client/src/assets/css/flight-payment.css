@@ -3,11 +3,53 @@
     background-color: #F1F1F1;
 }
 
-.flight-payment-form {
+.flight-payment-form, .flight-payment-amount-area, .flight-payment-card-area{
     padding: 20px;
     background-color: #fff;
 }
 
 .flight-payment-header {
     font-size: 18px;
+}
+
+.input-checkbox {
+    width: 25px !important;
+}
+
+.flight-payment-amount-header {
+    padding-bottom: 5px;
+}
+
+.flight-payment-amount-header-trip {
+    font-size: 13px;
+}
+
+.flight-payment-amount-content {
+    padding: 5px 0px;
+}
+
+.flight-payment-amount-content-text {
+    font-size: 14px;
+}
+
+.flight-payment-amount-content-price {
+    font-size: 14px;
+}
+
+.flight-payment-card-header span{
+    font-weight: 500;
+}
+
+.flight-payment-card-content-image-card {
+    height: 22px;
+    width: 88px;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+.flight-payment-card-content-image-bkash {
+    width: 40px;
+    height: 22px;
+    padding-top: 3px;
+    padding-left: 3px;
 }

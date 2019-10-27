@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 
 // Date Picker
 import DatePicker from 'react-datepicker2';
@@ -8,13 +8,16 @@ import moment from 'moment';
 // Css
 import '../../assets/css/flight-payment.css';
 
-// Component
+// image
+import card_image from '../../assets/img/pay_card.jpg';
+import bkash from '../../assets/img/bkash.png';
 
 class FlightPayment extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dateOfBirth: moment(),
+            passportExpiryDate: moment(),
         };
     }
 
@@ -33,13 +36,15 @@ class FlightPayment extends Component {
                                         <Form.Group className="col-md-6"
                                                     controlId="formGridFirstName">
                                             <Form.Label>First Name</Form.Label>
-                                            <Form.Control type="text" name="first_name" placeholder="Enter First Name" required/>
+                                            <Form.Control type="text" name="first_name" placeholder="Enter First Name"
+                                                          required/>
                                         </Form.Group>
 
                                         <Form.Group className="col-md-6"
                                                     controlId="formGridLastName">
                                             <Form.Label>Last Name</Form.Label>
-                                            <Form.Control type="text" name="last_name" placeholder="Enter Last Name" required/>
+                                            <Form.Control type="text" name="last_name" placeholder="Enter Last Name"
+                                                          required/>
                                         </Form.Group>
                                     </Form.Row>
 
@@ -53,25 +58,25 @@ class FlightPayment extends Component {
                                         <Form.Group className="col-md-6"
                                                     controlId="formGridPhoneNumber">
                                             <Form.Label>Phone Number</Form.Label>
-                                            <Form.Control type="text" name="mobile" placeholder="Enter Phone Number" required/>
+                                            <Form.Control type="text" name="mobile" placeholder="Enter Phone Number"
+                                                          required/>
                                         </Form.Group>
                                     </Form.Row>
 
                                     <Form.Row>
                                         <div className="col-md-6">
-                                            <label>Gender</label>
+                                            <span>Gender</span>
                                             <div className="d-flex">
-                                                <Form.Check
-                                                    custom
-                                                    type={'radio'} name={'gender'}
-                                                    className="pr-2"
-                                                    label={`Male`}
-                                                />
-                                                <Form.Check
-                                                    custom
-                                                    type={'radio'} name={'gender'}
-                                                    label={`Female`}
-                                                />
+                                                <label className="radio-inline">
+                                                    <input type="radio" name="radio" className={'input-checkbox'}
+                                                           checked/>
+                                                    Male
+                                                </label>
+
+                                                <label className="radio-inline pl-3">
+                                                    <input type="radio" name="radio" className={'input-checkbox'}/>
+                                                    Female
+                                                </label>
                                             </div>
                                         </div>
 
@@ -86,48 +91,83 @@ class FlightPayment extends Component {
                                                         value={this.state.dateOfBirth}/>
                                         </div>
                                     </Form.Row>
+
+                                    <Form.Row className="pt-3">
+                                        <Form.Group className="col-md-6"
+                                                    controlId="formGridPassportNumber">
+                                            <Form.Label>Passport Number</Form.Label>
+                                            <Form.Control type="text" name="passport_number"
+                                                          placeholder="Enter Passport Number"
+                                                          required/>
+                                        </Form.Group>
+
+                                        <div className="col-md-6">
+                                            <label htmlFor="passportExpiryDate">Passport Expiry Date</label>
+                                            <DatePicker timePicker={false}
+                                                        name={'passportExpiryDate'}
+                                                        id={'passportExpiryDate'}
+                                                        className="form-control"
+                                                        inputFormat="DD/MM/YYYY"
+                                                        onChange={date => this.setState({passportExpiryDate: date})}
+                                                        value={this.state.passportExpiryDate}/>
+                                        </div>
+                                    </Form.Row>
                                 </Form>
                             </div>
                         </div>
                         <div className="col-md-3">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda cupiditate enim libero
-                            maiores neque obcaecati quos? Aspernatur atque ipsam nisi officiis placeat quidem, similique
-                            suscipit unde? Autem, nulla recusandae!
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At beatae blanditiis consequuntur
-                            corporis dicta, modi mollitia nam quis repellat voluptatem. Assumenda blanditiis commodi
-                            corporis cumque doloremque earum eligendi esse et exercitationem expedita ipsam maiores
-                            minus mollitia natus nemo neque nostrum possimus quas quibusdam repellendus rerum tempora ut
-                            veniam, veritatis voluptas? Ab, blanditiis consequatur delectus dolore doloremque dolores
-                            eligendi enim excepturi explicabo facere hic impedit in incidunt ipsa pariatur quasi
-                            recusandae repellendus tenetur totam voluptates. Amet assumenda atque cumque explicabo
-                            inventore laudantium minima, natus perferendis, praesentium rem sapiente vitae, voluptas!
-                            Aliquid, amet aperiam cupiditate dolorem ducimus error ex ipsa nisi quam sed, tenetur veniam
-                            voluptate. Adipisci consectetur corporis debitis dolor ea earum esse, ex excepturi expedita
-                            facilis fugit harum illum in labore laudantium libero maxime modi molestias neque pariatur
-                            perferendis quas qui quis quod quos recusandae repudiandae sed similique sit suscipit
-                            temporibus tenetur ut vero! Accusantium adipisci culpa cumque earum error explicabo, facilis
-                            hic, inventore libero nesciunt optio quaerat quibusdam repellat repellendus temporibus
-                            veniam veritatis voluptate, voluptates. Dolores eius enim in suscipit vitae. Iste itaque
-                            laborum magnam modi, optio porro quas quibusdam quis recusandae sunt velit voluptate. A
-                            accusantium ad amet aperiam commodi deleniti deserunt distinctio eaque eligendi enim eum
-                            eveniet expedita fuga impedit ipsa ipsam ipsum non nulla porro qui recusandae reiciendis
-                            sequi similique sint tempore temporibus veritatis vero vitae voluptate, voluptatibus. Ab
-                            aliquid animi atque blanditiis culpa ducimus, ea, eaque eveniet in incidunt itaque molestiae
-                            nesciunt nobis reprehenderit sit suscipit totam ullam vel veritatis vitae. Animi corporis
-                            hic laudantium saepe ut voluptates. Consequatur cupiditate eius error excepturi incidunt
-                            iste molestiae nostrum, officiis provident quaerat, recusandae sit, soluta suscipit
-                            veritatis vitae. Commodi dolorum, ducimus in laborum nihil quae quis similique voluptates.
-                            Aliquid animi assumenda dolor dolore ducimus error eveniet excepturi id, illo in maiores
-                            mollitia nam nesciunt nobis officiis possimus reprehenderit suscipit temporibus tenetur
-                            totam? Animi assumenda blanditiis culpa debitis deleniti illo maxime minus necessitatibus
-                            non voluptates. Aliquam aliquid architecto assumenda autem beatae blanditiis commodi
-                            cupiditate dolor dolores eligendi, eos est excepturi explicabo fugit in iure iusto minima
-                            molestiae nam natus nesciunt nostrum nulla obcaecati optio pariatur perferendis possimus
-                            qui, tempore temporibus tenetur unde ut vero voluptatum! Alias magnam nihil quis sunt.
-                            Architecto aspernatur, at dolorum eum illum nulla odit officia omnis quam voluptates.
-                            Accusamus alias amet aut commodi debitis dolor est hic inventore obcaecati, perferendis
-                            possimus quas, qui repellat saepe similique sint temporibus tenetur velit veniam vitae. Eum,
-                            voluptatibus.
+                            <div className="flight-payment-amount-area">
+                                <div className="flight-payment-amount-header custom-border-bottom">
+                                    <span className="d-block font-weight-bold">DAC - CGP</span>
+                                    <span className="flight-payment-amount-header-trip">One Way</span>
+                                </div>
+
+                                <div className="d-flex justify-content-between flight-payment-amount-content">
+                                    <span className="flight-payment-amount-content-text">Adult</span>
+                                    <span className="flight-payment-amount-content-price">01</span>
+                                </div>
+
+                                <div className="d-flex justify-content-between flight-payment-amount-content">
+                                    <span className="flight-payment-amount-content-text">Base Fare</span>
+                                    <span className="flight-payment-amount-content-price">BDT, 3000</span>
+                                </div>
+
+                                <div className="d-flex justify-content-between flight-payment-amount-content custom-border-bottom">
+                                    <span className="flight-payment-amount-content-text">Tax</span>
+                                    <span className="flight-payment-amount-content-price">BDT, 305</span>
+                                </div>
+
+                                <div className="d-flex justify-content-between flight-payment-amount-content">
+                                    <span className="flight-payment-amount-content-text font-weight-bold">Total Fare</span>
+                                    <span className="flight-payment-amount-content-price font-weight-bold">BDT, 3305</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mt-3">
+                        <div className="col-md-9">
+                            <div className="flight-payment-card-area">
+                                <div className="flight-payment-card-header">
+                                    <span>Please select your payment method:</span>
+                                </div>
+
+                                <div className="flight-payment-card-content d-flex">
+                                    <label className="radio-inline">
+                                        <input type="radio" name="radio" className={'input-checkbox'}
+                                               checked/>
+                                        Card
+                                    </label>
+                                    <img className="flight-payment-card-content-image-card" src={card_image} alt=""/>
+
+                                    <label className="radio-inline pl-3">
+                                        <input type="radio" name="radio" className={'input-checkbox'}/>
+                                        Bkash
+                                    </label>
+                                    <img className="flight-payment-card-content-image-bkash" src={bkash} alt=""/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -28,3 +28,7 @@
 .selectToday {
     display: none !important;
 }
+
+.custom-border-bottom {
+    border-bottom: 1px solid #dadada;
+}
