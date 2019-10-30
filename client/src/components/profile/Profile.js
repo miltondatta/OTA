@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Tabs, Tab, Form, Button} from "react-bootstrap";
 import {Redirect} from 'react-router-dom';
-
+import axios from 'axios';
+import {setCurrentUser} from "../../actions/authActions";
 // Redux
 import Proptypes from 'prop-types';
 import {connect} from "react-redux";
@@ -11,15 +12,15 @@ import '../../assets/css/profile.css'
 
 function Profile({auth: {isAuthenticated, user}}) {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
+        name  : '',
+        email : '',
         mobile: ''
     });
 
     useEffect(() => {
         setFormData({
-            name: !user.name ? '' : user.name,
-            email: !user.email ? '' : user.email,
+            name  : !user.name ? '' : user.name,
+            email : !user.email ? '' : user.email,
             mobile: !user.mobile ? '' : user.mobile
         });
     }, [user.name, user.email, user.mobile]);
@@ -30,6 +31,23 @@ function Profile({auth: {isAuthenticated, user}}) {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
 
+    const onSubmit = e => {
+        e.preventDefault();
+        const updatedProfile = {
+            name  : formData.name,
+            email : formData.email,
+            mobile: formData.mobile,
+        };
+        axios
+            .post('/api/users/profile/update', updatedProfile)
+            .then(res => {
+
+            })
+            .catch(
+
+            );
+    };
+
     return (
         isAuthenticated ?
             <div className="register-area">
@@ -37,7 +55,7 @@ function Profile({auth: {isAuthenticated, user}}) {
                     <div className="container profile-area-container">
                         <Tabs defaultActiveKey="profile" transition={false} id="noanim-tab-example">
                             <Tab eventKey="profile" title="Profile">
-                                <Form>
+                                <Form className={"profile-form"} onSubmit={onSubmit}>
                                     <Form.Row>
                                         <Form.Group controlId="formGridName"
                                                     className={'col-md-6 col-sm-12'}>
@@ -49,7 +67,7 @@ function Profile({auth: {isAuthenticated, user}}) {
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Email</Form.Label>
                                             <Form.Control type="email" placeholder="Enter email" name={'email'}
-                                                          value={email} onChange={e => onChange(e)}/>
+                                                          value={email} readOnly/>
                                         </Form.Group>
                                         <Form.Group controlId="formGridMobileNo"
                                                     className={'col-md-6 col-sm-12'}>
@@ -58,6 +76,9 @@ function Profile({auth: {isAuthenticated, user}}) {
                                                           value={mobile} onChange={e => onChange(e)}/>
                                         </Form.Group>
                                     </Form.Row>
+                                    <Button variant="info" type="submit">
+                                        Update
+                                    </Button>
                                 </Form>
                             </Tab>
                             <Tab eventKey="password" title="Password">

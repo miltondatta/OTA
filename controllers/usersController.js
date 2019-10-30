@@ -1,19 +1,19 @@
-const { sequelize, Sequelize } = require('../models/index');
-const user = require('../models').user;
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const {sequelize, Sequelize} = require('../models/index');
+const user                   = require('../models').user;
+const bcrypt                 = require('bcryptjs');
+const jwt                    = require('jsonwebtoken');
 
-exports.store = async(req, res) => {
-    const { name, email, password, mobile } = req.body;
+exports.store = async (req, res) => {
+    const {name, email, password, mobile} = req.body;
 
-    user.findOne({ where: { email } }).then(results => {
+    user.findOne({where: {email}}).then(results => {
         if (results) {
-            return res.status(400).json({ msg: 'Email already exist!' });
+            return res.status(400).json({msg: 'Email already exist!'});
         } else {
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(password, salt, (err, hash) => {
-                    user.create({ name: name, email: email, password: hash, mobile: mobile }).then(results => {
-                        return res.status(200).json({ msg: 'User created successfully!' });
+                    user.create({name: name, email: email, password: hash, mobile: mobile}).then(results => {
+                        return res.status(200).json({msg: 'User created successfully!'});
                     });
                 });
             });
@@ -38,29 +38,47 @@ exports.store = async(req, res) => {
 
 };
 
+exports.updateProfile = async (req, res) => {
+    const {name, email, mobile} = req.body;
 
-exports.login = async(req, res) => {
-    const { email, password } = req.body;
-    user.findOne({ where: { email } }).then(user => {
+    user.findOne({where: {email}}).then(results => {
+        if (results) {
+            user.update(
+                {name: name,mobile: mobile},
+                {where: {email: email}}
+            );
+            const updated_user = user.findOne({where: {email}});
+            return res.status(200).json({user:updated_user});
+        } else {
+            return res.status(400).json({msg: 'User not matched!'});
+        }
+    });
+
+    console.log(email);
+};
+
+exports.login = async (req, res) => {
+    const {email, password} = req.body;
+    user.findOne({where: {email}}).then(user => {
         if (!user) {
-            return res.status(400).json({ msg: 'Email not found!' });
+            return res.status(400).json({msg: 'Email not found!'});
         }
 
         //Check password
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
-                const payload = { id: user.id, name: user.name, email: user.email, mobile: user.mobile };
+                const payload = {id: user.id, name: user.name, email: user.email, mobile: user.mobile};
                 jwt.sign(
                     payload,
-                    'secret', { expiresIn: 3600 },
+                    'secret', {expiresIn: 3600},
                     (err, token) => {
                         res.json({
                             success: true,
-                            token: 'ptm' + token
+                            token  : 'ptm' + token
                         });
                     });
             } else {
-                return res.status(400).json({ msg: 'Your password is incorrect!' });
+                return res.status(400).json({msg: 'Your password is incorrect!'});
             }
         });
     });

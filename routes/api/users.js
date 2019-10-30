@@ -1,7 +1,7 @@
-const express           =  require('express');
-const router            =  express.Router();
-const users_controller  =  require('../../controllers/usersController');
-const User              =  require('../../models').user;
+const express          = require('express');
+const router           = express.Router();
+const users_controller = require('../../controllers/usersController');
+const User             = require('../../models').user;
 
 /*
     @route          GET api/users/test/
@@ -9,7 +9,7 @@ const User              =  require('../../models').user;
     @access         Public
  */
 
-router.get('/test', (req, res) => res.json({ msg: 'Users route working!'}));
+router.get('/test', (req, res) => res.json({msg: 'Users route working!'}));
 
 /*
     @route          GET api/users/register/
@@ -18,6 +18,12 @@ router.get('/test', (req, res) => res.json({ msg: 'Users route working!'}));
  */
 router.post('/register', users_controller.store);
 
+/*
+    @route          GET api/users/profile/update
+    @desc           Login users route
+    @access         Public
+ */
+router.post('/profile/update', users_controller.updateProfile);
 
 /*
     @route          POST api/users/login/
@@ -38,18 +44,17 @@ router.post('/registration', (req, res) => {
         return res.status(200).json(`User added with ID: ${results.insertId}`);
     });  */
 
-    //
-    //console.log();
-    //res.send(req);
-    //console.log("req" + /req.body.name);
-    //return res.status(200).json({msg: "Registration working fine!"});
+//
+//console.log();
+//res.send(req);
+//console.log("req" + /req.body.name);
+//return res.status(200).json({msg: "Registration working fine!"});
 
 
-
-    //res.json({ msg: 'Registration route working!'})
-    //res.setHeader('Content-Type', 'text/plain')
-    //res.write('you posted:\n')
-    //res.end(JSON.stringify(req.body.name, null, 2))
+//res.json({ msg: 'Registration route working!'})
+//res.setHeader('Content-Type', 'text/plain')
+//res.write('you posted:\n')
+//res.end(JSON.stringify(req.body.name, null, 2))
 //});
 
 
@@ -62,7 +67,7 @@ router.get('/all', (req, res) => {
     });*/
 
     try {
-        const body = {name: "Plabon", email: "plabonjoseph@gmail.com", password: "123456", phone: "01878736648"};
+        const body   = {name: "Plabon", email: "plabonjoseph@gmail.com", password: "123456", phone: "01878736648"};
         const result = User.create(body);
         // const result = User.findAll();
         return res.json({msg: "User Created Successfully!"});
