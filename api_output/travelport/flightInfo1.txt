@@ -1,0 +1,1 @@
+{"from":"VIE","to":"PRG","departure":"2019-11-21T06:40:00.000+01:00","arrival":"2019-11-21T07:35:00.000+01:00","duration":"55","plane":"DH4","fromTerminal":"","toTerminal":"2"}
