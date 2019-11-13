@@ -24,18 +24,31 @@ class AirAutocomplete extends Component {
     onChange(e) {
         let filteredSuggestions = [];
         let search_value = e.currentTarget.value;
+        if(search_value === '') {
+            this.setState({
+                activeSuggestion: 0,
+                filteredSuggestions: [],
+                showSuggestions: false,
+                userInput: search_value
+            });
+            return;
+        }
+
+        this.setState({
+            userInput: search_value
+        });
+        
          axios
             .get('/api/global/get_airports?airport_search=' + search_value)
             .then(res => {  
+                console.log(res.data);
                 res.data.forEach(element => {
                     filteredSuggestions.push(element.iata_code + ", " + element.name + ", " + element.iso_country);
                 });
-
                 this.setState({
                     activeSuggestion: 0,
                     filteredSuggestions,
                     showSuggestions: true,
-                    userInput: search_value
                 });
             })
             .catch(err =>
