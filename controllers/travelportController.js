@@ -22,12 +22,12 @@ const settings   = {
 };
 const AirService = uAPI.createAirService(settings);
 
-/*const params = {
+const params = {
     legs      : [
         {
             from         : 'LWO',
             to           : 'JKT',
-            departureDate: '2019-11-06'
+            departureDate: '2019-11-15'
         }
     ],
     passengers: {
@@ -38,7 +38,8 @@ const AirService = uAPI.createAirService(settings);
     pricing   : {
         currency: 'USD'
     },
-};*/
+};
+
 
 /*AirService.shop(params)
     .then(
@@ -49,14 +50,15 @@ const AirService = uAPI.createAirService(settings);
     );
 ;*/
 
-/*AirService.availability(params)
+
+AirService.shop(params)
     .then(
-        res => fs.writeFile("api_output/travelport/availability.txt", JSON.stringify(res), (err) => {
+        res => fs.writeFile("api_output/travelport/shop.txt", JSON.stringify(res, null, 4), (err) => {
             console.log("Successfully Written to File.");
         }),
         err => console.log(err)
     );
-;*/
+
 
 /*
 AirService.shop(params)
@@ -211,6 +213,7 @@ AirServiceQuiet.shop(shop_params)
     console.error(err);
 });*/
 
+/*
 const params = {
     reservationLocatorCode: 'RLC001',
 };
@@ -218,4 +221,4 @@ const params = {
 AirService.getTickets(params).then(
     data => console.log(data),
     err => console.log(err)
-);
+); */

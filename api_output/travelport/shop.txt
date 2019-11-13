@@ -1,0 +1,338 @@
+[
+    {
+        "totalPrice": "USD1152.40",
+        "basePrice": "USD836.00",
+        "taxes": "USD316.40",
+        "directions": [
+            [
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-11-15T14:05:00.000+02:00",
+                            "arrival": "2019-11-15T14:50:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2551",
+                            "uapi_segment_ref": "TyFdh54R2BKAxePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "CR9"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "SIN",
+                            "group": 0,
+                            "departure": "2019-11-15T22:15:00.000+01:00",
+                            "arrival": "2019-11-16T17:05:00.000+08:00",
+                            "airline": "LH",
+                            "flightNumber": "790",
+                            "uapi_segment_ref": "TyFdh54R2BKAzePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "359"
+                            ],
+                            "duration": [
+                                "710"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        },
+                        {
+                            "from": "SIN",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-16T18:40:00.000+08:00",
+                            "arrival": "2019-11-16T19:25:00.000+07:00",
+                            "airline": "LH",
+                            "flightNumber": "9794",
+                            "uapi_segment_ref": "TyFdh54R2BKA1ePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "773"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD1152.40",
+                "basePrice": "USD836.00",
+                "taxes": "USD316.40",
+                "uapi_fare_reference": "TyFdh54R2BKAffPcAAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD1152.40",
+                "basePrice": "USD836.00",
+                "taxes": "USD316.40"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD1156.50",
+        "basePrice": "USD836.00",
+        "taxes": "USD320.50",
+        "directions": [
+            [
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-11-15T14:05:00.000+02:00",
+                            "arrival": "2019-11-15T14:50:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2551",
+                            "uapi_segment_ref": "TyFdh54R2BKAxePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "CR9"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "SIN",
+                            "group": 0,
+                            "departure": "2019-11-16T12:20:00.000+01:00",
+                            "arrival": "2019-11-17T07:00:00.000+08:00",
+                            "airline": "LH",
+                            "flightNumber": "9790",
+                            "uapi_segment_ref": "TyFdh54R2BKA3ePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "359"
+                            ],
+                            "duration": [
+                                "700"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        },
+                        {
+                            "from": "SIN",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-17T18:40:00.000+08:00",
+                            "arrival": "2019-11-17T19:25:00.000+07:00",
+                            "airline": "LH",
+                            "flightNumber": "9794",
+                            "uapi_segment_ref": "TyFdh54R2BKA5ePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "773"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD1156.50",
+                "basePrice": "USD836.00",
+                "taxes": "USD320.50",
+                "uapi_fare_reference": "TyFdh54R2BKAufPcAAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD1156.50",
+                "basePrice": "USD836.00",
+                "taxes": "USD320.50"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD1163.20",
+        "basePrice": "USD836.00",
+        "taxes": "USD327.20",
+        "directions": [
+            [
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-11-15T14:05:00.000+02:00",
+                            "arrival": "2019-11-15T14:50:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2551",
+                            "uapi_segment_ref": "TyFdh54R2BKAxePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "CR9"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "BKK",
+                            "group": 0,
+                            "departure": "2019-11-15T18:20:00.000+01:00",
+                            "arrival": "2019-11-16T10:50:00.000+07:00",
+                            "airline": "LH",
+                            "flightNumber": "5446",
+                            "uapi_segment_ref": "TyFdh54R2BKA7ePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "332"
+                            ],
+                            "duration": [
+                                "630"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        },
+                        {
+                            "from": "BKK",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-16T14:25:00.000+07:00",
+                            "arrival": "2019-11-16T17:55:00.000+07:00",
+                            "airline": "TG",
+                            "flightNumber": "435",
+                            "uapi_segment_ref": "TyFdh54R2BKA9ePcAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "330"
+                            ],
+                            "duration": [
+                                "210"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 1
+                                }
+                            ],
+                            "fareBasisCode": "MFFOWUA"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD1163.20",
+                "basePrice": "USD836.00",
+                "taxes": "USD327.20",
+                "uapi_fare_reference": "TyFdh54R2BKAvfPcAAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD1163.20",
+                "basePrice": "USD836.00",
+                "taxes": "USD327.20"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    }
+]
