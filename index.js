@@ -13,21 +13,25 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-//Get routes directory
+//Define Users Routes
 const users         = require('./routes/api/users');
-//const amadeus       = require('./routes/api/amadeus');
-//const travelport    = require('./routes/api/travelport');
+
+//Define AIR Routes 
+const air           = require('./routes/api/air');
+
+//Define Hotels Routes
+
+//Define Cruise Routes
+
+//Define GLOBAL Routes
 const global        = require('./routes/api/global');
 
 
-//Use Routes
+//Use All Routes
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
 app.use('/api/users/', users);
 
-//app.use('/api/amadeus/', amadeus);
-
-//app.use('/api/travelport/', travelport);
-
+app.use('/api/air/', air);
 app.use('/api/global/', global);
 
 
