@@ -1,5 +1,117 @@
 [
     {
+        "totalPrice": "USD1097.20",
+        "basePrice": "EUR820.00",
+        "taxes": "USD197.20",
+        "directions": [
+            [
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "QR",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-11-15T14:05:00.000+02:00",
+                            "arrival": "2019-11-15T14:50:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2551",
+                            "uapi_segment_ref": "82won53R2BKAbIBPAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "CR9"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "V",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 30
+                                }
+                            ],
+                            "fareBasisCode": "MLR7R1SI"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "DOH",
+                            "group": 0,
+                            "departure": "2019-11-15T15:50:00.000+01:00",
+                            "arrival": "2019-11-15T23:30:00.000+03:00",
+                            "airline": "QR",
+                            "flightNumber": "58",
+                            "uapi_segment_ref": "82won53R2BKAdIBPAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "77W"
+                            ],
+                            "duration": [
+                                "340"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 30
+                                }
+                            ],
+                            "fareBasisCode": "MLR7R1SI"
+                        },
+                        {
+                            "from": "DOH",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-16T02:00:00.000+03:00",
+                            "arrival": "2019-11-16T14:45:00.000+07:00",
+                            "airline": "QR",
+                            "flightNumber": "956",
+                            "uapi_segment_ref": "82won53R2BKAfIBPAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "788"
+                            ],
+                            "duration": [
+                                "525"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 30
+                                }
+                            ],
+                            "fareBasisCode": "MLR7R1SI"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD1097.20",
+                "basePrice": "EUR820.00",
+                "taxes": "USD197.20",
+                "uapi_fare_reference": "82won53R2BKAnJBPAAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD1097.20",
+                "basePrice": "EUR820.00",
+                "taxes": "USD197.20"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
         "totalPrice": "USD1152.40",
         "basePrice": "USD836.00",
         "taxes": "USD316.40",
@@ -18,7 +130,7 @@
                             "arrival": "2019-11-15T14:50:00.000+01:00",
                             "airline": "LH",
                             "flightNumber": "2551",
-                            "uapi_segment_ref": "TyFdh54R2BKAxePcAAAAAA==",
+                            "uapi_segment_ref": "82won53R2BKAbIBPAAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "CR9"
@@ -44,7 +156,7 @@
                             "arrival": "2019-11-16T17:05:00.000+08:00",
                             "airline": "LH",
                             "flightNumber": "790",
-                            "uapi_segment_ref": "TyFdh54R2BKAzePcAAAAAA==",
+                            "uapi_segment_ref": "82won53R2BKAhIBPAAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "359"
@@ -70,7 +182,7 @@
                             "arrival": "2019-11-16T19:25:00.000+07:00",
                             "airline": "LH",
                             "flightNumber": "9794",
-                            "uapi_segment_ref": "TyFdh54R2BKA1ePcAAAAAA==",
+                            "uapi_segment_ref": "82won53R2BKAjIBPAAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "773"
@@ -97,7 +209,7 @@
                 "totalPrice": "USD1152.40",
                 "basePrice": "USD836.00",
                 "taxes": "USD316.40",
-                "uapi_fare_reference": "TyFdh54R2BKAffPcAAAAAA=="
+                "uapi_fare_reference": "82won53R2BKAoJBPAAAAAA=="
             }
         ],
         "passengerFares": {
@@ -105,118 +217,6 @@
                 "totalPrice": "USD1152.40",
                 "basePrice": "USD836.00",
                 "taxes": "USD316.40"
-            }
-        },
-        "passengerCounts": {
-            "ADT": 1
-        }
-    },
-    {
-        "totalPrice": "USD1156.50",
-        "basePrice": "USD836.00",
-        "taxes": "USD320.50",
-        "directions": [
-            [
-                {
-                    "from": "LWO",
-                    "to": "JKT",
-                    "platingCarrier": "LH",
-                    "segments": [
-                        {
-                            "from": "LWO",
-                            "to": "MUC",
-                            "group": 0,
-                            "departure": "2019-11-15T14:05:00.000+02:00",
-                            "arrival": "2019-11-15T14:50:00.000+01:00",
-                            "airline": "LH",
-                            "flightNumber": "2551",
-                            "uapi_segment_ref": "TyFdh54R2BKAxePcAAAAAA==",
-                            "serviceClass": "Economy",
-                            "plane": [
-                                "CR9"
-                            ],
-                            "duration": [
-                                "105"
-                            ],
-                            "techStops": [],
-                            "bookingClass": "M",
-                            "baggage": [
-                                {
-                                    "units": "piece",
-                                    "amount": 1
-                                }
-                            ],
-                            "fareBasisCode": "MFFOWUA"
-                        },
-                        {
-                            "from": "MUC",
-                            "to": "SIN",
-                            "group": 0,
-                            "departure": "2019-11-16T12:20:00.000+01:00",
-                            "arrival": "2019-11-17T07:00:00.000+08:00",
-                            "airline": "LH",
-                            "flightNumber": "9790",
-                            "uapi_segment_ref": "TyFdh54R2BKA3ePcAAAAAA==",
-                            "serviceClass": "Economy",
-                            "plane": [
-                                "359"
-                            ],
-                            "duration": [
-                                "700"
-                            ],
-                            "techStops": [],
-                            "bookingClass": "M",
-                            "baggage": [
-                                {
-                                    "units": "piece",
-                                    "amount": 1
-                                }
-                            ],
-                            "fareBasisCode": "MFFOWUA"
-                        },
-                        {
-                            "from": "SIN",
-                            "to": "CGK",
-                            "group": 0,
-                            "departure": "2019-11-17T18:40:00.000+08:00",
-                            "arrival": "2019-11-17T19:25:00.000+07:00",
-                            "airline": "LH",
-                            "flightNumber": "9794",
-                            "uapi_segment_ref": "TyFdh54R2BKA5ePcAAAAAA==",
-                            "serviceClass": "Economy",
-                            "plane": [
-                                "773"
-                            ],
-                            "duration": [
-                                "105"
-                            ],
-                            "techStops": [],
-                            "bookingClass": "M",
-                            "baggage": [
-                                {
-                                    "units": "piece",
-                                    "amount": 1
-                                }
-                            ],
-                            "fareBasisCode": "MFFOWUA"
-                        }
-                    ]
-                }
-            ]
-        ],
-        "bookingComponents": [
-            {
-                "totalPrice": "USD1156.50",
-                "basePrice": "USD836.00",
-                "taxes": "USD320.50",
-                "uapi_fare_reference": "TyFdh54R2BKAufPcAAAAAA=="
-            }
-        ],
-        "passengerFares": {
-            "ADT": {
-                "totalPrice": "USD1156.50",
-                "basePrice": "USD836.00",
-                "taxes": "USD320.50"
             }
         },
         "passengerCounts": {
@@ -242,7 +242,7 @@
                             "arrival": "2019-11-15T14:50:00.000+01:00",
                             "airline": "LH",
                             "flightNumber": "2551",
-                            "uapi_segment_ref": "TyFdh54R2BKAxePcAAAAAA==",
+                            "uapi_segment_ref": "82won53R2BKAbIBPAAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "CR9"
@@ -268,7 +268,7 @@
                             "arrival": "2019-11-16T10:50:00.000+07:00",
                             "airline": "LH",
                             "flightNumber": "5446",
-                            "uapi_segment_ref": "TyFdh54R2BKA7ePcAAAAAA==",
+                            "uapi_segment_ref": "82won53R2BKAlIBPAAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "332"
@@ -294,7 +294,7 @@
                             "arrival": "2019-11-16T17:55:00.000+07:00",
                             "airline": "TG",
                             "flightNumber": "435",
-                            "uapi_segment_ref": "TyFdh54R2BKA9ePcAAAAAA==",
+                            "uapi_segment_ref": "82won53R2BKAnIBPAAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "330"
@@ -321,7 +321,7 @@
                 "totalPrice": "USD1163.20",
                 "basePrice": "USD836.00",
                 "taxes": "USD327.20",
-                "uapi_fare_reference": "TyFdh54R2BKAvfPcAAAAAA=="
+                "uapi_fare_reference": "82won53R2BKApJBPAAAAAA=="
             }
         ],
         "passengerFares": {
@@ -329,6 +329,92 @@
                 "totalPrice": "USD1163.20",
                 "basePrice": "USD836.00",
                 "taxes": "USD327.20"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD1313.40",
+        "basePrice": "USD1099.00",
+        "taxes": "USD214.40",
+        "directions": [
+            [
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "TK",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "IST",
+                            "group": 0,
+                            "departure": "2019-11-15T21:10:00.000+02:00",
+                            "arrival": "2019-11-16T00:25:00.000+03:00",
+                            "airline": "TK",
+                            "flightNumber": "444",
+                            "uapi_segment_ref": "82won53R2BKApIBPAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "73H"
+                            ],
+                            "duration": [
+                                "135"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 20
+                                }
+                            ],
+                            "fareBasisCode": "MNOW"
+                        },
+                        {
+                            "from": "IST",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-16T02:20:00.000+03:00",
+                            "arrival": "2019-11-16T18:00:00.000+07:00",
+                            "airline": "TK",
+                            "flightNumber": "56",
+                            "uapi_segment_ref": "82won53R2BKArIBPAAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "77W"
+                            ],
+                            "duration": [
+                                "700"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "M",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 20
+                                }
+                            ],
+                            "fareBasisCode": "MNOW"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD1313.40",
+                "basePrice": "USD1099.00",
+                "taxes": "USD214.40",
+                "uapi_fare_reference": "82won53R2BKAqJBPAAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD1313.40",
+                "basePrice": "USD1099.00",
+                "taxes": "USD214.40"
             }
         },
         "passengerCounts": {

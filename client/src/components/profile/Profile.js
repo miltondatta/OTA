@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Tabs, Tab, Form, Button} from "react-bootstrap";
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-import {setCurrentUser} from "../../actions/authActions";
+
 // Redux
 import Proptypes from 'prop-types';
 import {connect} from "react-redux";

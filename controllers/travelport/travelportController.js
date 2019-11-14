@@ -1,14 +1,5 @@
 const uAPI = require('uapi-json');
 var fs     = require("fs");
-/*
-ADT:1,  //Adult
-CNN:1,  //Child
-INF:1,  //infant without seat
-INS:1,  //infant with a seat
-
-cabins    : ['Economy'],
-cabins    : ['Business'],
- */
 
 const settings   = {
     auth      : {
@@ -22,6 +13,7 @@ const settings   = {
 };
 const AirService = uAPI.createAirService(settings);
 
+/*
 const params = {
     legs      : [
         {
@@ -38,7 +30,7 @@ const params = {
     pricing   : {
         currency: 'USD'
     },
-};
+}; */
 
 
 /*AirService.shop(params)
@@ -51,6 +43,7 @@ const params = {
 ;*/
 
 
+/*
 AirService.shop(params)
     .then(
         res => fs.writeFile("api_output/travelport/shop.txt", JSON.stringify(res, null, 4), (err) => {
@@ -58,6 +51,7 @@ AirService.shop(params)
         }),
         err => console.log(err)
     );
+*/
 
 
 /*

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import DatePicker from 'react-datepicker2';
 import axios from 'axios';
 import moment from 'moment';
+import { shopApi } from '../../utils/Urls';
+
 
 // Component
 import AirAutocomplete from './AirAutocomplete';
@@ -40,9 +42,9 @@ class OneWay extends Component {
         let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
 
         axios
-            .get('api/amadeus/flight_offers?' + userParams)
+            .get(shopApi, userParams)
             .then(res => {
-                console.log(res);
+                console.log(res.data);
             })
             .catch(err =>
                 console.log("Error: " + err)
