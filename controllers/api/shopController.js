@@ -4,6 +4,5 @@
 const travelport = require('../travelport/travelportController');
 
 exports.test = async (req, res) => {
-    res.json({ msg: 'Testing Shop Controller..OKK!' });
+    return res.status(200).json(req.body);
 };
-

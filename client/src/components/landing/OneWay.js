@@ -39,10 +39,17 @@ class OneWay extends Component {
         e.preventDefault();
         let org = this.state.origin;
         let des = this.state.destination;
-        let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
+
+        //let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
+        let searchParams = {
+            from: org.split(",")[0],
+            to: des.split(",")[0],
+            departureDate: moment(this.state.departure).format('YYYY-MM-DD'),
+            
+        };
 
         axios
-            .get(shopApi, userParams)
+            .post(shopApi, searchParams)
             .then(res => {
                 console.log(res.data);
             })
