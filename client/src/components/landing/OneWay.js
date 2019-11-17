@@ -17,9 +17,14 @@ class OneWay extends Component {
         this.state = {
             departure: moment(),
             origin: '',
-            destination: ''
+            destination: '',
+            adult: 0,
+            child: 0,
+            infant: 0,
+            class: 'Business'
         };
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleSelectionChanged = this.handleSelectionChanged.bind(this);
     }
 
     handleOriginData(data) {
@@ -45,17 +50,28 @@ class OneWay extends Component {
             from: org.split(",")[0],
             to: des.split(",")[0],
             departureDate: moment(this.state.departure).format('YYYY-MM-DD'),
-            
+            ADT: this.state.adult,
+            CNN: this.state.child,
+            INF: this.state.infant,
+            cabins: this.state.class 
         };
+
+        console.log(searchParams);
 
         axios
             .post(shopApi, searchParams)
             .then(res => {
-                console.log(res.data);
+                //console.log(res.data);
             })
             .catch(err =>
                 console.log("Error: " + err)
             );
+    }
+
+    handleSelectionChanged(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
 
@@ -83,7 +99,7 @@ class OneWay extends Component {
                                     id={'departure'}
                                     className="form-control"
                                     inputFormat="DD/MM/YYYY"
-                                    onChange={date => this.setState({departure: date})}
+                                    onChange={departure => this.setState({departure: departure})}
                                     value={this.state.departure}/>
                     </div>
                 </div>
@@ -91,7 +107,8 @@ class OneWay extends Component {
                 <div className="row pt-2">
                     <div className="col-xs-6 col-lg-4">
                         <label htmlFor="adult" className={'d-block mb-1'}><b>Adult</b></label>
-                        <select className="form-control" name={'adult'} id={'adult'}>
+                        <select className="form-control" name={'adult'} id={'adult'} value={this.state.adult} onChange={this.handleSelectionChanged}>
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -102,7 +119,7 @@ class OneWay extends Component {
 
                     <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="child" className={'d-block mb-1'}><b>Child</b></label>
-                        <select className="form-control" name={'child'} id={'child'}>
+                        <select className="form-control" name={'child'} id={'child'} value={this.state.child} onChange={this.handleSelectionChanged}>
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -114,7 +131,7 @@ class OneWay extends Component {
 
                     <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="infant" className={'d-block mb-1'}><b>Infant</b></label>
-                        <select className="form-control" name={'infant'} id={'infant'}>
+                        <select className="form-control" name={'infant'} id={'infant'} value={this.state.infant} onChange={this.handleSelectionChanged}>
                             <option>0</option>
                             <option>1</option>
                         </select>
@@ -124,9 +141,9 @@ class OneWay extends Component {
                 <div className="row pt-2">
                     <div className="col-xs-6 col-lg-4">
                         <label htmlFor="class" className={'d-block mb-1'}><b>Class</b></label>
-                        <select className="form-control" name={'class'} id={'class'}>
-                            <option>Business Class</option>
-                            <option>Economic Class</option>
+                        <select className="form-control" name={'class'} id={'class'} value={this.state.class} onChange={this.handleSelectionChanged}>
+                            <option value="Business">Business Class</option>
+                            <option value="Economy">Economic Class</option>
                         </select>
                     </div>
 
