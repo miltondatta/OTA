@@ -34,6 +34,10 @@ exports.shop = async (req, res) => {
     travelport.shop(params)
     .then(
         res => fs.writeFile("api_output/travelport/shop.txt", JSON.stringify(res, null, 4), (err) => {
+
+            
+            
+
             console.log("Successfully Written to File.");
         }),
         err => console.log(err)
