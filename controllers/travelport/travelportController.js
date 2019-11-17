@@ -12,6 +12,8 @@ const settings   = {
     production: false
 };
 const AirService = uAPI.createAirService(settings);
+module.exports = AirService;
+
 
 /*
 const params = {

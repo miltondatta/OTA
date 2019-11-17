@@ -1,8 +1,8 @@
 [
     {
-        "totalPrice": "USD1097.20",
-        "basePrice": "EUR820.00",
-        "taxes": "USD197.20",
+        "totalPrice": "USD2404.50",
+        "basePrice": "EUR1972.00",
+        "taxes": "USD239.50",
         "directions": [
             [
                 {
@@ -12,66 +12,178 @@
                     "segments": [
                         {
                             "from": "LWO",
-                            "to": "MUC",
+                            "to": "VIE",
                             "group": 0,
-                            "departure": "2019-11-15T14:05:00.000+02:00",
-                            "arrival": "2019-11-15T14:50:00.000+01:00",
-                            "airline": "LH",
-                            "flightNumber": "2551",
-                            "uapi_segment_ref": "82won53R2BKAbIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-18T16:00:00.000+02:00",
+                            "arrival": "2019-11-18T16:35:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "382",
+                            "uapi_segment_ref": "82won53R2BKAQVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "CR9"
+                                "DH4"
                             ],
                             "duration": [
-                                "105"
+                                "95"
                             ],
                             "techStops": [],
-                            "bookingClass": "V",
+                            "bookingClass": "D",
                             "baggage": [
                                 {
                                     "units": "kilograms",
-                                    "amount": 30
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MLR7R1SI"
+                            "fareBasisCode": "DJR7R1SI"
                         },
                         {
-                            "from": "MUC",
+                            "from": "VIE",
                             "to": "DOH",
                             "group": 0,
-                            "departure": "2019-11-15T15:50:00.000+01:00",
-                            "arrival": "2019-11-15T23:30:00.000+03:00",
+                            "departure": "2019-11-18T22:15:00.000+01:00",
+                            "arrival": "2019-11-19T05:55:00.000+03:00",
                             "airline": "QR",
-                            "flightNumber": "58",
-                            "uapi_segment_ref": "82won53R2BKAdIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "flightNumber": "186",
+                            "uapi_segment_ref": "82won53R2BKASVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "77W"
+                                "320"
                             ],
                             "duration": [
                                 "340"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "D",
                             "baggage": [
                                 {
                                     "units": "kilograms",
-                                    "amount": 30
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MLR7R1SI"
+                            "fareBasisCode": "DJR7R1SI"
                         },
                         {
                             "from": "DOH",
                             "to": "CGK",
                             "group": 0,
-                            "departure": "2019-11-16T02:00:00.000+03:00",
-                            "arrival": "2019-11-16T14:45:00.000+07:00",
+                            "departure": "2019-11-19T08:25:00.000+03:00",
+                            "arrival": "2019-11-19T21:10:00.000+07:00",
                             "airline": "QR",
-                            "flightNumber": "956",
-                            "uapi_segment_ref": "82won53R2BKAfIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "flightNumber": "954",
+                            "uapi_segment_ref": "82won53R2BKAUVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "359"
+                            ],
+                            "duration": [
+                                "525"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "DJR7R1SI"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD2404.50",
+                "basePrice": "EUR1972.00",
+                "taxes": "USD239.50",
+                "uapi_fare_reference": "82won53R2BKACXrYCAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD2404.50",
+                "basePrice": "EUR1972.00",
+                "taxes": "USD239.50"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD2408.10",
+        "basePrice": "EUR1972.00",
+        "taxes": "USD243.10",
+        "directions": [
+            [
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "QR",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "VIE",
+                            "group": 0,
+                            "departure": "2019-11-18T16:00:00.000+02:00",
+                            "arrival": "2019-11-18T16:35:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "382",
+                            "uapi_segment_ref": "82won53R2BKAQVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "DH4"
+                            ],
+                            "duration": [
+                                "95"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "DJR7R1SI"
+                        },
+                        {
+                            "from": "VIE",
+                            "to": "DOH",
+                            "group": 0,
+                            "departure": "2019-11-18T22:15:00.000+01:00",
+                            "arrival": "2019-11-19T05:55:00.000+03:00",
+                            "airline": "QR",
+                            "flightNumber": "186",
+                            "uapi_segment_ref": "82won53R2BKASVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "320"
+                            ],
+                            "duration": [
+                                "340"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "DJR7R1SI"
+                        },
+                        {
+                            "from": "DOH",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-19T18:50:00.000+03:00",
+                            "arrival": "2019-11-20T07:35:00.000+07:00",
+                            "airline": "QR",
+                            "flightNumber": "958",
+                            "uapi_segment_ref": "82won53R2BKAWVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
                                 "788"
                             ],
@@ -79,14 +191,14 @@
                                 "525"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "D",
                             "baggage": [
                                 {
                                     "units": "kilograms",
-                                    "amount": 30
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MLR7R1SI"
+                            "fareBasisCode": "DJR7R1SI"
                         }
                     ]
                 }
@@ -94,17 +206,17 @@
         ],
         "bookingComponents": [
             {
-                "totalPrice": "USD1097.20",
-                "basePrice": "EUR820.00",
-                "taxes": "USD197.20",
-                "uapi_fare_reference": "82won53R2BKAnJBPAAAAAA=="
+                "totalPrice": "USD2408.10",
+                "basePrice": "EUR1972.00",
+                "taxes": "USD243.10",
+                "uapi_fare_reference": "82won53R2BKARXrYCAAAAA=="
             }
         ],
         "passengerFares": {
             "ADT": {
-                "totalPrice": "USD1097.20",
-                "basePrice": "EUR820.00",
-                "taxes": "USD197.20"
+                "totalPrice": "USD2408.10",
+                "basePrice": "EUR1972.00",
+                "taxes": "USD243.10"
             }
         },
         "passengerCounts": {
@@ -112,93 +224,178 @@
         }
     },
     {
-        "totalPrice": "USD1152.40",
-        "basePrice": "USD836.00",
-        "taxes": "USD316.40",
+        "totalPrice": "USD2923.00",
+        "basePrice": "USD2447.00",
+        "taxes": "USD476.00",
         "directions": [
             [
                 {
                     "from": "LWO",
                     "to": "JKT",
-                    "platingCarrier": "LH",
+                    "platingCarrier": "EK",
                     "segments": [
                         {
                             "from": "LWO",
-                            "to": "MUC",
+                            "to": "WAW",
                             "group": 0,
-                            "departure": "2019-11-15T14:05:00.000+02:00",
-                            "arrival": "2019-11-15T14:50:00.000+01:00",
-                            "airline": "LH",
-                            "flightNumber": "2551",
-                            "uapi_segment_ref": "82won53R2BKAbIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-18T06:05:00.000+02:00",
+                            "arrival": "2019-11-18T06:15:00.000+01:00",
+                            "airline": "LO",
+                            "flightNumber": "758",
+                            "uapi_segment_ref": "82won53R2BKAYVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "CR9"
+                                "DH4"
                             ],
                             "duration": [
-                                "105"
+                                "70"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "C",
                             "baggage": [
                                 {
-                                    "units": "piece",
-                                    "amount": 1
+                                    "units": "kilograms",
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MFFOWUA"
+                            "fareBasisCode": "C00"
                         },
                         {
-                            "from": "MUC",
-                            "to": "SIN",
+                            "from": "WAW",
+                            "to": "DXB",
                             "group": 0,
-                            "departure": "2019-11-15T22:15:00.000+01:00",
-                            "arrival": "2019-11-16T17:05:00.000+08:00",
-                            "airline": "LH",
-                            "flightNumber": "790",
-                            "uapi_segment_ref": "82won53R2BKAhIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-18T13:00:00.000+01:00",
+                            "arrival": "2019-11-18T21:40:00.000+04:00",
+                            "airline": "EK",
+                            "flightNumber": "180",
+                            "uapi_segment_ref": "82won53R2BKAaVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "359"
+                                "77W"
                             ],
                             "duration": [
-                                "710"
+                                "340"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "I",
                             "baggage": [
                                 {
-                                    "units": "piece",
-                                    "amount": 1
+                                    "units": "kilograms",
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MFFOWUA"
+                            "fareBasisCode": "ISSOSPL1"
                         },
                         {
-                            "from": "SIN",
+                            "from": "DXB",
                             "to": "CGK",
                             "group": 0,
-                            "departure": "2019-11-16T18:40:00.000+08:00",
-                            "arrival": "2019-11-16T19:25:00.000+07:00",
-                            "airline": "LH",
-                            "flightNumber": "9794",
-                            "uapi_segment_ref": "82won53R2BKAjIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-19T04:35:00.000+04:00",
+                            "arrival": "2019-11-19T15:45:00.000+07:00",
+                            "airline": "EK",
+                            "flightNumber": "356",
+                            "uapi_segment_ref": "82won53R2BKAcVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "773"
+                                "77W"
                             ],
                             "duration": [
-                                "105"
+                                "490"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "I",
                             "baggage": [
                                 {
-                                    "units": "piece",
-                                    "amount": 1
+                                    "units": "kilograms",
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MFFOWUA"
+                            "fareBasisCode": "ISSOSPL1"
+                        }
+                    ]
+                },
+                {
+                    "from": "LWO",
+                    "to": "JKT",
+                    "platingCarrier": "EK",
+                    "segments": [
+                        {
+                            "from": "LWO",
+                            "to": "WAW",
+                            "group": 0,
+                            "departure": "2019-11-18T06:05:00.000+02:00",
+                            "arrival": "2019-11-18T06:15:00.000+01:00",
+                            "airline": "LO",
+                            "flightNumber": "758",
+                            "uapi_segment_ref": "82won53R2BKAYVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "DH4"
+                            ],
+                            "duration": [
+                                "70"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "C",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "C00"
+                        },
+                        {
+                            "from": "WAW",
+                            "to": "DXB",
+                            "group": 0,
+                            "departure": "2019-11-18T13:00:00.000+01:00",
+                            "arrival": "2019-11-18T21:40:00.000+04:00",
+                            "airline": "EK",
+                            "flightNumber": "180",
+                            "uapi_segment_ref": "82won53R2BKAaVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "77W"
+                            ],
+                            "duration": [
+                                "340"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "ISSOSPL1"
+                        },
+                        {
+                            "from": "DXB",
+                            "to": "CGK",
+                            "group": 0,
+                            "departure": "2019-11-19T10:45:00.000+04:00",
+                            "arrival": "2019-11-19T22:10:00.000+07:00",
+                            "airline": "EK",
+                            "flightNumber": "358",
+                            "uapi_segment_ref": "82won53R2BKAeVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "77W"
+                            ],
+                            "duration": [
+                                "505"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "ISSOSPL1"
                         }
                     ]
                 }
@@ -206,17 +403,17 @@
         ],
         "bookingComponents": [
             {
-                "totalPrice": "USD1152.40",
-                "basePrice": "USD836.00",
-                "taxes": "USD316.40",
-                "uapi_fare_reference": "82won53R2BKAoJBPAAAAAA=="
+                "totalPrice": "USD2923.00",
+                "basePrice": "USD2447.00",
+                "taxes": "USD476.00",
+                "uapi_fare_reference": "82won53R2BKASXrYCAAAAA=="
             }
         ],
         "passengerFares": {
             "ADT": {
-                "totalPrice": "USD1152.40",
-                "basePrice": "USD836.00",
-                "taxes": "USD316.40"
+                "totalPrice": "USD2923.00",
+                "basePrice": "USD2447.00",
+                "taxes": "USD476.00"
             }
         },
         "passengerCounts": {
@@ -224,93 +421,93 @@
         }
     },
     {
-        "totalPrice": "USD1163.20",
-        "basePrice": "USD836.00",
-        "taxes": "USD327.20",
+        "totalPrice": "USD3917.60",
+        "basePrice": "USD3454.00",
+        "taxes": "USD463.60",
         "directions": [
             [
                 {
                     "from": "LWO",
                     "to": "JKT",
-                    "platingCarrier": "LH",
+                    "platingCarrier": "OS",
                     "segments": [
                         {
                             "from": "LWO",
-                            "to": "MUC",
+                            "to": "VIE",
                             "group": 0,
-                            "departure": "2019-11-15T14:05:00.000+02:00",
-                            "arrival": "2019-11-15T14:50:00.000+01:00",
-                            "airline": "LH",
-                            "flightNumber": "2551",
-                            "uapi_segment_ref": "82won53R2BKAbIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-18T16:00:00.000+02:00",
+                            "arrival": "2019-11-18T16:35:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "382",
+                            "uapi_segment_ref": "82won53R2BKAQVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "CR9"
+                                "DH4"
                             ],
                             "duration": [
-                                "105"
+                                "95"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "J",
                             "baggage": [
                                 {
                                     "units": "piece",
-                                    "amount": 1
+                                    "amount": 2
                                 }
                             ],
-                            "fareBasisCode": "MFFOWUA"
+                            "fareBasisCode": "JFFOWUA"
                         },
                         {
-                            "from": "MUC",
+                            "from": "VIE",
                             "to": "BKK",
                             "group": 0,
-                            "departure": "2019-11-15T18:20:00.000+01:00",
-                            "arrival": "2019-11-16T10:50:00.000+07:00",
-                            "airline": "LH",
-                            "flightNumber": "5446",
-                            "uapi_segment_ref": "82won53R2BKAlIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-18T23:20:00.000+01:00",
+                            "arrival": "2019-11-19T15:20:00.000+07:00",
+                            "airline": "OS",
+                            "flightNumber": "25",
+                            "uapi_segment_ref": "82won53R2BKAgVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "332"
+                                "772"
                             ],
                             "duration": [
-                                "630"
+                                "600"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "J",
                             "baggage": [
                                 {
                                     "units": "piece",
-                                    "amount": 1
+                                    "amount": 2
                                 }
                             ],
-                            "fareBasisCode": "MFFOWUA"
+                            "fareBasisCode": "JFFOWUA"
                         },
                         {
                             "from": "BKK",
                             "to": "CGK",
                             "group": 0,
-                            "departure": "2019-11-16T14:25:00.000+07:00",
-                            "arrival": "2019-11-16T17:55:00.000+07:00",
+                            "departure": "2019-11-20T08:20:00.000+07:00",
+                            "arrival": "2019-11-20T11:55:00.000+07:00",
                             "airline": "TG",
-                            "flightNumber": "435",
-                            "uapi_segment_ref": "82won53R2BKAnIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "flightNumber": "433",
+                            "uapi_segment_ref": "82won53R2BKAiVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
                                 "330"
                             ],
                             "duration": [
-                                "210"
+                                "215"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "C",
                             "baggage": [
                                 {
                                     "units": "piece",
-                                    "amount": 1
+                                    "amount": 2
                                 }
                             ],
-                            "fareBasisCode": "MFFOWUA"
+                            "fareBasisCode": "JFFOWUA"
                         }
                     ]
                 }
@@ -318,17 +515,17 @@
         ],
         "bookingComponents": [
             {
-                "totalPrice": "USD1163.20",
-                "basePrice": "USD836.00",
-                "taxes": "USD327.20",
-                "uapi_fare_reference": "82won53R2BKApJBPAAAAAA=="
+                "totalPrice": "USD3917.60",
+                "basePrice": "USD3454.00",
+                "taxes": "USD463.60",
+                "uapi_fare_reference": "82won53R2BKATXrYCAAAAA=="
             }
         ],
         "passengerFares": {
             "ADT": {
-                "totalPrice": "USD1163.20",
-                "basePrice": "USD836.00",
-                "taxes": "USD327.20"
+                "totalPrice": "USD3917.60",
+                "basePrice": "USD3454.00",
+                "taxes": "USD463.60"
             }
         },
         "passengerCounts": {
@@ -336,67 +533,93 @@
         }
     },
     {
-        "totalPrice": "USD1313.40",
-        "basePrice": "USD1099.00",
-        "taxes": "USD214.40",
+        "totalPrice": "USD11523.20",
+        "basePrice": "USD11245.00",
+        "taxes": "USD278.20",
         "directions": [
             [
                 {
                     "from": "LWO",
                     "to": "JKT",
-                    "platingCarrier": "TK",
+                    "platingCarrier": "EY",
                     "segments": [
                         {
                             "from": "LWO",
-                            "to": "IST",
+                            "to": "MUC",
                             "group": 0,
-                            "departure": "2019-11-15T21:10:00.000+02:00",
-                            "arrival": "2019-11-16T00:25:00.000+03:00",
-                            "airline": "TK",
-                            "flightNumber": "444",
-                            "uapi_segment_ref": "82won53R2BKApIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-18T14:05:00.000+02:00",
+                            "arrival": "2019-11-18T14:50:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2551",
+                            "uapi_segment_ref": "82won53R2BKAkVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "73H"
+                                "CR9"
                             ],
                             "duration": [
-                                "135"
+                                "105"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "J",
                             "baggage": [
                                 {
                                     "units": "kilograms",
-                                    "amount": 20
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MNOW"
+                            "fareBasisCode": "JFF77WW"
                         },
                         {
-                            "from": "IST",
+                            "from": "MUC",
+                            "to": "AUH",
+                            "group": 0,
+                            "departure": "2019-11-18T21:40:00.000+01:00",
+                            "arrival": "2019-11-19T06:40:00.000+04:00",
+                            "airline": "EY",
+                            "flightNumber": "4",
+                            "uapi_segment_ref": "82won53R2BKAmVrYCAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "789"
+                            ],
+                            "duration": [
+                                "360"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "J",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 40
+                                }
+                            ],
+                            "fareBasisCode": "JOW11"
+                        },
+                        {
+                            "from": "AUH",
                             "to": "CGK",
                             "group": 0,
-                            "departure": "2019-11-16T02:20:00.000+03:00",
-                            "arrival": "2019-11-16T18:00:00.000+07:00",
-                            "airline": "TK",
-                            "flightNumber": "56",
-                            "uapi_segment_ref": "82won53R2BKArIBPAAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-11-19T11:15:00.000+04:00",
+                            "arrival": "2019-11-19T22:25:00.000+07:00",
+                            "airline": "EY",
+                            "flightNumber": "472",
+                            "uapi_segment_ref": "82won53R2BKAoVrYCAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
                                 "77W"
                             ],
                             "duration": [
-                                "700"
+                                "490"
                             ],
                             "techStops": [],
-                            "bookingClass": "M",
+                            "bookingClass": "J",
                             "baggage": [
                                 {
                                     "units": "kilograms",
-                                    "amount": 20
+                                    "amount": 40
                                 }
                             ],
-                            "fareBasisCode": "MNOW"
+                            "fareBasisCode": "JOW11"
                         }
                     ]
                 }
@@ -404,17 +627,17 @@
         ],
         "bookingComponents": [
             {
-                "totalPrice": "USD1313.40",
-                "basePrice": "USD1099.00",
-                "taxes": "USD214.40",
-                "uapi_fare_reference": "82won53R2BKAqJBPAAAAAA=="
+                "totalPrice": "USD11523.20",
+                "basePrice": "USD11245.00",
+                "taxes": "USD278.20",
+                "uapi_fare_reference": "82won53R2BKAUXrYCAAAAA=="
             }
         ],
         "passengerFares": {
             "ADT": {
-                "totalPrice": "USD1313.40",
-                "basePrice": "USD1099.00",
-                "taxes": "USD214.40"
+                "totalPrice": "USD11523.20",
+                "basePrice": "USD11245.00",
+                "taxes": "USD278.20"
             }
         },
         "passengerCounts": {

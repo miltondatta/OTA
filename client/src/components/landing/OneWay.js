@@ -57,15 +57,15 @@ class OneWay extends Component {
         };
 
         console.log(searchParams);
-
+        
         axios
             .post(shopApi, searchParams)
             .then(res => {
-                //console.log(res.data);
+                console.log(res.data);
             })
             .catch(err =>
                 console.log("Error: " + err)
-            );
+            );  
     }
 
     handleSelectionChanged(e) {
