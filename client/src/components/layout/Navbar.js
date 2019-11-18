@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 
 // Redux
@@ -6,7 +7,7 @@ import Proptypes from 'prop-types';
 import {connect} from "react-redux";
 import {logoutUser} from "../../actions/authActions";
 
-import {Link} from 'react-router-dom';
+// Image
 import logo from '../../assets/img/logo.png';
 
 function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
@@ -26,27 +27,29 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
     );
 
     return (
-        <Navbar collapseOnSelect expand="lg" variant="dark">
-            <Link className="navbar-brand p-0" to="/">
-                <img src={logo} alt="Travel Agency Logo" className="logo"/>
-            </Link>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ml-auto">
-                    {!isAuthenticated && guestLinks}
-                    {isAuthenticated && authLinks}
-                    {isAuthenticated &&
-                    <NavDropdown title="Profile" id="collasible-nav-dropdown">
-                        <Link to={'/profile'} className={'dropdown-item'}>Profile</Link>
-                        <Link to={'#'} className={'dropdown-item'} onClick={e => {
-                            e.preventDefault();
-                            logoutUser();
-                        }}>Logout</Link>
-                    </NavDropdown>
-                    }
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+        <Fragment>
+            <Navbar collapseOnSelect expand="lg" variant="dark">
+                <Link className="navbar-brand p-0" to="/">
+                    <img src={logo} alt="Travel Agency Logo" className="logo"/>
+                </Link>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                        {!isAuthenticated && guestLinks}
+                        {isAuthenticated && authLinks}
+                        {isAuthenticated &&
+                        <NavDropdown title="Profile" id="collasible-nav-dropdown">
+                            <Link to={'/profile'} className={'dropdown-item'}>Profile</Link>
+                            <Link to={'#'} className={'dropdown-item'} onClick={e => {
+                                e.preventDefault();
+                                logoutUser();
+                            }}>Logout</Link>
+                        </NavDropdown>
+                        }
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </Fragment>
     );
 }
 

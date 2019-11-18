@@ -19,6 +19,7 @@ import Profile from "./components/profile/Profile";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-notifications/lib/notifications.css';
 
 
 // Check for token

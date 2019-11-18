@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link, withRouter} from 'react-router-dom';
-import {Alert, Button, Card, Form} from "react-bootstrap";
+import {Button, Card, Form} from "react-bootstrap";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 // Css
 import '../../assets/css/register.css';
@@ -18,6 +19,7 @@ class Register extends Component {
             email: '',
             mobile: '',
             password: '',
+
             password2: '',
             errors: {},
             pass_match: true
@@ -33,9 +35,22 @@ class Register extends Component {
         }
     }
 
+    createNotification = (type, errors) => {
+        if(errors.msg) {
+            switch (type) {
+                case 'error':
+                    NotificationManager.error(errors.msg, 'Registration Error!', 3000);
+                    break;
+                default:
+                    return;
+            }
+        }
+    };
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({errors: nextProps.errors});
+            this.createNotification('error', nextProps.errors);
         }
     } 
 
@@ -77,15 +92,6 @@ class Register extends Component {
             <div className="register-area">
                 <div className="register-overlay">
                     <div className="container register-area-container">
-                        {this.state.errors.msg &&
-                        <div className="row">
-                            <div className="offset-md-2 col-md-8">
-                                <Alert variant={'danger'}>
-                                    {this.state.errors.msg}
-                                </Alert>
-                            </div>
-                        </div>
-                        }
                         <div className="row">
                             <div className="col-md-8 offset-md-2">
                                 <Card>
@@ -116,6 +122,7 @@ class Register extends Component {
                                                     <Form.Label>Mobile Number</Form.Label>
                                                     <Form.Control type="text" name={'mobile'} value={this.state.mobile}
                                                                   onChange={this.onChange}
+                                                                  maxLength="11"
                                                                   placeholder="Enter Mobile Number"
                                                                   required/>
                                                 </Form.Group>
@@ -156,6 +163,7 @@ class Register extends Component {
                         </div>
                     </div>
                 </div>
+                <NotificationContainer/>
             </div>
         )
     }

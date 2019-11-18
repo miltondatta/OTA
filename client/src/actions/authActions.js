@@ -9,6 +9,7 @@ export const registerUser = (userData, history) => dispatch => {
   axios
     .post('/api/users/register', userData)
     .then(res => {
+      localStorage.setItem('registration_success', "Registration Successfull!");
       history.push('/login');
     })
     .catch(err =>
@@ -27,6 +28,7 @@ export const loginUser = userData => dispatch => {
     .then(res => {
         const { token } = res.data;
         localStorage.setItem('jwtToken', token);
+        localStorage.setItem('login_success', "Login Successfull!");
         setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(setCurrentUser(decoded));

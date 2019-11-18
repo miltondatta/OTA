@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Tab, Tabs} from "react-bootstrap";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 // Css
 import '../../assets/css/landing.css';
@@ -17,6 +18,23 @@ class Landing extends Component {
             departure: new Date(),
             return: new Date()
         };
+    }
+
+    createNotification = (type, msg) => {
+        switch (type) {
+            case 'success':
+                NotificationManager.success(msg, 'Login Success', 3000);
+                break;
+            default:
+                return;
+        }
+    };
+
+    componentDidMount() {
+        if (localStorage.login_success) {
+            this.createNotification('success', localStorage.login_success);
+            localStorage.removeItem('login_success');
+        }
     }
 
     render() {
@@ -42,6 +60,7 @@ class Landing extends Component {
                         </div>
                     </div>
                 </div>
+                <NotificationContainer/>
             </Fragment>
         )
     }
