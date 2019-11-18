@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Alert, Button, Card, Form} from "react-bootstrap";
+import {Button, Card, Form} from "react-bootstrap";
 import {Link} from 'react-router-dom';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 // Redux
 import {loginUser} from '../../actions/authActions';
@@ -34,17 +35,31 @@ class Login extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
             this.props.history.push('/');
+        } else {
+            if (nextProps.errors) {
+                this.setState({errors: nextProps.errors});
+                this.createNotification('error', nextProps.errors);
+            }
         }
 
-        if (nextProps.errors) {
-            this.setState({errors: nextProps.errors});
-        }
     }
 
 
     onChange(e) {
         this.setState({[e.target.name]: e.target.value});
     }
+
+    createNotification = (type, errors) => {
+        if(errors.msg) {
+            switch (type) {
+                case 'error':
+                    NotificationManager.error(errors.msg, 'Login Error!', 3000);
+                    break;
+                default:
+                    return;
+            }
+        }
+    };
 
     onSubmit(e) {
         e.preventDefault();
@@ -63,15 +78,6 @@ class Login extends Component {
             <div className="login-area">
                 <div className="login-overlay">
                     <div className="container login-area-container">
-                        {this.state.errors.msg &&
-                        <div className="row">
-                            <div className="offset-md-2 col-md-8">
-                                <Alert variant={'danger'}>
-                                    {this.state.errors.msg}
-                                </Alert>
-                            </div>
-                        </div>
-                        }
                         <div className="row">
                             <div className="col-md-8 offset-md-2">
                                 <Card>
@@ -112,6 +118,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
+                <NotificationContainer/>
             </div>
         )
     }
