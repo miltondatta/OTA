@@ -8,6 +8,24 @@ console.log(travelport);
 
 exports.shop = async (req, res) => {
 
+    fs.readFile("api_output/travelport/shop.txt", {encoding: 'utf-8'}, function(err, apiData){
+        if (!err) {
+            let parseData = JSON.parse(apiData);
+            console.log(parseData[0].directions);
+          
+
+        } else {
+            console.log(err);
+        }
+    });
+
+
+    let response = {};
+    response['status']  = true;
+    response['message'] = 'Successfully process your request!';
+    response['data']    = [];
+    return res.status(200).json(response);
+
     const { from, to, departureDate, ADT, CNN, INF, cabins } = req.body; 
 
     //For travelport
@@ -30,17 +48,19 @@ exports.shop = async (req, res) => {
         },
     };  
 
-
+    
+   // let response = {};
     travelport.shop(params)
     .then(
-        res => fs.writeFile("api_output/travelport/shop.txt", JSON.stringify(res, null, 4), (err) => {
-
-            
-            
-
-            console.log("Successfully Written to File.");
-        }),
-        err => console.log(err)
+        apiRes => {
+            response['status']  = true;
+            response['message'] = 'Successfully process your request!';
+            response['data']    = [];
+            return res.status(200).json(response);
+        },
+        apiErr => {
+            return res.status(200).json({ 'status': false, 'message': 'There is a problem in your request, please try again later!' });
+        }
     );
-    return res.status(200).json(req.body);
+    
 };

@@ -3,9 +3,13 @@ var fs     = require("fs");
 
 const settings   = {
     auth      : {
-        username    : 'Universal API/uAPI3568924042-3768c943',
+       /* username    : 'Universal API/uAPI3568924042-3768c943',
         password    : 'dC2McA5EJTqT2Hz8WagJ33ApP',
         targetBranch: 'P7009927',
+        region      : 'apac' */
+        username    : 'Universal API/uAPI8931078193-41fe5ac8',
+        password    : 'fHCStEyfMyZjmE8nH4rcZN246',
+        targetBranch: 'P7005006',
         region      : 'apac'
     },
     debug     : 3,
