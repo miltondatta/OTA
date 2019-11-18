@@ -9,6 +9,7 @@ export const registerUser = (userData, history) => dispatch => {
   axios
     .post('/api/users/register', userData)
     .then(res => {
+      localStorage.setItem('registration_success', "Registration Successfull!");
       history.push('/login');
     })
     .catch(err =>

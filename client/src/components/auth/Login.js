@@ -29,6 +29,11 @@ class Login extends Component {
         if (this.props.auth.isAuthenticated) {
             this.props.history.push('/');
         }
+
+        if (localStorage.registration_success) {
+            NotificationManager.success(localStorage.registration_success, 'Registration Successfull!', 3000);
+            localStorage.removeItem('registration_success');
+        }
     }
 
 
@@ -136,5 +141,5 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-const mapDispatchTopProps = {loginUser};
-export default connect(mapStateToProps, mapDispatchTopProps)(Login);
+const mapDispatchToProps = {loginUser};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
