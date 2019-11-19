@@ -1,18 +1,56 @@
 //Include All Air Service API Here
 //We Will Define Parameter Here for Request Based on API Name
 //Only Call Particular Function Like Shop from here, will create more controller like Book, Ticket Sepearately 
+
 var fs           = require("fs");
 const travelport = require('../travelport/travelportController');
 console.log("travelport");
 console.log(travelport);
 
 exports.shop = async (req, res) => {
-
+    let shopData = [];
     fs.readFile("api_output/travelport/shop.txt", {encoding: 'utf-8'}, function(err, apiData){
         if (!err) {
-            let parseData = JSON.parse(apiData);
-            console.log(parseData[0].directions);
-          
+            let parseData  = JSON.parse(apiData);
+            for(let i = 0; i < parseData.length; i++){
+                let directions = parseData[i].directions;
+                directions.forEach(flight => {
+                    for(let j = 0; j < flight.length; j++) {                
+                        let flightData = {};
+                        flightData['source']            = 1;
+                        flightData['totalPrice']        = parseData[i].totalPrice;
+                        flightData['basePrice']         = parseData[i].basePrice;
+                        flightData['taxes']             = parseData[i].taxes;
+                        flightData['from']              = flight[j].from;
+                        flightData['to']                = flight[j].to;
+                        flightData['platingCarrier']    = flight[j].platingCarrier;
+                        let dataSegments                = flight[j].segments; 
+                        let segments     =  [];
+                        for(let k = 0; k < dataSegments.length; k++) {
+                            let segment = {};
+                            segment['from']         = dataSegments[k].from;
+                            segment['to']           = dataSegments[k].to;   
+                            segment['departure']    = dataSegments[k].departure;   
+                            segment['arrival']      = dataSegments[k].arrival;   
+                            segment['airline']      = dataSegments[k].airline;   
+                            segment['flightNumber'] = dataSegments[k].flightNumber;   
+                            segment['duration']     = dataSegments[k].duration[0];  
+                            segment['bookingClass'] = dataSegments[k].bookingClass;   
+                            segment['baggage']      = dataSegments[k].baggage[0].amount + ' ' + dataSegments[k].baggage[0].units;   
+                            segments.push(segment);
+                        }
+                        flightData['segments']      =   segments;
+                        shopData.push(flightData);
+                    }              
+                    
+                });
+            } 
+
+            let response = {};
+            response['status'] = true;
+            response['message'] = 'Successfully process your request!';
+            response['data'] = shopData;
+            return res.status(200).json(response);
 
         } else {
             console.log(err);
@@ -20,11 +58,8 @@ exports.shop = async (req, res) => {
     });
 
 
-    let response = {};
-    response['status']  = true;
-    response['message'] = 'Successfully process your request!';
-    response['data']    = [];
-    return res.status(200).json(response);
+    return;
+
 
     const { from, to, departureDate, ADT, CNN, INF, cabins } = req.body; 
 
