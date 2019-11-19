@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {CONTACT_SAVE} from "./types";
+import {CONTACT_SAVE, GET_ERRORS} from "./types";
 
 // Save Contact User Data
 export const contactUserData = (newContact) => async dispatch => {
@@ -18,8 +18,8 @@ export const contactUserData = (newContact) => async dispatch => {
         });
     } catch (err) {
         dispatch({
-            type: CONTACT_SAVE,
-            payload: {msg: err.response.statusText, status: err.response.status}
+            type: GET_ERRORS,
+            payload: err.response.data
         });
     }
 };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ERRORS, PROFILE_UPDATE, SET_CURRENT_USER} from "./types";
+import {CONTACT_SAVE, GET_ERRORS, PROFILE_UPDATE, SET_CURRENT_USER} from "./types";
 import jwt_decode from 'jwt-decode';
 import setAuthToken from "../utils/setAuthToken";
 
@@ -31,7 +31,38 @@ export const updateProfile = (updateProfileData) => async dispatch => {
     } catch (err) {
         dispatch({
             type: GET_ERRORS,
-            payload: {msg: err.response.statusText, status: err.response.status}
+            payload: err.response.data
         });
     }
+};
+
+// Update Password
+export const updatePassword = (updatePasswordData) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const res = await axios.post('api/users/password/update', JSON.stringify(updatePasswordData), config);
+        dispatch({
+            type: PROFILE_UPDATE,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        });
+    }
+};
+
+
+// Empty Profile Update Message
+export const emptyMessage = () => dispatch => {
+    dispatch({
+        type: PROFILE_UPDATE,
+        payload: {}
+    })
 };

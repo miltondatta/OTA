@@ -26,6 +26,13 @@ router.post('/register', users_controller.store);
 router.post('/profile/update', users_controller.updateProfile);
 
 /*
+    @route          GET api/users/profile/update
+    @desc           Login users route
+    @access         Public
+ */
+router.post('/password/update', users_controller.updatePassword);
+
+/*
     @route          POST api/users/login/
     @desc           Login users route
     @access         Public

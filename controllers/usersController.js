@@ -77,6 +77,33 @@ exports.updateProfile = async (req, res) => {
     }
 };
 
+exports.updatePassword = async (req, res) => {
+    try {
+        const {email, password, newPassword} = req.body;
+
+        const status = await user.findOne({where: {email}});
+        if (!status) res.status(400).json({msg: 'User not matched!'});
+
+        const isMatch = await bcrypt.compare(password, status.password);
+        if (!isMatch) res.status(400).json({msg: 'Current Password not matched!'});
+
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(newPassword, salt);
+
+        const updated_data = {
+            password: hashPassword
+        };
+
+        const update = await user.update(updated_data, {where: {email}});
+        if (!update) res.status(400).json({msg: 'Please try again!'});
+
+        return res.status(200).json({msg: "Password Updated Successfully!"});
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({msg: "Server Error!"});
+    }
+};
+
 exports.login = async (req, res) => {
     const {email, password} = req.body;
     user.findOne({where: {email}}).then(user => {
