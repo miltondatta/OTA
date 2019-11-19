@@ -84,6 +84,7 @@ class Contact extends Component {
                                                     <Form.Label>Phone</Form.Label>
                                                     <Form.Control type="text" name="phone" value={this.state.phone}
                                                                   onChange={this.onChange}
+                                                                  maxLength="11"
                                                                   placeholder="Enter Phone Number" required/>
                                                 </Form.Group>
                                             </Form.Row>
