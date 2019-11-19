@@ -1,26 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import {Tabs, Tab, Form, Button} from "react-bootstrap";
 import {Redirect} from 'react-router-dom';
-import axios from 'axios';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 // Redux
 import Proptypes from 'prop-types';
 import {connect} from "react-redux";
+import {updateProfile} from "../../actions/profileActions";
 
 // Css
 import '../../assets/css/profile.css'
 
-function Profile({auth: {isAuthenticated, user}}) {
+function Profile({auth: {isAuthenticated, user}, updateProfile, profile}) {
     const [formData, setFormData] = useState({
-        name  : '',
-        email : '',
+        name: '',
+        email: '',
         mobile: ''
     });
 
+    if (profile.msg.msg) NotificationManager.success(profile.msg.msg, 'Profile Update!', 5000);
+
     useEffect(() => {
         setFormData({
-            name  : !user.name ? '' : user.name,
-            email : !user.email ? '' : user.email,
+            name: !user.name ? '' : user.name,
+            email: !user.email ? '' : user.email,
             mobile: !user.mobile ? '' : user.mobile
         });
     }, [user.name, user.email, user.mobile]);
@@ -33,19 +36,13 @@ function Profile({auth: {isAuthenticated, user}}) {
 
     const onSubmit = e => {
         e.preventDefault();
-        const updatedProfile = {
-            name  : formData.name,
-            email : formData.email,
+        const data = {
+            name: formData.name,
+            email: formData.email,
             mobile: formData.mobile,
         };
-        axios
-            .post('/api/users/profile/update', updatedProfile)
-            .then(res => {
 
-            })
-            .catch(
-
-            );
+        updateProfile(data);
     };
 
     return (
@@ -111,17 +108,22 @@ function Profile({auth: {isAuthenticated, user}}) {
                         </Tabs>
                     </div>
                 </div>
+                <NotificationContainer/>
             </div>
             : <Redirect to={'/'}/>
     );
 }
 
 Profile.propTypes = {
-    auth: Proptypes.object.isRequired
+    auth: Proptypes.object.isRequired,
+    profile: Proptypes.object.isRequired,
+    updateProfile: Proptypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    profile: state.profile
 });
 
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps = {updateProfile};
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

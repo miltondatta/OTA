@@ -46,7 +46,7 @@ class Contact extends Component {
     componentWillReceiveProps(nextProps, nextContext) {
         console.log(nextProps.contact.msgs);
         if (nextProps.contact.msgs.msg) {
-            NotificationManager.success(nextProps.contact.msgs.msg, 'Contact Message!', 3000);
+            NotificationManager.success(nextProps.contact.msgs.msg, 'Contact Message!', 10000);
             this.setState({
                 name: '',
                 phone: '',

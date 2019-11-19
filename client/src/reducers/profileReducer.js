@@ -1,16 +1,16 @@
-import {CONTACT_SAVE} from "../actions/types";
+import {PROFILE_UPDATE} from "../actions/types";
 
 const initialState = {
-    msgs: {}
+    msg: {}
 };
 
 export default (state = initialState, action) => {
     const {type, payload} = action;
     switch (type) {
-        case CONTACT_SAVE:
+        case PROFILE_UPDATE:
             return {
                 ...state,
-                msgs: payload
+                msg: payload
             };
         default:
             return state;

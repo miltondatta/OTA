@@ -1,7 +1,7 @@
 const {sequelize, Sequelize} = require('../models/index');
-const user                   = require('../models').user;
-const bcrypt                 = require('bcryptjs');
-const jwt                    = require('jsonwebtoken');
+const user = require('../models').user;
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 exports.store = async (req, res) => {
     const {name, email, password, mobile} = req.body;
@@ -39,22 +39,42 @@ exports.store = async (req, res) => {
 };
 
 exports.updateProfile = async (req, res) => {
-    const {name, email, mobile} = req.body;
+    try {
+        const {name, email, mobile} = req.body;
+        const updated_data = {
+            name: name,
+            mobile: mobile
+        };
 
-    user.findOne({where: {email}}).then(results => {
-        if (results) {
-            user.update(
-                {name: name,mobile: mobile},
-                {where: {email: email}}
-            );
-            const updated_user = user.findOne({where: {email}});
-            return res.status(200).json({user:updated_user});
-        } else {
-            return res.status(400).json({msg: 'User not matched!'});
-        }
-    });
+        const status = await user.findOne({where: {email}});
+        if (!status) res.status(400).json({msg: 'User not matched!'});
 
-    console.log(email);
+        const update = await user.update(updated_data, {where: {email}});
+        if (!update) res.status(400).json({msg: 'Please try again!'});
+
+        const updated_user = await user.findOne({where: {email}});
+        const payload = {
+            id: updated_user.id,
+            name: updated_user.name,
+            email: updated_user.email,
+            mobile: updated_user.mobile
+        };
+
+        jwt.sign(payload,
+            'secret',
+            {expiresIn: 3600},
+            (err, token) => {
+                if (err) throw err;
+                return res.status(200).json({
+                    success: true,
+                    token: 'ptm' + token
+                });
+            }
+        );
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({msg: "Server Error!"});
+    }
 };
 
 exports.login = async (req, res) => {
@@ -74,7 +94,7 @@ exports.login = async (req, res) => {
                     (err, token) => {
                         res.json({
                             success: true,
-                            token  : 'ptm' + token
+                            token: 'ptm' + token
                         });
                     });
             } else {
