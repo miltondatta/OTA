@@ -33,7 +33,7 @@ class FlightList extends Component {
                         {Object.keys(this.props.shop.shopData).length > 0 ?
                             <TripList shopData={this.props.shop.shopData}/>
                             : <Alert variant={'warning'} style={{'height': 50, marginLeft: 30}}>
-                                No Data found!
+                                No Flight Found!
                             </Alert>
                         }
                     </div>

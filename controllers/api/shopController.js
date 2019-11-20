@@ -3,7 +3,9 @@
 //Only Call Particular Function Like Shop from here, will create more controller like Book, Ticket Sepearately 
 
 var fs           = require("fs");
+var moment       = require("moment");
 const travelport = require('../travelport/travelportController');
+
 console.log("travelport");
 console.log(travelport);
 
@@ -30,8 +32,15 @@ exports.shop = async (req, res) => {
                         flightData['to_city']           = flight[j].to;
                         flightData['platingCarrier']    = flight[j].platingCarrier;
                         let dataSegments                = flight[j].segments; 
+                        let segmentLength               = dataSegments.length;
+                        flightData['first_departure']   = dataSegments[0].departure;
+                        flightData['last_arrival']      = dataSegments[segmentLength - 1].arrival;
+                        let start_date                  = moment(flightData['first_departure'], 'YYYY-MM-DD HH:mm:ss');
+                        let end_date                    = moment(flightData['last_arrival'], 'YYYY-MM-DD HH:mm:ss');
+                        flightData['total_duration']    = moment.duration(end_date.diff(start_date)).asHours();
+
                         let segments     =  [];
-                        for(let k = 0; k < dataSegments.length; k++) {
+                        for(let k = 0; k < segmentLength; k++) {
                             let segment = {};
                             segment['from']         = dataSegments[k].from;
                             segment['to']           = dataSegments[k].to;   
