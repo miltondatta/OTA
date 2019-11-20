@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {SHOP_API, GET_ERRORS} from "./types";
-import { shopApi } from '../utils/Urls';
+import {shopApi} from '../utils/Urls';
 
-// Save Contact User Data
+// Show shop api search Data
 export const shopData = (userInput, history) => async dispatch => {
     try {
         const config = {
@@ -17,7 +17,10 @@ export const shopData = (userInput, history) => async dispatch => {
             type: SHOP_API,
             payload: res.data
         });
-        if(res.data) history.push('/flight-list');
+        if (res.data) {
+            localStorage.setItem('user_flight_search', JSON.stringify(userInput));
+            history.push('/flight-list')
+        }
     } catch (err) {
         dispatch({
             type: GET_ERRORS,

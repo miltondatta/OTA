@@ -4,23 +4,23 @@ import {withRouter} from 'react-router-dom';
 
 // Image
 import BS from '../../assets/img/BS.gif';
-import VQ from '../../assets/img/VQ.gif'
 
 // Font Awesome
 import {faPlaneDeparture, faPlaneArrival, faClock} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const SingleFlightList = ({history}) => {
+const SingleFlightList = ({history, shop, index}) => {
+
     return (
         <Fragment>
-            <div className="single-flight-list">
+            <div className="single-flight-list" style={index > 0 ? {'marginTop': 8} : {}}>
                 <div className="row">
                     <div className="col-md-2">
                         <img src={BS} alt=""/>
                     </div>
                     <div className="col-md-10">
                         <div className="d-flex">
-                            <span className="single-flight-name">Dhaka to Chittagong</span>
+                            <span className="single-flight-name">{shop.from_city} to {shop.to_city}</span>
                             <Badge className="ml-2" variant="info">NON-STOP</Badge>
                             <Badge className="ml-1" variant="info">REFUNDABLE</Badge>
                         </div>
@@ -41,7 +41,7 @@ const SingleFlightList = ({history}) => {
                                 <span className="d-block single-flight-departure-time">55M</span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
-                                <span className="single-flight-amount">BDT 5,015</span>
+                                <span className="single-flight-amount">{shop.totalPrice}</span>
                                 <Button variant="warning" onClick={() => history.push('/flight-payment')}>Select</Button>
                             </div>
                         </div>

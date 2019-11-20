@@ -80,6 +80,23 @@ class OneWay extends Component {
         });
     }
 
+    componentDidMount() {
+        if (this.props.match.path === "/flight-list") {
+            if (localStorage.getItem('user_flight_search')) {
+                const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
+                this.setState({
+                    /*departure: user_flight_search.departureDate,
+                    origin: user_flight_search.from,
+                    destination: user_flight_search.to,*/
+                    adult: user_flight_search.ADT,
+                    child: user_flight_search.CNN,
+                    infant: user_flight_search.INF,
+                    class: user_flight_search.cabins
+                });
+            }
+        }
+    }
+
 
     render() {
         return (

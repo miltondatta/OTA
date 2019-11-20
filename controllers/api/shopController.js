@@ -55,6 +55,7 @@ exports.shop = async (req, res) => {
             response['status']      = true;
             response['message']     = 'Successfully process your request!';
             response['data']        = shopData;
+
             return res.status(200).json(response);
         } else {
             console.log(err);
