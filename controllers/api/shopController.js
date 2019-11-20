@@ -23,6 +23,8 @@ exports.shop = async (req, res) => {
                         flightData['taxes']             = parseData[i].taxes;
                         flightData['from']              = flight[j].from;
                         flightData['to']                = flight[j].to;
+                        flightData['from_city']         = flight[j].from;
+                        flightData['to_city']           = flight[j].to;
                         flightData['platingCarrier']    = flight[j].platingCarrier;
                         let dataSegments                = flight[j].segments; 
                         let segments     =  [];
