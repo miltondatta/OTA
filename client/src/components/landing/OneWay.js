@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker2';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import { shopApi } from '../../utils/Urls';
+import {withRouter} from 'react-router-dom';
+
+// Redux
+import {connect} from 'react-redux';
+import { shopData } from '../../actions/shopActions';
 
 
 // Component
@@ -56,8 +60,10 @@ class OneWay extends Component {
             cabins: this.state.class 
         };
 
+        this.props.shopData(searchParams, this.props.history);
+
+        /*
         console.log(searchParams);
-        
         axios
             .post(shopApi, searchParams)
             .then(res => {
@@ -65,7 +71,7 @@ class OneWay extends Component {
             })
             .catch(err =>
                 console.log("Error: " + err)
-            );  
+            );    */
     }
 
     handleSelectionChanged(e) {
@@ -158,4 +164,17 @@ class OneWay extends Component {
 
 }
 
-export default OneWay;
+
+
+OneWay.propTypes = {
+    shopData: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors,
+    shop: state.shop
+});
+
+const mapDispatchToProps = {shopData};
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(OneWay));

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {CONTACT_SAVE, GET_ERRORS, PROFILE_UPDATE, SET_CURRENT_USER} from "./types";
+import {GET_ERRORS, PROFILE_UPDATE, SET_CURRENT_USER} from "./types";
 import jwt_decode from 'jwt-decode';
 import setAuthToken from "../utils/setAuthToken";
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 // Css
 import '../../assets/css/flight-list.css';
 
