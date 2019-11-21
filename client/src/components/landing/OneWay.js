@@ -51,6 +51,8 @@ class OneWay extends Component {
 
         //let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
         let searchParams = {
+            origin: org,
+            destination: des,
             from: org.split(",")[0],
             to: des.split(",")[0],
             departureDate: moment(this.state.departure).format('YYYY-MM-DD'),
@@ -58,7 +60,7 @@ class OneWay extends Component {
             CNN: this.state.child,
             INF: this.state.infant,
             cabins: this.state.class 
-        };
+        };  
 
         this.props.shopData(searchParams, this.props.history);
 
@@ -81,20 +83,18 @@ class OneWay extends Component {
     }
 
     componentDidMount() {
-        if (this.props.match.path === "/flight-list") {
             if (localStorage.getItem('user_flight_search')) {
                 const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
                 this.setState({
-                    /*departure: user_flight_search.departureDate,
-                    origin: user_flight_search.from,
-                    destination: user_flight_search.to,*/
+                    //departure: user_flight_search.origin,
+                    origin: user_flight_search.origin,
+                    destination: user_flight_search.destination,
                     adult: user_flight_search.ADT,
                     child: user_flight_search.CNN,
                     infant: user_flight_search.INF,
                     class: user_flight_search.cabins
                 });
             }
-        }
     }
 
 
@@ -104,13 +104,15 @@ class OneWay extends Component {
                 <div className="row">
                     <div className="col-xs-12 col-sm-6 col-lg-4">
                         <label className={'d-block mb-1'}><b>Flying from</b></label>
-                        <AirAutocomplete
+                        <AirAutocomplete 
+                            storage_value={"origin"}
                             handlerFromParant={this.handleOriginData}/>
                     </div>
 
                     <div className="col-xs-12 col-sm-6 col-lg-4">
                         <label className={'d-block mb-1'}><b>Flying to</b></label>
                         <AirAutocomplete
+                            storage_value={"destination"}
                             handlerFromParant={this.handleDestinationData}
                         />
                     </div>
