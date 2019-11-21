@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import {Badge, Button} from "react-bootstrap";
 import {withRouter} from 'react-router-dom';
+import moment from "moment";
 
 // Image
 import BS from '../../assets/img/BS.gif';
@@ -8,6 +9,7 @@ import BS from '../../assets/img/BS.gif';
 // Font Awesome
 import {faPlaneDeparture, faPlaneArrival, faClock} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Moment from "react-moment";
 
 const SingleFlightList = ({history, shop, index}) => {
 
@@ -28,12 +30,12 @@ const SingleFlightList = ({history, shop, index}) => {
                             <div className="col-md-3 col-sm-6 col-6">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faPlaneDeparture}/>
                                 <span className="single-flight-departure-text">Take Off</span>
-                                <span className="d-block single-flight-departure-time">FRI, 25 OCT, 2019, 7:00</span>
+                                <span className="d-block single-flight-departure-time"><Moment parse="YYYY-MM-DD HH:mm">{shop.first_departure}</Moment></span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faPlaneArrival}/>
                                 <span className="single-flight-departure-text">Landing</span>
-                                <span className="d-block single-flight-departure-time">FRI, 25 OCT, 2019, 7:55</span>
+                                <span className="d-block single-flight-departure-time"><Moment parse="YYYY-MM-DD HH:mm">{shop.last_arrival}</Moment></span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faClock}/>

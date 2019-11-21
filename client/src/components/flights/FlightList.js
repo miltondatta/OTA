@@ -32,7 +32,7 @@ class FlightList extends Component {
                         <TripFilter shopData={this.props.shop.shopData}/>
                         {Object.keys(this.props.shop.shopData).length > 0 ?
                             <TripList shopData={this.props.shop.shopData}/>
-                            : <Alert variant={'warning'} style={{'height': 50, marginLeft: 30}}>
+                            : <Alert className="mt-2 mt-md-0" variant={'warning'} style={{'height': 50, marginLeft: 30}}>
                                 No Flight Found!
                             </Alert>
                         }
