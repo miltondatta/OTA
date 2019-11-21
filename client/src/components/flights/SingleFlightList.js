@@ -40,7 +40,7 @@ const SingleFlightList = ({history, shop, index}) => {
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faClock}/>
                                 <span className="single-flight-departure-text">Total Time</span>
-    <span className="d-block single-flight-departure-time">{shop.total_duration}</span>
+    <span className="d-block single-flight-departure-time">{ shop.total_duration }</span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
                                 <span className="single-flight-amount">{shop.totalPrice}</span>
