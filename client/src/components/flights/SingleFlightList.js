@@ -30,12 +30,12 @@ const SingleFlightList = ({history, shop, index}) => {
                             <div className="col-md-3 col-sm-6 col-6">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faPlaneDeparture}/>
                                 <span className="single-flight-departure-text">Take Off</span>
-                                <span className="d-block single-flight-departure-time"><Moment parse="YYYY-MM-DD HH:mm">{shop.first_departure}</Moment></span>
+                                <span className="d-block single-flight-departure-time"><Moment format='MMM Do YYYY, h:mm a'>{shop.first_departure}</Moment></span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faPlaneArrival}/>
                                 <span className="single-flight-departure-text">Landing</span>
-                                <span className="d-block single-flight-departure-time"><Moment parse="YYYY-MM-DD HH:mm">{shop.last_arrival}</Moment></span>
+                                <span className="d-block single-flight-departure-time"><Moment format='MMM Do YYYY, h:mm a'>{shop.first_departure}</Moment></span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faClock}/>
