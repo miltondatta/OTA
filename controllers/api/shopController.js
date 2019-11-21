@@ -35,9 +35,19 @@ exports.shop = async (req, res) => {
                         let segmentLength               = dataSegments.length;
                         flightData['first_departure']   = dataSegments[0].departure;
                         flightData['last_arrival']      = dataSegments[segmentLength - 1].arrival;
-                        let start_date                  = moment(flightData['first_departure'], 'YYYY-MM-DD HH:mm:ss');
-                        let end_date                    = moment(flightData['last_arrival'], 'YYYY-MM-DD HH:mm:ss');
-                        flightData['total_duration']    = moment.duration(end_date.diff(start_date)).asHours();
+                        let start_date                  = moment(dataSegments[0].departure, 'YYYY-MM-DD HH:mm:ss');
+                        let end_date                    = moment(dataSegments[segmentLength - 1].arrival, 'YYYY-MM-DD HH:mm:ss');
+                        let total_minutes               = moment.duration(end_date.diff(start_date)).minutes();
+                        let total_duration              = '';
+                        if(total_minutes >= 60) {
+                            total_duration = parseInt(total_minutes / 60) + ' Hrs ';
+                            if(total_minutes > 60) {
+                                total_duration = total_duration + parseInt(total_minutes % 60) + ' Min'
+                            }
+                        } else {
+                            total_duration = parseInt(total_minutes) + ' Min';
+                        }
+                        flightData['total_duration']    = total_duration;
 
                         let segments     =  [];
                         for(let k = 0; k < segmentLength; k++) {
