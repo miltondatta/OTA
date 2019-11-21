@@ -6,8 +6,8 @@ var fs           = require("fs");
 var moment       = require("moment");
 const travelport = require('../travelport/travelportController');
 
-console.log("travelport");
-console.log(travelport);
+//console.log("travelport");
+//console.log(travelport);
 
 exports.shop = async (req, res) => {
     
