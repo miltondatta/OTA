@@ -23,7 +23,7 @@ const SingleFlightList = ({history, shop, index}) => {
                         <div className="d-flex">
                             <span className="single-flight-name">{shop.from_city} to {shop.to_city}</span>
                             <Badge className="ml-2" variant="info">{shop.stoppage}</Badge>
-                            <Badge className="ml-1" variant="info">REFUNDABLE</Badge>
+                           
                         </div>
                         <div className="row pt-2">
                             <div className="col-md-3 col-sm-6 col-6">
