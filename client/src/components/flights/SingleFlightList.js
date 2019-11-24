@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react'
 import {Badge, Button} from "react-bootstrap";
 import {withRouter} from 'react-router-dom';
-import moment from "moment";
 
 // Image
 import BS from '../../assets/img/BS.gif';

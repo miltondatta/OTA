@@ -86,7 +86,7 @@ class OneWay extends Component {
             if (localStorage.getItem('user_flight_search')) {
                 const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
                 this.setState({
-                    //departure: user_flight_search.origin,
+                    departure: moment(user_flight_search.departureDate),
                     origin: user_flight_search.origin,
                     destination: user_flight_search.destination,
                     adult: user_flight_search.ADT,
