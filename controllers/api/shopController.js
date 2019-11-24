@@ -35,18 +35,13 @@ exports.shop = async (req, res) => {
                         let segmentLength               = dataSegments.length;
                         flightData['first_departure']   = dataSegments[0].departure;
                         flightData['last_arrival']      = dataSegments[segmentLength - 1].arrival;
-                        let start_date                  = moment(dataSegments[0].departure, 'YYYY-MM-DD HH:mm:ss');
-                        let end_date                    = moment(dataSegments[segmentLength - 1].arrival, 'YYYY-MM-DD HH:mm:ss');
-                        let total_minutes               = moment.duration(end_date.diff(start_date)).minutes();
+                        let start_date                  = moment(flightData['first_departure']);
+                        let end_date                    = moment(flightData['last_arrival']);
+                        let minutes                     = parseInt(moment.duration(end_date.diff(start_date)).asMinutes());
+                        
                         let total_duration              = '';
-                        if(total_minutes >= 60) {
-                            total_duration = parseInt(total_minutes / 60) + ' Hrs ';
-                            if(total_minutes > 60) {
-                                total_duration = total_duration + parseInt(total_minutes % 60) + ' Min'
-                            }
-                        } else {
-                            total_duration = parseInt(total_minutes) + ' Min';
-                        }
+                            total_duration              += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
+                            total_duration              += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';
                         flightData['total_duration']    = total_duration;
 
                         let segments     =  [];
@@ -64,6 +59,7 @@ exports.shop = async (req, res) => {
                             segments.push(segment);
                         }
                         flightData['segments']      =   segments;
+                        flightData['stoppage']      = (segmentLength > 1) ? (segmentLength + ' stops') : 'Direct'; 
                         shopData.push(flightData);
                     }              
                     
