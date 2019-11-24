@@ -23,7 +23,7 @@ class FlightPayment extends Component {
                         <PaymentList/>
                     </div>
 
-                    <PaymentOption/>
+                    {/*<PaymentOption/>*/}
                 </div>
             </div>
         )

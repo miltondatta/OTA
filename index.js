@@ -19,6 +19,9 @@ const users = require('./routes/api/users');
 //Define Contact Routes
 const contact = require('./routes/api/contact');
 
+//Define Country Routes
+const country = require('./routes/api/country');
+
 //Define AIR Routes 
 const air = require('./routes/api/air');
 
@@ -34,6 +37,7 @@ const global = require('./routes/api/global');
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
 app.use('/api/users/', users);
 app.use('/api/contact/', contact);
+app.use('/api/country/', country);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);

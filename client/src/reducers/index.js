@@ -4,11 +4,13 @@ import errorReducer from './errorReducer';
 import contactReducer from "./contactReducer";
 import profileReducer from "./profileReducer";
 import shopReducer from './shopReducer';
+import countryReducer from "./countryReducer";
 
 export default combineReducers({
     auth: authReducer,
     errors: errorReducer,
     contact: contactReducer,
     profile: profileReducer,
-    shop: shopReducer
+    shop: shopReducer,
+    country: countryReducer
 }); 
