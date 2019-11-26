@@ -38,7 +38,7 @@ exports.shop = async (req, res) => {
                         let start_date                  = moment(flightData['first_departure']);
                         let end_date                    = moment(flightData['last_arrival']);
                         let minutes                     = parseInt(moment.duration(end_date.diff(start_date)).asMinutes());
-                        
+                        flightData['same_day_arrival']  = (moment(start_date).format('YYYY-MM-DD') == moment(end_date).format('YYYY-MM-DD')) ? true : false; 
                         let total_duration              = '';
                             total_duration              += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
                             total_duration              += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';

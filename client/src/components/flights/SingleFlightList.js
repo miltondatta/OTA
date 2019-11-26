@@ -16,36 +16,49 @@ const SingleFlightList = ({history, shop, index}) => {
         <Fragment>
             <div className="single-flight-list" style={index > 0 ? {'marginTop': 8} : {}}>
                 <div className="row">
-                    <div className="col-md-2">
-                        <img src={BS} alt=""/>
-                    </div>
-                    <div className="col-md-10">
-                        <div className="d-flex">
-                            <span className="single-flight-name">{shop.from_city} to {shop.to_city}</span>
-                            <Badge className="ml-2" variant="info">{shop.stoppage}</Badge>
-                           
-                        </div>
-                        <div className="row pt-2">
+                    <div className="col-md-12">
+                        <div className="row mr-0">
+                            <div className="col-md-6 col-sm-6 col-6">
+                                <span className="font-weight-bold"><Moment format='ddd, MMM Do'>{shop.first_departure}</Moment></span>
+                            </div>
+                            <div className="col-md-6 col-sm-6 col-6 text-right">
+                                <span className="font-weight-bold">{shop.from_city} to {shop.to_city}</span>
+                                <Badge className="ml-2" variant="info">{shop.stoppage}</Badge>
+                            </div>    
+                        </div>    
+                        <div className="row pt-2 mr-0">
                             <div className="col-md-3 col-sm-6 col-6">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faPlaneDeparture}/>
                                 <span className="single-flight-departure-text">Take Off</span>
-                                <span className="d-block single-flight-departure-time"><Moment format='MMM Do YYYY, h:mm a'>{shop.first_departure}</Moment></span>
+                                <span className="d-block single-flight-departure-time"><Moment format='hh:mm a'>{shop.first_departure}</Moment></span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faPlaneArrival}/>
                                 <span className="single-flight-departure-text">Landing</span>
-                                <span className="d-block single-flight-departure-time"><Moment format='MMM Do YYYY, h:mm a'>{shop.last_arrival}</Moment></span>
+                                <span className="d-block single-flight-departure-time">
+                                    {
+                                        shop.same_day_arrival ? <Moment format='hh:mm a'>{shop.last_arrival}</Moment> : <Moment format='ddd, MMM Do hh:mm a'>{shop.last_arrival}</Moment>
+                                    }                
+                                </span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
                                 <FontAwesomeIcon className="single-flight-departure-icon" icon={faClock}/>
                                 <span className="single-flight-departure-text">Total Time</span>
     <span className="d-block single-flight-departure-time">{ shop.total_duration }</span>
-                            </div>
-                            <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile">
-                                <span className="single-flight-amount">{shop.totalPrice}</span>
-                                <Button variant="warning" onClick={() => history.push('/flight-payment')}>Select</Button>
-                            </div>
+                            </div>    
+                            <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile text-right">
+                                <span className="single-flight-amount">{shop.totalPrice}</span>                             
+                            </div>                        
                         </div>
+                        <div className="row pt-2 mr-0">
+                            <div className="col-md-8 col-sm-6 col-6 single-flight-list-mobile">
+                                <Button variant="outline-success" onClick={() => history.push('/flight-payment')}>Show Details</Button>
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 single-flight-list-mobile text-right">
+                                <Button variant="outline-info" onClick={() => history.push('/flight-payment')}>Book</Button>
+                            </div>
+                        </div>    
+
                     </div>
                 </div>
             </div>
