@@ -6,14 +6,30 @@ var fs           = require("fs");
 var moment       = require("moment");
 const travelport = require('../travelport/travelportController');
 
-//console.log("travelport");
-//console.log(travelport);
+const airport    = require('../../models').airport; 
+const airline    = require('../../models').airline; 
+
+
+async function getCityByIATA(iata_code){
+     const modelData = await airport.findOne({
+        attributes: ['municipality'],
+        where: {
+            iata_code: iata_code
+        }
+    });
+    console.log(modelData);
+    return modelData.municipality;
+}
+
+
+
 
 exports.shop = async (req, res) => {
-    
-    
     //Prepare data from file 
-    let shopData = [];
+    let shopData            = [];
+    let iatas               = [];
+    let airlines            = [];
+
     fs.readFile("api_output/travelport/shop.txt", {encoding: 'utf-8'}, function(err, apiData){
         if (!err) {
             let parseData  = JSON.parse(apiData);
@@ -28,9 +44,13 @@ exports.shop = async (req, res) => {
                         flightData['taxes']             = parseData[i].taxes;
                         flightData['from']              = flight[j].from;
                         flightData['to']                = flight[j].to;
+                        iatas.push(flight[j].from);
+                        iatas.push(flight[j].to);
                         flightData['from_city']         = flight[j].from;
                         flightData['to_city']           = flight[j].to;
                         flightData['platingCarrier']    = flight[j].platingCarrier;
+                        flightData['platingCarrier_name']    = flight[j].platingCarrier;
+                        airlines.push(flightData['platingCarrier']);
                         let dataSegments                = flight[j].segments; 
                         let segmentLength               = dataSegments.length;
                         flightData['first_departure']   = dataSegments[0].departure;
@@ -49,9 +69,15 @@ exports.shop = async (req, res) => {
                             let segment = {};
                             segment['from']         = dataSegments[k].from;
                             segment['to']           = dataSegments[k].to;   
+                            segment['from_city']         = dataSegments[k].from;
+                            segment['to_city']           = dataSegments[k].to;   
+
+                            iatas.push(segment['to']);
                             segment['departure']    = dataSegments[k].departure;   
                             segment['arrival']      = dataSegments[k].arrival;   
                             segment['airline']      = dataSegments[k].airline;   
+                            segment['airline_name'] = dataSegments[k].airline;   
+                            airlines.push(dataSegments[k].airline);
                             segment['flightNumber'] = dataSegments[k].flightNumber;   
                             segment['duration']     = dataSegments[k].duration[0];  
                             segment['bookingClass'] = dataSegments[k].bookingClass;   
@@ -64,14 +90,53 @@ exports.shop = async (req, res) => {
                     }              
                     
                 });
-            } 
+            }
+            
+            
+            //Get City data By IATA Code
+            if (iatas.length) {
+                airport.findAll({
+                    attributes: ['iata_code', 'municipality'],
+                    where: {
+                        iata_code: iatas
+                    }
+                }).then(modelDatas => {
+                    let cities = [];
+                    modelDatas.map(function (record) {
+                        cities[record.iata_code] = record.municipality;
+                    });
+                    //Get AirLine Data By Plating Carrier and Airlne
+                    airline.findAll({
+                        attributes: ['iata', 'name'],
+                        where: {
+                            iata: airlines
+                        }
+                    }).then(records => {
+                        let airline_names = [];
+                        records.map(function (record) {
+                            airline_names[record.iata] = record.name;
+                        });
 
-            let response            = {};
-            response['status']      = true;
-            response['message']     = 'Successfully process your request!';
-            response['data']        = shopData;
+                        shopData.forEach(element => {
+                            element.from_city = cities[element.from] ? cities[element.from] : element.from;
+                            element.to_city = cities[element.to] ? cities[element.to] : element.to;
+                            element.platingCarrier_name = airline_names[element.platingCarrier] ? airline_names[element.platingCarrier] : element.platingCarrier;
+                            element.segments.forEach(segment => {
+                                segment.from_city = cities[segment.from] ? cities[segment.from] : segment.from;
+                                segment.to_city = cities[segment.to] ? cities[segment.to] : segment.to;
+                                segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
+                            });
+                        });
 
-            return res.status(200).json(response);
+                        let response = {};
+                        response['status'] = true;
+                        response['message'] = 'Successfully process your request!';
+                        response['data'] = shopData;
+                        return res.status(200).json(response);
+                    });
+                });
+            }
+
         } else {
             console.log(err);
         }
