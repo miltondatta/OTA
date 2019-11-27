@@ -2,6 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {Form} from "react-bootstrap";
 import {faMale, faChild, faBaby} from "@fortawesome/free-solid-svg-icons";
 import {ButtonToolbar, Button} from "react-bootstrap";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 // Date Picker
 import DatePicker from 'react-datepicker2';
@@ -13,8 +14,9 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {savePassengerInfo} from "../../actions/passengerActions";
+import passengerReducer from "../../reducers/passengerReducer";
 
-const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo}) => {
+const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger}) => {
     const [user_flight_search, setUserFlightSearch] = useState({});
 
 
@@ -133,10 +135,13 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
             for (let i = 0; i < flight_search.INF; i++) {
                 infantPassengerData.push(infantFormObj);
             }
-
         }
 
     }, []);
+
+    if (passenger.msgs.msg) {
+        NotificationManager.success(passenger.msgs.msg, 'Passenger Info Message!', 10000);
+    }
 
     const passengerForm = (value, key, passengerType) => {
 
@@ -259,6 +264,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                     </ButtonToolbar>
                 </Form>
             </div>
+            <NotificationContainer/>
         </Fragment>
     )
 };
@@ -266,11 +272,13 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 PaymentForm.propTypes = {
     getAllCountryList: PropTypes.func.isRequired,
     savePassengerInfo: PropTypes.func.isRequired,
-    country: PropTypes.object.isRequired
+    country: PropTypes.object.isRequired,
+    passenger: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    country: state.country
+    country: state.country,
+    passenger: state.passenger
 });
 
 const mapDispatchToProps = {getAllCountryList, savePassengerInfo};

@@ -5,6 +5,7 @@ import contactReducer from "./contactReducer";
 import profileReducer from "./profileReducer";
 import shopReducer from './shopReducer';
 import countryReducer from "./countryReducer";
+import passengerReducer from "./passengerReducer";
 
 export default combineReducers({
     auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     contact: contactReducer,
     profile: profileReducer,
     shop: shopReducer,
-    country: countryReducer
-}); 
+    country: countryReducer,
+    passenger: passengerReducer
+});
