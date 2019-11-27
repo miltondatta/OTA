@@ -6,3 +6,4 @@ export const SHOP_API = 'SHOP_API';
 export const COUNTRY_LIST = 'COUNTRY_LIST';
 export const PASSENGER_SAVE = 'PASSENGER_SAVE';
 export const USER_FLIGHT_SEARCH = 'USER_FLIGHT_SEARCH';
+export const AIRPORT_BY_IATA = "AIRPORT_BY_IATA";

@@ -115,7 +115,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         masterPassengerData.push(childFormData);
         masterPassengerData.push(infantFormData);
 
-        savePassengerInfo(masterPassengerData);
+        savePassengerInfo(masterPassengerData, true);
     };
 
     useEffect(() => {
@@ -141,6 +141,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
     if (passenger.msgs.msg) {
         NotificationManager.success(passenger.msgs.msg, 'Passenger Info Message!', 10000);
+        savePassengerInfo([], false);
     }
 
     const passengerForm = (value, key, passengerType) => {
