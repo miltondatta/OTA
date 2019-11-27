@@ -67,19 +67,23 @@ exports.shop = async (req, res) => {
                         let segments     =  [];
                         for(let k = 0; k < segmentLength; k++) {
                             let segment = {};
-                            segment['from']         = dataSegments[k].from;
-                            segment['to']           = dataSegments[k].to;   
+                            segment['from']              = dataSegments[k].from;
+                            segment['to']                = dataSegments[k].to;   
                             segment['from_city']         = dataSegments[k].from;
                             segment['to_city']           = dataSegments[k].to;   
-
                             iatas.push(segment['to']);
-                            segment['departure']    = dataSegments[k].departure;   
-                            segment['arrival']      = dataSegments[k].arrival;   
-                            segment['airline']      = dataSegments[k].airline;   
-                            segment['airline_name'] = dataSegments[k].airline;   
+                            segment['departure']        = dataSegments[k].departure;   
+                            segment['arrival']          = dataSegments[k].arrival;   
+                            segment['airline']          = dataSegments[k].airline;   
+                            segment['airline_name']     = dataSegments[k].airline;   
                             airlines.push(dataSegments[k].airline);
-                            segment['flightNumber'] = dataSegments[k].flightNumber;   
-                            segment['duration']     = dataSegments[k].duration[0];  
+                            segment['flightNumber']     = dataSegments[k].flightNumber;   
+                            segment['duration']         = dataSegments[k].duration[0];  
+                            minutes                     = parseInt(dataSegments[k].duration[0]);  
+                            total_duration              = '';
+                            total_duration              += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
+                            total_duration              += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';
+                            segment['total_duration']   = total_duration;
                             segment['bookingClass'] = dataSegments[k].bookingClass;   
                             segment['baggage']      = dataSegments[k].baggage[0].amount + ' ' + dataSegments[k].baggage[0].units;   
                             segments.push(segment);
