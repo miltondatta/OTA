@@ -9,21 +9,6 @@ const travelport = require('../travelport/travelportController');
 const airport    = require('../../models').airport; 
 const airline    = require('../../models').airline; 
 
-
-async function getCityByIATA(iata_code){
-     const modelData = await airport.findOne({
-        attributes: ['municipality'],
-        where: {
-            iata_code: iata_code
-        }
-    });
-    console.log(modelData);
-    return modelData.municipality;
-}
-
-
-
-
 exports.shop = async (req, res) => {
     //Prepare data from file 
     let shopData            = [];
