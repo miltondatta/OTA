@@ -16,23 +16,26 @@ import TripList from "./TripList";
 class FlightList extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+
+        };
     }
 
     /*componentDidMount() {
-        console.log(localStorage.getItem('user_flight_search'));
+        console.log();
     }*/
 
     render() {
         return (
             <div className={'flight-list-area'}>
                 <div className="container flight-list-area-container">
-                    <TripSearched/>
+                    <TripSearched flight_search={this.props.passenger.user_flight_search}/>
                     <div className="row pt-3">
                         <TripFilter shopData={this.props.shop.shopData}/>
                         {Object.keys(this.props.shop.shopData).length > 0 ?
                             <TripList shopData={this.props.shop.shopData}/>
-                            : <Alert className="mt-2 mt-md-0" variant={'warning'} style={{'height': 50, marginLeft: 30}}>
+                            :
+                            <Alert className="mt-2 mt-md-0" variant={'warning'} style={{'height': 50, marginLeft: 30}}>
                                 No Flight Found!
                             </Alert>
                         }
@@ -44,11 +47,13 @@ class FlightList extends Component {
 }
 
 FlightList.propTypes = {
-    shop: PropTypes.object.isRequired
+    shop: PropTypes.object.isRequired,
+    passenger: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-    shop: state.shop
+    shop: state.shop,
+    passenger: state.passenger
 });
 
 export default connect(mapStateToProps, {})(FlightList);

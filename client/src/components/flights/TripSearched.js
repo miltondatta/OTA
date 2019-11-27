@@ -1,13 +1,24 @@
-import React, {useState, Fragment} from 'react'
+import React, {useState, Fragment, useEffect} from 'react'
 import {Button} from "react-bootstrap";
 import {faMale, faChild, faBaby} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 // Component
 import ModifySearch from "./ModifySearch";
+import Moment from "react-moment";
 
-const TripSearched = () => {
+const TripSearched = ({flight_search}) => {
     const [modifySearch, setModifySearch] = useState(false);
+    const [user_flight_search, setUserFlightSearch] = useState({});
+
+    useEffect(() => {
+        if (!Object.keys(flight_search).length > 0) {
+            if (localStorage.getItem('user_flight_search')) {
+                const local = JSON.parse(localStorage.getItem('user_flight_search'));
+                setUserFlightSearch(local);
+            }
+        }
+    }, []);
 
     return (
         <Fragment>
@@ -22,18 +33,18 @@ const TripSearched = () => {
                 </div>
                 <div className="col-md-2 col-sm-6 col-6">
                     <span className={'trip-searched-header'}>One Way Trip</span>
-                    <p className={'trip-searched-header-text'}>Sat, Oct 26, 2019</p>
+                    <p className={'trip-searched-header-text'}><Moment format='ddd, MMM Do'>{Object.keys(flight_search).length > 0 ? flight_search.departureDate : user_flight_search.departureDate}</Moment></p>
                 </div>
                 <div className="col-md-2 col-sm-6 col-6">
                     <span className={'trip-searched-header'}>Class</span>
-                    <p className={'trip-searched-header-text'}>Business</p>
+                    <p className={'trip-searched-header-text'}>{Object.keys(flight_search).length > 0 ? flight_search.cabins : user_flight_search.cabins}</p>
                 </div>
                 <div className="col-md-2 col-sm-6 col-6">
                     <span className={'trip-searched-header'}>Passengers</span>
                     <div className={'trip-searched-header-text'}>
-                        <FontAwesomeIcon icon={faMale} /> <span className={'pr-1'}>1</span>
-                        <FontAwesomeIcon icon={faChild} /> <span className={'pr-1'}>0</span>
-                        <FontAwesomeIcon icon={faBaby} /> <span>0</span>
+                        <FontAwesomeIcon icon={faMale}/> <span className={'pr-1'}>{Object.keys(flight_search).length > 0 ? flight_search.ADT : user_flight_search.ADT}</span>
+                        <FontAwesomeIcon icon={faChild}/> <span className={'pr-1'}>{Object.keys(flight_search).length > 0 ? flight_search.CNN : user_flight_search.CNN}</span>
+                        <FontAwesomeIcon icon={faBaby}/> <span>{Object.keys(flight_search).length > 0 ? flight_search.INF : user_flight_search.INF}</span>
                     </div>
                 </div>
                 <div className="col-md-2 col-sm-6 col-6">

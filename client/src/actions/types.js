@@ -5,3 +5,4 @@ export const PROFILE_UPDATE = 'PROFILE_UPDATE';
 export const SHOP_API = 'SHOP_API';
 export const COUNTRY_LIST = 'COUNTRY_LIST';
 export const PASSENGER_SAVE = 'PASSENGER_SAVE';
+export const USER_FLIGHT_SEARCH = 'USER_FLIGHT_SEARCH';
