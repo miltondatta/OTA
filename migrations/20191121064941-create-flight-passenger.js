@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       passport_number: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DOUBLE
       },
       passport_expiry_date: {
         type: Sequelize.DATE

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     nationality: DataTypes.INTEGER,
     gender: DataTypes.STRING,
     date_of_birth: DataTypes.DATE,
-    passport_number: DataTypes.INTEGER,
+    passport_number: DataTypes.DOUBLE,
     passport_expiry_date: DataTypes.DATE,
     passenger_type: DataTypes.STRING
   }, {});

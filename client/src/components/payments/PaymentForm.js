@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {Form} from "react-bootstrap";
 import {faMale, faChild, faBaby} from "@fortawesome/free-solid-svg-icons";
+import {ButtonToolbar, Button} from "react-bootstrap";
 
 // Date Picker
 import DatePicker from 'react-datepicker2';
@@ -11,12 +12,10 @@ import {getAllCountryList} from "../../actions/countryActions";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {savePassengerInfo} from "../../actions/passengerActions";
 
-const PaymentForm = ({getAllCountryList, country: {countries}}) => {
-    const [dateOfBirth, setDateOfBirth] = useState(moment());
-    const [passportExpiryDate, setPassportExpiryDate] = useState(moment());
+const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo}) => {
     const [user_flight_search, setUserFlightSearch] = useState({});
-
 
 
     let adultPassengerForm = [];
@@ -34,36 +33,107 @@ const PaymentForm = ({getAllCountryList, country: {countries}}) => {
         infantPassengerForm.push(user_flight_search);
     }
 
-    const obj = {
+    const adultFormObj = {
         first_name: '',
         last_name: '',
-        nationality: '',
+        nationality: 0,
         gender: '',
-        date_of_birth: '',
-        passport_number: '',
-        passport_expiry_date: '',
+        date_of_birth: moment(),
+        passport_number: 0,
+        passport_expiry_date: moment(),
         passenger_type: 1
     };
 
+    const childFormObj = {
+        first_name: '',
+        last_name: '',
+        nationality: 0,
+        gender: '',
+        date_of_birth: moment(),
+        passport_number: 0,
+        passport_expiry_date: moment(),
+        passenger_type: 2
+    };
+
+    const infantFormObj = {
+        first_name: '',
+        last_name: '',
+        nationality: 0,
+        gender: '',
+        date_of_birth: moment(),
+        passport_number: 0,
+        passport_expiry_date: moment(),
+        passenger_type: 3
+    };
+
+
     let adultPassengerData = [];
+    const [adultFormData, setAdultFormData] = useState(adultPassengerData);
 
-    const [formData, setFormData] = useState(adultPassengerData);
+    let childPassengerData = [];
+    const [childFormData, setChildFormData] = useState(childPassengerData);
 
-    const onChange = (e, passengerType, key) => {
+    let infantPassengerData = [];
+    const [infantFormData, setInfantFormData] = useState(infantPassengerData);
+
+    const onChange = (e, passengerType, key, input_name) => {
         if (passengerType === 1) {
-            setFormData(formData.map((el, index) => (index === key ? Object.assign({}, el, {[e.target.name]: e.target.value}) : el)));
-            console.log(formData);
+            if (e.target) {
+                const {name, value} = e.target;
+                setAdultFormData(adultFormData.map((el, index) => (index === key ? Object.assign({}, el, {[name]: value}) : el)));
+            } else {
+                setAdultFormData(adultFormData.map((el, index) => (index === key ? Object.assign({}, el, {[input_name]: e}) : el)));
+            }
         }
+
+        if (passengerType === 2) {
+            if (e.target) {
+                const {name, value} = e.target;
+                setChildFormData(childFormData.map((el, index) => (index === key ? Object.assign({}, el, {[name]: value}) : el)));
+            } else {
+                setChildFormData(childFormData.map((el, index) => (index === key ? Object.assign({}, el, {[input_name]: e}) : el)));
+            }
+        }
+
+        if (passengerType === 3) {
+            if (e.target) {
+                const {name, value} = e.target;
+                setInfantFormData(infantFormData.map((el, index) => (index === key ? Object.assign({}, el, {[name]: value}) : el)));
+            } else {
+                setInfantFormData(infantFormData.map((el, index) => (index === key ? Object.assign({}, el, {[input_name]: e}) : el)));
+            }
+        }
+    };
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        const masterPassengerData = [];
+        masterPassengerData.push(adultFormData);
+        masterPassengerData.push(childFormData);
+        masterPassengerData.push(infantFormData);
+
+        savePassengerInfo(masterPassengerData);
     };
 
     useEffect(() => {
         getAllCountryList();
         if (localStorage.getItem('user_flight_search')) {
-            setUserFlightSearch(JSON.parse(localStorage.getItem('user_flight_search')));
+            const flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
+            setUserFlightSearch(flight_search);
 
-            for (let i = 0; i < JSON.parse(localStorage.getItem('user_flight_search')).ADT; i++) {
-                adultPassengerData.push(obj);
+            for (let i = 0; i < flight_search.ADT; i++) {
+                adultPassengerData.push(adultFormObj);
             }
+
+            for (let i = 0; i < flight_search.CNN; i++) {
+                childPassengerData.push(childFormObj);
+            }
+
+            for (let i = 0; i < flight_search.INF; i++) {
+                infantPassengerData.push(infantFormObj);
+            }
+
         }
 
     }, []);
@@ -79,97 +149,94 @@ const PaymentForm = ({getAllCountryList, country: {countries}}) => {
                         icon={(passengerType === 1 && faMale) || (passengerType === 2 && faChild) || (passengerType === 3 && faBaby)}
                         className="ml-2" style={{color: "#80724b"}}/>
                     <span style={{color: "#80724b", fontSize: 17, marginLeft: 2}}
-                          className="font-weight-bolder">1</span>
+                          className="font-weight-bolder">{(key + 1)}</span>
                 </p>
             </div>
-            <Form>
-                <Form.Row>
-                    <Form.Group className="col-md-6"
-                                controlId="formGridFirstName">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control type="text" name="first_name" placeholder="Enter First Name"
-                                      onChange={e => onChange(e, passengerType, key)}
-                                      required/>
-                    </Form.Group>
+            <Form.Row>
+                <Form.Group className="col-md-6"
+                            controlId="formGridFirstName">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control type="text" name="first_name" placeholder="Enter First Name"
+                                  onChange={e => onChange(e, passengerType, key)}/>
+                </Form.Group>
 
-                    <Form.Group className="col-md-6"
-                                controlId="formGridLastName">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="text" name="last_name" placeholder="Enter Last Name"
-                                      onChange={e => onChange(e, passengerType, key)}
-                                      required/>
-                    </Form.Group>
-                </Form.Row>
+                <Form.Group className="col-md-6"
+                            controlId="formGridLastName">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control type="text" name="last_name" placeholder="Enter Last Name"
+                                  onChange={e => onChange(e, passengerType, key)}/>
+                </Form.Group>
+            </Form.Row>
 
-                <Form.Row>
-                    <Form.Group className="col-md-6"
-                                controlId="formGridEmail">
-                        <Form.Label>Nationality</Form.Label>
-                        <select className="form-control" name="nationality" id="nationality"
-                                onChange={e => onChange(e, passengerType, key)}>
-                            {countries.length > 0 ?
-                                <Fragment>
-                                    {countries.map((value, key) => (
-                                        <option value={value.dial} key={key}>{value.country_name}</option>
-                                    ))}
-                                </Fragment> :
-                                <option>0</option>}
-                        </select>
-                    </Form.Group>
+            <Form.Row>
+                <Form.Group className="col-md-6"
+                            controlId="formGridEmail">
+                    <Form.Label>Nationality</Form.Label>
+                    <select className="form-control" name="nationality" id="nationality"
+                            onChange={e => onChange(e, passengerType, key)}>
+                        {countries.length > 0 ?
+                            <Fragment>
+                                {countries.map((value, key) => (
+                                    <option value={value.dial} key={key}>{value.country_name}</option>
+                                ))}
+                            </Fragment> :
+                            <option>0</option>}
+                    </select>
+                </Form.Group>
 
-                    <div className="col-md-6 mt-2">
-                        <span>Gender</span>
-                        <div className="d-flex">
-                            <label className="radio-inline">
-                                <input type="radio" name="gender" value="male"
-                                       onChange={e => onChange(e, passengerType, key)} className={'input-checkbox'}
-                                       checked/>
-                                Male
-                            </label>
+                <div className="col-md-6 mt-2">
+                    <span>Gender</span>
+                    <div className="d-flex">
+                        <label className="radio-inline">
+                            <input type="radio" name="gender" value="male"
+                                   onChange={e => onChange(e, passengerType, key)} className={'input-checkbox'}
+                                   id={(passengerType === 1 && ('adult_male_' + key)) || (passengerType === 2 && ('child_male_' + key)) || (passengerType === 3 && ('infant_male_' + key))}/>
+                            Male
+                        </label>
 
-                            <label className="radio-inline pl-3">
-                                <input type="radio" name="gender" value="female"
-                                       onChange={e => onChange(e, passengerType, key)} className={'input-checkbox'}/>
-                                Female
-                            </label>
-                        </div>
+                        <label className="radio-inline pl-3">
+                            <input type="radio" name="gender" value="female"
+                                   id={(passengerType === 1 && ('adult_female_' + key)) || (passengerType === 2 && ('child_female_' + key)) || (passengerType === 3 && ('infant_female_' + key))}
+                                   onChange={e => onChange(e, passengerType, key)} className={'input-checkbox'}
+                            />
+                            Female
+                        </label>
                     </div>
-                </Form.Row>
+                </div>
+            </Form.Row>
 
-                <Form.Row>
-                    <div className="col-md-6">
-                        <label htmlFor="date_of_birth">Date Of Birth</label>
-                        <DatePicker timePicker={false}
-                                    name={'date_of_birth'}
-                                    id={'date_of_birth'}
-                                    className="form-control"
-                                    inputFormat="DD/MM/YYYY"
-                                    onChange={date => setDateOfBirth(date)}
-                                    value={dateOfBirth}/>
-                    </div>
+            <Form.Row>
+                <div className="col-md-6">
+                    <label htmlFor="date_of_birth">Date Of Birth</label>
+                    <DatePicker timePicker={false}
+                                name="date_of_birth"
+                                id="date_of_birth"
+                                className="form-control"
+                                inputFormat="DD/MM/YYYY"
+                                onChange={e => onChange(e, passengerType, key, "date_of_birth")}
+                                value={(passengerType === 1 && adultFormData[key].date_of_birth) || (passengerType === 2 && childFormData[key].date_of_birth) || (passengerType === 3 && infantFormData[key].date_of_birth)}/>
+                </div>
 
-                    <Form.Group className="col-md-6"
-                                controlId="formGridPassportNumber">
-                        <Form.Label>Passport Number</Form.Label>
-                        <Form.Control type="text" name="passport_number" onChange={e => onChange(e, passengerType, key)}
-                                      placeholder="Enter Passport Number"
-                                      required/>
-                    </Form.Group>
-                </Form.Row>
+                <Form.Group className="col-md-6"
+                            controlId="formGridPassportNumber">
+                    <Form.Label>Passport Number</Form.Label>
+                    <Form.Control type="text" name="passport_number" onChange={e => onChange(e, passengerType, key)}
+                                  placeholder="Enter Passport Number"/>
+                </Form.Group>
+            </Form.Row>
 
-                <Form.Row className="pt-3">
-                    <div className="col-md-6">
-                        <label htmlFor="passport_expiry_date">Passport Expiry Date</label>
-                        <DatePicker timePicker={false}
-                                    name={'passport_expiry_date'}
-                                    id={'passport_expiry_date'}
-                                    className="form-control"
-                                    inputFormat="DD/MM/YYYY"
-                                    onChange={date => setPassportExpiryDate(date)}
-                                    value={passportExpiryDate}/>
-                    </div>
-                </Form.Row>
-            </Form>
+            <Form.Row className="pt-3">
+                <div className="col-md-6">
+                    <label htmlFor="passport_expiry_date">Passport Expiry Date</label>
+                    <DatePicker timePicker={false}
+                                name="passport_expiry_date"
+                                id="passport_expiry_date"
+                                className="form-control"
+                                inputFormat="DD/MM/YYYY"
+                                onChange={e => onChange(e, passengerType, key, "passport_expiry_date")}
+                                value={(passengerType === 1 && adultFormData[key].passport_expiry_date) || (passengerType === 2 && childFormData[key].passport_expiry_date) || (passengerType === 3 && infantFormData[key].passport_expiry_date)}/>
+                </div>
+            </Form.Row>
         </div>;
     };
 
@@ -177,15 +244,20 @@ const PaymentForm = ({getAllCountryList, country: {countries}}) => {
 
         <Fragment>
             <div className="col-md-9">
-                {user_flight_search.ADT > 0 && adultPassengerForm.map((value, key) => (
-                    passengerForm(value, key, 1)
-                ))}
-                {user_flight_search.CNN > 0 && childPassengerForm.map((value, key) => (
-                    passengerForm(value, key, 2)
-                ))}
-                {user_flight_search.INF > 0 && infantPassengerForm.map((value, key) => (
-                    passengerForm(value, key, 3)
-                ))}
+                <Form onSubmit={onSubmit}>
+                    {user_flight_search.ADT > 0 && adultPassengerForm.map((value, key) => (
+                        passengerForm(value, key, 1)
+                    ))}
+                    {user_flight_search.CNN > 0 && childPassengerForm.map((value, key) => (
+                        passengerForm(value, key, 2)
+                    ))}
+                    {user_flight_search.INF > 0 && infantPassengerForm.map((value, key) => (
+                        passengerForm(value, key, 3)
+                    ))}
+                    <ButtonToolbar className="pt-3">
+                        <Button variant="outline-success" type="submit">Save and Continue</Button>
+                    </ButtonToolbar>
+                </Form>
             </div>
         </Fragment>
     )
@@ -193,6 +265,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}}) => {
 
 PaymentForm.propTypes = {
     getAllCountryList: PropTypes.func.isRequired,
+    savePassengerInfo: PropTypes.func.isRequired,
     country: PropTypes.object.isRequired
 };
 
@@ -200,5 +273,5 @@ const mapStateToProps = state => ({
     country: state.country
 });
 
-const mapDispatchToProps = {getAllCountryList};
+const mapDispatchToProps = {getAllCountryList, savePassengerInfo};
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentForm);

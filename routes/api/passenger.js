@@ -1,12 +1,12 @@
-import React from 'react';
+const express = require('express');
+const router = express.Router();
+const passenger_controller = require('../../controllers/passengerController');
 
-const ComponentName = () => {
-    return (
-        <div>
+/*
+    @route          GET api/passenger/store
+    @desc           Save Passenger Information Data
+    @access         Public
+ */
+router.post('/store', passenger_controller.store);
 
-        </div>
-    )
-};
-
-
-export default ComponentName;
+module.exports = router;

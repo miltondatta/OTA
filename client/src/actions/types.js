@@ -4,3 +4,4 @@ export const CONTACT_SAVE = 'CONTACT_SAVE';
 export const PROFILE_UPDATE = 'PROFILE_UPDATE';
 export const SHOP_API = 'SHOP_API';
 export const COUNTRY_LIST = 'COUNTRY_LIST';
+export const PASSENGER_SAVE = 'PASSENGER_SAVE';
