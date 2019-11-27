@@ -94,6 +94,7 @@
     font-size: 13px;
     color: #80724b;
     font-weight: 500;
+    padding-top: 6px
 }
 
 .single-flight-departure-icon {
@@ -112,4 +113,19 @@
     font-weight: 500;
     color: #e4ac56;
     display: block;
+}
+
+.single-flight-show-details-right-content {
+    margin-bottom: 2px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.single-flight-show-details-left-date {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.single-flight-show-details-modal {
+    background-color: #efeeee;
 }
