@@ -18,7 +18,7 @@ export default function CenteredGrid() {
 
     return (
         <div className={'footerbgblack'}>
-            <div className={'container'}>
+            <div className={'container-fluid'}>
                 <div className="row">
                     <div className="col-lg-3 col-md-6 com-sm-6 col-12 gridSinglePortion">
                         <span className="grey2">© 2019  |  <Link className={'privacy'} to={'/'}>Privacy Policy</Link>
