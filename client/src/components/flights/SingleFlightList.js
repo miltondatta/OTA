@@ -85,31 +85,32 @@ const SingleFlightList = ({history, shop, index}) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="single-flight-show-details-modal">
+                    <h5 style={{fontSize: 16}}>To {shop.to_city}</h5>
                     {shop.segments.length > 0 && <Fragment>
                         {shop.segments.map((segment, key) => (
                             <Card className="bg-white" key={key} style={key > 0 ? {'marginTop': 12} : {}}>
                                 <Card.Body>
                                     <div className="row">
-                                        <div className="col-md-3 border-right">
-                                            <FontAwesomeIcon className="single-flight-departure-icon"
+                                        <div className="col-md-3 single-flight-show-details-left-date-area">
+                                            <FontAwesomeIcon className="single-flight-departure-icon" style={{fontSize: 13}}
                                                              icon={faLevelUpAlt}/>
-                                            <span className="single-flight-departure-text">Take Off</span>
+                                            <span className="single-flight-departure-text single-flight-departure-text-modal">Take Off</span>
                                             <span className="d-block single-flight-show-details-left-date"><Moment format='ddd, MMM Do hh:mm a'>{segment.departure}</Moment></span>
-                                            <FontAwesomeIcon className="single-flight-departure-icon mt-4"
+                                            <FontAwesomeIcon className="single-flight-departure-icon mt-2 md-sm-2 mt-md-4" style={{fontSize: 13}}
                                                              icon={faLevelDownAlt}/>
-                                            <span className="single-flight-departure-text">Landing</span>
+                                            <span className="single-flight-departure-text single-flight-departure-text-modal">Landing</span>
                                             <span className="d-block single-flight-show-details-left-date"><Moment format='ddd, MMM Do hh:mm a'>{segment.arrival}</Moment></span>
                                         </div>
                                         <div className="col-md-9">
-                                            <div className="row">
-                                                <div className="col-md-4">
-                                                    <h6>From City: {segment.from_city ? segment.from_city : segment.from}</h6>
+                                            <div className="row single-flight-show-details-right-city-area">
+                                                <div className="col-md-4 col-sm-12 col-12">
+                                                    <h6 className="single-flight-show-details-right-city">From City: {segment.from_city ? segment.from_city : segment.from}</h6>
                                                 </div>
-                                                <div className="col-md-4 text-center">
-                                                    <h6>To City: {segment.to_city ? segment.to_city : segment.to}</h6>
+                                                <div className="col-md-4 col-sm-12 col-12 text-left text-sm-left text-md-center">
+                                                    <h6 className="single-flight-show-details-right-city">To City: {segment.to_city ? segment.to_city : segment.to}</h6>
                                                 </div>
-                                                <div className="col-md-4 text-right">
-                                                    <h6>{segment.total_duration}</h6>
+                                                <div className="col-md-4 col-sm-12 col-12 text-left text-sm-left text-md-right">
+                                                    <h6 className="single-flight-show-details-right-city">{segment.total_duration}</h6>
                                                 </div>
                                             </div>
                                             <div className="row">
