@@ -25,7 +25,7 @@ const FlightList = ({passenger, shop, getAirportByIataCode}) => {
     return (
         <Fragment>
             <div className={'flight-list-area'}>
-                <div className="container flight-list-area-container">
+                <div className="container-fluid flight-list-area-container">
                     <TripSearched flight_search={passenger.user_flight_search} shopData={shop} getAirportByIataCode={getAirportByIataCode}/>
                     <div className="row pt-3">
                         <TripFilter shopData={shop.shopData}/>
