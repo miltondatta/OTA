@@ -87,7 +87,7 @@ ul.footerlistblack li a:hover {
     color: #0099cc;
 }
 .gridSinglePortion{
-    text-align: center;
+    text-align: left;
 }
 
 .fa-angle-right{
@@ -102,6 +102,10 @@ ul.footerlistblack li a:hover {
 
 .footerLogo {
     width: 140px !important;
+}
+
+.socials {
+    text-align: right;
 }
 
 @media screen and (max-width: 992px) {
