@@ -74,7 +74,7 @@ exports.shop = async (req, res) => {
                             segments.push(segment);
                         }
                         flightData['segments']      =   segments;
-                        flightData['stoppage']      = (segmentLength > 1) ? (segmentLength + ' stops') : 'Direct'; 
+                        flightData['stoppage']      = (segmentLength > 1) ? ((segmentLength - 1) + ' stops') : 'Direct'; 
                         shopData.push(flightData);
                     }              
                     

@@ -91,7 +91,7 @@
 }
 
 .single-flight-departure-time {
-    font-size: 13px;
+    font-size: 17px;
     color: #80724b;
     font-weight: 500;
     padding-top: 6px
@@ -102,7 +102,7 @@
 }
 
 .single-flight-departure-text {
-    font-size: 14px;
+    font-size: 15px;
     padding-left: 8px;
     font-weight: 500;
     color: #e4ac56;
