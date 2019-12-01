@@ -7,7 +7,8 @@ const dotenv                 = require('dotenv');
 dotenv.config();
 const uuidv1   = require('uuid/v1');
 var dateTime   = require('node-datetime');
-const base_url = process.env.BASE_URL_APP;
+const base_url = process.env.BASE_URL_CLIENT;
+var moment     = require("moment");
 
 
 exports.store = async (req, res) => {
@@ -21,7 +22,7 @@ exports.store = async (req, res) => {
                 bcrypt.hash(password, salt, (err, hash) => {
                     let uuid        = uuidv1();
                     let current_dt  = dateTime.create().format('Y-m-d H:M:S');
-                    let confirm_url = base_url + 'api/users/confirm/' + uuid;
+                    let confirm_url = base_url + 'verification/' + uuid;
                     user.create({
                         name              : name,
                         email             : email,
@@ -30,7 +31,6 @@ exports.store = async (req, res) => {
                         verification_token: uuid,
                         token_sent_at     : current_dt
                     }).then(results => {
-                        // return res.status(200).json({msg: 'User created successfully!'});
                         let mail_host     = process.env.MAIL_HOST;
                         let mail_port     = process.env.MAIL_PORT;
                         let mail_user     = process.env.MAIL_USER;
@@ -60,7 +60,7 @@ exports.store = async (req, res) => {
                                 console.log(info);
                             }
                         });
-
+                        return res.status(200).json({msg: 'An email sent to your mail. Please Confirm'});
                     });
                 });
             });
@@ -160,4 +160,26 @@ exports.login = async (req, res) => {
             }
         });
     });
+};
+
+exports.confirm_by_email = async (req, res) => {
+    let verification_token = req.body.token;
+    user.findOne({where: {verification_token}}).then(results => {
+        if (results) {
+            console.log("in if");
+            let start_date = moment(results.token_sent_at);
+            let end_date   = moment();
+            let minutes    = parseInt(moment.duration(end_date.diff(start_date)).asMinutes());
+            if (minutes > 600) {
+                return res.status(400).json({msg: 'Session Expire'});
+            } else {
+                user.update({'is_verified': 1, 'verification_token': ''}, {where: {verification_token}});
+                return res.status(200).json({msg: 'User Verified Successfully. Now You Can Login.', status: true});
+            }
+        } else {
+            return res.status(200).json({msg: 'Token not Matched', status: false});
+        }
+    }).catch(err => {
+        return res.status(200).json({msg: 'Token not Matched', status: false});
+    })
 };

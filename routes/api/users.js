@@ -84,6 +84,6 @@ router.get('/all', (req, res) => {
     }
 });
 
-
+router.post('/confirm', users_controller.confirm_by_email);
 module.exports = router;
 
