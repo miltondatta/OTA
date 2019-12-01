@@ -59,8 +59,8 @@ class OneWay extends Component {
             ADT: this.state.adult,
             CNN: this.state.child,
             INF: this.state.infant,
-            cabins: this.state.class 
-        };  
+            cabins: this.state.class
+        };
 
         this.props.shopData(searchParams, this.props.history);
 
@@ -83,10 +83,14 @@ class OneWay extends Component {
     }
 
     componentDidMount() {
+
             if (localStorage.getItem('user_flight_search')) {
                 const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
+                const today = moment().format('YYYY-MM-DD');
+                const departureDate = user_flight_search.departureDate;
+
                 this.setState({
-                    departure: moment(user_flight_search.departureDate),
+                    departure: departureDate < today ? moment(today) : moment(departureDate),
                     origin: user_flight_search.origin,
                     destination: user_flight_search.destination,
                     adult: user_flight_search.ADT,
@@ -104,7 +108,7 @@ class OneWay extends Component {
                 <div className="row">
                     <div className="col-xs-12 col-sm-6 col-lg-4">
                         <label className={'d-block mb-1'}><b>Flying from</b></label>
-                        <AirAutocomplete 
+                        <AirAutocomplete
                             storage_value={"origin"}
                             handlerFromParant={this.handleOriginData}/>
                     </div>

@@ -66,7 +66,7 @@ const SingleFlightList = ({history, shop, index}) => {
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 single-flight-list-mobile text-right">
                                 <Button variant="outline-info"
-                                        onClick={() => history.push('/flight-payment')}>Book</Button>
+                                        onClick={() => history.push('/flight-payment')}>Book Now</Button>
                             </div>
                         </div>
 
@@ -146,7 +146,10 @@ const SingleFlightList = ({history, shop, index}) => {
                     </div>*/}
 
                     <p className="single-flight-amount">{shop.totalPrice}</p>
-                    <Button variant="outline-info" onClick={() => history.push('/flight-payment')}>Book</Button>
+                    <div>
+                        <Button variant="outline-info" onClick={() => history.push('/flight-payment')}>Book Now</Button>
+                        <Button variant="outline-dark ml-3" onClick={() => setShowModal(false)}>Cancel</Button>
+                    </div>
                 </Modal.Footer>
             </Modal>
         </Fragment>

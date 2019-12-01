@@ -66,7 +66,7 @@ const TripSearched = ({flight_search, shopData, getAirportByIataCode}) => {
                     </div>
                 </div>
                 <div className="col-md-2 col-sm-6 col-6">
-                    <Button variant="warning" onClick={() => setModifySearch(!modifySearch)}>Modify</Button>
+                    <Button variant="warning" onClick={() => setModifySearch(!modifySearch)}>{!modifySearch ? 'Modify Search' : 'Hide Search'}</Button>
                 </div>
             </div>
 
