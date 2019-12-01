@@ -1,3 +1,7 @@
+body {
+    font-family: 'Titillium Web' !important;
+}
+
 .logo {
     width: 190px;
 }
@@ -31,4 +35,9 @@
 
 .custom-border-bottom {
     border-bottom: 1px solid #dadada;
+}
+
+.container-fluid {
+    padding-left: 100px !important;
+    padding-right: 100px !important;
 }

@@ -17,13 +17,13 @@ class FlightPayment extends Component {
     render() {
         return (
             <div className="flight-payment-area">
-                <div className="container flight-payment-area-container">
+                <div className="container-fluid flight-payment-area-container">
                     <div className="row">
                         <PaymentForm/>
                         <PaymentList/>
                     </div>
 
-                    <PaymentOption/>
+                    {/*<PaymentOption/>*/}
                 </div>
             </div>
         )

@@ -28,3 +28,18 @@ exports.get_airports = (req, res) => {
         return res.json({ error: err })
     });
 };
+
+
+exports.get_airport_by_iata_code = async (req, res) => {
+    try {
+        const iata_code = req.query.iata_code;
+
+        const status = await airport.findOne({attributes: ["id", "ident", "type", "name", "latitude_deg", "longitude_deg", "elevation_ft", "continent", "iso_country", "iso_region", "municipality", "scheduled_service", "gps_code", "iata_code", "local_code", "home_link", "wikipedia_link", "keywords", "score", "last_updated"], where: {iata_code: iata_code.toUpperCase()}});
+        if (!status) res.status(400).json({msg: 'Please try again!'});
+
+        return res.status(200).json(status);
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: "Server Error!"});
+    }
+};

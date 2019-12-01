@@ -70,6 +70,11 @@
     padding: 15px 0px 15px 15px;
 }
 
+.single-flight-date {
+
+    padding: 10px;
+}
+
 @media screen and (max-width: 768px) {
     .single-flight-list-mobile {
         padding-top: 6px;
@@ -77,7 +82,6 @@
 }
 
 .single-flight-list .badge {
-    height: 20px !important;
     margin-top: 5px;
 }
 
@@ -87,9 +91,10 @@
 }
 
 .single-flight-departure-time {
-    font-size: 13px;
+    font-size: 17px;
     color: #80724b;
     font-weight: 500;
+    padding-top: 6px
 }
 
 .single-flight-departure-icon {
@@ -97,7 +102,7 @@
 }
 
 .single-flight-departure-text {
-    font-size: 14px;
+    font-size: 15px;
     padding-left: 8px;
     font-weight: 500;
     color: #e4ac56;
@@ -108,4 +113,55 @@
     font-weight: 500;
     color: #e4ac56;
     display: block;
+}
+
+
+
+/* Single Flight Show Details Modal */
+.single-flight-show-details-left-date-area {
+    border-right: 1px solid #dee2e6;
+}
+
+.single-flight-show-details-right-content {
+    margin-bottom: 2px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.single-flight-show-details-left-date {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.single-flight-show-details-modal {
+    background-color: #efeeee;
+}
+
+.single-flight-departure-text-modal {
+    padding-left: 4px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .single-flight-show-details-left-date-area {
+        border-right: none !important;
+    }
+
+    .single-flight-show-details-right-city-area {
+        border-top: 1px solid #dee2e6;
+        padding-top: 5px;
+        margin-top: 5px;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+
+    .single-flight-show-details-right-city {
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+
+    .single-flight-departure-text-modal {
+        font-size: 13px;
+    }
 }

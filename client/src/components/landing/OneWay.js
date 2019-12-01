@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker2';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import { shopApi } from '../../utils/Urls';
+import {withRouter} from 'react-router-dom';
+
+// Redux
+import {connect} from 'react-redux';
+import { shopData } from '../../actions/shopActions';
 
 
 // Component
@@ -47,6 +51,8 @@ class OneWay extends Component {
 
         //let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
         let searchParams = {
+            origin: org,
+            destination: des,
             from: org.split(",")[0],
             to: des.split(",")[0],
             departureDate: moment(this.state.departure).format('YYYY-MM-DD'),
@@ -54,10 +60,12 @@ class OneWay extends Component {
             CNN: this.state.child,
             INF: this.state.infant,
             cabins: this.state.class 
-        };
+        };  
 
+        this.props.shopData(searchParams, this.props.history);
+
+        /*
         console.log(searchParams);
-        
         axios
             .post(shopApi, searchParams)
             .then(res => {
@@ -65,13 +73,28 @@ class OneWay extends Component {
             })
             .catch(err =>
                 console.log("Error: " + err)
-            );  
+            );    */
     }
 
     handleSelectionChanged(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
+    }
+
+    componentDidMount() {
+            if (localStorage.getItem('user_flight_search')) {
+                const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
+                this.setState({
+                    departure: moment(user_flight_search.departureDate),
+                    origin: user_flight_search.origin,
+                    destination: user_flight_search.destination,
+                    adult: user_flight_search.ADT,
+                    child: user_flight_search.CNN,
+                    infant: user_flight_search.INF,
+                    class: user_flight_search.cabins
+                });
+            }
     }
 
 
@@ -81,13 +104,15 @@ class OneWay extends Component {
                 <div className="row">
                     <div className="col-xs-12 col-sm-6 col-lg-4">
                         <label className={'d-block mb-1'}><b>Flying from</b></label>
-                        <AirAutocomplete
+                        <AirAutocomplete 
+                            storage_value={"origin"}
                             handlerFromParant={this.handleOriginData}/>
                     </div>
 
                     <div className="col-xs-12 col-sm-6 col-lg-4">
                         <label className={'d-block mb-1'}><b>Flying to</b></label>
                         <AirAutocomplete
+                            storage_value={"destination"}
                             handlerFromParant={this.handleDestinationData}
                         />
                     </div>
@@ -158,4 +183,17 @@ class OneWay extends Component {
 
 }
 
-export default OneWay;
+
+
+OneWay.propTypes = {
+    shopData: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors,
+    shop: state.shop
+});
+
+const mapDispatchToProps = {shopData};
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(OneWay));
