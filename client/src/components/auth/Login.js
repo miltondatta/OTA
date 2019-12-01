@@ -15,9 +15,9 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            email   : '',
             password: '',
-            errors: {}
+            errors  : {}
         };
 
         this.onChange = this.onChange.bind(this);
@@ -31,8 +31,11 @@ class Login extends Component {
         }
 
         if (localStorage.registration_success) {
-            NotificationManager.success(localStorage.registration_success, 'Registration Successfull!', 3000);
+            NotificationManager.success(localStorage.registration_success, 'Verification Successful!', 3000);
             localStorage.removeItem('registration_success');
+        } else if (localStorage.registration_error) {
+            NotificationManager.error(localStorage.registration_error, 'Verification Fail!', 3000);
+            localStorage.removeItem('registration_error');
         }
     }
 
@@ -55,7 +58,7 @@ class Login extends Component {
     }
 
     createNotification = (type, errors) => {
-        if(errors.msg) {
+        if (errors.msg) {
             switch (type) {
                 case 'error':
                     NotificationManager.error(errors.msg, 'Login Error!', 3000);
@@ -70,7 +73,7 @@ class Login extends Component {
         e.preventDefault();
 
         const userData = {
-            email: this.state.email,
+            email   : this.state.email,
             password: this.state.password
         };
 
@@ -132,12 +135,12 @@ class Login extends Component {
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    auth     : PropTypes.object.isRequired,
+    errors   : PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth,
+    auth  : state.auth,
     errors: state.errors
 });
 

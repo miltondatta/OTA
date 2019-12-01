@@ -1,7 +1,15 @@
 const {sequelize, Sequelize} = require('../models/index');
-const user = require('../models').user;
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const user                   = require('../models').user;
+const bcrypt                 = require('bcryptjs');
+const jwt                    = require('jsonwebtoken');
+const nodemailer             = require('nodemailer');
+const dotenv                 = require('dotenv');
+dotenv.config();
+const uuidv1   = require('uuid/v1');
+var dateTime   = require('node-datetime');
+const base_url = process.env.BASE_URL_CLIENT;
+var moment     = require("moment");
+
 
 exports.store = async (req, res) => {
     const {name, email, password, mobile} = req.body;
@@ -12,37 +20,60 @@ exports.store = async (req, res) => {
         } else {
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(password, salt, (err, hash) => {
-                    user.create({name: name, email: email, password: hash, mobile: mobile}).then(results => {
-                        return res.status(200).json({msg: 'User created successfully!'});
+                    let uuid        = uuidv1();
+                    let current_dt  = dateTime.create().format('Y-m-d H:M:S');
+                    let confirm_url = base_url + 'verification/' + uuid;
+                    user.create({
+                        name              : name,
+                        email             : email,
+                        password          : hash,
+                        mobile            : mobile,
+                        verification_token: uuid,
+                        token_sent_at     : current_dt
+                    }).then(results => {
+                        let mail_host     = process.env.MAIL_HOST;
+                        let mail_port     = process.env.MAIL_PORT;
+                        let mail_user     = process.env.MAIL_USER;
+                        let mail_password = process.env.MAIL_PASSWORD;
+                        let mail_from     = process.env.MAIL_FROM;
+
+                        var transport = nodemailer.createTransport({
+                            host: mail_host,
+                            port: mail_port,
+                            auth: {
+                                user: mail_user,
+                                pass: mail_password
+                            }
+                        });
+                        const message = {
+                                  from   : mail_from,
+                                  to     : email,
+                                  subject: 'Confirm Registration Email',
+                                  html   : "<h1>Hi," + name + "</h1><br/><p>Here is your Email verification link.</p><br/><a href="
+                                      + confirm_url + " target='_blank'>Click to Confirm</a>"
+                              }
+                        ;
+                        transport.sendMail(message, function (err, info) {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                console.log(info);
+                            }
+                        });
+                        return res.status(200).json({msg: 'An email sent to your mail. Please Confirm'});
                     });
                 });
             });
         }
     });
 
-//
-
-    /*
-    user.findAll({}).then((data) => {
-        console.log(data);
-    }).catch((err) => {
-        console.log(err);
-    }); */
-
-    /*
-    sequelize.query('SELECT * FROM users').then(([results, metadata]) => {
-
-        console.log(results);
-        return results;
-    }); */
-
 };
 
 exports.updateProfile = async (req, res) => {
     try {
         const {name, email, mobile} = req.body;
-        const updated_data = {
-            name: name,
+        const updated_data          = {
+            name  : name,
             mobile: mobile
         };
 
@@ -53,10 +84,10 @@ exports.updateProfile = async (req, res) => {
         if (!update) res.status(400).json({msg: 'Please try again!'});
 
         const updated_user = await user.findOne({where: {email}});
-        const payload = {
-            id: updated_user.id,
-            name: updated_user.name,
-            email: updated_user.email,
+        const payload      = {
+            id    : updated_user.id,
+            name  : updated_user.name,
+            email : updated_user.email,
             mobile: updated_user.mobile
         };
 
@@ -67,7 +98,7 @@ exports.updateProfile = async (req, res) => {
                 if (err) throw err;
                 return res.status(200).json({
                     success: true,
-                    token: 'ptm' + token
+                    token  : 'ptm' + token
                 });
             }
         );
@@ -87,7 +118,7 @@ exports.updatePassword = async (req, res) => {
         const isMatch = await bcrypt.compare(password, status.password);
         if (!isMatch) res.status(400).json({msg: 'Current Password not matched!'});
 
-        const salt = await bcrypt.genSalt(10);
+        const salt         = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(newPassword, salt);
 
         const updated_data = {
@@ -121,7 +152,7 @@ exports.login = async (req, res) => {
                     (err, token) => {
                         res.json({
                             success: true,
-                            token: 'ptm' + token
+                            token  : 'ptm' + token
                         });
                     });
             } else {
@@ -129,4 +160,26 @@ exports.login = async (req, res) => {
             }
         });
     });
+};
+
+exports.confirm_by_email = async (req, res) => {
+    let verification_token = req.body.token;
+    user.findOne({where: {verification_token}}).then(results => {
+        if (results) {
+            console.log("in if");
+            let start_date = moment(results.token_sent_at);
+            let end_date   = moment();
+            let minutes    = parseInt(moment.duration(end_date.diff(start_date)).asMinutes());
+            if (minutes > 600) {
+                return res.status(400).json({msg: 'Session Expire'});
+            } else {
+                user.update({'is_verified': 1, 'verification_token': ''}, {where: {verification_token}});
+                return res.status(200).json({msg: 'User Verified Successfully. Now You Can Login.', status: true});
+            }
+        } else {
+            return res.status(200).json({msg: 'Token not Matched', status: false});
+        }
+    }).catch(err => {
+        return res.status(200).json({msg: 'Token not Matched', status: false});
+    })
 };

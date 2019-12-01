@@ -16,6 +16,7 @@ import FlightList from './components/flights/FlightList';
 import FlightPayment from './components/payments/FlightPayment';
 import Contact from "./components/contact/Contact";
 import Profile from "./components/profile/Profile";
+import Verification from "./components/profile/Verification";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -56,6 +57,7 @@ function App() {
         <Route exact path='/flight-payment' component={FlightPayment}/>
         <Route exact path='/contact' component={Contact}/>
         <Route exact path='/profile' component={Profile}/>
+        <Route exact path='/verification/:uuid' component={Verification}/>
      <Footer/>
    </Router>
    </Provider>
