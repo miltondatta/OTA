@@ -1,0 +1,22 @@
+{
+    "name": "RequestRuntimeError.UnhandledError",
+    "data": null,
+    "causedBy": {
+        "name": "RuntimeError.AirRuntimeError",
+        "data": {
+            "faultcode": "Server.System",
+            "faultstring": "Transaction Error: Procedure/5012",
+            "detail": {
+                "common_v47_0:ErrorInfo": {
+                    "common_v47_0:Code": "10",
+                    "common_v47_0:Service": "SYSTEM",
+                    "common_v47_0:Type": "System",
+                    "common_v47_0:Description": "Transaction failure.",
+                    "common_v47_0:TransactionId": "C18ABD820A0764772C6EF1E704401A86",
+                    "common_v47_0:TraceId": "",
+                    "xmlns:common_v47_0": "http://www.travelport.com/schema/common_v47_0"
+                }
+            }
+        }
+    }
+}
