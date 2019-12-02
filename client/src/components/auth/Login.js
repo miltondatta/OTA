@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import {Button, Card, Form} from "react-bootstrap";
 import {Link} from 'react-router-dom';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-
+import Alerts from "../alert/alerts";
 // Redux
 import {loginUser} from '../../actions/authActions';
 import {connect} from 'react-redux';
-
 // Css
 import '../../assets/css/register.css';
 
@@ -17,13 +16,16 @@ class Login extends Component {
         this.state = {
             email   : '',
             password: '',
-            errors  : {}
+            errors  : {},
+            show    : false,
+            variant : '',
+            heading : '',
+            message : '',
         };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
-
 
     componentDidMount() {
         if (this.props.auth.isAuthenticated) {
@@ -39,7 +41,6 @@ class Login extends Component {
         }
     }
 
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
             this.props.history.push('/');
@@ -52,7 +53,6 @@ class Login extends Component {
 
     }
 
-
     onChange(e) {
         this.setState({[e.target.name]: e.target.value});
     }
@@ -61,7 +61,13 @@ class Login extends Component {
         if (errors.msg) {
             switch (type) {
                 case 'error':
-                    NotificationManager.error(errors.msg, 'Login Error!', 3000);
+                    //NotificationManager.error(errors.msg, 'Login Error!', 3000);
+                    this.setState({
+                        show   : true,
+                        variant: 'danger',
+                        heading: 'Login Error!',
+                        message: errors.msg,
+                    });
                     break;
                 default:
                     return;
@@ -71,7 +77,6 @@ class Login extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-
         const userData = {
             email   : this.state.email,
             password: this.state.password
@@ -79,7 +84,6 @@ class Login extends Component {
 
         this.props.loginUser(userData);
     }
-
 
     render() {
         return (
@@ -92,6 +96,12 @@ class Login extends Component {
                                     <Card.Header>
                                         <h3>Login</h3>
                                     </Card.Header>
+                                    <Alerts
+                                        show={this.state.show}
+                                        variant={this.state.variant}
+                                        heading={this.state.heading}
+                                        message={this.state.message}
+                                    ></Alerts>
                                     <Card.Body>
                                         <Form onSubmit={this.onSubmit}>
                                             <Form.Row>
@@ -131,7 +141,6 @@ class Login extends Component {
         )
     }
 }
-
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
