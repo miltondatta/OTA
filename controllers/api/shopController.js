@@ -137,26 +137,19 @@ exports.shop = async (req, res) => {
 
 
 
-   /*  
+    /*
     const flightInfo_param = {
-        airline: 'LH',
-        flightNumber: '2551',
-        departure: '2019-12-04',
+        airline: 'LO',
+        flightNumber: '764',
+        departure: '2019-12-02',
     };
 
     travelport.flightInfo(flightInfo_param).then(
-        data => fs.writeFile("api_output/travelport/flightInfo2.txt", JSON.stringify(data, null, 4), (err) => {
-            console.log("start_writing");
-            console.log(data);
-            console.log("End Writing");
-        }), err => fs.writeFile("api_output/travelport/flightInfo2.txt", JSON.stringify(err, null, 4), (err) => {
-            console.log("err start_writing");
-            console.log(err);
-            console.log("err End Writing");
-        }) 
+        data => console.log(data),
+        err => console.log(err)
      );
-    return; 
-        */
+    return;  */
+        
 
 
 
@@ -199,20 +192,8 @@ exports.shop = async (req, res) => {
             const book = {
                 segments: fromSegments,
                 rule: 'SIP',
-                passengers: [{
-                    lastName: 'SKYWALKER',
-                    firstName: 'ANAKIN',
-                    passCountry: 'UA',
-                    passNumber: 'ES221731',
-                    birthDate: '1968-07-25',
-                    gender: 'M',
-                    ageCategory: 'ADT',
-                }],
-                phone: {
-                    countryCode: '38',
-                    location: 'IEV',
-                    number: '0660419905',
-                },
+                passengers: [{ lastName: 'JOHN', firstName: 'DOE', passCountry: 'ET', passNumber: 'ET7823J', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT', }],
+                phone: { countryCode: '38', location: 'IEV', number: '033440419905', },
                 deliveryInformation: {
                     name: 'Anakin Skywalker',
                     street: 'Sands street, 42',
@@ -220,7 +201,7 @@ exports.shop = async (req, res) => {
                     country: 'Galactic Empire',
                     city: 'Mos Eisley',
                 },
-                allowWaitlist: true,
+                allowWaitlist: false
             };
 
             console.log("Call Booking Request");
