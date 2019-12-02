@@ -10,10 +10,14 @@ const settings   = {
         username    : 'Universal API/uAPI8931078193-41fe5ac8',
         password    : 'fHCStEyfMyZjmE8nH4rcZN246',
         targetBranch: 'P7005006',
-        region      : 'apac' */
+        region      : 'apac' 
         username    : 'Universal API/uAPI-197757298',
         password    : 'ZKX6E4NtSphTNyEqJjfnDt3Qb',
         targetBranch: 'P105124',
+        region      : 'apac' */
+        username    : 'Universal API/uAPI3530284402',
+        password    : 'MPtyXrMNxqTNW8pA2JwWSF2zj',
+        targetBranch: 'P105392',
         region      : 'apac'
     },
     debug     : 3,
