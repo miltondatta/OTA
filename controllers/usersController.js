@@ -145,18 +145,22 @@ exports.login = async (req, res) => {
         //Check password
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
-                const payload = {id: user.id, name: user.name, email: user.email, mobile: user.mobile};
-                jwt.sign(
-                    payload,
-                    'secret', {expiresIn: 3600},
-                    (err, token) => {
-                        res.json({
-                            success: true,
-                            token  : 'ptm' + token
+                if (user.is_verified) {
+                    const payload = {id: user.id, name: user.name, email: user.email, mobile: user.mobile};
+                    jwt.sign(
+                        payload,
+                        'secret', {expiresIn: 3600},
+                        (err, token) => {
+                            res.json({
+                                success: true,
+                                token  : 'ptm' + token
+                            });
                         });
-                    });
+                } else {
+                    return res.status(400).json({msg: 'Email is not verified. Please Verify Your Email.', status: 0});
+                }
             } else {
-                return res.status(400).json({msg: 'Your password is incorrect!'});
+                return res.status(400).json({msg: 'Your password is incorrect!', status: 0});
             }
         });
     });
