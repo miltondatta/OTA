@@ -1,16 +1,16 @@
 
-    input {
+input {
     border: 1px solid #999;
     padding: 0.5rem;
     width: 300px;
-  }
-  
-  .no-suggestions {
+}
+
+.no-suggestions {
     color: #999;
     padding: 0.5rem;
-  }
-  
-  .suggestions {
+}
+
+.suggestions {
     border: 1px solid #999;
     border-top-width: 0;
     list-style: none;
@@ -19,30 +19,35 @@
     overflow-y: auto;
     padding-left: 0;
     width: calc(340px + 1rem);
-  }
-  
-  .suggestions li {
+}
+
+.suggestions li {
     padding: 0.5rem;
-  }
-  
-  ul.suggestions {
+}
+
+ul.suggestions {
     display: block;
     z-index: 999;
     position: absolute;
     background: #edc58f;
-  }
+}
 
-  .suggestion-active,
-  .suggestions li:hover {
+.suggestion-active,
+.suggestions li:hover {
     background-color: #008f68;
     color: #fae042;
     cursor: pointer;
     font-weight: 700;
-  }
-  
-  .suggestions li:not(:last-of-type) {
+}
+
+.suggestions li:not(:last-of-type) {
     border-bottom: 1px solid #999;
-  }
+}
 
-
+.force-select {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
   

@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 
 // Redux
 import {connect} from 'react-redux';
-import { shopData } from '../../actions/shopActions';
+import {shopData} from '../../actions/shopActions';
 
 
 // Component
@@ -46,6 +46,7 @@ class OneWay extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
         let org = this.state.origin;
         let des = this.state.destination;
 
@@ -63,17 +64,6 @@ class OneWay extends Component {
         };
 
         this.props.shopData(searchParams, this.props.history);
-
-        /*
-        console.log(searchParams);
-        axios
-            .post(shopApi, searchParams)
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(err =>
-                console.log("Error: " + err)
-            );    */
     }
 
     handleSelectionChanged(e) {
@@ -84,27 +74,31 @@ class OneWay extends Component {
 
     componentDidMount() {
 
-            if (localStorage.getItem('user_flight_search')) {
-                const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
-                const today = moment().format('YYYY-MM-DD');
-                const departureDate = user_flight_search.departureDate;
+        if (localStorage.getItem('user_flight_search')) {
+            const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
+            const today = moment().format('YYYY-MM-DD');
+            const departureDate = user_flight_search.departureDate;
 
-                this.setState({
-                    departure: departureDate < today ? moment(today) : moment(departureDate),
-                    origin: user_flight_search.origin,
-                    destination: user_flight_search.destination,
-                    adult: user_flight_search.ADT,
-                    child: user_flight_search.CNN,
-                    infant: user_flight_search.INF,
-                    class: user_flight_search.cabins
-                });
-            }
+            this.setState({
+                departure: departureDate < today ? moment(today) : moment(departureDate),
+                origin: user_flight_search.origin,
+                destination: user_flight_search.destination,
+                adult: user_flight_search.ADT,
+                child: user_flight_search.CNN,
+                infant: user_flight_search.INF,
+                class: user_flight_search.cabins
+            });
+        }
     }
 
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={e => this.onSubmit(e)} onKeyPress={event => {
+                if (event.which === 13) {
+                    event.preventDefault();
+                }
+            }}>
                 <div className="row">
                     <div className="col-xs-12 col-sm-6 col-lg-4">
                         <label className={'d-block mb-1'}><b>Flying from</b></label>
@@ -136,7 +130,8 @@ class OneWay extends Component {
                 <div className="row pt-2">
                     <div className="col-xs-6 col-lg-4">
                         <label htmlFor="adult" className={'d-block mb-1'}><b>Adult</b></label>
-                        <select className="form-control" name={'adult'} id={'adult'} value={this.state.adult} onChange={this.handleSelectionChanged}>
+                        <select className="form-control" name={'adult'} id={'adult'} value={this.state.adult}
+                                onChange={this.handleSelectionChanged}>
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -148,7 +143,8 @@ class OneWay extends Component {
 
                     <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="child" className={'d-block mb-1'}><b>Child</b></label>
-                        <select className="form-control" name={'child'} id={'child'} value={this.state.child} onChange={this.handleSelectionChanged}>
+                        <select className="form-control" name={'child'} id={'child'} value={this.state.child}
+                                onChange={this.handleSelectionChanged}>
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -160,7 +156,8 @@ class OneWay extends Component {
 
                     <div className="col-xs-6 col-lg-4 mobile-input">
                         <label htmlFor="infant" className={'d-block mb-1'}><b>Infant</b></label>
-                        <select className="form-control" name={'infant'} id={'infant'} value={this.state.infant} onChange={this.handleSelectionChanged}>
+                        <select className="form-control" name={'infant'} id={'infant'} value={this.state.infant}
+                                onChange={this.handleSelectionChanged}>
                             <option>0</option>
                             <option>1</option>
                         </select>
@@ -170,7 +167,8 @@ class OneWay extends Component {
                 <div className="row pt-2">
                     <div className="col-xs-6 col-lg-4">
                         <label htmlFor="class" className={'d-block mb-1'}><b>Class</b></label>
-                        <select className="form-control" name={'class'} id={'class'} value={this.state.class} onChange={this.handleSelectionChanged}>
+                        <select className="form-control" name={'class'} id={'class'} value={this.state.class}
+                                onChange={this.handleSelectionChanged}>
                             <option value="Business">Business Class</option>
                             <option value="Economy">Economic Class</option>
                         </select>
@@ -186,7 +184,6 @@ class OneWay extends Component {
     }
 
 }
-
 
 
 OneWay.propTypes = {

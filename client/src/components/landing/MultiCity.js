@@ -123,7 +123,10 @@ class MultiCity extends Component {
     render() {
         return (
             <Fragment>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} onKeyPress={event => {
+                    if (event.which === 13) {
+                        event.preventDefault();
+                    }}}>
                     {this.state.multiCity.length > 0 && this.state.multiCity.map((value, key) => (
                         <Fragment key={key}>
                             <div className="row" style={key > 0 ? {'paddingTop': 8} : {}}>
