@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 
 import '../../assets/css/air-auto-complete.css';
@@ -23,12 +23,14 @@ class AirAutocomplete extends Component {
     }
 
     componentWillReceiveProps(props) {
-        this.setState({
-            userInput   : props.storage_value
-        })
+        if (this.props.index) {
+            this.setState({
+                userInput: props.storage_value
+            });
+        }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         if (localStorage.getItem('user_flight_search')) {
             const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
             this.setState({
@@ -40,7 +42,7 @@ class AirAutocomplete extends Component {
     onChange(e) {
         let filteredSuggestions = [];
         let search_value = e.currentTarget.value;
-        if(search_value === '') {
+        if (search_value === '') {
             this.setState({
                 activeSuggestion: 0,
                 filteredSuggestions: [],
@@ -54,10 +56,10 @@ class AirAutocomplete extends Component {
             userInput: search_value,
             key: this.props.index
         });
-        
-         axios
+
+        axios
             .get('/api/global/get_airports?airport_search=' + search_value)
-            .then(res => {  
+            .then(res => {
                 res.data.forEach(element => {
                     filteredSuggestions.push(element.iata_code + ", " + element.name + ", " + element.iso_country);
                 });
@@ -69,7 +71,7 @@ class AirAutocomplete extends Component {
             })
             .catch(err =>
                 console.log("Error: " + err)
-            );           
+            );
     }
 
 
@@ -82,8 +84,6 @@ class AirAutocomplete extends Component {
         });
         this.props.handlerFromParant(e.currentTarget.innerText, this.state.key);
     }
-
-
 
 
     render() {
@@ -121,12 +121,12 @@ class AirAutocomplete extends Component {
         return (
             <Fragment>
                 <input type="text"
-                    required autoComplete="off"
-                    name={this.props.name}
-                    className="form-control"
-                    placeholder="City or airport"
-                    onChange={this.onChange}
-                    value={userInput}
+                       required autoComplete="off"
+                       name={this.props.name}
+                       className="form-control"
+                       placeholder="City or airport"
+                       onChange={this.onChange}
+                       value={userInput}
                 />
                 {suggestionsListComponent}
             </Fragment>
