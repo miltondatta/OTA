@@ -31,31 +31,29 @@ module.exports = AirService;
 const params = {
     legs      : [
         {
-            from         : 'LWO',
-            to           : 'JKT',
-            departureDate: '2019-11-15'
+            from         : 'DAC',
+            to           : 'CGP',
+            departureDate: '2019-12-05'
         }
     ],
     passengers: {
         ADT: 1
     },
     cabins    : ['Economy'],
-    requestId : '4e2fd1f8-2221-4b6c-bb6e-cf05c367cf60',
     pricing   : {
         currency: 'USD'
     },
-}; */
+};
 
 
-/*AirService.shop(params)
+AirService.shop(params)
     .then(
         res => fs.writeFile("api_output/travelport/shop.txt", JSON.stringify(res), (err) => {
             console.log("Successfully Written to File.");
         }),
         err => console.log(err)
     );
-;*/
-
+return;  */
 
 /*
 AirService.shop(params)

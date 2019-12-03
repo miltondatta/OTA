@@ -149,7 +149,85 @@ exports.shop = async (req, res) => {
         err => console.log(err)
      );
     return;  */
+
+
+ /*   
+const shop_params = {
+    legs      : [
+        {
+            from         : 'DAC',
+            to           : 'CGP',
+            departureDate: '2019-12-05'
+        }
+    ],
+    passengers: {
+        ADT: 1
+    },
+    cabins    : ['Economy'],
+    pricing   : {
+        currency: 'USD'
+    },
+};
+
+
+travelport.shop(shop_params)
+    .then(
+        res => fs.writeFile("api_output/travelport/shop.txt", JSON.stringify(res, null, 4), (err) => {
+            console.log("Successfully Written to File.");
+        }),
+        err => console.log(err)
+    );
+return;  */
+
         
+
+    const book = {
+        segments: [
+            {
+                "from": "DAC",
+                "to": "CGP",
+                "group": 0,
+                "departure": "2019-12-05T07:40:00.000+06:00",
+                "arrival": "2019-12-05T08:25:00.000+06:00",
+                "airline": "BG",
+                "flightNumber": "411",
+                "uapi_segment_ref": "CtWin57Q2BKAWWiAQAAAAA==",
+                "serviceClass": "Economy",
+                "plane": [
+                    "738"
+                ],
+                "duration": [
+                    "45"
+                ],
+                "techStops": [],
+                "bookingClass": "Y",
+                "baggage": [
+                    {
+                        "units": "kilograms",
+                        "amount": 20
+                    }
+                ],
+                "fareBasisCode": "Y"
+            }
+        ],
+        //rule: 'SIP',
+        phone: { countryCode: '88', location: 'BD', number: '01551807064' },
+        passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126789', passExpireDate : '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],                
+        allowWaitlist: true
+    };
+
+    console.log("Call Booking Request");
+
+    travelport.book(book).then(
+        res => fs.writeFile("api_output/travelport/book.txt", JSON.stringify(res, null, 4), (res) => {
+            console.log("Booking Successfully Written into File.");
+        }),
+        err => fs.writeFile("api_output/travelport/book.txt", JSON.stringify(err, null, 4), (err) => {
+            console.log("Booking Error Written into File.");
+        })
+    );
+    return;
+
 
 
 
@@ -176,8 +254,6 @@ exports.shop = async (req, res) => {
         }
     };  
 
-
-    
     //For travelport - Response preparation
     travelport.shop(params)
     .then(
@@ -187,20 +263,39 @@ exports.shop = async (req, res) => {
                     console.log("Successfully Written to File.");
                 });
 
-            const fromSegments = apiRes['0'].directions['0']['0'].segments;
+                const fromSegments = apiRes['0'].directions['0']['0'].segments;
+                fs.writeFile("api_output/travelport/segments.txt", JSON.stringify(fromSegments, null, 4), (err) => {
+                    console.log("Successfully Written Segment into File.");
+                });
+
+            
            // const toSegments   = apiRes['0'].directions['1']['0'].segments;
             const book = {
-                segments: fromSegments,
-                rule: 'SIP',
-                passengers: [{ lastName: 'JOHN', firstName: 'DOE', passCountry: 'ET', passNumber: 'ET7823J', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT', }],
-                phone: { countryCode: '38', location: 'IEV', number: '033440419905', },
-                deliveryInformation: {
+                segments: [{
+                    "from": "LWO",
+                    "to": "SAW",
+                    "group": 0,
+                    "departure": "2019-12-04T16:15:00.000+02:00",
+                    "arrival": "2019-12-04T19:15:00.000+03:00",
+                    "airline": "PC",
+                    "flightNumber": "421",
+                    "serviceClass": "Economy",
+                    "plane": "320", 
+                    "fareBasisCode": "SLR2R1RI",
+                    "bookingClass": "E" 
+                }],
+                //rule: 'SIP',
+                //passengers: [{ lastName: 'JOHN', firstName: 'DOE', passCountry: 'ET', passNumber: 'ET7823J', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
+                phone: { countryCode: '38', location: 'IEV', number: '033440419905' },
+               /* deliveryInformation: {
                     name: 'Anakin Skywalker',
                     street: 'Sands street, 42',
                     zip: '42042',
                     country: 'Galactic Empire',
                     city: 'Mos Eisley',
-                },
+                }, */
+
+                passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'ET', passNumber: 'ET126789', passExpireDate : '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],                
                 allowWaitlist: false
             };
 
@@ -208,10 +303,10 @@ exports.shop = async (req, res) => {
 
             travelport.book(book).then(
                 res => fs.writeFile("api_output/travelport/book.txt", JSON.stringify(res, null, 4), (res) => {
-                    console.log("Successfully Written to File.");
+                    console.log("Booking Successfully Written into File.");
                 }),
                 err => fs.writeFile("api_output/travelport/book.txt", JSON.stringify(err, null, 4), (err) => {
-                    console.log("Error Written to File.");
+                    console.log("Booking Error Written into File.");
                 })
             );
         },

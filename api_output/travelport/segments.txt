@@ -1,0 +1,80 @@
+[
+    {
+        "from": "LWO",
+        "to": "SAW",
+        "group": 0,
+        "departure": "2019-12-04T16:15:00.000+02:00",
+        "arrival": "2019-12-04T19:15:00.000+03:00",
+        "airline": "PC",
+        "flightNumber": "421",
+        "uapi_segment_ref": "CtWin57Q2BKA9ke6PAAAAA==",
+        "serviceClass": "Economy",
+        "plane": [
+            "320"
+        ],
+        "duration": [
+            "120"
+        ],
+        "techStops": [],
+        "bookingClass": "E",
+        "baggage": [
+            {
+                "units": "kilograms",
+                "amount": 30
+            }
+        ],
+        "fareBasisCode": "SLR2R1RI"
+    },
+    {
+        "from": "SAW",
+        "to": "DOH",
+        "group": 0,
+        "departure": "2019-12-04T20:15:00.000+03:00",
+        "arrival": "2019-12-05T00:20:00.000+03:00",
+        "airline": "QR",
+        "flightNumber": "242",
+        "uapi_segment_ref": "CtWin57Q2BKA/ke6PAAAAA==",
+        "serviceClass": "Economy",
+        "plane": [
+            "321"
+        ],
+        "duration": [
+            "245"
+        ],
+        "techStops": [],
+        "bookingClass": "S",
+        "baggage": [
+            {
+                "units": "kilograms",
+                "amount": 30
+            }
+        ],
+        "fareBasisCode": "SLR2R1RI"
+    },
+    {
+        "from": "DOH",
+        "to": "CGK",
+        "group": 0,
+        "departure": "2019-12-05T02:00:00.000+03:00",
+        "arrival": "2019-12-05T14:45:00.000+07:00",
+        "airline": "QR",
+        "flightNumber": "956",
+        "uapi_segment_ref": "CtWin57Q2BKABle6PAAAAA==",
+        "serviceClass": "Economy",
+        "plane": [
+            "788"
+        ],
+        "duration": [
+            "525"
+        ],
+        "techStops": [],
+        "bookingClass": "S",
+        "baggage": [
+            {
+                "units": "kilograms",
+                "amount": 30
+            }
+        ],
+        "fareBasisCode": "SLR2R1RI"
+    }
+]
