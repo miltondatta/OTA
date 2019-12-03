@@ -15,11 +15,13 @@ class AirAutocomplete extends Component {
             showSuggestions: false,
             // What the user has entered
             userInput: "",
-            key: 0
+            key: 0,
+            selectText: false
         };
 
         this.onChange = this.onChange.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     componentWillReceiveProps(props) {
@@ -85,6 +87,36 @@ class AirAutocomplete extends Component {
         this.props.handlerFromParant(e.currentTarget.innerText, this.state.key);
     }
 
+    onKeyDown = e => {
+        const { activeSuggestion, filteredSuggestions } = this.state;
+
+        // User pressed the enter key
+        if (e.keyCode === 13) {
+            this.setState({
+                activeSuggestion: 0,
+                showSuggestions: false,
+                userInput: filteredSuggestions[activeSuggestion]
+            });
+            return false;
+        }
+        // User pressed the up arrow
+        else if (e.keyCode === 38) {
+            if (activeSuggestion === 0) {
+                return;
+            }
+
+            this.setState({ activeSuggestion: activeSuggestion - 1 });
+        }
+        // User pressed the down arrow
+        else if (e.keyCode === 40) {
+            if (activeSuggestion - 1 === filteredSuggestions.length) {
+                return;
+            }
+
+            this.setState({ activeSuggestion: activeSuggestion + 1 });
+        }
+    };
+
 
     render() {
         const {
@@ -123,9 +155,16 @@ class AirAutocomplete extends Component {
                 <input type="text"
                        required autoComplete="off"
                        name={this.props.name}
-                       className="form-control"
+                       className={`form-control ${this.state.selectText ? 'force-select' : ''}`}
                        placeholder="City or airport"
                        onChange={this.onChange}
+                       onDoubleClick={() => {
+                           this.setState({selectText: true});
+                       } }
+                       onClick={() => {
+                           this.setState({selectText: false});
+                       } }
+                       onKeyDown={this.onKeyDown}
                        value={userInput}
                 />
                 {suggestionsListComponent}
