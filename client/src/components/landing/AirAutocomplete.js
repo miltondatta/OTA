@@ -22,6 +22,12 @@ class AirAutocomplete extends Component {
         this.onClick = this.onClick.bind(this);
     }
 
+    componentWillReceiveProps(props) {
+        this.setState({
+            userInput   : props.storage_value
+        })
+    }
+
     componentDidMount(){
         if (localStorage.getItem('user_flight_search')) {
             const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));

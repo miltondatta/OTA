@@ -37,7 +37,7 @@ class MultiCity extends Component {
             adult: 1,
             child: 0,
             infant: 0,
-            class: 'Business'
+            class: 'Business',
         };
 
         this.addMultiCity = this.addMultiCity.bind(this);
@@ -60,6 +60,7 @@ class MultiCity extends Component {
         e.preventDefault();
         this.state.multiCity.splice(key, 1);
         const multiCity = this.state.multiCity;
+
         this.setState({
             multiCity: multiCity
         });
@@ -131,7 +132,7 @@ class MultiCity extends Component {
                                     <label className={'d-block mb-1'}><b>Flying from</b></label>
                                     }
                                     <AirAutocomplete
-                                        handlerFromParant={this.handleOriginData} index={key}/>
+                                        handlerFromParant={this.handleOriginData} index={key} storage_value={value.origin}/>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-6 col-lg-4">
@@ -139,7 +140,7 @@ class MultiCity extends Component {
                                     <label className={'d-block mb-1'}><b>Flying to</b></label>
                                     }
                                     <AirAutocomplete
-                                        handlerFromParant={this.handleDestinationData} index={key}
+                                        handlerFromParant={this.handleDestinationData} index={key} storage_value={value.destination}
                                     />
                                 </div>
 
