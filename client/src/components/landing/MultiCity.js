@@ -12,27 +12,40 @@ class MultiCity extends Component {
         super(props);
         this.state = {
             addCity: {
-                from: '',
                 to: '',
+                origin: '',
+                from: '',
+                destination: '',
                 departureDate: moment()
             },
             multiCity: [
                 {
-                    from: '',
                     to: '',
+                    origin: '',
+                    from: '',
+                    destination: '',
                     departureDate: moment()
                 },
                 {
-                    from: '',
                     to: '',
+                    origin: '',
+                    from: '',
+                    destination: '',
                     departureDate: moment()
                 }
-            ]
+            ],
+            adult: 1,
+            child: 0,
+            infant: 0,
+            class: 'Business'
         };
 
         this.addMultiCity = this.addMultiCity.bind(this);
         this.removeCity = this.removeCity.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.handleOriginData = this.handleOriginData.bind(this);
+        this.handleDestinationData = this.handleDestinationData.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     addMultiCity(e) {
@@ -47,15 +60,18 @@ class MultiCity extends Component {
         e.preventDefault();
         this.state.multiCity.splice(key, 1);
         const multiCity = this.state.multiCity;
-            this.setState({
+        this.setState({
             multiCity: multiCity
         });
     }
 
-    onChange(e, key, input_name) {
+    onChange(e, key) {
         if (e.target) {
             const {name, value} = e.target;
-            this.setState(this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {[name]: value}) : el)));
+            const updateMultiCity = this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {[name]: value}) : el));
+            this.setState({
+                multiCity: updateMultiCity
+            });
         } else {
             const updateDate = this.state.multiCity.map((value, index) => {
                 const returnValue = {...value};
@@ -72,10 +88,41 @@ class MultiCity extends Component {
         }
     }
 
+    handleOriginData(data, key) {
+        const updateMultiCity = this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {from: data.split(",")[0], origin: data}) : el));
+
+        this.setState({
+            multiCity: updateMultiCity
+        });
+    }
+
+    handleDestinationData(data, key) {
+        const updateMultiCity = this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {to: data.split(",")[0], destination: data}) : el));
+
+        this.setState({
+            multiCity: updateMultiCity
+        });
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        let searchParams = {
+            multiCity: this.state.multiCity,
+            ADT: this.state.adult,
+            CNN: this.state.child,
+            INF: this.state.infant,
+            cabins: this.state.class
+        };
+
+        console.log(searchParams);
+        //this.props.shopData(searchParams, this.props.history);
+    }
+
     render() {
         return (
             <Fragment>
-                <form>
+                <form onSubmit={this.onSubmit}>
                     {this.state.multiCity.length > 0 && this.state.multiCity.map((value, key) => (
                         <Fragment key={key}>
                             <div className="row" style={key > 0 ? {'paddingTop': 8} : {}}>
@@ -84,7 +131,7 @@ class MultiCity extends Component {
                                     <label className={'d-block mb-1'}><b>Flying from</b></label>
                                     }
                                     <AirAutocomplete
-                                        handlerFromParant={this.handleOriginData}/>
+                                        handlerFromParant={this.handleOriginData} index={key}/>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-6 col-lg-4">
@@ -92,7 +139,7 @@ class MultiCity extends Component {
                                     <label className={'d-block mb-1'}><b>Flying to</b></label>
                                     }
                                     <AirAutocomplete
-                                        handlerFromParant={this.handleDestinationData}
+                                        handlerFromParant={this.handleDestinationData} index={key}
                                     />
                                 </div>
 
@@ -107,7 +154,7 @@ class MultiCity extends Component {
                                                     id={'departureDate'}
                                                     className="form-control"
                                                     inputFormat="DD/MM/YYYY"
-                                                    onChange={e => this.onChange(e, key, 'departureDate')}
+                                                    onChange={e => this.onChange(e, key)}
                                                     value={value.departureDate}/>
                                     </div>
                                     {key > 1 &&
@@ -122,7 +169,8 @@ class MultiCity extends Component {
 
                     <div className="row pt-3">
                         <div className="col-md-12">
-                            <Button variant="outline-success" onClick={e => this.addMultiCity(e)} disabled={this.state.multiCity.length === 8 ? true : false}>
+                            <Button variant="outline-success" onClick={e => this.addMultiCity(e)}
+                                    disabled={this.state.multiCity.length === 8 ? true : false}>
                                 <FontAwesomeIcon className="mr-2" icon={faPlusCircle}/>
                                 Add Destination</Button>
                         </div>
@@ -132,7 +180,8 @@ class MultiCity extends Component {
                     <div className="row pt-2">
                         <div className="col-xs-6 col-lg-4">
                             <label htmlFor="adult" className={'d-block mb-1'}><b>Adult</b></label>
-                            <select className="form-control" name={'adult'} id={'adult'}>
+                            <select className="form-control" name={'adult'} id={'adult'} value={this.state.adult}
+                                    onChange={e => this.setState({adult: e.target.value})}>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -143,7 +192,8 @@ class MultiCity extends Component {
 
                         <div className="col-xs-6 col-lg-4 mobile-input">
                             <label htmlFor="child" className={'d-block mb-1'}><b>Child</b></label>
-                            <select className="form-control" name={'child'} id={'child'}>
+                            <select className="form-control" name={'child'} id={'child'} value={this.state.child}
+                                    onChange={e => this.setState({child: e.target.value})}>
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -155,7 +205,8 @@ class MultiCity extends Component {
 
                         <div className="col-xs-6 col-lg-4 mobile-input">
                             <label htmlFor="infant" className={'d-block mb-1'}><b>Infant</b></label>
-                            <select className="form-control" name={'infant'} id={'infant'}>
+                            <select className="form-control" name={'infant'} id={'infant'} value={this.state.infant}
+                                    onChange={e => this.setState({infant: e.target.value})}>
                                 <option>0</option>
                                 <option>1</option>
                             </select>
@@ -165,7 +216,8 @@ class MultiCity extends Component {
                     <div className="row pt-2">
                         <div className="col-xs-6 col-lg-4">
                             <label htmlFor="class" className={'d-block mb-1'}><b>Class</b></label>
-                            <select className="form-control" name={'class'} id={'class'}>
+                            <select className="form-control" name={'class'} id={'class'} value={this.state.class}
+                                    onChange={e => this.setState({class: e.target.value})}>
                                 <option>Business Class</option>
                                 <option>Economic Class</option>
                             </select>

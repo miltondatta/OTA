@@ -14,7 +14,8 @@ class AirAutocomplete extends Component {
             // Whether or not the suggestion list is shown
             showSuggestions: false,
             // What the user has entered
-            userInput: ""
+            userInput: "",
+            key: 0
         };
 
         this.onChange = this.onChange.bind(this);
@@ -44,7 +45,8 @@ class AirAutocomplete extends Component {
         }
 
         this.setState({
-            userInput: search_value
+            userInput: search_value,
+            key: this.props.index
         });
         
          axios
@@ -72,7 +74,7 @@ class AirAutocomplete extends Component {
             showSuggestions: false,
             userInput: e.currentTarget.innerText
         });
-        this.props.handlerFromParant(e.currentTarget.innerText); 
+        this.props.handlerFromParant(e.currentTarget.innerText, this.state.key);
     }
 
 
