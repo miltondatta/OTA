@@ -29,7 +29,6 @@ class OneWay extends Component {
         };
         this.onSubmit = this.onSubmit.bind(this);
         this.handleSelectionChanged = this.handleSelectionChanged.bind(this);
-        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     handleOriginData(data) {
@@ -65,17 +64,6 @@ class OneWay extends Component {
         };
 
         this.props.shopData(searchParams, this.props.history);
-
-        /*
-        console.log(searchParams);
-        axios
-            .post(shopApi, searchParams)
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(err =>
-                console.log("Error: " + err)
-            );    */
     }
 
     handleSelectionChanged(e) {
@@ -103,19 +91,12 @@ class OneWay extends Component {
         }
     }
 
-    onKeyDown = e => {
-        // User pressed the enter key
-        if (e.keyCode === 13) {
-            return false;
-        }
-    };
-
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} onKeyDown={e => {
-                if (e.keyCode == 13) {
-                    return false;
+            <form onSubmit={e => this.onSubmit(e)} onKeyPress={event => {
+                if (event.which === 13) {
+                    event.preventDefault();
                 }
             }}>
                 <div className="row">
