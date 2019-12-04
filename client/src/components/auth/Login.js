@@ -92,16 +92,16 @@ class Login extends Component {
                     <div className="container login-area-container">
                         <div className="row">
                             <div className="col-md-8 offset-md-2">
+                                <Alerts
+                                    show={this.state.show}
+                                    variant={this.state.variant}
+                                    heading={this.state.heading}
+                                    message={this.state.message}
+                                />
                                 <Card>
                                     <Card.Header>
                                         <h3>Login</h3>
                                     </Card.Header>
-                                    <Alerts
-                                        show={this.state.show}
-                                        variant={this.state.variant}
-                                        heading={this.state.heading}
-                                        message={this.state.message}
-                                    ></Alerts>
                                     <Card.Body>
                                         <Form onSubmit={this.onSubmit}>
                                             <Form.Row>

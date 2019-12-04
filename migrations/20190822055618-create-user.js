@@ -8,6 +8,10 @@ module.exports = {
                 primaryKey   : true,
                 type         : Sequelize.INTEGER
             },
+            role_id: {
+                type: Sequelize.INTEGER,
+                defaultValue: 0
+            },
             name              : {
                 type: Sequelize.STRING
             },

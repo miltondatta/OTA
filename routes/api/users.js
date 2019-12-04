@@ -85,5 +85,14 @@ router.get('/all', (req, res) => {
 });
 
 router.post('/confirm', users_controller.confirm_by_email);
+
+
+/*
+    @route          GET api/users/role
+    @desc           Get Users Role
+    @access         Private
+ */
+router.post('/role', users_controller.getRole);
+
 module.exports = router;
 
