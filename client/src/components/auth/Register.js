@@ -192,10 +192,10 @@ class Register extends Component {
                                                     Submit
                                                 </Button>
 
-                                                <p className={'pb-0 mb-0 pt-2'}>Already a member? <Link
+                                                {/*<p className={'pb-0 mb-0 pt-2'}>Already a member? <Link
                                                     to={'/login'}>
                                                     Sign In
-                                                </Link></p>
+                                                </Link></p>*/}
                                             </Form>
                                         </Card.Body>
                                     </Card>

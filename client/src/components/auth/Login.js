@@ -111,10 +111,10 @@ class Login extends Component {
                                             <Button variant="info" type="submit">
                                                 Submit
                                             </Button>
-                                            <p className={'pb-0 mb-0 pt-2'}>Not a member yet? <Link
+                                            {/*<p className={'pb-0 mb-0 pt-2'}>Not a member yet? <Link
                                                 to={'/register'}>
                                                 Join now
-                                            </Link></p>
+                                            </Link></p>*/}
                                         </Form>
                                     </Card.Body>
                                 </Card>
