@@ -2,14 +2,14 @@
     "name": "AirRuntimeError.InvalidRequestData",
     "data": {
         "faultcode": "Server.Data",
-        "faultstring": "'Ticket By' date cannot be in the past. , Ticket By 2019-12-04T20:25:07.000+11:00",
+        "faultstring": "'Ticket By' date cannot be in the past. , Ticket By 2019-12-05T02:30:35.000+11:00",
         "detail": {
             "common_v47_0:ErrorInfo": {
                 "common_v47_0:Code": "3003",
                 "common_v47_0:Service": "WEBSVC",
                 "common_v47_0:Type": "Data",
                 "common_v47_0:Description": "Request data is invalid.",
-                "common_v47_0:TransactionId": "D0A81D750A076478167EE0DAF2A20FE1",
+                "common_v47_0:TransactionId": "D1F6ACA20A07643B4BBB8E4F78056A0F",
                 "common_v47_0:TraceId": "",
                 "xmlns:common_v47_0": "http://www.travelport.com/schema/common_v47_0"
             }

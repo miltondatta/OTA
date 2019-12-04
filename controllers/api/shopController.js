@@ -5,7 +5,7 @@
 var fs           = require("fs");
 var moment       = require("moment");
 const travelport = require('../travelport/travelportController');
-const amadeus    = require('../amadeus/amadeusController');
+//const amadeus    = require('../amadeus/amadeusController');
 
 const airport    = require('../../models').airport; 
 const airline    = require('../../models').airline; 
@@ -201,7 +201,7 @@ travelport.shop(shop_params)
 return;  */
 
         
-
+        /*
     const book = {
         segments: [
             {
@@ -237,7 +237,7 @@ return;  */
         allowWaitlist: true
     };
 
-    console.log("Call Booking Request");
+    console.log("Call Booking Request");  
 
     travelport.book(book).then(
         res => fs.writeFile("api_output/travelport/book.txt", JSON.stringify(res, null, 4), (res) => {
@@ -247,7 +247,7 @@ return;  */
             console.log("Booking Error Written into File.");
         })
     );
-    return;
+    return;  */
 
 
 
@@ -259,8 +259,8 @@ return;  */
     const params = {
         legs: [
             {
-                from: 'LWO',
-                to: 'JKT',
+                from: 'IEV',
+                to: 'PAR',
                 departureDate: departureDate
             }
         ],
@@ -292,32 +292,30 @@ return;  */
             
            // const toSegments   = apiRes['0'].directions['1']['0'].segments;
             const book = {
-                segments: [{
-                    "from": "LWO",
-                    "to": "SAW",
-                    "group": 0,
-                    "departure": "2019-12-04T16:15:00.000+02:00",
-                    "arrival": "2019-12-04T19:15:00.000+03:00",
-                    "airline": "PC",
-                    "flightNumber": "421",
-                    "serviceClass": "Economy",
-                    "plane": "320", 
-                    "fareBasisCode": "SLR2R1RI",
-                    "bookingClass": "E" 
-                }],
-                //rule: 'SIP',
-                //passengers: [{ lastName: 'JOHN', firstName: 'DOE', passCountry: 'ET', passNumber: 'ET7823J', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
-                phone: { countryCode: '38', location: 'IEV', number: '033440419905' },
-               /* deliveryInformation: {
+                segments: fromSegments,
+                rule: 'SIP',
+                passengers: [{
+                    lastName: 'SKYWALKER',
+                    firstName: 'ANAKIN',
+                    passCountry: 'UA',
+                    passNumber: 'ES221731',
+                    birthDate: '1968-07-25',
+                    gender: 'M',
+                    ageCategory: 'ADT',
+                  }],
+                  phone: {
+                    countryCode: '38',
+                    location: 'IEV',
+                    number: '0660419905',
+                  },
+                  deliveryInformation: {
                     name: 'Anakin Skywalker',
                     street: 'Sands street, 42',
                     zip: '42042',
-                    country: 'Galactic Empire',
-                    city: 'Mos Eisley',
-                }, */
-
-                passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'ET', passNumber: 'ET126789', passExpireDate : '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],                
-                allowWaitlist: false
+                    country: 'GE',
+                    city: 'Mos',
+                  },
+                  allowWaitlist: true,
             };
 
             console.log("Call Booking Request");

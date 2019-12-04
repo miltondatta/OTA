@@ -1,106 +1,66 @@
 [
     {
-        "totalPrice": "USD116.30",
-        "basePrice": "USD110.00",
-        "taxes": "USD6.30",
+        "totalPrice": "USD399.00",
+        "basePrice": "USD298.00",
+        "taxes": "USD101.00",
         "directions": [
             [
                 {
-                    "from": "DAC",
-                    "to": "CGP",
-                    "platingCarrier": "HR",
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LO",
                     "segments": [
                         {
-                            "from": "DAC",
-                            "to": "CGP",
+                            "from": "IEV",
+                            "to": "WAW",
                             "group": 0,
-                            "departure": "2019-12-05T07:40:00.000+06:00",
-                            "arrival": "2019-12-05T08:25:00.000+06:00",
-                            "airline": "BG",
-                            "flightNumber": "411",
-                            "uapi_segment_ref": "CtWin57Q2BKAWWiAQAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-12-10T06:00:00.000+02:00",
+                            "arrival": "2019-12-10T06:40:00.000+01:00",
+                            "airline": "LO",
+                            "flightNumber": "756",
+                            "uapi_segment_ref": "CtWin57Q2BKANWlSRAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "738"
+                                "E75"
                             ],
                             "duration": [
-                                "45"
+                                "100"
                             ],
                             "techStops": [],
-                            "bookingClass": "Y",
+                            "bookingClass": "F",
                             "baggage": [
                                 {
-                                    "units": "kilograms",
-                                    "amount": 20
+                                    "units": "piece",
+                                    "amount": 2
                                 }
                             ],
-                            "fareBasisCode": "Y"
-                        }
-                    ]
-                },
-                {
-                    "from": "DAC",
-                    "to": "CGP",
-                    "platingCarrier": "HR",
-                    "segments": [
+                            "fareBasisCode": "F1SFX3"
+                        },
                         {
-                            "from": "DAC",
-                            "to": "CGP",
+                            "from": "WAW",
+                            "to": "CDG",
                             "group": 0,
-                            "departure": "2019-12-05T12:00:00.000+06:00",
-                            "arrival": "2019-12-05T12:45:00.000+06:00",
-                            "airline": "BG",
-                            "flightNumber": "417",
-                            "uapi_segment_ref": "CtWin57Q2BKAYWiAQAAAAA==",
-                            "serviceClass": "Economy",
+                            "departure": "2019-12-10T07:20:00.000+01:00",
+                            "arrival": "2019-12-10T09:55:00.000+01:00",
+                            "airline": "LO",
+                            "flightNumber": "331",
+                            "uapi_segment_ref": "CtWin57Q2BKAPWlSRAAAAA==",
+                            "serviceClass": "Business",
                             "plane": [
-                                "738"
+                                "E95"
                             ],
                             "duration": [
-                                "45"
+                                "155"
                             ],
                             "techStops": [],
-                            "bookingClass": "Y",
+                            "bookingClass": "F",
                             "baggage": [
                                 {
-                                    "units": "kilograms",
-                                    "amount": 20
+                                    "units": "piece",
+                                    "amount": 2
                                 }
                             ],
-                            "fareBasisCode": "Y"
-                        }
-                    ]
-                },
-                {
-                    "from": "DAC",
-                    "to": "CGP",
-                    "platingCarrier": "HR",
-                    "segments": [
-                        {
-                            "from": "DAC",
-                            "to": "CGP",
-                            "group": 0,
-                            "departure": "2019-12-05T19:45:00.000+06:00",
-                            "arrival": "2019-12-05T20:40:00.000+06:00",
-                            "airline": "BG",
-                            "flightNumber": "415",
-                            "uapi_segment_ref": "CtWin57Q2BKAaWiAQAAAAA==",
-                            "serviceClass": "Economy",
-                            "plane": [
-                                "738"
-                            ],
-                            "duration": [
-                                "55"
-                            ],
-                            "techStops": [],
-                            "bookingClass": "Y",
-                            "baggage": [
-                                {
-                                    "units": "kilograms",
-                                    "amount": 20
-                                }
-                            ],
-                            "fareBasisCode": "Y"
+                            "fareBasisCode": "F1SFX3"
                         }
                     ]
                 }
@@ -108,17 +68,1628 @@
         ],
         "bookingComponents": [
             {
-                "totalPrice": "USD116.30",
-                "basePrice": "USD110.00",
-                "taxes": "USD6.30",
-                "uapi_fare_reference": "CtWin57Q2BKAoWiAQAAAAA=="
+                "totalPrice": "USD399.00",
+                "basePrice": "USD298.00",
+                "taxes": "USD101.00",
+                "uapi_fare_reference": "CtWin57Q2BKASblSRAAAAA=="
             }
         ],
         "passengerFares": {
             "ADT": {
-                "totalPrice": "USD116.30",
-                "basePrice": "USD110.00",
-                "taxes": "USD6.30"
+                "totalPrice": "USD399.00",
+                "basePrice": "USD298.00",
+                "taxes": "USD101.00"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD449.70",
+        "basePrice": "USD390.00",
+        "taxes": "USD59.70",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "B2",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "MSQ",
+                            "group": 0,
+                            "departure": "2019-12-10T19:05:00.000+02:00",
+                            "arrival": "2019-12-10T21:05:00.000+03:00",
+                            "airline": "B2",
+                            "flightNumber": "846",
+                            "uapi_segment_ref": "CtWin57Q2BKARWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "738"
+                            ],
+                            "duration": [
+                                "60"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "DOWP"
+                        },
+                        {
+                            "from": "MSQ",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-11T08:25:00.000+03:00",
+                            "arrival": "2019-12-11T09:25:00.000+01:00",
+                            "airline": "B2",
+                            "flightNumber": "863",
+                            "uapi_segment_ref": "CtWin57Q2BKATWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "E95"
+                            ],
+                            "duration": [
+                                "180"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "DOWP"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD449.70",
+                "basePrice": "USD390.00",
+                "taxes": "USD59.70",
+                "uapi_fare_reference": "CtWin57Q2BKATblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD449.70",
+                "basePrice": "USD390.00",
+                "taxes": "USD59.70"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD450.70",
+        "basePrice": "USD390.00",
+        "taxes": "USD60.70",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "B2",
+                    "segments": [
+                        {
+                            "from": "IEV",
+                            "to": "MSQ",
+                            "group": 0,
+                            "departure": "2019-12-10T04:45:00.000+02:00",
+                            "arrival": "2019-12-10T06:40:00.000+03:00",
+                            "airline": "B2",
+                            "flightNumber": "848",
+                            "uapi_segment_ref": "CtWin57Q2BKAVWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "733"
+                            ],
+                            "duration": [
+                                "55"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "DOWP"
+                        },
+                        {
+                            "from": "MSQ",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T11:40:00.000+03:00",
+                            "arrival": "2019-12-10T12:40:00.000+01:00",
+                            "airline": "B2",
+                            "flightNumber": "865",
+                            "uapi_segment_ref": "CtWin57Q2BKAXWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "E95"
+                            ],
+                            "duration": [
+                                "180"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "DOWP"
+                        }
+                    ]
+                },
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "B2",
+                    "segments": [
+                        {
+                            "from": "IEV",
+                            "to": "MSQ",
+                            "group": 0,
+                            "departure": "2019-12-10T18:05:00.000+02:00",
+                            "arrival": "2019-12-10T20:00:00.000+03:00",
+                            "airline": "B2",
+                            "flightNumber": "830",
+                            "uapi_segment_ref": "CtWin57Q2BKAZWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "735"
+                            ],
+                            "duration": [
+                                "55"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "DOWP"
+                        },
+                        {
+                            "from": "MSQ",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-11T08:25:00.000+03:00",
+                            "arrival": "2019-12-11T09:25:00.000+01:00",
+                            "airline": "B2",
+                            "flightNumber": "863",
+                            "uapi_segment_ref": "CtWin57Q2BKATWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "E95"
+                            ],
+                            "duration": [
+                                "180"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "DOWP"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD450.70",
+                "basePrice": "USD390.00",
+                "taxes": "USD60.70",
+                "uapi_fare_reference": "CtWin57Q2BKAUblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD450.70",
+                "basePrice": "USD390.00",
+                "taxes": "USD60.70"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD571.60",
+        "basePrice": "USD450.00",
+        "taxes": "USD121.60",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "SK",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "OSL",
+                            "group": 0,
+                            "departure": "2019-12-10T14:00:00.000+02:00",
+                            "arrival": "2019-12-10T15:50:00.000+01:00",
+                            "airline": "SK",
+                            "flightNumber": "4299",
+                            "uapi_segment_ref": "CtWin57Q2BKAbWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "73W"
+                            ],
+                            "duration": [
+                                "170"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "J",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JUAOWY"
+                        },
+                        {
+                            "from": "OSL",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-11T11:00:00.000+01:00",
+                            "arrival": "2019-12-11T13:20:00.000+01:00",
+                            "airline": "SK",
+                            "flightNumber": "837",
+                            "uapi_segment_ref": "CtWin57Q2BKAdWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "73W"
+                            ],
+                            "duration": [
+                                "140"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "J",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JUAOWY"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD571.60",
+                "basePrice": "USD450.00",
+                "taxes": "USD121.60",
+                "uapi_fare_reference": "CtWin57Q2BKAVblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD571.60",
+                "basePrice": "USD450.00",
+                "taxes": "USD121.60"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD592.90",
+        "basePrice": "USD477.00",
+        "taxes": "USD115.90",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "OK",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "PRG",
+                            "group": 0,
+                            "departure": "2019-12-10T05:05:00.000+02:00",
+                            "arrival": "2019-12-10T06:10:00.000+01:00",
+                            "airline": "OK",
+                            "flightNumber": "917",
+                            "uapi_segment_ref": "CtWin57Q2BKAfWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "737"
+                            ],
+                            "duration": [
+                                "125"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "IBFLOK"
+                        },
+                        {
+                            "from": "PRG",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T07:10:00.000+01:00",
+                            "arrival": "2019-12-10T09:00:00.000+01:00",
+                            "airline": "OK",
+                            "flightNumber": "758",
+                            "uapi_segment_ref": "CtWin57Q2BKAhWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "739"
+                            ],
+                            "duration": [
+                                "110"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "IBFLOK"
+                        }
+                    ]
+                },
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "OK",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "PRG",
+                            "group": 0,
+                            "departure": "2019-12-10T05:05:00.000+02:00",
+                            "arrival": "2019-12-10T06:10:00.000+01:00",
+                            "airline": "OK",
+                            "flightNumber": "917",
+                            "uapi_segment_ref": "CtWin57Q2BKAfWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "737"
+                            ],
+                            "duration": [
+                                "125"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "IBFLOK"
+                        },
+                        {
+                            "from": "PRG",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T12:25:00.000+01:00",
+                            "arrival": "2019-12-10T14:15:00.000+01:00",
+                            "airline": "OK",
+                            "flightNumber": "760",
+                            "uapi_segment_ref": "CtWin57Q2BKAjWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "739"
+                            ],
+                            "duration": [
+                                "110"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "IBFLOK"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD592.90",
+                "basePrice": "USD477.00",
+                "taxes": "USD115.90",
+                "uapi_fare_reference": "CtWin57Q2BKAWblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD592.90",
+                "basePrice": "USD477.00",
+                "taxes": "USD115.90"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD612.20",
+        "basePrice": "USD515.00",
+        "taxes": "USD97.20",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "BT",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "RIX",
+                            "group": 0,
+                            "departure": "2019-12-10T20:35:00.000+02:00",
+                            "arrival": "2019-12-10T22:30:00.000+02:00",
+                            "airline": "BT",
+                            "flightNumber": "405",
+                            "uapi_segment_ref": "CtWin57Q2BKAlWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "DH4"
+                            ],
+                            "duration": [
+                                "115"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "J",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JUAOTBIZ"
+                        },
+                        {
+                            "from": "RIX",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-11T07:20:00.000+02:00",
+                            "arrival": "2019-12-11T09:10:00.000+01:00",
+                            "airline": "BT",
+                            "flightNumber": "691",
+                            "uapi_segment_ref": "CtWin57Q2BKAnWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "223"
+                            ],
+                            "duration": [
+                                "170"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "J",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JUAOTBIZ"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD612.20",
+                "basePrice": "USD515.00",
+                "taxes": "USD97.20",
+                "uapi_fare_reference": "CtWin57Q2BKAXblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD612.20",
+                "basePrice": "USD515.00",
+                "taxes": "USD97.20"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD619.45",
+        "basePrice": "USD447.00",
+        "taxes": "USD172.45",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "OS",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "VIE",
+                            "group": 0,
+                            "departure": "2019-12-10T13:25:00.000+02:00",
+                            "arrival": "2019-12-10T14:30:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "662",
+                            "uapi_segment_ref": "CtWin57Q2BKApWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "E95"
+                            ],
+                            "duration": [
+                                "125"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "P",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "P03BXXE9"
+                        },
+                        {
+                            "from": "VIE",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T17:20:00.000+01:00",
+                            "arrival": "2019-12-10T19:30:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "417",
+                            "uapi_segment_ref": "CtWin57Q2BKArWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "320"
+                            ],
+                            "duration": [
+                                "130"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "P",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "P03BXXE9"
+                        }
+                    ]
+                },
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "OS",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "VIE",
+                            "group": 0,
+                            "departure": "2019-12-10T06:55:00.000+02:00",
+                            "arrival": "2019-12-10T08:00:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "668",
+                            "uapi_segment_ref": "CtWin57Q2BKAtWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "319"
+                            ],
+                            "duration": [
+                                "125"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "P",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "P03BXXE9"
+                        },
+                        {
+                            "from": "VIE",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T12:50:00.000+01:00",
+                            "arrival": "2019-12-10T14:50:00.000+01:00",
+                            "airline": "OS",
+                            "flightNumber": "415",
+                            "uapi_segment_ref": "CtWin57Q2BKAvWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "320"
+                            ],
+                            "duration": [
+                                "120"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "P",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "P03BXXE9"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD619.45",
+                "basePrice": "USD447.00",
+                "taxes": "USD172.45",
+                "uapi_fare_reference": "CtWin57Q2BKAYblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD619.45",
+                "basePrice": "USD447.00",
+                "taxes": "USD172.45"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD620.00",
+        "basePrice": "USD575.00",
+        "taxes": "USD45.00",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "PS",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T09:45:00.000+02:00",
+                            "arrival": "2019-12-10T12:10:00.000+01:00",
+                            "airline": "PS",
+                            "flightNumber": "127",
+                            "uapi_segment_ref": "CtWin57Q2BKAxWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "737"
+                            ],
+                            "duration": [
+                                "205"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "F",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "F001BSU1"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD620.00",
+                "basePrice": "USD575.00",
+                "taxes": "USD45.00",
+                "uapi_fare_reference": "CtWin57Q2BKAZblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD620.00",
+                "basePrice": "USD575.00",
+                "taxes": "USD45.00"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD624.80",
+        "basePrice": "USD449.00",
+        "taxes": "USD175.80",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "FRA",
+                            "group": 0,
+                            "departure": "2019-12-10T13:50:00.000+02:00",
+                            "arrival": "2019-12-10T15:40:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1491",
+                            "uapi_segment_ref": "CtWin57Q2BKA0WlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32A"
+                            ],
+                            "duration": [
+                                "170"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "P",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "P03BXXE9"
+                        },
+                        {
+                            "from": "FRA",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T16:30:00.000+01:00",
+                            "arrival": "2019-12-10T17:45:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1040",
+                            "uapi_segment_ref": "CtWin57Q2BKA2WlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32N"
+                            ],
+                            "duration": [
+                                "75"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "P",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "P03BXXE9"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD624.80",
+                "basePrice": "USD449.00",
+                "taxes": "USD175.80",
+                "uapi_fare_reference": "CtWin57Q2BKAablSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD624.80",
+                "basePrice": "USD449.00",
+                "taxes": "USD175.80"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD676.30",
+        "basePrice": "USD630.00",
+        "taxes": "USD46.30",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "KL",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "AMS",
+                            "group": 0,
+                            "departure": "2019-12-10T13:55:00.000+02:00",
+                            "arrival": "2019-12-10T15:55:00.000+01:00",
+                            "airline": "KL",
+                            "flightNumber": "1386",
+                            "uapi_segment_ref": "CtWin57Q2BKA4WlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "73H"
+                            ],
+                            "duration": [
+                                "180"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "Z7FFWUA"
+                        },
+                        {
+                            "from": "AMS",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T16:35:00.000+01:00",
+                            "arrival": "2019-12-10T17:50:00.000+01:00",
+                            "airline": "KL",
+                            "flightNumber": "1243",
+                            "uapi_segment_ref": "CtWin57Q2BKA6WlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "73H"
+                            ],
+                            "duration": [
+                                "75"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "Z7FFWUA"
+                        }
+                    ]
+                },
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "KL",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "AMS",
+                            "group": 0,
+                            "departure": "2019-12-10T10:00:00.000+02:00",
+                            "arrival": "2019-12-10T12:05:00.000+01:00",
+                            "airline": "KL",
+                            "flightNumber": "3097",
+                            "uapi_segment_ref": "CtWin57Q2BKA8WlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "73J"
+                            ],
+                            "duration": [
+                                "185"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "Z7FFWUA"
+                        },
+                        {
+                            "from": "AMS",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T13:55:00.000+01:00",
+                            "arrival": "2019-12-10T15:15:00.000+01:00",
+                            "airline": "KL",
+                            "flightNumber": "2009",
+                            "uapi_segment_ref": "CtWin57Q2BKA+WlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "319"
+                            ],
+                            "duration": [
+                                "80"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "Z7FFWUA"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD676.30",
+                "basePrice": "USD630.00",
+                "taxes": "USD46.30",
+                "uapi_fare_reference": "CtWin57Q2BKAbblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD676.30",
+                "basePrice": "USD630.00",
+                "taxes": "USD46.30"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD695.90",
+        "basePrice": "USD525.00",
+        "taxes": "USD170.90",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-12-10T05:30:00.000+02:00",
+                            "arrival": "2019-12-10T07:00:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2547",
+                            "uapi_segment_ref": "CtWin57Q2BKAAXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32A"
+                            ],
+                            "duration": [
+                                "150"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "Z03BXXE9"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T08:55:00.000+01:00",
+                            "arrival": "2019-12-10T10:30:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2228",
+                            "uapi_segment_ref": "CtWin57Q2BKACXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "319"
+                            ],
+                            "duration": [
+                                "95"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "Z03BXXE9"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD695.90",
+                "basePrice": "USD525.00",
+                "taxes": "USD170.90",
+                "uapi_fare_reference": "CtWin57Q2BKAcblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD695.90",
+                "basePrice": "USD525.00",
+                "taxes": "USD170.90"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD723.20",
+        "basePrice": "USD691.00",
+        "taxes": "USD32.20",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "AF",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T09:45:00.000+02:00",
+                            "arrival": "2019-12-10T12:10:00.000+01:00",
+                            "airline": "AF",
+                            "flightNumber": "3375",
+                            "uapi_segment_ref": "CtWin57Q2BKAzWlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "737"
+                            ],
+                            "duration": [
+                                "205"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "I",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "I3FFWUA"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD723.20",
+                "basePrice": "USD691.00",
+                "taxes": "USD32.20",
+                "uapi_fare_reference": "CtWin57Q2BKAdblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD723.20",
+                "basePrice": "USD691.00",
+                "taxes": "USD32.20"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD809.90",
+        "basePrice": "USD639.00",
+        "taxes": "USD170.90",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-12-10T16:00:00.000+02:00",
+                            "arrival": "2019-12-10T17:30:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2545",
+                            "uapi_segment_ref": "CtWin57Q2BKAEXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "320"
+                            ],
+                            "duration": [
+                                "150"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T19:40:00.000+01:00",
+                            "arrival": "2019-12-10T21:15:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2232",
+                            "uapi_segment_ref": "CtWin57Q2BKAGXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "319"
+                            ],
+                            "duration": [
+                                "95"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD809.90",
+                "basePrice": "USD639.00",
+                "taxes": "USD170.90",
+                "uapi_fare_reference": "CtWin57Q2BKAeblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD809.90",
+                "basePrice": "USD639.00",
+                "taxes": "USD170.90"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD814.80",
+        "basePrice": "USD639.00",
+        "taxes": "USD175.80",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "FRA",
+                            "group": 0,
+                            "departure": "2019-12-10T06:00:00.000+02:00",
+                            "arrival": "2019-12-10T08:00:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1493",
+                            "uapi_segment_ref": "CtWin57Q2BKAIXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32A"
+                            ],
+                            "duration": [
+                                "180"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        },
+                        {
+                            "from": "FRA",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T09:15:00.000+01:00",
+                            "arrival": "2019-12-10T10:30:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1030",
+                            "uapi_segment_ref": "CtWin57Q2BKAKXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32N"
+                            ],
+                            "duration": [
+                                "75"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD814.80",
+                "basePrice": "USD639.00",
+                "taxes": "USD175.80",
+                "uapi_fare_reference": "CtWin57Q2BKAqblSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD814.80",
+                "basePrice": "USD639.00",
+                "taxes": "USD175.80"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD886.00",
+        "basePrice": "USD639.00",
+        "taxes": "USD247.00",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-12-10T05:30:00.000+02:00",
+                            "arrival": "2019-12-10T07:00:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2547",
+                            "uapi_segment_ref": "CtWin57Q2BKAAXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32A"
+                            ],
+                            "duration": [
+                                "150"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "FRA",
+                            "group": 0,
+                            "departure": "2019-12-10T09:00:00.000+01:00",
+                            "arrival": "2019-12-10T10:10:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "99",
+                            "uapi_segment_ref": "CtWin57Q2BKAMXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "321"
+                            ],
+                            "duration": [
+                                "70"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        },
+                        {
+                            "from": "FRA",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T12:20:00.000+01:00",
+                            "arrival": "2019-12-10T13:35:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1034",
+                            "uapi_segment_ref": "CtWin57Q2BKAOXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "321"
+                            ],
+                            "duration": [
+                                "75"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        }
+                    ]
+                },
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "KBP",
+                            "to": "MUC",
+                            "group": 0,
+                            "departure": "2019-12-10T05:30:00.000+02:00",
+                            "arrival": "2019-12-10T07:00:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "2547",
+                            "uapi_segment_ref": "CtWin57Q2BKAAXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "32A"
+                            ],
+                            "duration": [
+                                "150"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        },
+                        {
+                            "from": "MUC",
+                            "to": "FRA",
+                            "group": 0,
+                            "departure": "2019-12-10T10:00:00.000+01:00",
+                            "arrival": "2019-12-10T11:10:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "101",
+                            "uapi_segment_ref": "CtWin57Q2BKAQXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "321"
+                            ],
+                            "duration": [
+                                "70"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        },
+                        {
+                            "from": "FRA",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T12:20:00.000+01:00",
+                            "arrival": "2019-12-10T13:35:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1034",
+                            "uapi_segment_ref": "CtWin57Q2BKAOXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "321"
+                            ],
+                            "duration": [
+                                "75"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "D",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "D03BXXE9"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD886.00",
+                "basePrice": "USD639.00",
+                "taxes": "USD247.00",
+                "uapi_fare_reference": "CtWin57Q2BKA2blSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD886.00",
+                "basePrice": "USD639.00",
+                "taxes": "USD247.00"
+            }
+        },
+        "passengerCounts": {
+            "ADT": 1
+        }
+    },
+    {
+        "totalPrice": "USD1785.80",
+        "basePrice": "USD1579.00",
+        "taxes": "USD206.80",
+        "directions": [
+            [
+                {
+                    "from": "IEV",
+                    "to": "PAR",
+                    "platingCarrier": "LH",
+                    "segments": [
+                        {
+                            "from": "IEV",
+                            "to": "WAW",
+                            "group": 0,
+                            "departure": "2019-12-10T08:40:00.000+02:00",
+                            "arrival": "2019-12-10T09:15:00.000+01:00",
+                            "airline": "LO",
+                            "flightNumber": "750",
+                            "uapi_segment_ref": "CtWin57Q2BKASXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "E95"
+                            ],
+                            "duration": [
+                                "95"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "C",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JFF77WW"
+                        },
+                        {
+                            "from": "WAW",
+                            "to": "FRA",
+                            "group": 0,
+                            "departure": "2019-12-10T14:40:00.000+01:00",
+                            "arrival": "2019-12-10T16:25:00.000+01:00",
+                            "airline": "LH",
+                            "flightNumber": "1349",
+                            "uapi_segment_ref": "CtWin57Q2BKAUXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "319"
+                            ],
+                            "duration": [
+                                "105"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "J",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JFF77WW"
+                        },
+                        {
+                            "from": "FRA",
+                            "to": "CDG",
+                            "group": 0,
+                            "departure": "2019-12-10T17:45:00.000+01:00",
+                            "arrival": "2019-12-10T19:10:00.000+01:00",
+                            "airline": "KQ",
+                            "flightNumber": "3219",
+                            "uapi_segment_ref": "CtWin57Q2BKAWXlSRAAAAA==",
+                            "serviceClass": "Business",
+                            "plane": [
+                                "EQV"
+                            ],
+                            "duration": [
+                                "85"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Z",
+                            "baggage": [
+                                {
+                                    "units": "piece",
+                                    "amount": 2
+                                }
+                            ],
+                            "fareBasisCode": "JFF77WW"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "bookingComponents": [
+            {
+                "totalPrice": "USD1785.80",
+                "basePrice": "USD1579.00",
+                "taxes": "USD206.80",
+                "uapi_fare_reference": "CtWin57Q2BKA3blSRAAAAA=="
+            }
+        ],
+        "passengerFares": {
+            "ADT": {
+                "totalPrice": "USD1785.80",
+                "basePrice": "USD1579.00",
+                "taxes": "USD206.80"
             }
         },
         "passengerCounts": {
