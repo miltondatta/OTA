@@ -6,7 +6,10 @@ var amadeus = new Amadeus({
     clientId: process.env.AMADEUS_CLIENT_ID,
     clientSecret: process.env.AMADEUS_CLIENT_SECRET
 });
+module.exports = amadeus;
 
+
+/*
 exports.locations = async (req, res) => {
     amadeus.referenceData.locations.get({
         keyword: 'LON',
@@ -44,6 +47,6 @@ exports.flight_offers = (req, res) => {
     });
 };
 
-
+*/
 
 

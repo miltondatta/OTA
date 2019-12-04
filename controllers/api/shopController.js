@@ -5,9 +5,30 @@
 var fs           = require("fs");
 var moment       = require("moment");
 const travelport = require('../travelport/travelportController');
+const amadeus    = require('../amadeus/amadeusController');
 
 const airport    = require('../../models').airport; 
 const airline    = require('../../models').airline; 
+
+/*
+//Test Amadeus 
+exports.shop = (req, res) => {
+        amadeus.shopping.flightOffers.get({
+            origin: 'NYC',
+            destination: 'MAD',
+            departureDate : '2019-12-05'
+        }).then(function (response) {
+            fs.writeFile("api_output/amadeus/flightOffers.txt", JSON.stringify(response, null, 4), (err) => {
+                console.log("Successfully Written to File.");
+            });
+            return res.json(response);
+        }).catch(function (responseError) {
+            return res.json(responseError);
+        });
+};
+return; */
+
+
 
 exports.shop = async (req, res) => {
  /*   //Prepare data from file 
