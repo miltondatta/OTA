@@ -15,7 +15,6 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
         <Fragment>
             <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/register">Register</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
         </Fragment>
     );
@@ -25,6 +24,11 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
             <li className="nav-item"><Link to="#" className={'nav-link'}>Hi, {user.name}</Link></li>
         </Fragment>
     );
+
+    const role = [1, 2]; //---- 1 = Super Admin, 2 = Admin ----
+    const adminLinks = (<Fragment>
+        <li className="nav-item"><Link className="nav-link" to="/register">Register</Link></li>
+    </Fragment>);
 
     return (
         <Fragment>
@@ -37,6 +41,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                     <Nav className="ml-auto">
                         {!isAuthenticated && guestLinks}
                         {isAuthenticated && authLinks}
+                        {(isAuthenticated && (role.includes(user.role_id))) && adminLinks}
                         {isAuthenticated &&
                         <NavDropdown title="Profile" id="collasible-nav-dropdown">
                             <Link to={'/profile'} className={'dropdown-item'}>Profile</Link>

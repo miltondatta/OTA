@@ -24,12 +24,12 @@ function Profile({auth: {isAuthenticated, user}, updateProfile, profile, updateP
         confirmPassword: ''
     });
 
-    if (profile.msg.msg) {
-        NotificationManager.success(profile.msg.msg, 'Profile Update!', 5000);
+    if (profile.msg.profile_update_msg) {
+        NotificationManager.success(profile.msg.profile_update_msg, 'Profile Update!', 5000);
         emptyMessage();
     }
-    if (errors.msg) {
-        NotificationManager.error(errors.msg, 'Password Error!', 5000);
+    if (errors.profile_update_msg) {
+        NotificationManager.error(errors.profile_update_msg, 'Password Error!', 5000);
         emptyError();
     }
 
@@ -127,7 +127,8 @@ function Profile({auth: {isAuthenticated, user}, updateProfile, profile, updateP
                                         <Form.Group controlId="formGridCurrentPass"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Current Password</Form.Label>
-                                            <Form.Control type="password" name="password" onChange={e => passwordOnChange(e)} value={password}
+                                            <Form.Control type="password" name="password"
+                                                          onChange={e => passwordOnChange(e)} value={password}
                                                           placeholder="Enter Current Password" required/>
                                         </Form.Group>
                                     </Form.Row>
@@ -135,13 +136,15 @@ function Profile({auth: {isAuthenticated, user}, updateProfile, profile, updateP
                                         <Form.Group controlId="formGridNewPass"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>New Password</Form.Label>
-                                            <Form.Control type="password" name="newPassword" onChange={e => passwordOnChange(e)} value={newPassword}
+                                            <Form.Control type="password" name="newPassword"
+                                                          onChange={e => passwordOnChange(e)} value={newPassword}
                                                           placeholder="Enter New Password" required/>
                                         </Form.Group>
                                         <Form.Group controlId="formGridConfirmPass"
                                                     className={'col-md-6 col-sm-12'}>
                                             <Form.Label>Confirm Password</Form.Label>
-                                            <Form.Control type="password" name="confirmPassword" onChange={e => passwordOnChange(e)} value={confirmPassword}
+                                            <Form.Control type="password" name="confirmPassword"
+                                                          onChange={e => passwordOnChange(e)} value={confirmPassword}
                                                           placeholder="Enter Confirm Password" required/>
                                         </Form.Group>
                                     </Form.Row>

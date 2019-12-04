@@ -1,5 +1,7 @@
 const {sequelize, Sequelize} = require('../models/index');
 const user                   = require('../models').user;
+const user_role              = require('../models').user_role;
+const Op                     = Sequelize.Op;
 const bcrypt                 = require('bcryptjs');
 const jwt                    = require('jsonwebtoken');
 const nodemailer             = require('nodemailer');
@@ -12,7 +14,7 @@ var moment     = require("moment");
 
 
 exports.store = async (req, res) => {
-    const {name, email, password, mobile} = req.body;
+    const {name, role_id, email, password, mobile} = req.body;
 
     user.findOne({where: {email}}).then(results => {
         if (results) {
@@ -25,6 +27,7 @@ exports.store = async (req, res) => {
                     let confirm_url = base_url + 'verification/' + uuid;
                     user.create({
                         name              : name,
+                        role_id           : role_id,
                         email             : email,
                         password          : hash,
                         mobile            : mobile,
@@ -78,10 +81,10 @@ exports.updateProfile = async (req, res) => {
         };
 
         const status = await user.findOne({where: {email}});
-        if (!status) res.status(400).json({msg: 'User not matched!'});
+        if (!status) res.status(400).json({profile_update_msg: 'User not matched!'});
 
         const update = await user.update(updated_data, {where: {email}});
-        if (!update) res.status(400).json({msg: 'Please try again!'});
+        if (!update) res.status(400).json({profile_update_msg: 'Please try again!'});
 
         const updated_user = await user.findOne({where: {email}});
         const payload      = {
@@ -104,7 +107,7 @@ exports.updateProfile = async (req, res) => {
         );
     } catch (err) {
         console.error(err.message);
-        res.status(500).json({msg: "Server Error!"});
+        res.status(500).json({profile_update_msg: "Server Error!"});
     }
 };
 
@@ -113,10 +116,10 @@ exports.updatePassword = async (req, res) => {
         const {email, password, newPassword} = req.body;
 
         const status = await user.findOne({where: {email}});
-        if (!status) res.status(400).json({msg: 'User not matched!'});
+        if (!status) res.status(400).json({profile_update_msg: 'User not matched!'});
 
         const isMatch = await bcrypt.compare(password, status.password);
-        if (!isMatch) res.status(400).json({msg: 'Current Password not matched!'});
+        if (!isMatch) res.status(400).json({profile_update_msg: 'Current Password not matched!'});
 
         const salt         = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(newPassword, salt);
@@ -126,12 +129,12 @@ exports.updatePassword = async (req, res) => {
         };
 
         const update = await user.update(updated_data, {where: {email}});
-        if (!update) res.status(400).json({msg: 'Please try again!'});
+        if (!update) res.status(400).json({profile_update_msg: 'Please try again!'});
 
-        return res.status(200).json({msg: "Password Updated Successfully!"});
+        return res.status(200).json({profile_update_msg: "Password Updated Successfully!"});
     } catch (err) {
         console.error(err.message);
-        res.status(500).json({msg: "Server Error!"});
+        res.status(500).json({profile_update_msg: "Server Error!"});
     }
 };
 
@@ -146,7 +149,7 @@ exports.login = async (req, res) => {
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
                 if (user.is_verified) {
-                    const payload = {id: user.id, name: user.name, email: user.email, mobile: user.mobile};
+                    const payload = {id: user.id, role_id: user.role_id, name: user.name, email: user.email, mobile: user.mobile};
                     jwt.sign(
                         payload,
                         'secret', {expiresIn: 3600},
@@ -186,4 +189,18 @@ exports.confirm_by_email = async (req, res) => {
     }).catch(err => {
         return res.status(200).json({msg: 'Token not Matched', status: false});
     })
+};
+
+exports.getRole = async (req, res) => {
+    try {
+        const {user_type} = req.body;
+
+        const status = await user_role.findAll({attributes: ["user_type", "role", "role_eng"], where: {user_type: {[Op.notIn]: user_type}, status: 1}});
+        if (!status) res.status(400).json({msg: 'Please try again!'});
+
+        return res.status(200).json(status);
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'Server Error!'});
+    }
 };

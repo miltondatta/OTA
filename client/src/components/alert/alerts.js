@@ -4,8 +4,6 @@ import {Alert} from "react-bootstrap";
 class Alerts extends Component {
     constructor(props) {
         super(props);
-        console.log("baccha cele");
-        console.log(props);
         this.state     = {
             show   : false,
             variant: '',
@@ -32,8 +30,8 @@ class Alerts extends Component {
         if (this.state.show) {
             return (
                 <Alert variant={this.state.variant} onClose={this.hideAlert} dismissible>
-                    {this.state.heading ? <Alert.Heading>{this.state.heading}</Alert.Heading> : ''}
-                    <p>{this.state.message}</p>
+                    {this.state.heading ? <Alert.Heading className="my-0" style={{ fontSize: 20 }}>{this.state.heading}</Alert.Heading> : ''}
+                    <strong style={{ fontSize: 15 }}>{this.state.message}</strong>
                 </Alert>
             );
         } else {
