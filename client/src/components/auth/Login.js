@@ -14,13 +14,13 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email   : '',
+            email: '',
             password: '',
-            errors  : {},
-            show    : false,
-            variant : '',
-            heading : '',
-            message : '',
+            errors: {},
+            show: false,
+            variant: '',
+            heading: '',
+            message: '',
         };
 
         this.onChange = this.onChange.bind(this);
@@ -45,9 +45,13 @@ class Login extends Component {
         if (nextProps.auth.isAuthenticated) {
             this.props.history.push('/');
         } else {
-            if (nextProps.errors) {
-                this.setState({errors: nextProps.errors});
-                this.createNotification('error', nextProps.errors);
+            if (Object.keys(nextProps.errors).length > 0) {
+                this.setState({
+                    show: true,
+                    variant: 'danger',
+                    heading: 'Login Error!',
+                    message: nextProps.errors.msg,
+                });
             }
         }
 
@@ -57,28 +61,10 @@ class Login extends Component {
         this.setState({[e.target.name]: e.target.value});
     }
 
-    createNotification = (type, errors) => {
-        if (errors.msg) {
-            switch (type) {
-                case 'error':
-                    //NotificationManager.error(errors.msg, 'Login Error!', 3000);
-                    this.setState({
-                        show   : true,
-                        variant: 'danger',
-                        heading: 'Login Error!',
-                        message: errors.msg,
-                    });
-                    break;
-                default:
-                    return;
-            }
-        }
-    };
-
     onSubmit(e) {
         e.preventDefault();
         const userData = {
-            email   : this.state.email,
+            email: this.state.email,
             password: this.state.password
         };
 
@@ -144,12 +130,12 @@ class Login extends Component {
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
-    auth     : PropTypes.object.isRequired,
-    errors   : PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth  : state.auth,
+    auth: state.auth,
     errors: state.errors
 });
 

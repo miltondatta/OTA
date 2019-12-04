@@ -24,12 +24,12 @@ function Profile({auth: {isAuthenticated, user}, updateProfile, profile, updateP
         confirmPassword: ''
     });
 
-    if (profile.msg.msg) {
-        NotificationManager.success(profile.msg.msg, 'Profile Update!', 5000);
+    if (profile.msg.profile_update_msg) {
+        NotificationManager.success(profile.msg.profile_update_msg, 'Profile Update!', 5000);
         emptyMessage();
     }
-    if (errors.msg) {
-        NotificationManager.error(errors.msg, 'Password Error!', 5000);
+    if (errors.profile_update_msg) {
+        NotificationManager.error(errors.profile_update_msg, 'Password Error!', 5000);
         emptyError();
     }
 

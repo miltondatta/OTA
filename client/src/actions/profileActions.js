@@ -26,7 +26,7 @@ export const updateProfile = (updateProfileData) => async dispatch => {
 
         dispatch({
             type: PROFILE_UPDATE,
-            payload: {msg: "Profile Updated Successfully!"}
+            payload: {profile_update_msg: "Profile Updated Successfully!"}
         });
     } catch (err) {
         dispatch({
