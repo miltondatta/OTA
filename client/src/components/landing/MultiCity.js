@@ -50,7 +50,16 @@ class MultiCity extends Component {
 
     addMultiCity(e) {
         e.preventDefault();
-        const addCity = ([...this.state.multiCity, this.state.addCity]);
+
+        const length = this.state.multiCity.length - 1;
+        const updateObj = {
+            from: this.state.multiCity[length].to,
+            origin: this.state.multiCity[length].destination
+        };
+
+        const newObj = {...this.state.addCity, ...updateObj};
+        const addCity = ([...this.state.multiCity, newObj]);
+
         this.setState({
             multiCity: addCity
         });

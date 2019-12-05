@@ -88,7 +88,7 @@ class AirAutocomplete extends Component {
     }
 
     onKeyDown = e => {
-        const { activeSuggestion, filteredSuggestions } = this.state;
+        const {activeSuggestion, filteredSuggestions} = this.state;
 
         // User pressed the enter key
         if (e.keyCode === 13) {
@@ -107,7 +107,7 @@ class AirAutocomplete extends Component {
                 return;
             }
 
-            this.setState({ activeSuggestion: activeSuggestion - 1 });
+            this.setState({activeSuggestion: activeSuggestion - 1});
         }
         // User pressed the down arrow
         else if (e.keyCode === 40) {
@@ -115,7 +115,7 @@ class AirAutocomplete extends Component {
                 return;
             }
 
-            this.setState({ activeSuggestion: activeSuggestion + 1 });
+            this.setState({activeSuggestion: activeSuggestion + 1});
         }
     };
 
@@ -162,10 +162,10 @@ class AirAutocomplete extends Component {
                        onChange={this.onChange}
                        onDoubleClick={() => {
                            this.setState({selectText: true});
-                       } }
+                       }}
                        onClick={() => {
                            this.setState({selectText: false});
-                       } }
+                       }}
                        onKeyDown={this.onKeyDown}
                        value={userInput}
                 />
