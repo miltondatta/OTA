@@ -97,6 +97,8 @@ class AirAutocomplete extends Component {
                 showSuggestions: false,
                 userInput: filteredSuggestions[activeSuggestion]
             });
+
+            this.props.handlerFromParant(filteredSuggestions[activeSuggestion], this.state.key);
             return false;
         }
         // User pressed the up arrow

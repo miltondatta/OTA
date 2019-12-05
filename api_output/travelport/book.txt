@@ -1,77 +1,18 @@
-[
-    {
-        "type": "uAPI",
-        "pnr": "5G1N08",
-        "version": "0",
-        "uapi_ur_locator": "0WVQGT",
-        "uapi_reservation_locator": "4WC97T",
-        "airlineLocatorInfo": [
-            {
-                "createDate": "2019-12-05T06:01:00.000+00:00",
-                "supplierCode": "BG",
-                "locatorCode": "A4JM3"
+{
+    "name": "AirRuntimeError.InvalidRequestData",
+    "data": {
+        "faultcode": "Server.Data",
+        "faultstring": "'Ticket By' date cannot be in the past. , Ticket By 2019-12-05T15:51:27.000+11:00",
+        "detail": {
+            "common_v47_0:ErrorInfo": {
+                "common_v47_0:Code": "3003",
+                "common_v47_0:Service": "WEBSVC",
+                "common_v47_0:Type": "Data",
+                "common_v47_0:Description": "Request data is invalid.",
+                "common_v47_0:TransactionId": "D4D3F3620A0764772C6EF1E7A1E3A956",
+                "common_v47_0:TraceId": "",
+                "xmlns:common_v47_0": "http://www.travelport.com/schema/common_v47_0"
             }
-        ],
-        "createdAt": "2019-12-05T06:01:35.700+00:00",
-        "hostCreatedAt": "2019-12-05",
-        "modifiedAt": "2019-12-05T06:01:35.700+00:00",
-        "fareQuotes": [],
-        "segments": [
-            {
-                "from": "DAC",
-                "to": "CGP",
-                "group": 0,
-                "departure": "2019-12-10T12:00:00.000+06:00",
-                "arrival": "2019-12-10T12:45:00.000+06:00",
-                "airline": "BG",
-                "flightNumber": "417",
-                "uapi_segment_ref": "Mt5rn54R2BKAzAgFSAAAAA==",
-                "serviceClass": "Economy",
-                "plane": [
-                    "738"
-                ],
-                "duration": [
-                    "45"
-                ],
-                "techStops": [],
-                "index": 1,
-                "status": "HK",
-                "bookingClass": "Y"
-            }
-        ],
-        "serviceSegments": [],
-        "passengers": [
-            {
-                "lastName": "Doe",
-                "firstName": "John",
-                "uapi_passenger_ref": "Mt5rn54R2BKAIBgFSAAAAA==",
-                "birthDate": "1997-02-18",
-                "ageCategory": "ADT",
-                "gender": "M"
-            }
-        ],
-        "emails": [],
-        "bookingPCC": "62X8",
-        "tickets": [],
-        "messages": [
-            {
-                "_": "NO FARES",
-                "Code": "0",
-                "Type": "Warning",
-                "ProviderCode": "1G"
-            },
-            {
-                "_": "Some of the requested AirPricingInfos could not be saved for the requested provider.",
-                "Code": "0",
-                "Type": "Warning",
-                "ProviderCode": "1G"
-            },
-            {
-                "_": "The following attribute is missing in the AirCreateReservationReq: AirPricingSolution/HostToken.",
-                "Code": "0",
-                "Type": "Error",
-                "ProviderCode": "1G"
-            }
-        ]
+        }
     }
-]
+}

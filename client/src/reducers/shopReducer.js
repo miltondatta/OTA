@@ -1,7 +1,8 @@
 import {SHOP_API} from "../actions/types";
 
 const initialState = {
-    shopData: []
+    shopData: [],
+    loading: true
 };
 
 export default (state = initialState, action) => {
@@ -10,7 +11,8 @@ export default (state = initialState, action) => {
         case SHOP_API:
             return {
                 ...state,
-                shopData: payload
+                shopData: payload,
+                loading: false
             };
         default:
             return state;
