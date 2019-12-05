@@ -169,7 +169,7 @@ class MultiCity extends Component {
                                         storage_value={value.origin}/>
                                 </div>
 
-                                <div className="col-xs-12 col-sm-6 col-lg-4">
+                                <div className="col-xs-12 col-sm-6 col-lg-4 pt-2 pt-sm-0 pt-md-0">
                                     {key === 0 &&
                                     <label className={'d-block mb-1'}><b>Flying to</b></label>
                                     }
