@@ -17,6 +17,7 @@ import FlightPayment from './components/payments/FlightPayment';
 import Contact from "./components/contact/Contact";
 import Profile from "./components/profile/Profile";
 import Verification from "./components/profile/Verification";
+import PaymentInfo from "./components/payment-info/PaymentInfo";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -55,6 +56,7 @@ function App() {
         <Route exact path='/register' component={Register}/>
         <Route exact path='/flight-list' component={FlightList}/>
         <Route exact path='/flight-payment' component={FlightPayment}/>
+        <Route exact path='/flight-payment-info' component={PaymentInfo}/>
         <Route exact path='/contact' component={Contact}/>
         <Route exact path='/profile' component={Profile}/>
         <Route exact path='/verification/:uuid' component={Verification}/>
