@@ -201,18 +201,18 @@ travelport.shop(shop_params)
 return;  */
 
         
-        /*
+    
     const book = {
         segments: [
             {
                 "from": "DAC",
                 "to": "CGP",
                 "group": 0,
-                "departure": "2019-12-05T07:40:00.000+06:00",
-                "arrival": "2019-12-05T08:25:00.000+06:00",
+                "departure": "2019-12-10T12:00:00.000+06:00",
+                "arrival": "2019-12-10T12:45:00.000+06:00",
                 "airline": "BG",
-                "flightNumber": "411",
-                "uapi_segment_ref": "CtWin57Q2BKAWWiAQAAAAA==",
+                "flightNumber": "417",
+                "uapi_segment_ref": "Mt5rn54R2BKAcQVCSAAAAA==",
                 "serviceClass": "Economy",
                 "plane": [
                     "738"
@@ -232,7 +232,7 @@ return;  */
             }
         ],
         //rule: 'SIP',
-        phone: { countryCode: '88', location: 'BD', number: '01551807064' },
+        phone: { countryCode: '88', location: 'DAC', number: '123456789' },
         passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126789', passExpireDate : '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],                
         allowWaitlist: true
     };
@@ -247,7 +247,7 @@ return;  */
             console.log("Booking Error Written into File.");
         })
     );
-    return;  */
+    return; 
 
 
 
@@ -259,13 +259,13 @@ return;  */
     const params = {
         legs: [
             {
-                from: 'IEV',
-                to: 'PAR',
-                departureDate: departureDate
+                from: 'DAC',
+                to: 'CGP',
+                departureDate: '2019-12-10'
             }
         ],
         passengers: {
-            ADT: parseInt(ADT),
+            ADT: 1,
             CNN: parseInt(CNN),
             INF: parseInt(INF)
         },
@@ -293,10 +293,10 @@ return;  */
            // const toSegments   = apiRes['0'].directions['1']['0'].segments;
             const book = {
                 segments: fromSegments,
-                rule: 'SIP',
+                //rule: 'SIP',
                 passengers: [{
-                    lastName: 'SKYWALKER',
-                    firstName: 'ANAKIN',
+                    lastName: 'Polash',
+                    firstName: 'Shahadat',
                     passCountry: 'UA',
                     passNumber: 'ES221731',
                     birthDate: '1968-07-25',
@@ -304,16 +304,16 @@ return;  */
                     ageCategory: 'ADT',
                   }],
                   phone: {
-                    countryCode: '38',
-                    location: 'IEV',
-                    number: '0660419905',
+                    countryCode: '88',
+                    location: 'BD',
+                    number: '123456789',
                   },
                   deliveryInformation: {
-                    name: 'Anakin Skywalker',
-                    street: 'Sands street, 42',
-                    zip: '42042',
-                    country: 'GE',
-                    city: 'Mos',
+                    name: 'Polash',
+                    street: 'Dhaka',
+                    zip: '1216',
+                    country: 'BD',
+                    city: 'DAC',
                   },
                   allowWaitlist: true,
             };
