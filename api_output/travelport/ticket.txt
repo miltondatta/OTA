@@ -1,0 +1,21 @@
+{
+    "name": "RequestRuntimeError.UnhandledError",
+    "data": null,
+    "causedBy": {
+        "name": "RuntimeError.AirRuntimeError",
+        "data": {
+            "faultcode": "Server.Data",
+            "faultstring": "Unable to ticket without pricing information.",
+            "detail": {
+                "common_v47_0:ErrorInfo": {
+                    "common_v47_0:Code": "3788",
+                    "common_v47_0:Service": "AIRSVC",
+                    "common_v47_0:Type": "Data",
+                    "common_v47_0:Description": "Unable to ticket without pricing information.",
+                    "common_v47_0:TransactionId": "D4D468E10A07643C7CB449F513C01349",
+                    "xmlns:common_v47_0": "http://www.travelport.com/schema/common_v47_0"
+                }
+            }
+        }
+    }
+}

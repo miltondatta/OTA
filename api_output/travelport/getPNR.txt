@@ -1,0 +1,68 @@
+{
+    "type": "uAPI",
+    "pnr": "5CVR3S",
+    "version": "1",
+    "uapi_ur_locator": "L3ECM1",
+    "uapi_reservation_locator": "QC6PPN",
+    "airlineLocatorInfo": [
+        {
+            "createDate": "2019-12-05T06:03:00.000+00:00",
+            "supplierCode": "BG",
+            "locatorCode": "A4JM5"
+        }
+    ],
+    "createdAt": "2019-12-05T06:03:40.244+00:00",
+    "hostCreatedAt": "2019-12-05",
+    "modifiedAt": "2019-12-05T06:18:19.238+00:00",
+    "fareQuotes": [],
+    "segments": [
+        {
+            "from": "DAC",
+            "to": "CGP",
+            "group": 0,
+            "departure": "2019-12-10T12:00:00.000+06:00",
+            "arrival": "2019-12-10T12:45:00.000+06:00",
+            "airline": "BG",
+            "flightNumber": "417",
+            "uapi_segment_ref": "Mt5rn54R2BKAE5mFSAAAAA==",
+            "serviceClass": "Economy",
+            "plane": [
+                "738"
+            ],
+            "duration": [
+                "45"
+            ],
+            "techStops": [],
+            "index": 1,
+            "status": "HK",
+            "bookingClass": "Y"
+        }
+    ],
+    "serviceSegments": [],
+    "passengers": [
+        {
+            "lastName": "Doe",
+            "firstName": "John",
+            "uapi_passenger_ref": "Mt5rn54R2BKAtAoFSAAAAA==",
+            "birthDate": "1997-02-18",
+            "ageCategory": "ADT",
+            "gender": "M"
+        }
+    ],
+    "emails": [],
+    "bookingPCC": "62X8",
+    "messages": [
+        {
+            "_": "NO FARES",
+            "Code": "0",
+            "Type": "Warning",
+            "ProviderCode": "1G"
+        },
+        {
+            "_": "PNR already exists in Universal Record L3ECM1",
+            "Code": "0",
+            "Type": "Warning",
+            "ProviderCode": "1G"
+        }
+    ]
+}

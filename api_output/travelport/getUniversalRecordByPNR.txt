@@ -2,7 +2,7 @@
     {
         "type": "uAPI",
         "pnr": "5CVR3S",
-        "version": "0",
+        "version": "1",
         "uapi_ur_locator": "L3ECM1",
         "uapi_reservation_locator": "QC6PPN",
         "airlineLocatorInfo": [
@@ -14,7 +14,7 @@
         ],
         "createdAt": "2019-12-05T06:03:40.244+00:00",
         "hostCreatedAt": "2019-12-05",
-        "modifiedAt": "2019-12-05T06:03:40.244+00:00",
+        "modifiedAt": "2019-12-05T06:23:58.804+00:00",
         "fareQuotes": [],
         "segments": [
             {
@@ -55,21 +55,9 @@
         "tickets": [],
         "messages": [
             {
-                "_": "NO FARES",
+                "_": "PNR already exists in Universal Record L3ECM1",
                 "Code": "0",
                 "Type": "Warning",
-                "ProviderCode": "1G"
-            },
-            {
-                "_": "Some of the requested AirPricingInfos could not be saved for the requested provider.",
-                "Code": "0",
-                "Type": "Warning",
-                "ProviderCode": "1G"
-            },
-            {
-                "_": "The following attribute is missing in the AirCreateReservationReq: AirPricingSolution/HostToken.",
-                "Code": "0",
-                "Type": "Error",
                 "ProviderCode": "1G"
             }
         ]
