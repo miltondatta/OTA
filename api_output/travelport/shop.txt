@@ -18,7 +18,7 @@
                             "arrival": "2019-12-10T12:45:00.000+06:00",
                             "airline": "BG",
                             "flightNumber": "417",
-                            "uapi_segment_ref": "Mt5rn54R2BKAcQVCSAAAAA==",
+                            "uapi_segment_ref": "3327Q78Q2BKAsv73AAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "738"
@@ -51,7 +51,7 @@
                             "arrival": "2019-12-10T20:30:00.000+06:00",
                             "airline": "BG",
                             "flightNumber": "415",
-                            "uapi_segment_ref": "Mt5rn54R2BKAeQVCSAAAAA==",
+                            "uapi_segment_ref": "3327Q78Q2BKAuv73AAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "738"
@@ -84,7 +84,7 @@
                             "arrival": "2019-12-10T09:35:00.000+06:00",
                             "airline": "BG",
                             "flightNumber": "411",
-                            "uapi_segment_ref": "Mt5rn54R2BKAgQVCSAAAAA==",
+                            "uapi_segment_ref": "3327Q78Q2BKAwv73AAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "DH8"
@@ -117,7 +117,7 @@
                             "arrival": "2019-12-10T16:00:00.000+06:00",
                             "airline": "BG",
                             "flightNumber": "192",
-                            "uapi_segment_ref": "Mt5rn54R2BKAiQVCSAAAAA==",
+                            "uapi_segment_ref": "3327Q78Q2BKAyv73AAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "DH8"
@@ -144,7 +144,7 @@
                 "totalPrice": "USD116.30",
                 "basePrice": "USD110.00",
                 "taxes": "USD6.30",
-                "uapi_fare_reference": "Mt5rn54R2BKAyQVCSAAAAA=="
+                "uapi_fare_reference": "3327Q78Q2BKACw73AAAAAA=="
             }
         ],
         "passengerFares": {

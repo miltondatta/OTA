@@ -1,20 +1,20 @@
 [
     {
         "type": "uAPI",
-        "pnr": "5CVR3S",
+        "pnr": "5GCTR0",
         "version": "0",
-        "uapi_ur_locator": "L3ECM1",
-        "uapi_reservation_locator": "QC6PPN",
+        "uapi_ur_locator": "P21JLY",
+        "uapi_reservation_locator": "S9FZ08",
         "airlineLocatorInfo": [
             {
-                "createDate": "2019-12-05T06:03:00.000+00:00",
+                "createDate": "2019-12-05T11:05:00.000+00:00",
                 "supplierCode": "BG",
-                "locatorCode": "A4JM5"
+                "locatorCode": "A4JNB"
             }
         ],
-        "createdAt": "2019-12-05T06:03:40.244+00:00",
+        "createdAt": "2019-12-05T11:06:03.279+00:00",
         "hostCreatedAt": "2019-12-05",
-        "modifiedAt": "2019-12-05T06:03:40.244+00:00",
+        "modifiedAt": "2019-12-05T11:06:03.279+00:00",
         "fareQuotes": [],
         "segments": [
             {
@@ -25,7 +25,7 @@
                 "arrival": "2019-12-10T12:45:00.000+06:00",
                 "airline": "BG",
                 "flightNumber": "417",
-                "uapi_segment_ref": "Mt5rn54R2BKAE5mFSAAAAA==",
+                "uapi_segment_ref": "CtWin57Q2BKARwx6RAAAAA==",
                 "serviceClass": "Economy",
                 "plane": [
                     "738"
@@ -44,7 +44,7 @@
             {
                 "lastName": "Doe",
                 "firstName": "John",
-                "uapi_passenger_ref": "Mt5rn54R2BKAtAoFSAAAAA==",
+                "uapi_passenger_ref": "Mt5rn54R2BKAKDNaSAAAAA==",
                 "birthDate": "1997-02-18",
                 "ageCategory": "ADT",
                 "gender": "M"

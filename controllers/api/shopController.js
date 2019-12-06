@@ -31,7 +31,8 @@ return; */
 
 
 exports.shop = async (req, res) => {
-    /*   //Prepare data from file 
+     
+     /*  //Prepare data from file 
        let shopData            = [];
        let iatas               = [];
        let airlines            = [];
@@ -151,9 +152,9 @@ exports.shop = async (req, res) => {
                console.log(err);
            }
        });
-       return;
+       //return;  */
        
-       */
+    
 
 
 
@@ -279,7 +280,7 @@ exports.shop = async (req, res) => {
     return;  */
 
 
-    /*        
+    
     const book = {
         segments: [
             {
@@ -290,7 +291,7 @@ exports.shop = async (req, res) => {
                 "arrival": "2019-12-10T12:45:00.000+06:00",
                 "airline": "BG",
                 "flightNumber": "417",
-                "uapi_segment_ref": "Mt5rn54R2BKAcQVCSAAAAA==",
+                "uapi_segment_ref": "3327Q78Q2BKAsv73AAAAAA==",
                 "serviceClass": "Economy",
                 "plane": [
                     "738"
@@ -309,9 +310,10 @@ exports.shop = async (req, res) => {
                 "fareBasisCode": "Y"
             }
         ],
-        //rule: 'SIP',
+        rule: 'SIP',
+        //platingCarrier: "HR",
         phone: { countryCode: '88', location: 'DAC', number: '123456789' },
-        passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126789', passExpireDate: '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
+        passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126745', passExpireDate: '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
         allowWaitlist: true
     };
 
@@ -326,10 +328,10 @@ exports.shop = async (req, res) => {
         })
     );
     return;
-      */  
+    
 
 
-
+        /*
     const { from, to, departureDate, ADT, CNN, INF, cabins } = req.body;
     //For travelport - Params preparation
     const params = {
@@ -370,27 +372,8 @@ exports.shop = async (req, res) => {
                 const book = {
                     segments: fromSegments,
                     //rule: 'SIP',
-                    passengers: [{
-                        lastName: 'Polash',
-                        firstName: 'Shahadat',
-                        passCountry: 'UA',
-                        passNumber: 'ES221731',
-                        birthDate: '1968-07-25',
-                        gender: 'M',
-                        ageCategory: 'ADT',
-                    }],
-                    phone: {
-                        countryCode: '88',
-                        location: 'BD',
-                        number: '123456789',
-                    },
-                    deliveryInformation: {
-                        name: 'Polash',
-                        street: 'Dhaka',
-                        zip: '1216',
-                        country: 'BD',
-                        city: 'DAC',
-                    },
+                    phone: { countryCode: '88', location: 'DAC', number: '123456789' },
+                    passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126712', passExpireDate: '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
                     allowWaitlist: true,
                 };
 
@@ -409,7 +392,8 @@ exports.shop = async (req, res) => {
                 return res.status(200).json({ 'status': false, 'message': 'There is a problem in your request, please try again later!' });
             }
         );
-
+         
+        */
 
 
 
