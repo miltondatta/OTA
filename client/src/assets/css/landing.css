@@ -26,3 +26,15 @@
     position: relative;
     top: -42px;
 }
+
+::-moz-selection {
+    background: #3c9dff;
+    text-shadow: none;
+    color: #ffffff;
+}
+
+::selection {
+    background: #39cccc;
+    text-shadow: none;
+    color: #ffffff;
+}

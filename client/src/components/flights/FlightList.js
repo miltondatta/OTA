@@ -13,29 +13,31 @@ import TripSearched from "./TripSearched";
 import TripFilter from "./TripFilter";
 import TripList from "./TripList";
 import {getAirportByIataCode} from "../../actions/airportActions";
+import Spinner from "../layout/Spinner";
 
 const FlightList = ({passenger, shop, getAirportByIataCode}) => {
     useEffect(() => {
-        /*if (localStorage.getItem('user_flight_search')) {
-            const user_flight_search = JSON.parse(localStorage.getItem('user_flight_search'));
-        }
-        getAirportByIataCode();*/
+
     }, []);
 
     return (
         <Fragment>
             <div className={'flight-list-area'}>
                 <div className="container-fluid flight-list-area-container">
-                    <TripSearched flight_search={passenger.user_flight_search} shopData={shop} getAirportByIataCode={getAirportByIataCode}/>
+                    <TripSearched flight_search={passenger.user_flight_search} shopData={shop}
+                                  getAirportByIataCode={getAirportByIataCode}/>
                     <div className="row pt-3">
                         <TripFilter shopData={shop.shopData}/>
-                        {Object.keys(shop.shopData).length > 0 ?
-                            <TripList shopData={shop.shopData}/>
-                            :
-                            <Alert className="mt-2 mt-md-0" variant={'warning'} style={{'height': 50, marginLeft: 30}}>
-                                No Flight Found!
-                            </Alert>
-                        }
+                        {shop.loading ? <Spinner/> : <Fragment>
+                            {Object.keys(shop.shopData).length > 0 ?
+                                <TripList shopData={shop.shopData}/>
+                                :
+                                <Alert className="mt-2 mt-md-0" variant={'warning'}
+                                       style={{'height': 50, marginLeft: 30}}>
+                                    No Flight Found!
+                                </Alert>
+                            }
+                        </Fragment>}
                     </div>
                 </div>
             </div>

@@ -90,7 +90,10 @@ class MultiCity extends Component {
     }
 
     handleOriginData(data, key) {
-        const updateMultiCity = this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {from: data.split(",")[0], origin: data}) : el));
+        const updateMultiCity = this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {
+            from: data.split(",")[0],
+            origin: data
+        }) : el));
 
         this.setState({
             multiCity: updateMultiCity
@@ -98,7 +101,24 @@ class MultiCity extends Component {
     }
 
     handleDestinationData(data, key) {
-        const updateMultiCity = this.state.multiCity.map((el, index) => (index === key ? Object.assign({}, el, {to: data.split(",")[0], destination: data}) : el));
+        let updateMultiCity = [];
+        this.state.multiCity.map((value, index) => {
+            const returnValue = {...value};
+
+            if (index === key) {
+                returnValue.to = data.split(",")[0];
+                returnValue.destination = data;
+            }
+
+            if (index === (key + 1)) {
+                returnValue.from = '';
+                returnValue.from = data.split(",")[0];
+                returnValue.origin = '';
+                returnValue.origin = data;
+            }
+
+            updateMultiCity.push(returnValue);
+        });
 
         this.setState({
             multiCity: updateMultiCity
@@ -126,7 +146,8 @@ class MultiCity extends Component {
                 <form onSubmit={this.onSubmit} onKeyPress={event => {
                     if (event.which === 13) {
                         event.preventDefault();
-                    }}}>
+                    }
+                }}>
                     {this.state.multiCity.length > 0 && this.state.multiCity.map((value, key) => (
                         <Fragment key={key}>
                             <div className="row" style={key > 0 ? {'paddingTop': 8} : {}}>
@@ -135,7 +156,8 @@ class MultiCity extends Component {
                                     <label className={'d-block mb-1'}><b>Flying from</b></label>
                                     }
                                     <AirAutocomplete
-                                        handlerFromParant={this.handleOriginData} index={key} storage_value={value.origin}/>
+                                        handlerFromParant={this.handleOriginData} index={key}
+                                        storage_value={value.origin}/>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-6 col-lg-4">
@@ -143,7 +165,8 @@ class MultiCity extends Component {
                                     <label className={'d-block mb-1'}><b>Flying to</b></label>
                                     }
                                     <AirAutocomplete
-                                        handlerFromParant={this.handleDestinationData} index={key} storage_value={value.destination}
+                                        handlerFromParant={this.handleDestinationData} index={key}
+                                        storage_value={value.destination}
                                     />
                                 </div>
 
