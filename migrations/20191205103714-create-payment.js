@@ -1,24 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('user_roles', {
+    return queryInterface.createTable('payments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      role: {
-        type: Sequelize.STRING
+      receivable_amount: {
+        type: Sequelize.DOUBLE
       },
-      role_eng: {
-        type: Sequelize.STRING
+      payment_amount: {
+        type: Sequelize.DOUBLE
       },
-      user_type: {
-        type: Sequelize.INTEGER
+      payment_option: {
+        type: Sequelize.STRING(27)
       },
-      status: {
-        type: Sequelize.INTEGER
+      transaction_id: {
+        type: Sequelize.STRING(128)
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('user_roles');
+    return queryInterface.dropTable('payments');
   }
 };
