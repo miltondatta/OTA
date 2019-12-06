@@ -32,7 +32,7 @@ return; */
 
 exports.shop = async (req, res) => {
      
-     /*  //Prepare data from file 
+      //Prepare data from file 
        let shopData            = [];
        let iatas               = [];
        let airlines            = [];
@@ -152,7 +152,7 @@ exports.shop = async (req, res) => {
                console.log(err);
            }
        });
-       //return;  */
+       //return; 
        
     
 
@@ -280,6 +280,7 @@ exports.shop = async (req, res) => {
     return;  */
 
 
+    /*
     
     const book = {
         segments: [
@@ -312,8 +313,8 @@ exports.shop = async (req, res) => {
         ],
         rule: 'SIP',
         //platingCarrier: "HR",
-        phone: { countryCode: '88', location: 'DAC', number: '123456789' },
-        passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126745', passExpireDate: '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
+        phone: { countryCode: '88', location: 'DAC', number: '123456781' },
+        passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126712', passExpireDate: '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
         allowWaitlist: true
     };
 
@@ -328,7 +329,7 @@ exports.shop = async (req, res) => {
         })
     );
     return;
-    
+    */
 
 
         /*
