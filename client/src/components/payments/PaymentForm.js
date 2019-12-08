@@ -260,7 +260,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                     {user_flight_search.INF > 0 && infantPassengerForm.map((value, key) => (
                         passengerForm(value, key, 3)
                     ))}
-                    <ButtonToolbar className="pt-3">
+                    <ButtonToolbar className="pt-3 mb-3 mb-sm-3 mb-md-0">
                         <Button variant="outline-success" type="submit">Save and Continue</Button>
                     </ButtonToolbar>
                 </Form>
