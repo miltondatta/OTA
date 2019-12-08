@@ -1,10 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-// Font Awesome
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
-
 // Css
 import '../../assets/css/footer.css';
 
@@ -106,7 +102,7 @@ export default function CenteredGrid() {
                     <div className="col-md-12">
                         <div className="copyright-text-area pt-4">
                             <p>
-                                Copyright © 2019 All rights reserved | Developed by <Link
+                                Copyright © {new Date().getFullYear()} All rights reserved | Developed by <Link
                                 to="https://pentabd.com" target="_blank" className="text-decoration-none">Penta Global</Link>
                             </p>
                         </div>
