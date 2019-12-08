@@ -17,44 +17,22 @@ import youtube from '../../assets/img/icon-youtube.png';
 export default function CenteredGrid() {
 
     return (
-        <div className={'footerbgblack'}>
-            <div className={'container-fluid'}>
-                <div className="row">
-                    <div className="col-lg-3 col-md-6 com-sm-6 col-12 gridSinglePortion">
-                        <span className="grey2">© 2019  |  <Link className={'privacy'} to={'/'}>Privacy Policy</Link>
-                        <br/>
-                    All Rights Reserved </span>
-                    </div>
+        <div className={'container-fluid'}>
+            <div className="row">
+                <div className="col-lg-3 col-md-6 com-sm-6 col-12">
 
-                    <div className="col-lg-3 col-md-6 com-sm-6 col-12 gridSinglePortion customer-support">
-                        <span className="ftitleblack">Customer support</span><br/>
-                        <span className="grey2">1-866-599-6674</span><br/>                  
-                    </div>
+                </div>
 
-                    <div className="col-lg-3 col-md-6 com-sm-6 col-12 gridSinglePortion partnership">
-                        <span className="ftitleblack">Contact Email</span>
-                        <br/>
-                        <ul className="footerlistblack">
-                            <span className="grey2">office@travel.com</span>
-                        </ul>
-                    </div>
+                <div className="col-lg-3 col-md-6 com-sm-6 col-12">
 
-                    <div className="col-lg-3 col-md-6 com-sm-6 col-12 gridSinglePortion socials">
-                        <div className="scont">
-                            <Link to={'/'} className="social1b">
-                                <img src={facebook} alt=""/>
-                            </Link>
-                            <Link to={'/'} className="social2b">
-                                <img src={twitter} alt=""/>
-                            </Link>
-                            <Link to={'/'} className="social3b">
-                                <img src={google_plus} alt=""/>
-                            </Link>
-                            <Link to={'/'} className="social4b">
-                                <img src={youtube} alt=""/>
-                            </Link>
-                        </div>
-                    </div>
+                </div>
+
+                <div className="col-lg-3 col-md-6 com-sm-6 col-12">
+
+                </div>
+
+                <div className="col-lg-3 col-md-6 com-sm-6 col-12">
+
                 </div>
             </div>
         </div>
