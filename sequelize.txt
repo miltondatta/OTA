@@ -1,2 +1,0 @@
-1. sequelize model:create --name user --attributes name:string,surname:string,email:string,details:text
-2. sequelize db:migrate
