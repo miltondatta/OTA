@@ -1,0 +1,43 @@
+body {
+    font-family: 'Titillium Web' !important;
+}
+
+.logo {
+    width: 190px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #000 !important;
+    font-weight: 400;
+}
+
+.dropdown-menu {
+    left: -100% !important;
+}
+
+.navbar-toggler {
+    background-color: #929090 !important;
+}
+
+.navbar-toggler:focus {
+    outline: none !important;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-nav {
+        padding-left: 15px !important;
+    }
+}
+
+.selectToday {
+    display: none !important;
+}
+
+.custom-border-bottom {
+    border-bottom: 1px solid #dadada;
+}
+
+.container-fluid {
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+}

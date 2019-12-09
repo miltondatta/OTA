@@ -1,0 +1,27 @@
+.contact-area {
+    background-image: url('../../assets/img/contact.jpg');
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    width: 100%;
+    height: auto;
+}
+
+.contact-overlay {
+    background-color: #000;
+    opacity: 0.6;
+}
+
+.contact-area-container {
+    padding-top: 120px;
+    padding-bottom: 160px;
+}
+
+.card {
+    background: #525252 !important;
+}
+
+.card-header {
+    border-bottom: 1px solid #cccccc !important;
+}

@@ -1,0 +1,16 @@
+.profileMainDiv{
+    background-image: url('../../assets/img/contact.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+.profile-area-container{
+    padding-top: 20px;
+    padding-bottom: 23%;
+}
+
+.profile-form .form-label{
+    color: #000000 !important;
+}
