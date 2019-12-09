@@ -10,7 +10,7 @@ import twitter from '../../assets/img/icon-twitter.png';
 import google_plus from '../../assets/img/icon-gplus.png';
 import youtube from '../../assets/img/icon-youtube.png';
 
-export default function CenteredGrid() {
+export default function Footer() {
 
     return (
         <div className="footer-area">
