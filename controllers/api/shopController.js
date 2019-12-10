@@ -31,7 +31,7 @@ return; */
 
 
 exports.shop = async (req, res) => {
-     
+     /*
       //Prepare data from file 
        let shopData            = [];
        let iatas               = [];
@@ -152,7 +152,7 @@ exports.shop = async (req, res) => {
                console.log(err);
            }
        });
-       //return; 
+       //return;  */
        
     
 
@@ -211,7 +211,7 @@ exports.shop = async (req, res) => {
         fop: {
             type: 'Cash',
         },
-        pnr: '5CVR3S',
+        pnr: '5L6KRS',
     };
 
     travelport.ticket(ticket_params)
@@ -223,7 +223,7 @@ exports.shop = async (req, res) => {
                 console.log("ticket Error Successfully Written to File.");
             })
         );
-    return;   */      
+    return;     */
 
 
 
@@ -280,7 +280,7 @@ exports.shop = async (req, res) => {
     return;  */
 
 
-    /*
+
     
     const book = {
         segments: [
@@ -288,11 +288,11 @@ exports.shop = async (req, res) => {
                 "from": "DAC",
                 "to": "CGP",
                 "group": 0,
-                "departure": "2019-12-10T12:00:00.000+06:00",
-                "arrival": "2019-12-10T12:45:00.000+06:00",
+                "departure": "2019-12-15T07:40:00.000+06:00",
+                "arrival": "2019-12-15T08:25:00.000+06:00",
                 "airline": "BG",
-                "flightNumber": "417",
-                "uapi_segment_ref": "3327Q78Q2BKAsv73AAAAAA==",
+                "flightNumber": "411",
+                "uapi_segment_ref": "9q4bc74R2BKAXON+AAAAAA==",
                 "serviceClass": "Economy",
                 "plane": [
                     "738"
@@ -328,11 +328,11 @@ exports.shop = async (req, res) => {
             console.log("Booking Error Written into File.");
         })
     );
-    return;
-    */
+    return;  
 
 
-        /*
+
+    /*    
     const { from, to, departureDate, ADT, CNN, INF, cabins } = req.body;
     //For travelport - Params preparation
     const params = {
@@ -340,7 +340,7 @@ exports.shop = async (req, res) => {
             {
                 from: 'DAC',
                 to: 'CGP',
-                departureDate: '2019-12-10'
+                departureDate: '2019-12-15'
             }
         ],
         passengers: {
@@ -372,7 +372,7 @@ exports.shop = async (req, res) => {
                 // const toSegments   = apiRes['0'].directions['1']['0'].segments;
                 const book = {
                     segments: fromSegments,
-                    //rule: 'SIP',
+                    rule: 'SIP',
                     phone: { countryCode: '88', location: 'DAC', number: '123456789' },
                     passengers: [{ lastName: 'Doe', firstName: 'John', passCountry: 'BD', passNumber: 'ET126712', passExpireDate: '2020-03-01', birthDate: '1997-02-18', gender: 'M', ageCategory: 'ADT' }],
                     allowWaitlist: true,
@@ -392,10 +392,7 @@ exports.shop = async (req, res) => {
             apiErr => {
                 return res.status(200).json({ 'status': false, 'message': 'There is a problem in your request, please try again later!' });
             }
-        );
-         
-        */
-
+        );  */
 
 
 };

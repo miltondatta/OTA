@@ -14,77 +14,77 @@
                             "from": "DAC",
                             "to": "CGP",
                             "group": 0,
-                            "departure": "2019-12-10T12:00:00.000+06:00",
-                            "arrival": "2019-12-10T12:45:00.000+06:00",
-                            "airline": "BG",
-                            "flightNumber": "417",
-                            "uapi_segment_ref": "3327Q78Q2BKAsv73AAAAAA==",
-                            "serviceClass": "Economy",
-                            "plane": [
-                                "738"
-                            ],
-                            "duration": [
-                                "45"
-                            ],
-                            "techStops": [],
-                            "bookingClass": "Y",
-                            "baggage": [
-                                {
-                                    "units": "kilograms",
-                                    "amount": 20
-                                }
-                            ],
-                            "fareBasisCode": "Y"
-                        }
-                    ]
-                },
-                {
-                    "from": "DAC",
-                    "to": "CGP",
-                    "platingCarrier": "HR",
-                    "segments": [
-                        {
-                            "from": "DAC",
-                            "to": "CGP",
-                            "group": 0,
-                            "departure": "2019-12-10T19:45:00.000+06:00",
-                            "arrival": "2019-12-10T20:30:00.000+06:00",
-                            "airline": "BG",
-                            "flightNumber": "415",
-                            "uapi_segment_ref": "3327Q78Q2BKAuv73AAAAAA==",
-                            "serviceClass": "Economy",
-                            "plane": [
-                                "738"
-                            ],
-                            "duration": [
-                                "45"
-                            ],
-                            "techStops": [],
-                            "bookingClass": "Y",
-                            "baggage": [
-                                {
-                                    "units": "kilograms",
-                                    "amount": 20
-                                }
-                            ],
-                            "fareBasisCode": "Y"
-                        }
-                    ]
-                },
-                {
-                    "from": "DAC",
-                    "to": "CGP",
-                    "platingCarrier": "HR",
-                    "segments": [
-                        {
-                            "from": "DAC",
-                            "to": "CGP",
-                            "group": 0,
-                            "departure": "2019-12-10T08:40:00.000+06:00",
-                            "arrival": "2019-12-10T09:35:00.000+06:00",
+                            "departure": "2019-12-15T07:40:00.000+06:00",
+                            "arrival": "2019-12-15T08:25:00.000+06:00",
                             "airline": "BG",
                             "flightNumber": "411",
-                            "uapi_segment_ref": "3327Q78Q2BKAwv73AAAAAA==",
+                            "uapi_segment_ref": "9q4bc74R2BKAXON+AAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "738"
+                            ],
+                            "duration": [
+                                "45"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Y",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 20
+                                }
+                            ],
+                            "fareBasisCode": "Y"
+                        }
+                    ]
+                },
+                {
+                    "from": "DAC",
+                    "to": "CGP",
+                    "platingCarrier": "HR",
+                    "segments": [
+                        {
+                            "from": "DAC",
+                            "to": "CGP",
+                            "group": 0,
+                            "departure": "2019-12-15T16:00:00.000+06:00",
+                            "arrival": "2019-12-15T16:45:00.000+06:00",
+                            "airline": "BG",
+                            "flightNumber": "417",
+                            "uapi_segment_ref": "9q4bc74R2BKAZON+AAAAAA==",
+                            "serviceClass": "Economy",
+                            "plane": [
+                                "738"
+                            ],
+                            "duration": [
+                                "45"
+                            ],
+                            "techStops": [],
+                            "bookingClass": "Y",
+                            "baggage": [
+                                {
+                                    "units": "kilograms",
+                                    "amount": 20
+                                }
+                            ],
+                            "fareBasisCode": "Y"
+                        }
+                    ]
+                },
+                {
+                    "from": "DAC",
+                    "to": "CGP",
+                    "platingCarrier": "HR",
+                    "segments": [
+                        {
+                            "from": "DAC",
+                            "to": "CGP",
+                            "group": 0,
+                            "departure": "2019-12-15T14:15:00.000+06:00",
+                            "arrival": "2019-12-15T15:10:00.000+06:00",
+                            "airline": "BG",
+                            "flightNumber": "413",
+                            "uapi_segment_ref": "9q4bc74R2BKAbON+AAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "DH8"
@@ -113,11 +113,11 @@
                             "from": "DAC",
                             "to": "CGP",
                             "group": 0,
-                            "departure": "2019-12-10T15:05:00.000+06:00",
-                            "arrival": "2019-12-10T16:00:00.000+06:00",
+                            "departure": "2019-12-15T19:45:00.000+06:00",
+                            "arrival": "2019-12-15T20:40:00.000+06:00",
                             "airline": "BG",
-                            "flightNumber": "192",
-                            "uapi_segment_ref": "3327Q78Q2BKAyv73AAAAAA==",
+                            "flightNumber": "415",
+                            "uapi_segment_ref": "9q4bc74R2BKAdON+AAAAAA==",
                             "serviceClass": "Economy",
                             "plane": [
                                 "DH8"
@@ -144,7 +144,7 @@
                 "totalPrice": "USD116.30",
                 "basePrice": "USD110.00",
                 "taxes": "USD6.30",
-                "uapi_fare_reference": "3327Q78Q2BKACw73AAAAAA=="
+                "uapi_fare_reference": "9q4bc74R2BKAtON+AAAAAA=="
             }
         ],
         "passengerFares": {
