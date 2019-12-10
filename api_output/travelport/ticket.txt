@@ -1,21 +1,23 @@
 {
-    "name": "RequestRuntimeError.UnhandledError",
-    "data": null,
-    "causedBy": {
-        "name": "RuntimeError.AirRuntimeError",
-        "data": {
-            "faultcode": "Server.Data",
-            "faultstring": "Unable to ticket without pricing information.",
-            "detail": {
-                "common_v47_0:ErrorInfo": {
-                    "common_v47_0:Code": "3788",
-                    "common_v47_0:Service": "AIRSVC",
-                    "common_v47_0:Type": "Data",
-                    "common_v47_0:Description": "Unable to ticket without pricing information.",
-                    "common_v47_0:TransactionId": "E4E2F89A0A07643C99A45178DF7E7262",
-                    "xmlns:common_v47_0": "http://www.travelport.com/schema/common_v47_0"
+    "name": "AirRuntimeError.TicketingFailed",
+    "data": {
+        "air:TicketFailureInfo": {
+            "air:AirPricingInfoRef": {
+                "Di8Uc73R2BKAw6krBAAAAA==": {
+                    "Key": "Di8Uc73R2BKAw6krBAAAAA=="
                 }
-            }
-        }
+            },
+            "common_v47_0:Name": {
+                "First": "John",
+                "Last": "Doe"
+            },
+            "Code": "12008",
+            "Message": "Host error during ticket issue. INVALID ND LINKAGE",
+            "BookingTravelerRef": "Di8Uc73R2BKAH7krBAAAAA=="
+        },
+        "TransactionId": "EA7B3B110A076478BB24EE03C5F850CA",
+        "ResponseTime": "824",
+        "xmlns:air": "http://www.travelport.com/schema/air_v47_0",
+        "xmlns:common_v47_0": "http://www.travelport.com/schema/common_v47_0"
     }
 }

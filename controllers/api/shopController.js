@@ -202,7 +202,7 @@ exports.shop = async (req, res) => {
    return;  */
 
 
-   /*        
+           
    //Ticket 
    const ticket_params = {
         commission: {
@@ -211,7 +211,7 @@ exports.shop = async (req, res) => {
         fop: {
             type: 'Cash',
         },
-        pnr: '5L6KRS',
+        pnr: '5NKHQK',
     };
 
     travelport.ticket(ticket_params)
@@ -223,7 +223,7 @@ exports.shop = async (req, res) => {
                 console.log("ticket Error Successfully Written to File.");
             })
         );
-    return;     */
+    return;    
 
 
 
@@ -281,7 +281,7 @@ exports.shop = async (req, res) => {
 
 
 
-    
+    /*
     const book = {
         segments: [
             {
@@ -328,7 +328,7 @@ exports.shop = async (req, res) => {
             console.log("Booking Error Written into File.");
         })
     );
-    return;  
+    return;  */
 
 
 
