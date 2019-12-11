@@ -31,7 +31,7 @@ return; */
 
 
 exports.shop = async (req, res) => {
-     /*
+     
       //Prepare data from file 
        let shopData            = [];
        let iatas               = [];
@@ -152,7 +152,7 @@ exports.shop = async (req, res) => {
                console.log(err);
            }
        });
-       //return;  */
+       return;  
        
     
 
@@ -202,7 +202,7 @@ exports.shop = async (req, res) => {
    return;  */
 
 
-           
+    /*       
    //Ticket 
    const ticket_params = {
         commission: {
@@ -223,7 +223,7 @@ exports.shop = async (req, res) => {
                 console.log("ticket Error Successfully Written to File.");
             })
         );
-    return;    
+    return;   */ 
 
 
 
