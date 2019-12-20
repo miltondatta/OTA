@@ -21,9 +21,8 @@ export default function Footer() {
                             <h5 className="footer-title mb-4">
                                 About Us
                             </h5>
-                            <div className="single-footer-content">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam
-                                voluptatum autem. Amet aliquid nesciunt veritatis aliquam.
+                            <div className="single-footer-content text-justify">
+                            All the stories that describe about our size and diversity, as remarkable and significant as they may be, are secondary to the truest measure of Penta Global: The impact we make to the people & the business. Despite of short tenure of establishment (July, 2013), Penta Global imparted more than 20+ years of skilled resources, long-term proven reliability and investment protection, as well as its many certified IT security standards which helps Penta Global to be the trustworthy company to across the industry.
                             </div>
                         </div>
                     </div>
@@ -52,11 +51,11 @@ export default function Footer() {
                                 <ul className="list-unstyled">
                                     <li className="d-block">
                                         <span className="d-block">Address:</span>
-                                        <span>34 Street Name, City Name Here, United States</span></li>
-                                    <li className="d-block"><span className="d-block">Telephone:</span><span>+1 242 4942 290</span>
+                                        <span>Sheba House, 7th ﬂoor, Plot 34, Road 46 <br/> Gulshan-2, Dhaka-1215</span></li>
+                                    <li className="d-block"><span className="d-block">Telephone:</span><span>+88 02 985 7492 </span>
                                     </li>
                                     <li className="d-block"><span
-                                        className="d-block">Email:</span><span>info@yourdomain.com</span></li>
+                                        className="d-block">Email:</span><span>info@pentabd.com</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -102,8 +101,7 @@ export default function Footer() {
                     <div className="col-md-12">
                         <div className="copyright-text-area pt-4">
                             <p>
-                                Copyright © {new Date().getFullYear()} All rights reserved | Developed by <Link
-                                to="https://pentabd.com" target="_blank" className="text-decoration-none">Penta Global</Link>
+                                Copyright © {new Date().getFullYear()} All rights reserved | Developed by <a href="https://pentabd.com" target="_blank" className="text-decoration-none">  Penta Global </a>
                             </p>
                         </div>
                     </div>
