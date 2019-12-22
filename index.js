@@ -25,6 +25,9 @@ const country = require('./routes/api/country');
 //Define Passenger Routes
 const passenger = require('./routes/api/passenger');
 
+// Define Airline Routes
+const Airline = require('./routes/api/airline');
+
 //Define AIR Routes 
 const air = require('./routes/api/air');
 
@@ -42,6 +45,7 @@ app.use('/api/users/', users);
 app.use('/api/contact/', contact);
 app.use('/api/country/', country);
 app.use('/api/passenger/', passenger);
+app.use('/api/airline/', Airline);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);
