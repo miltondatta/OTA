@@ -20,10 +20,12 @@ import Verification from "./components/profile/Verification";
 import PaymentInfo from "./components/payment-info/PaymentInfo";
 import Airline from "./components/airline/Airline";
 import AirlineAdd from "./components/airline/AirlineAdd";
+import AirlineEdit from "./components/airline/AirlineEdit";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications/lib/notifications.css';
+import './assets/css/common.css';
 
 
 // Check for token
@@ -64,6 +66,7 @@ function App() {
         <Route exact path='/verification/:uuid' component={Verification}/>
         <Route exact path='/airline' component={Airline}/>
         <Route exact path='/airline-add' component={AirlineAdd}/>
+        <Route exact path='/airline/edit/:id' component={AirlineEdit}/>
      <Footer/>
    </Router>
    </Provider>

@@ -382,6 +382,7 @@ exports.shop = async (req, res) => {
                             airlines.push(flightData['platingCarrier']);
                             let dataSegments                = flight[j].segments; 
                             let segmentLength               = dataSegments.length;
+                            flightData['segments']          = flight[j].segments;
                             flightData['first_departure']   = dataSegments[0].departure;
                             flightData['last_arrival']      = dataSegments[segmentLength - 1].arrival;
                             let start_date                  = moment(flightData['first_departure']);
