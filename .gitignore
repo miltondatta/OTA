@@ -190,3 +190,5 @@ fabric.properties
 # Ignore all local history of files
 .history
 
+##Exclude database configuration
+config/config.json
