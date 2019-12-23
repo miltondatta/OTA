@@ -11,13 +11,13 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getAllCountryList} from "../../actions/countryActions";
 import Alerts from "../alert/alerts";
+import {base_url} from "../../utils/Urls";
 
-const AirlineAdd = ({getAllCountryList, country: {countries}, history}) => {
-    useEffect(() => {
-        getAllCountryList();
-    }, []);
+const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) => {
+    const [airline, setAirline] = useState({});
 
     const [formData, setFormData] = useState({
+        id: '',
         name: '',
         iata: '',
         icao: '',
@@ -25,6 +25,25 @@ const AirlineAdd = ({getAllCountryList, country: {countries}, history}) => {
         country: '',
         active: false
     });
+
+    useEffect(() => {
+        getAllCountryList();
+        const id = match.params.id;
+        const fetchData = async () => {
+            const result = await axios.get( base_url + `api/airline/edit/${id}`);
+            setFormData({
+                id: result.data.id,
+                name: result.data.name,
+                iata: result.data.iata,
+                icao: result.data.icao,
+                callsign: result.data.callsign,
+                country: result.data.country,
+                active: result.data.active
+            });
+        };
+
+        fetchData();
+    }, []);
 
     const [addMessage, setAddMessage] = useState({
         show: false,
@@ -208,7 +227,7 @@ const AirlineAdd = ({getAllCountryList, country: {countries}, history}) => {
     </Fragment>;
 };
 
-AirlineAdd.propTypes = {
+AirlineEdit.propTypes = {
     getAllCountryList: PropTypes.func.isRequired,
     country: PropTypes.object.isRequired
 };
@@ -218,4 +237,4 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {getAllCountryList};
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AirlineAdd));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AirlineEdit));
