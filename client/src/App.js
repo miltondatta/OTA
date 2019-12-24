@@ -24,6 +24,7 @@ import AirlineAdd from "./components/airline/AirlineAdd";
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications/lib/notifications.css';
+import './assets/css/common.css';
 
 
 // Check for token
