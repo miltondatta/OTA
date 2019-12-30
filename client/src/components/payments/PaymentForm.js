@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {Form} from "react-bootstrap";
+import {Form, Col} from "react-bootstrap";
 import {faMale, faChild, faBaby} from "@fortawesome/free-solid-svg-icons";
 import {ButtonToolbar, Button} from "react-bootstrap";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -69,7 +69,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
     };
 
     const phoneObj = {
-        
+        countryCode: '', location: '', number: ''
     };
 
 
@@ -121,7 +121,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
         let bookInfo = {
             passengers: masterPassengerData,
-            phone: {},
+            phone: phoneObj,
             segments: {}
         };
         
@@ -259,6 +259,9 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         </div>;
     };
 
+    
+
+
     return (user_flight_search.ADT > 0 &&
 
         <Fragment>
@@ -273,6 +276,27 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                     {user_flight_search.INF > 0 && infantPassengerForm.map((value, key) => (
                         passengerForm(value, key, 3)
                     ))}
+                    <div className="flight-payment-form" style={{'marginTop': 16}}>
+                        <Form.Row>
+                            <Form.Group className="col-md-6">
+                                <Form.Label>Country Code</Form.Label>
+                                <select className="form-control" name="countryCode" id="countryCode">
+                                    {countries.length > 0 ?
+                                    <Fragment>
+                                        {countries.map((value, key) => (
+                                            <option value={value.iso3166_1_alpha_2} key={key}>{value.country_name +  ': ' + value.dial}</option>
+                                        ))}
+                                    </Fragment> :
+                                    <option>0</option>}
+                                </select>                                              
+                            </Form.Group>
+                            <Form.Group className="col-md-6">
+                                <Form.Label>Number</Form.Label>        
+                                <Form.Control type="text" name="number" id="number" placeholder="Enter Phone Name"/>                                                 
+                            </Form.Group>
+                        </Form.Row>
+                    </div>
+
                     <ButtonToolbar className="pt-3 mb-3 mb-sm-3 mb-md-0">
                         <Button variant="outline-success" type="submit">Save and Continue</Button>
                     </ButtonToolbar>
