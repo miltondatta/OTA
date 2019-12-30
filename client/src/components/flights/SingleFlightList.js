@@ -148,7 +148,7 @@ const SingleFlightList = ({history, shop, index}) => {
                     <p className="single-flight-amount">{shop.totalPrice}</p>
                     <div>
                         <Button variant="outline-info" onClick={() => history.push('/flight-payment')}>Book Now</Button>
-                        <Button variant="outline-dark ml-3" onClick={() => setShowModal(false)}>Cancel</Button>
+                        <Button variant="outline-dark ml-3" onClick={() => setShowModal(false)}>Close</Button>
                     </div>
                 </Modal.Footer>
             </Modal>

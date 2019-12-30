@@ -68,6 +68,10 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         passenger_type: 'INF'
     };
 
+    const phoneObj = {
+        
+    };
+
 
     let adultPassengerData = [];
     const [adultFormData, setAdultFormData] = useState(adultPassengerData);
@@ -88,7 +92,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
             }
         }
 
-        if (passengerType === 1) {
+        if (passengerType === 2) {
             if (e.target) {
                 const {name, value} = e.target;
                 setChildFormData(childFormData.map((el, index) => (index === key ? Object.assign({}, el, {[name]: value}) : el)));
@@ -115,9 +119,16 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         masterPassengerData.push(childFormData);
         masterPassengerData.push(infantFormData);
 
+        let bookInfo = {
+            passengers: masterPassengerData,
+            phone: {},
+            segments: {}
+        };
+        
 
 
-        savePassengerInfo(masterPassengerData, true);
+
+        savePassengerInfo(bookInfo, true);
     };
 
     useEffect(() => {
@@ -152,9 +163,9 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                     key={key}>
             <div className="flight-payment-header">
                 <p><span className="font-weight-bolder">Passenger Information :</span> <span
-                    className="font-weight-bold">{(passengerType === 1 && 'Adult') || (passengerType === 1 && 'Child') || (passengerType === 3 && 'Infant')}</span>
+                    className="font-weight-bold">{(passengerType === 1 && 'Adult') || (passengerType === 2 && 'Child') || (passengerType === 3 && 'Infant')}</span>
                     <FontAwesomeIcon
-                        icon={(passengerType === 1 && faMale) || (passengerType === 1 && faChild) || (passengerType === 3 && faBaby)}
+                        icon={(passengerType === 1 && faMale) || (passengerType === 2 && faChild) || (passengerType === 3 && faBaby)}
                         className="ml-2" style={{color: "#80724b"}}/>
                     <span style={{color: "#80724b", fontSize: 17, marginLeft: 2}}
                           className="font-weight-bolder">{(key + 1)}</span>
@@ -198,13 +209,13 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                         <label className="radio-inline">
                             <input type="radio" name="gender" value="male"
                                    onChange={e => onChange(e, passengerType, key)} className={'input-checkbox'}
-                                   id={(passengerType === 1 && ('adult_male_' + key)) || (passengerType === 1 && ('child_male_' + key)) || (passengerType === 3 && ('infant_male_' + key))}/>
+                                   id={(passengerType === 1 && ('adult_male_' + key)) || (passengerType === 2 && ('child_male_' + key)) || (passengerType === 3 && ('infant_male_' + key))}/>
                             Male
                         </label>
 
                         <label className="radio-inline pl-3">
                             <input type="radio" name="gender" value="female"
-                                   id={(passengerType === 1 && ('adult_female_' + key)) || (passengerType === 1 && ('child_female_' + key)) || (passengerType === 3 && ('infant_female_' + key))}
+                                   id={(passengerType === 1 && ('adult_female_' + key)) || (passengerType === 2 && ('child_female_' + key)) || (passengerType === 3 && ('infant_female_' + key))}
                                    onChange={e => onChange(e, passengerType, key)} className={'input-checkbox'}
                             />
                             Female
@@ -222,7 +233,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                                 className="form-control"
                                 inputFormat="DD/MM/YYYY"
                                 onChange={e => onChange(e, passengerType, key, "date_of_birth")}
-                                value={(passengerType === 1 && adultFormData[key].date_of_birth) || (passengerType === 1 && childFormData[key].date_of_birth) || (passengerType === 3 && infantFormData[key].date_of_birth)}/>
+                                value={(passengerType === 1 && adultFormData[key].date_of_birth) || (passengerType === 2 && childFormData[key].date_of_birth) || (passengerType === 3 && infantFormData[key].date_of_birth)}/>
                 </div>
 
                 <Form.Group className="col-md-6"
@@ -242,7 +253,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                                 className="form-control"
                                 inputFormat="DD/MM/YYYY"
                                 onChange={e => onChange(e, passengerType, key, "passport_expiry_date")}
-                                value={(passengerType === 1 && adultFormData[key].passport_expiry_date) || (passengerType === 1 && childFormData[key].passport_expiry_date) || (passengerType === 3 && infantFormData[key].passport_expiry_date)}/>
+                                value={(passengerType === 1 && adultFormData[key].passport_expiry_date) || (passengerType === 2 && childFormData[key].passport_expiry_date) || (passengerType === 3 && infantFormData[key].passport_expiry_date)}/>
                 </div>
             </Form.Row>
         </div>;
