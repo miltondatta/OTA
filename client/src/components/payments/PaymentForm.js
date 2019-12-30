@@ -111,6 +111,10 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         }
     };
 
+    const onChangeNumber = (e) => {
+        console.log(e.target.value);
+    }
+
     const onSubmit = e => {
         e.preventDefault();
 
@@ -292,7 +296,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                             </Form.Group>
                             <Form.Group className="col-md-6">
                                 <Form.Label>Number</Form.Label>        
-                                <Form.Control type="text" name="number" id="number" placeholder="Enter Phone Name"/>                                                 
+                                <Form.Control type="text" name="number" id="number" onChange={e => onChangeNumber(e)} placeholder="Enter Phone Name"/>                                                 
                             </Form.Group>
                         </Form.Row>
                     </div>
