@@ -68,11 +68,6 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         passenger_type: 'INF'
     };
 
-    const phoneObj = {
-        countryCode: '', location: '', number: ''
-    };
-
-
     let adultPassengerData = [];
     const [adultFormData, setAdultFormData] = useState(adultPassengerData);
 
@@ -81,6 +76,10 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
     let infantPassengerData = [];
     const [infantFormData, setInfantFormData] = useState(infantPassengerData);
+
+    const [countryCode, setCountryCode]  = useState();
+    const [number, setNumber]  = useState();
+
 
     const onChange = (e, passengerType, key, input_name) => {
         if (passengerType === 1) {
@@ -111,9 +110,6 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         }
     };
 
-    const onChangeNumber = (e) => {
-        console.log(e.target.value);
-    }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -125,11 +121,12 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
         let bookInfo = {
             passengers: masterPassengerData,
-            phone: phoneObj,
+            phone: { countryCode: countryCode, location: 'DAC', number: number },
             segments: {}
         };
         
 
+        console.log(bookInfo);
 
 
         savePassengerInfo(bookInfo, true);
@@ -284,11 +281,11 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                         <Form.Row>
                             <Form.Group className="col-md-6">
                                 <Form.Label>Country Code</Form.Label>
-                                <select className="form-control" name="countryCode" id="countryCode">
+                                <select className="form-control" name="countryCode" onChange={e => setCountryCode(e.target.value)}>
                                     {countries.length > 0 ?
                                     <Fragment>
                                         {countries.map((value, key) => (
-                                            <option value={value.iso3166_1_alpha_2} key={key}>{value.country_name +  ': ' + value.dial}</option>
+                                            <option value={value.dial} key={key}>{value.country_name +  ': ' + value.dial}</option>
                                         ))}
                                     </Fragment> :
                                     <option>0</option>}
@@ -296,7 +293,7 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
                             </Form.Group>
                             <Form.Group className="col-md-6">
                                 <Form.Label>Number</Form.Label>        
-                                <Form.Control type="text" name="number" id="number" onChange={e => onChangeNumber(e)} placeholder="Enter Phone Name"/>                                                 
+                                <Form.Control type="text" name="number" id="number" onChange={e => setNumber(e.target.value)} placeholder="Enter Phone Name"/>                                                 
                             </Form.Group>
                         </Form.Row>
                     </div>
