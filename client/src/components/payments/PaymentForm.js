@@ -14,7 +14,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {savePassengerInfo} from "../../actions/passengerActions";
-import passengerReducer from "../../reducers/passengerReducer";
 
 const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger}) => {
     const [user_flight_search, setUserFlightSearch] = useState({});
@@ -310,12 +309,14 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
 PaymentForm.propTypes = {
     getAllCountryList: PropTypes.func.isRequired,
+    shop: PropTypes.object.isRequired,
     savePassengerInfo: PropTypes.func.isRequired,
     country: PropTypes.object.isRequired,
     passenger: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
+    shop: state.shop,
     country: state.country,
     passenger: state.passenger
 });
