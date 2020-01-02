@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {savePassengerInfo} from "../../actions/passengerActions";
 
-const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger}) => {
+const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger, shop}) => {
     const [user_flight_search, setUserFlightSearch] = useState({});
 
 
@@ -112,6 +112,10 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
     const onSubmit = e => {
         e.preventDefault();
+
+        
+        console.log(shop);
+        console.log(shop.shopData.data[2]);
 
         const masterPassengerData = [];
         masterPassengerData.push(adultFormData);
