@@ -18,7 +18,6 @@ import Moment from "react-moment";
 
 const SingleFlightList = ({history, shop, index}) => {
     const [showModal, setShowModal] = useState(false);
-
     return (
         <Fragment>
             <div className="single-flight-list" style={index > 0 ? {'marginTop': 8} : {}}>
