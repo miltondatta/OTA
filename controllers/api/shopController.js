@@ -32,7 +32,7 @@ return; */
 
 exports.shop = async (req, res) => {
      
-   /*   //Prepare data from file 
+      //Prepare data from file 
        let shopData            = [];
        let iatas               = [];
        let airlines            = [];
@@ -152,7 +152,7 @@ exports.shop = async (req, res) => {
                console.log(err);
            }
        });
-       return;  */
+       return; 
        
     
 
@@ -332,7 +332,8 @@ exports.shop = async (req, res) => {
 
 
 
-    
+    /* Main function for shop */
+
     const { from, to, departureDate, ADT, CNN, INF, cabins } = req.body;
     //For travelport - Params preparation
     const params = {
