@@ -24,6 +24,14 @@ module.exports = {
             mobile            : {
                 type: Sequelize.STRING
             },
+            balance: {
+                type: Sequelize.DOUBLE,
+                defaultValue: 0
+            },
+            credit_limit: {
+                type: Sequelize.DOUBLE,
+                defaultValue: 0
+            },
             verification_token: {
                 allowNull: true,
                 defaultValue: null,
