@@ -7,11 +7,14 @@ import '../../assets/css/flight-payment.css';
 import PaymentForm from "./PaymentForm";
 import PaymentList from "./PaymentList";
 import PaymentOption from "./PaymentOption";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 class FlightPayment extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.selectedFlight = props.shop.shopData.data[props.location.state.selectedIndex];
     }
 
     render() {
@@ -19,8 +22,8 @@ class FlightPayment extends Component {
             <div className="flight-payment-area">
                 <div className="container-fluid flight-payment-area-container">
                     <div className="row">
-                        <PaymentForm/>
-                        <PaymentList/>
+                        <PaymentForm selectedFlight={this.selectedFlight}/>
+                        <PaymentList selectedFlight={this.selectedFlight}/>
                     </div>
 
                     {/*<PaymentOption/>*/}
@@ -31,4 +34,12 @@ class FlightPayment extends Component {
 }
 
 
-export default FlightPayment;
+FlightPayment.propTypes = {
+    shop: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    shop: state.shop
+});
+
+export default connect(mapStateToProps)(FlightPayment);

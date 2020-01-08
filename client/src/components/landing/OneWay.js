@@ -46,10 +46,8 @@ class OneWay extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-
         let org = this.state.origin;
         let des = this.state.destination;
-
         //let userParams = 'origin=' + org.split(",")[0] + '&destination=' + des.split(",")[0] + '&departure=' + moment(this.state.departure).format('YYYY-MM-DD');
         let searchParams = {
             origin: org,

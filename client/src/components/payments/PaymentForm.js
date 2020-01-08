@@ -15,10 +15,8 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {savePassengerInfo} from "../../actions/passengerActions";
 
-const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger, shop}) => {
+const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger, selectedFlight}) => {
     const [user_flight_search, setUserFlightSearch] = useState({});
-
-
     let adultPassengerForm = [];
     for (let i = 1; i <= user_flight_search.ADT; i++) {
         adultPassengerForm.push(user_flight_search);
@@ -112,11 +110,6 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
     const onSubmit = e => {
         e.preventDefault();
-
-        
-        console.log(shop);
-        console.log(shop.shopData.data[2]);
-
         const masterPassengerData = [];
         masterPassengerData.push(adultFormData);
         masterPassengerData.push(childFormData);
@@ -125,13 +118,9 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         let bookInfo = {
             passengers: masterPassengerData,
             phone: { countryCode: countryCode, location: 'DAC', number: number },
-            segments: {}
+            segments: selectedFlight['segments']
         };
-        
-
         console.log(bookInfo);
-
-
         savePassengerInfo(bookInfo, true);
     };
 
@@ -313,14 +302,12 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
 
 PaymentForm.propTypes = {
     getAllCountryList: PropTypes.func.isRequired,
-    shop: PropTypes.object.isRequired,
     savePassengerInfo: PropTypes.func.isRequired,
     country: PropTypes.object.isRequired,
     passenger: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    shop: state.shop,
     country: state.country,
     passenger: state.passenger
 });
