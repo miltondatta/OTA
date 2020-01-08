@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
         email             : DataTypes.STRING,
         password          : DataTypes.STRING,
         mobile            : DataTypes.STRING,
+        balance           : DataTypes.DOUBLE,
+        credit_limit      : DataTypes.DOUBLE,
         verification_token: DataTypes.STRING,
         token_sent_at     : DataTypes.DATE,
         is_verified       : DataTypes.INTEGER,
