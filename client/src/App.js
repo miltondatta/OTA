@@ -21,6 +21,7 @@ import PaymentInfo from "./components/payment-info/PaymentInfo";
 import Airline from "./components/airline/Airline";
 import AirlineAdd from "./components/airline/AirlineAdd";
 import AirlineEdit from "./components/airline/AirlineEdit";
+import UserIndex from "./components/users/UserIndex";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -65,6 +66,7 @@ function App() {
                 <Route exact path='/airline' component={Airline}/>
                 <Route exact path='/airline-add' component={AirlineAdd}/>
                 <Route exact path='/airline/edit/:id' component={AirlineEdit}/>
+                <Route exact path='/users_index' component={UserIndex}/>
                 <Footer/>
             </Router>
         </Provider>

@@ -10,6 +10,11 @@ import '../../assets/css/airline.css';
 import Alerts from "../alert/alerts";
 
 const Airline = () => {
+    const fetchData = async () => {
+        const result = await axios.get(`/api/airline/all`);
+        setAirlines(result.data);
+    };
+
     const [airlines, setAirlines] = useState([]);
 
     const [airlineMessage, setAirlineMessage] = useState({
@@ -31,11 +36,6 @@ const Airline = () => {
     const {show, variant, heading, message} = airlineMessage;
 
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios.get(`/api/airline/all`);
-            setAirlines(result.data);
-        };
-
         fetchData();
 
         const airline_add_message = localStorage.getItem('airline_add_message');
@@ -72,13 +72,7 @@ const Airline = () => {
                 message: result.data.msg
             });
 
-            const fetchData = async () => {
-                const result = await axios.get(`/api/airline/all`);
-                setAirlines(result.data);
-            };
-
             fetchData();
-
             return result.data;
 
         } catch (err) {

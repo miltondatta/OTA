@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         verification_token: DataTypes.STRING,
         token_sent_at     : DataTypes.DATE,
         is_verified       : DataTypes.INTEGER,
+        status            : DataTypes.INTEGER,
     }, {});
     User.associate = function (models) {
         // associations can be defined here

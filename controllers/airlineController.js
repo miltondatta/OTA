@@ -1,11 +1,11 @@
 const Airline = require('../models').airline;
-const moment = require("moment");
+const moment  = require("moment");
 
 exports.index = async (req, res) => {
     try {
         const airlines = await Airline.findAll(
             {
-                attributes: ["id", "name", "iata", "icao", "callsign", "country", "active", "createdAt"],
+                attributes                    : ["id", "name", "iata", "icao", "callsign", "country", "active", "createdAt"],
                 order: [['id', 'DESC']], limit: 10
             }
         );
@@ -17,7 +17,6 @@ exports.index = async (req, res) => {
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
-
 
 exports.checkIata = async (req, res) => {
     try {
@@ -34,20 +33,19 @@ exports.checkIata = async (req, res) => {
     }
 };
 
-
 exports.store = async (req, res) => {
     try {
         const {name, iata, icao, callsign, country, active} = req.body;
-        const max = await Airline.max('id');
+        const max                                           = await Airline.max('id');
 
         const newAirline = {
-            id: max + 1,
-            name: name,
-            iata: iata.toUpperCase(),
-            icao: icao.toUpperCase(),
-            callsign: callsign.toUpperCase(),
-            country: country,
-            active: active,
+            id       : max + 1,
+            name     : name,
+            iata     : iata.toUpperCase(),
+            icao     : icao.toUpperCase(),
+            callsign : callsign.toUpperCase(),
+            country  : country,
+            active   : active,
             createdAt: moment()
         };
 
@@ -83,13 +81,13 @@ exports.update = async (req, res) => {
         const {id, name, iata, icao, callsign, country, active} = req.body;
 
         const updateAirline = {
-            id: id,
-            name: name,
-            iata: iata.toUpperCase(),
-            icao: icao.toUpperCase(),
-            callsign: callsign.toUpperCase(),
-            country: country,
-            active: active,
+            id       : id,
+            name     : name,
+            iata     : iata.toUpperCase(),
+            icao     : icao.toUpperCase(),
+            callsign : callsign.toUpperCase(),
+            country  : country,
+            active   : active,
             updatedAt: moment(),
         };
 

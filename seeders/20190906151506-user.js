@@ -14,6 +14,7 @@ module.exports = {
                 balance     : '0.00',
                 credit_limit: '0.00',
                 is_verified : '1',
+                status      : '3',
                 createdAt   : new Date(),
                 updatedAt   : new Date()
             },
@@ -26,6 +27,7 @@ module.exports = {
                 balance     : '0.00',
                 credit_limit: '0.00',
                 is_verified : '1',
+                status      : '3',
                 createdAt   : new Date(),
                 updatedAt   : new Date()
             },
@@ -38,15 +40,16 @@ module.exports = {
                 balance     : '0.00',
                 credit_limit: '0.00',
                 is_verified : '1',
+                status      : '3',
                 createdAt   : new Date(),
                 updatedAt   : new Date()
             },
-
+        
         ], {});
     },
-
+    
     down: (queryInterface, Sequelize) => {
         return queryInterface.bulkDelete('users', null, {});
-
+        
     }
 };

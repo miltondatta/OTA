@@ -8,8 +8,8 @@ module.exports = {
                 primaryKey   : true,
                 type         : Sequelize.INTEGER
             },
-            role_id: {
-                type: Sequelize.INTEGER,
+            role_id           : {
+                type        : Sequelize.INTEGER,
                 defaultValue: 0
             },
             name              : {
@@ -24,27 +24,32 @@ module.exports = {
             mobile            : {
                 type: Sequelize.STRING
             },
-            balance: {
-                type: Sequelize.DOUBLE,
+            balance           : {
+                type        : Sequelize.DOUBLE,
                 defaultValue: 0
             },
-            credit_limit: {
-                type: Sequelize.DOUBLE,
+            credit_limit      : {
+                type        : Sequelize.DOUBLE,
                 defaultValue: 0
             },
             verification_token: {
-                allowNull: true,
+                allowNull   : true,
                 defaultValue: null,
-                type     : Sequelize.STRING
+                type        : Sequelize.STRING
             },
-            token_sent_at         : {
+            token_sent_at     : {
                 allowNull: true,
                 type     : Sequelize.DATE
             },
             is_verified       : {
-                allowNull: true,
+                allowNull   : true,
                 defaultValue: 0,
-                type     : Sequelize.INTEGER
+                type        : Sequelize.INTEGER
+            },
+            status            : {
+                allowNull   : true,
+                defaultValue: 1,
+                type        : Sequelize.INTEGER
             },
             createdAt         : {
                 allowNull: false,

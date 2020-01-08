@@ -4,5 +4,6 @@ sequelize db:seed
 sequelize db:seed:all
 sequelize db:seed:undo
 sequelize db:seed:undo:all
-sequelize db:seed --seed 20191223123022-airports
+sequelize db:seed --seed 20200108070313-status
 sequelize seed:generate --name airports
+
