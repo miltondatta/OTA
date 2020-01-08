@@ -3,7 +3,11 @@ const flight_passenger = require('../models').flight_passenger;
 exports.store = async (req, res) => {
     try {
         const data = req.body;
-        data.forEach((element) => {
+        let passengers  = data.passengers;
+        let phone       = data.phone;
+        let segments    = data.segments;
+
+        passengers.forEach((element) => {
             element.forEach(async (value) => {
                 const final_record = {
                     booking_id: 123,
@@ -17,7 +21,7 @@ exports.store = async (req, res) => {
                     passenger_type: value.passenger_type,
                     createdAt: new Date().toLocaleString()
                 };
-
+                console.log(final_record);
                 const save = await flight_passenger.create(final_record);
                 if (!save) return res.status(400).json({msg: "Please try again!"});
             });
