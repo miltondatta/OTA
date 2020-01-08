@@ -15,10 +15,9 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {savePassengerInfo} from "../../actions/passengerActions";
 
-const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger, shop}) => {
+const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo, passenger, shop, selectedIndex}) => {
     const [user_flight_search, setUserFlightSearch] = useState({});
-
-
+    console.log("selectedIndex" + selectedIndex);
     let adultPassengerForm = [];
     for (let i = 1; i <= user_flight_search.ADT; i++) {
         adultPassengerForm.push(user_flight_search);
