@@ -238,3 +238,44 @@ exports.delete = async (req, res) => {
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
+
+exports.edit = async (req, res) => {
+    try {
+        const id = req.params.id;
+        
+        const user = await user.findOne({where: {id}});
+        if (!user) return res.status(400).json({msg: 'User\'s information not found!'});
+        
+        return res.status(200).json(user);
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
+
+exports.update = async (req, res) => {
+    try {
+        const {id, name, mobile, credit_limit, status, role} = req.body;
+        
+        const updateUser = {
+            name        : name,
+            mobile      : mobile,
+            credit_limit: credit_limit,
+            status      : status,
+            role        : role,
+            updatedAt   : moment(),
+        };
+        
+        const cur_user = await user.findOne({where: {id}});
+        if (!cur_user) return res.status(400).json({msg: 'User not found!'});
+        
+        const updated_user = await user.update(updateUser, {where: {id}});
+        if (!updated_user) return res.status(400).json({msg: 'Please try again with full information!'});
+        
+        return res.status(200).json({msg: 'User Information updated successfully.'});
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
+

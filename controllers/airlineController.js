@@ -67,7 +67,7 @@ exports.edit = async (req, res) => {
         const id = req.params.id;
 
         const airline = await Airline.findOne({where: {id}});
-        if (!airline) return res.status(400).json({msg: 'Airline information didn\'t found!'});
+        if (!airline) return res.status(400).json({msg: 'Airline information not found!'});
 
         return res.status(200).json(airline);
     } catch (err) {
@@ -92,7 +92,7 @@ exports.update = async (req, res) => {
         };
 
         const status = await Airline.findOne({where: {id}});
-        if (!status) return res.status(400).json({msg: 'This airline didn\'t found!'});
+        if (!status) return res.status(400).json({msg: 'This airline not found!'});
 
         const airline = await Airline.update(updateAirline, {where: {id}});
         if (!airline) return res.status(400).json({msg: 'Please try again with full information!'});

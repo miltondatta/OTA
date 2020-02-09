@@ -45,7 +45,7 @@ const UserIndex = () => {
             setUserIndexMessage({
                                     show    : true,
                                     variant : 'success',
-                                    headding: 'New Airline Added!',
+                                    headding: 'New User Added!',
                                     message : userIndex_add_message
                                 });
         }
