@@ -243,10 +243,10 @@ exports.edit = async (req, res) => {
     try {
         const id = req.params.id;
         
-        const user = await user.findOne({where: {id}});
-        if (!user) return res.status(400).json({msg: 'User\'s information not found!'});
+        const user_edit = await user.findOne({where: {id}});
+        if (!user_edit) return res.status(400).json({msg: 'User information not found!'});
         
-        return res.status(200).json(user);
+        return res.status(200).json(user_edit);
     } catch (err) {
         console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});

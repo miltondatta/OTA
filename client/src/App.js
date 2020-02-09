@@ -17,11 +17,12 @@ import FlightPayment from './components/payments/FlightPayment';
 import Contact from "./components/contact/Contact";
 import Profile from "./components/profile/Profile";
 import Verification from "./components/profile/Verification";
-import PaymentInfo from "./components/payment-info/PaymentInfo";
-import Airline from "./components/airline/Airline";
-import AirlineAdd from "./components/airline/AirlineAdd";
-import AirlineEdit from "./components/airline/AirlineEdit";
-import UserIndex from "./components/users/UserIndex";
+import PaymentInfo  from "./components/payment-info/PaymentInfo";
+import Airline      from "./components/airline/Airline";
+import AirlineAdd   from "./components/airline/AirlineAdd";
+import AirlineEdit  from "./components/airline/AirlineEdit";
+import UserIndex    from "./components/users/UserIndex";
+import UserEdit     from "./components/users/UserEdit";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
