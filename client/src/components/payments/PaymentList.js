@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PaymentList = ({ selectedFlight }) => {
-    console.log(selectedFlight);
     return (
         <div className="col-md-3">
                 <div className="flight-payment-amount-area">
