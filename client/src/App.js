@@ -68,7 +68,7 @@ function App() {
                 <Route exact path='/airline-add' component={AirlineAdd}/>
                 <Route exact path='/airline/edit/:id' component={AirlineEdit}/>
                 <Route exact path='/users_index' component={UserIndex}/>
-                <Route exact path='/user/edit/:id' component={UserEdit}/>
+                <Route exact path='/users/edit/:id' component={UserEdit}/>
                 <Footer/>
             </Router>
         </Provider>

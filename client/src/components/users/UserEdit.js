@@ -7,10 +7,10 @@ import {withRouter}                           from 'react-router-dom';
 import '../../assets/css/airline.css';
 
 // Redux
-import Alerts              from "../alert/alerts";
-import {base_url}          from "../../utils/Urls";
+import Alerts     from "../alert/alerts";
+import {base_url} from "../../utils/Urls";
 
-const UserEdit = ({ history, match}) => {
+const UserEdit = ({history, match}) => {
     const [userIndex, setUserIndex] = useState([]);
     
     const [formData, setFormData] = useState({
@@ -62,31 +62,53 @@ const UserEdit = ({ history, match}) => {
     const onSubmit = e => {
         e.preventDefault();
         const data = {
-            name    : formData.name,
-            iata    : formData.iata.toUpperCase(),
-            icao    : formData.icao.toUpperCase(),
-            callsign: formData.callsign.toUpperCase(),
-            country : formData.country,
-            active  : formData.active ? 'Y' : 'N',
+            id          : formData.id,
+            name        : formData.name,
+            mobile      : formData.mobile,
+            credit_limit: formData.credit_limit,
+            status      : formData.status,
         };
         
-        /*const res = addNewAirline(data);*/
+        const res = updateUserProfile(data);
     };
     
     const resetFormData = e => {
         e.preventDefault();
         setFormData({
-                        name    : '',
-                        iata    : '',
-                        icao    : '',
-                        callsign: '',
-                        country : '',
-                        active  : false
+                        name        : '',
+                        mobile      : '',
+                        credit_limit: '',
+                        status      : '',
                     });
     };
     
-    const {name, mobile, credit_limit, status} = formData;
-    const {show, variant, heading, message, disable}    = addMessage;
+    async function updateUserProfile(data) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            const res = await axios.post(base_url + `api/users/update/`, data, config);
+            
+            localStorage.setItem('user_update_message', res.data.msg);
+            
+            history.push('/users_index');
+            return res.data;
+        } catch (err) {
+            setAddMessage({
+                              show   : true,
+                              variant: 'danger',
+                              heading: 'User Update Error!',
+                              message: err.response.data.msg,
+                          });
+            return err.response.data;
+        }
+    }
+    
+    const {name, mobile, credit_limit, status}       = formData;
+    const {show, variant, heading, message, disable} = addMessage;
     
     return <Fragment>
         <div className="airline-area">
@@ -137,12 +159,13 @@ const UserEdit = ({ history, match}) => {
                                                     setFormData({...formData, [e.target.name]: !status});
                                                 }}
                                                 id="custom-switch-user"
-                                                label="Is Active"/>
+                                                label="Is Active" checked={status}/>
                                         </div>
                                     </div>
                                     
                                     <div className="d-flex justify-content-center">
-                                        <Button variant="outline-success" type="submit" className="" disabled={disable}>Update</Button>
+                                        <Button variant="outline-success" type="submit" className=""
+                                                disabled={disable}>Update</Button>
                                         <Button variant="outline-warning" type="reset" className="ml-2"
                                                 onClick={e => resetFormData(e)}>Reset</Button>
                                     </div>

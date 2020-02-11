@@ -51,6 +51,17 @@ const UserIndex = () => {
         }
         localStorage.removeItem('userIndex_add_message');
         
+        const user_update_message = localStorage.getItem('user_update_message');
+        if (user_update_message) {
+            setUserIndexMessage({
+                                    show    : true,
+                                    variant : 'success',
+                                    headding: 'User Updated!',
+                                    message : user_update_message
+                                });
+        }
+        localStorage.removeItem('user_update_message');
+        
     }, []);
     
     const deleteUser = async () => {
@@ -89,7 +100,7 @@ const UserIndex = () => {
     };
     
     return <Fragment>
-        <div className="airline-area">
+        <div className="user-area">
             <div className="container-fluid airline-area-container">
                 <div className="col-md-8 mx-auto">
                     <Alerts
@@ -134,7 +145,7 @@ const UserIndex = () => {
                                                                                                           'Inactive'}</Badge>
                                         </td>
                                         <td className="d-flex justify-content-center">
-                                            <Link to={`airline/edit/${value.id}`} className="btn btn-sm btn-info">
+                                            <Link to={`users/edit/${value.id}`} className="btn btn-sm btn-info">
                                                 <FontAwesomeIcon icon={faEdit}/>
                                             </Link>
                                             <Button className="btn btn-sm btn-danger ml-2" onClick={() => {

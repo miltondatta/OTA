@@ -106,7 +106,7 @@ router.get('/index', users_controller.index);
 router.post('/delete', users_controller.delete);
 
 /*
- @route          get api/user/edit/:id
+ @route          get api/users/edit/:id
  @desc           Get Airline Data By ID
  @access         Private
  */
@@ -114,7 +114,7 @@ router.post('/delete', users_controller.delete);
 router.get('/edit/:id', users_controller.edit);
 
 /*
- @route          POST api/user/update/
+ @route          POST api/users/update/
  @desc           Save New Airline Data
  @access         Private
  */

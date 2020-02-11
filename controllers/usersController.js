@@ -255,14 +255,14 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        const {id, name, mobile, credit_limit, status, role} = req.body;
-        
+        const {id, name, mobile, credit_limit, status/*, role*/} = req.body;
+        var db_status = status==true?3:4;
         const updateUser = {
             name        : name,
             mobile      : mobile,
             credit_limit: credit_limit,
-            status      : status,
-            role        : role,
+            status      : db_status,
+            /*role        : role,*/
             updatedAt   : moment(),
         };
         
