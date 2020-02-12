@@ -1,28 +1,30 @@
-import React from 'react';
+import React                            from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
-import {setCurrentUser, logoutUser} from './actions/authActions';
-import {Provider} from 'react-redux';
-import store from './stores';
+import jwt_decode                       from 'jwt-decode';
+import setAuthToken                     from './utils/setAuthToken';
+import {setCurrentUser, logoutUser}     from './actions/authActions';
+import {Provider}                       from 'react-redux';
+import store                            from './stores';
 
 // Component
-import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
-import Footer from './components/layout/Footer';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import FlightList from './components/flights/FlightList';
+import Navbar        from './components/layout/Navbar';
+import Landing       from './components/layout/Landing';
+import Footer        from './components/layout/Footer';
+import Login         from './components/auth/Login';
+import Register      from './components/auth/Register';
+import FlightList    from './components/flights/FlightList';
 import FlightPayment from './components/payments/FlightPayment';
-import Contact from "./components/contact/Contact";
-import Profile from "./components/profile/Profile";
-import Verification from "./components/profile/Verification";
-import PaymentInfo  from "./components/payment-info/PaymentInfo";
-import Airline      from "./components/airline/Airline";
-import AirlineAdd   from "./components/airline/AirlineAdd";
-import AirlineEdit  from "./components/airline/AirlineEdit";
-import UserIndex    from "./components/users/UserIndex";
-import UserEdit     from "./components/users/UserEdit";
+import Contact       from "./components/contact/Contact";
+import Profile       from "./components/profile/Profile";
+import Verification  from "./components/profile/Verification";
+import PaymentInfo   from "./components/payment-info/PaymentInfo";
+import Airline       from "./components/airline/Airline";
+import AirlineAdd    from "./components/airline/AirlineAdd";
+import AirlineEdit   from "./components/airline/AirlineEdit";
+import UserIndex     from "./components/users/UserIndex";
+import UserEdit      from "./components/users/UserEdit";
+import AirportIndex  from "./components/airports/AirportIndex";
+import AirportEdit  from "./components/airports/AirportEdit";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,7 +41,7 @@ if (localStorage.jwtToken) {
     store.dispatch(setCurrentUser(decoded));
     // Check for expired token
     const currentTime = Date.now() / 1000;
-
+    
     if (decoded.exp < currentTime) {
         // Logout user
         store.dispatch(logoutUser());
@@ -69,6 +71,8 @@ function App() {
                 <Route exact path='/airline/edit/:id' component={AirlineEdit}/>
                 <Route exact path='/users_index' component={UserIndex}/>
                 <Route exact path='/users/edit/:id' component={UserEdit}/>
+                <Route exact path='/airports' component={AirportIndex}/>
+                <Route exact path='/airport/edit/:id' component={AirportEdit}/>
                 <Footer/>
             </Router>
         </Provider>

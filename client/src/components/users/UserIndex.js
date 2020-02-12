@@ -115,9 +115,9 @@ const UserIndex = () => {
                     <h2>Users Information</h2>
                 </div>
                 
-                <div className="row">
+                <div className="row pb-3">
                     <div className="col-md-8 col-sm-12 col-12 mx-auto">
-                        <Link to="airline-add" className="btn btn-outline-primary d-block ml-auto mb-2"
+                        <Link to="/register" className="btn btn-outline-primary d-block ml-auto mb-2"
                               style={{width: 80}}>Create</Link>
                         
                         <table className="table table-bordered table-responsive-md text-center">

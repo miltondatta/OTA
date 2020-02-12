@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import React, {Fragment}          from 'react';
+import {Link}                     from 'react-router-dom';
 import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 
 // Redux
-import Proptypes from 'prop-types';
-import {connect} from "react-redux";
+import Proptypes    from 'prop-types';
+import {connect}    from "react-redux";
 import {logoutUser} from "../../actions/authActions";
 
 // Image
@@ -18,18 +18,18 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
             <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
         </Fragment>
     );
-
+    
     const authLinks = (
         <Fragment>
             <li className="nav-item"><Link to="#" className={'nav-link'}>Hi, {user.name}</Link></li>
         </Fragment>
     );
-
-    const role = [1, 2]; //---- 1 = Super Admin, 2 = Admin ----
+    
+    const role       = [1, 2]; //---- 1 = Super Admin, 2 = Admin ----
     const adminLinks = (<Fragment>
         <li className="nav-item"><Link className="nav-link" to="/register">Register</Link></li>
     </Fragment>);
-
+    
     return (
         <Fragment>
             <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -42,6 +42,14 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                         {!isAuthenticated && guestLinks}
                         {isAuthenticated && authLinks}
                         {(isAuthenticated && (role.includes(user.role_id))) && adminLinks}
+                        
+                        {isAuthenticated &&
+                        <NavDropdown title="Master Data" id="collasible-nav-dropdown">
+                            <Link to={'/users_index'} className={'dropdown-item'}>Users</Link>
+                            <Link to={'/airports'} className={'dropdown-item'}>Airports</Link>
+                        </NavDropdown>
+                        }
+                        
                         {isAuthenticated &&
                         <NavDropdown title="Profile" id="collasible-nav-dropdown">
                             <Link to={'/profile'} className={'dropdown-item'}>Profile</Link>
@@ -58,10 +66,9 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
     );
 }
 
-
 Menubar.propTypes = {
     logoutUser: Proptypes.func.isRequired,
-    auth: Proptypes.object.isRequired
+    auth      : Proptypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
