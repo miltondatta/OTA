@@ -4,7 +4,9 @@ module.exports = {
         return queryInterface.createTable('airlines', {
             id       : {
                 allowNull: false,
-                type     : Sequelize.INTEGER
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
             },
             name     : {
                 type: Sequelize.STRING

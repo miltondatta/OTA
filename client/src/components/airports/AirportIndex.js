@@ -31,7 +31,6 @@ const AirportIndex = () => {
     const getFilteredData = async () => {
         
         const filter_data = {iso_country: filterState.country};
-        console.log(filter_data);
         const result      = await axios.post(base_url +  `api/airport/getAirportByCountry`, filter_data);
         setairportData(result.data);
     };
@@ -72,7 +71,7 @@ const AirportIndex = () => {
                                       message : airportData_add_message
                                   });
         }
-        localStorage.removeItem('airportData_add_message');
+        localStorage.removeItem('airport_add_message');
     
         const airport_update_message = localStorage.getItem('airport_update_message');
         if (airport_update_message) {

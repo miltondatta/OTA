@@ -85,8 +85,6 @@ exports.store = async (req, res) => {
                   last_updated,
               } = req.body;
         
-        /*const max = await Airport.max('id');*/
-        
         const newAirport = {
             ident            : ident,
             type             : type,
@@ -109,11 +107,7 @@ exports.store = async (req, res) => {
             last_updated     : moment(),
             createdAt        : moment()
         };
-    
-        console.log(newAirport, 113)
-        
-        const status = await Airport.create(newAirport);
-        console.log(status, 115)
+        const status     = await Airport.create(newAirport);
         if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'New Airline Information saved successfully.'});
