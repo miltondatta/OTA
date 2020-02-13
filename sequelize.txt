@@ -9,3 +9,12 @@ sequelize db:seed --seed 20200108070313-status
 sequelize db:seed --seed 20301223123022-airports.js
 sequelize seed:generate --name airports
 
+
+
+import {validateInput} from "../../utils/funcitons";
+let valid = validateInput(e);
+if (valid) {
+    setFormData({...formData, [e.target.name]: valid});
+}
+data-number={'integer_only'}
+data-number={'float_only'}

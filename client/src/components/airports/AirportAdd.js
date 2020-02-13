@@ -6,8 +6,9 @@ import {withRouter}                           from 'react-router-dom';
 // Css
 import '../../assets/css/airline.css';
 
-import Alerts     from "../alert/alerts";
-import {base_url} from "../../utils/Urls";
+import Alerts          from "../alert/alerts";
+import {base_url}      from "../../utils/Urls";
+import {validateInput} from "../../utils/funcitons";
 
 const AirportAdd = ({history, match}) => {
     const [airportIndex, setAirportIndex] = useState([]);
@@ -47,7 +48,10 @@ const AirportAdd = ({history, match}) => {
                                                  });
     
     const onChange = e => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+        let valid = validateInput(e);
+        if (valid || valid === '') {
+            setFormData({...formData, [e.target.name]: valid});
+        }
     };
     
     const onSubmit = e => {
@@ -178,32 +182,34 @@ const AirportAdd = ({history, match}) => {
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
-                                            <Form.Group controlId="formLatitude_deg">
-                                                <Form.Label>Latitude_deg</Form.Label>
-                                                <Form.Control type="text" name="latitude_deg" value={latitude_deg}
-                                                              onChange={e => onChange(e)}
-                                                              placeholder="Enter latitude_deg" required/>
+                                            <Form.Group controlId="formElevation_ft">
+                                                <Form.Label>Elevation Ft</Form.Label>
+                                                <Form.Control type="text" name="elevation_ft" value={elevation_ft}
+                                                              onChange={e => onChange(e)} data-number={'integer_only'}
+                                                              placeholder="Enter elevation Ft" required/>
                                             </Form.Group>
                                         </div>
                                     </div>
                                     
                                     <div className="row">
                                         <div className="col-md-6">
+                                            <Form.Group controlId="formLatitude_deg">
+                                                <Form.Label>Latitude Deg</Form.Label>
+                                                <Form.Control type="text" name="latitude_deg" value={latitude_deg}
+                                                              onChange={e => onChange(e)} data-number={'float_only'}
+                                                              placeholder="Enter latitude Deg" required/>
+                                            </Form.Group>
+                                        </div>
+                                        
+                                        <div className="col-md-6">
                                             <Form.Group controlId="formLongitude_deg">
                                                 <Form.Label>Longitude Deg</Form.Label>
                                                 <Form.Control type="text" name="longitude_deg" value={longitude_deg}
-                                                              onChange={e => onChange(e)}
+                                                              onChange={e => onChange(e)} data-number={'float_only'}
                                                               placeholder="Enter longitude Deg"/>
                                             </Form.Group>
                                         </div>
-                                        <div className="col-md-6">
-                                            <Form.Group controlId="formElevation_ft">
-                                                <Form.Label>Elevation Ft</Form.Label>
-                                                <Form.Control type="text" name="elevation_ft" value={elevation_ft}
-                                                              onChange={e => onChange(e)}
-                                                              placeholder="Enter elevation Ft" required/>
-                                            </Form.Group>
-                                        </div>
+                                    
                                     </div>
                                     
                                     <div className="row">
@@ -314,7 +320,7 @@ const AirportAdd = ({history, match}) => {
                                             <Form.Group controlId="formScore">
                                                 <Form.Label>Score</Form.Label>
                                                 <Form.Control type="text" name="score" value={score}
-                                                              onChange={e => onChange(e)}
+                                                              onChange={e => onChange(e)} data-number={'integer_only'}
                                                               placeholder="Enter Score" required/>
                                             </Form.Group>
                                         </div>
