@@ -9,41 +9,33 @@ import '../../assets/css/airline.css';
 import Alerts     from "../alert/alerts";
 import {base_url} from "../../utils/Urls";
 
-const AirportEdit = ({history, match}) => {
-    const [userIndex, setUserIndex] = useState([]);
+const AirportAdd = ({history, match}) => {
+    const [airportIndex, setAirportIndex] = useState([]);
     
     const [formData, setFormData] = useState({
-                                                 id          : '',
-                                                 name        : '',
-                                                 email       : '',
-                                                 mobile      : '',
-                                                 role_id     : '',
-                                                 balance     : '',
-                                                 credit_limit: '',
-                                                 createdAt   : '',
-                                                 updatedAt   : '',
-                                                 status      : false
+                                                 ident            : '',
+                                                 type             : '',
+                                                 name             : '',
+                                                 latitude_deg     : '',
+                                                 longitude_deg    : '',
+                                                 elevation_ft     : '',
+                                                 continent        : '',
+                                                 iso_country      : '',
+                                                 iso_region       : '',
+                                                 municipality     : '',
+                                                 scheduled_service: '',
+                                                 gps_code         : '',
+                                                 iata_code        : '',
+                                                 local_code       : '',
+                                                 home_link        : '',
+                                                 wikipedia_link   : '',
+                                                 keywords         : '',
+                                                 score            : '',
+                                                 last_updated     : '',
                                              });
     
     useEffect(() => {
-        const id        = match.params.id;
-        const fetchData = async () => {
-            const result = await axios.get(base_url + `api/users/edit/${id}`);
-            setFormData({
-                            id          : result.data.id,
-                            name        : result.data.name,
-                            email       : result.data.email,
-                            role_id     : result.data.role_id,
-                            mobile      : result.data.mobile,
-                            balance     : result.data.balance,
-                            credit_limit: result.data.credit_limit,
-                            createdAt   : result.data.createdAt,
-                            updatedAt   : result.data.updatedAt,
-                            status      : result.data.status == 3 ? true : false
-                        });
-        };
-        
-        fetchData();
+    
     }, []);
     
     const [addMessage, setAddMessage] = useState({
@@ -61,27 +53,30 @@ const AirportEdit = ({history, match}) => {
     const onSubmit = e => {
         e.preventDefault();
         const data = {
-            id          : formData.id,
-            name        : formData.name,
-            mobile      : formData.mobile,
-            credit_limit: formData.credit_limit,
-            status      : formData.status,
+            ident            : formData.ident,
+            type             : formData.type,
+            name             : formData.name,
+            latitude_deg     : formData.latitude_deg,
+            longitude_deg    : formData.longitude_deg,
+            elevation_ft     : formData.elevation_ft,
+            continent        : formData.continent,
+            iso_country      : formData.iso_country,
+            iso_region       : formData.iso_region,
+            municipality     : formData.municipality,
+            scheduled_service: formData.scheduled_service,
+            gps_code         : formData.gps_code,
+            iata_code        : formData.iata_code,
+            local_code       : formData.local_code,
+            home_link        : formData.home_link,
+            wikipedia_link   : formData.wikipedia_link,
+            keywords         : formData.keywords,
+            score            : formData.score,
         };
         
-        const res = updateUserProfile(data);
+        const res = addNewAirport(data);
     };
     
-    const resetFormData = e => {
-        e.preventDefault();
-        setFormData({
-                        name        : '',
-                        mobile      : '',
-                        credit_limit: '',
-                        status      : '',
-                    });
-    };
-    
-    async function updateUserProfile(data) {
+    const addNewAirport = async (data) => {
         try {
             const config = {
                 headers: {
@@ -89,24 +84,51 @@ const AirportEdit = ({history, match}) => {
                 }
             };
             
-            const res = await axios.post(base_url + `api/users/update/`, data, config);
+            const res = await axios.post(`/api/airport/store/`, data, config);
             
-            localStorage.setItem('user_update_message', res.data.msg);
+            localStorage.setItem('airport_add_message', res.data.msg);
             
-            history.push('/users_index');
+            history.push('/airports');
             return res.data;
         } catch (err) {
             setAddMessage({
                               show   : true,
                               variant: 'danger',
-                              heading: 'User Update Error!',
+                              heading: 'Airport Add Error!',
                               message: err.response.data.msg,
                           });
             return err.response.data;
         }
-    }
+    };
+    const resetFormData = e => {
+        e.preventDefault();
+        setFormData({
+                        ident            : '',
+                        type             : '',
+                        name             : '',
+                        latitude_deg     : '',
+                        longitude_deg    : '',
+                        elevation_ft     : '',
+                        continent        : '',
+                        iso_country      : '',
+                        iso_region       : '',
+                        municipality     : '',
+                        scheduled_service: '',
+                        gps_code         : '',
+                        iata_code        : '',
+                        local_code       : '',
+                        home_link        : '',
+                        wikipedia_link   : '',
+                        keywords         : '',
+                        score            : '',
+                        last_updated     : '',
+                    });
+    };
+    const {
+              ident, type, name, latitude_deg, longitude_deg, elevation_ft, continent, iso_country, iso_region, municipality,
+              scheduled_service, gps_code, iata_code, local_code, home_link, wikipedia_link, keywords, score, last_updated,
+          }             = formData;
     
-    const {name, mobile, credit_limit, status}       = formData;
     const {show, variant, heading, message, disable} = addMessage;
     
     return <Fragment>
@@ -122,49 +144,185 @@ const AirportEdit = ({history, match}) => {
                         />
                         <div className="card bg-light">
                             <div className="card-header">
-                                Edit User Profile
+                                Add Airport
                             </div>
                             <div className="card-body">
                                 <Form onSubmit={e => onSubmit(e)}>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <Form.Group controlId="formProfileName">
+                                            <Form.Group controlId="formIdent">
+                                                <Form.Label>Ident</Form.Label>
+                                                <Form.Control type="text" name="ident" value={ident}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter ident" required/>
+                                            </Form.Group>
+                                        </div>
+                                        
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formType">
+                                                <Form.Label>Type</Form.Label>
+                                                <Form.Control type="text" name="type" value={type}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter type" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formName">
                                                 <Form.Label>Name</Form.Label>
                                                 <Form.Control type="text" name="name" value={name}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Name" required/>
-                                            </Form.Group>
-                                            
-                                            <Form.Group controlId="formProfile">
-                                                <Form.Label>Mobile No</Form.Label>
-                                                <Form.Control type="text" name="mobile" value={mobile}
-                                                              onChange={e => onChange(e)}
-                                                              placeholder="Enter Mobile No" required/>
-                                            </Form.Group>
-                                            
-                                            <Form.Group controlId="formProfileCreditLimit">
-                                                <Form.Label>Credit Limit</Form.Label>
-                                                <Form.Control type="text" name="credit_limit" value={credit_limit}
-                                                              onChange={e => onChange(e)}
-                                                              placeholder="Enter Credit Limit"/>
+                                                              placeholder="Enter name"/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
-                                            <Form.Check
-                                                type="switch"
-                                                name="status"
-                                                value={status}
-                                                onChange={e => {
-                                                    setFormData({...formData, [e.target.name]: !status});
-                                                }}
-                                                id="custom-switch-user"
-                                                label="Is Active" checked={status}/>
+                                            <Form.Group controlId="formLatitude_deg">
+                                                <Form.Label>Latitude_deg</Form.Label>
+                                                <Form.Control type="text" name="latitude_deg" value={latitude_deg}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter latitude_deg" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formLongitude_deg">
+                                                <Form.Label>Longitude Deg</Form.Label>
+                                                <Form.Control type="text" name="longitude_deg" value={longitude_deg}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter longitude Deg"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formElevation_ft">
+                                                <Form.Label>Elevation Ft</Form.Label>
+                                                <Form.Control type="text" name="elevation_ft" value={elevation_ft}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter elevation Ft" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formContinent">
+                                                <Form.Label>Continent</Form.Label>
+                                                <Form.Control type="text" name="continent" value={continent}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Continent"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formIso_country">
+                                                <Form.Label>Iso Country</Form.Label>
+                                                <Form.Control type="text" name="iso_country" value={iso_country}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Iso Country" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formIso_region">
+                                                <Form.Label>Iso_region</Form.Label>
+                                                <Form.Control type="text" name="iso_region" value={iso_region}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Iso_region"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formMunicipality">
+                                                <Form.Label>Municipality</Form.Label>
+                                                <Form.Control type="text" name="municipality" value={municipality}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter municipality" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formScheduled_service">
+                                                <Form.Label>Scheduled Service</Form.Label>
+                                                <Form.Control type="text" name="scheduled_service" value={scheduled_service}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Scheduled Service"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formGps_code">
+                                                <Form.Label>Gps Code</Form.Label>
+                                                <Form.Control type="text" name="gps_code" value={gps_code}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Gps Code" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formIata_code">
+                                                <Form.Label>Iata Code</Form.Label>
+                                                <Form.Control type="text" name="iata_code" value={iata_code}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Iata Code"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formLocal_code">
+                                                <Form.Label>Local Code</Form.Label>
+                                                <Form.Control type="text" name="local_code" value={local_code}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Local Code" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formHome_link">
+                                                <Form.Label>Home Link</Form.Label>
+                                                <Form.Control type="text" name="home_link" value={home_link}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Home Link"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formWikipedia_link">
+                                                <Form.Label>Wikipedia Link</Form.Label>
+                                                <Form.Control type="text" name="wikipedia_link" value={wikipedia_link}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Wikipedia Link" required/>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formKeywords">
+                                                <Form.Label>Keywords</Form.Label>
+                                                <Form.Control type="text" name="keywords" value={keywords}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Keywords"/>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Form.Group controlId="formScore">
+                                                <Form.Label>Score</Form.Label>
+                                                <Form.Control type="text" name="score" value={score}
+                                                              onChange={e => onChange(e)}
+                                                              placeholder="Enter Score" required/>
+                                            </Form.Group>
                                         </div>
                                     </div>
                                     
                                     <div className="d-flex justify-content-center">
-                                        <Button variant="outline-success" type="submit" className=""
-                                                disabled={disable}>Update</Button>
+                                        <Button variant="outline-success" type="submit" className="" disabled={disable}>Add
+                                            Now</Button>
                                         <Button variant="outline-warning" type="reset" className="ml-2"
                                                 onClick={e => resetFormData(e)}>Reset</Button>
                                     </div>
@@ -178,4 +336,4 @@ const AirportEdit = ({history, match}) => {
     </Fragment>;
 };
 
-export default withRouter(AirportEdit);
+export default withRouter(AirportAdd);

@@ -2,9 +2,11 @@
 module.exports = {
     up  : (queryInterface, Sequelize) => {
         return queryInterface.createTable('airports', {
-            id               : {
+            id: {
                 allowNull: false,
-                type     : Sequelize.INTEGER
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
             },
             ident            : {
                 type: Sequelize.STRING
@@ -64,6 +66,14 @@ module.exports = {
                 allowNull   : true,
                 type        : Sequelize.DATE,
                 defaultValue: Sequelize.NOW
+            },
+            createdAt        : {
+                allowNull: true,
+                type     : Sequelize.DATE
+            },
+            updatedAt        : {
+                allowNull: true,
+                type     : Sequelize.DATE
             }
         });
     },

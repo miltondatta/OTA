@@ -63,7 +63,7 @@ const AirportIndex = () => {
         fetchData();
         fetchCountryList();
         
-        const airportData_add_message = localStorage.getItem('airportData_add_message');
+        const airportData_add_message = localStorage.getItem('airport_add_message');
         if (airportData_add_message) {
             setairportDataMessage({
                                       show    : true,
@@ -73,6 +73,17 @@ const AirportIndex = () => {
                                   });
         }
         localStorage.removeItem('airportData_add_message');
+    
+        const airport_update_message = localStorage.getItem('airport_update_message');
+        if (airport_update_message) {
+            setairportDataMessage({
+                                      show    : true,
+                                      variant : 'success',
+                                      headding: 'New Airport Added!',
+                                      message : airport_update_message
+                                  });
+        }
+        localStorage.removeItem('airport_update_message');
     }, []);
     const deleteUser = async () => {
         try {
@@ -225,7 +236,7 @@ const AirportIndex = () => {
                                     </tr>
                                 ))}
                             </Fragment> : <tr>
-                                 <td colSpan={8}>
+                                 <td colSpan={21}>
                                      No data found!
                                  </td>
                              </tr>}

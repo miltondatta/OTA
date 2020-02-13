@@ -61,34 +61,67 @@ exports.getAirportByCountry = async (req, res) => {
  }
  };*/
 
-/*exports.store = async (req, res) => {
- try {
- const {name, iata, icao, callsign, country, active} = req.body;
- const max                                           = await Airline.max('id');
- 
- const newAirline = {
- id       : max + 1,
- name     : name,
- iata     : iata.toUpperCase(),
- icao     : icao.toUpperCase(),
- callsign : callsign.toUpperCase(),
- country  : country,
- active   : active,
- createdAt: moment()
- };
- 
- const airline = await Airline.findOne({where: {iata}});
- if (airline) return res.status(400).json({msg: 'This airline is already exist!'});
- 
- const status = await Airline.create(newAirline);
- if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
- 
- return res.status(200).json({msg: 'New Airline Information saved successfully.'});
- } catch (err) {
- console.error(err.message);
- return res.status(500).json({msg: 'Server Error!'});
- }
- };*/
+exports.store = async (req, res) => {
+    try {
+        const {
+                  ident,
+                  type,
+                  name,
+                  latitude_deg,
+                  longitude_deg,
+                  elevation_ft,
+                  continent,
+                  iso_country,
+                  iso_region,
+                  municipality,
+                  scheduled_service,
+                  gps_code,
+                  iata_code,
+                  local_code,
+                  home_link,
+                  wikipedia_link,
+                  keywords,
+                  score,
+                  last_updated,
+              } = req.body;
+        
+        /*const max = await Airport.max('id');*/
+        
+        const newAirport = {
+            ident            : ident,
+            type             : type,
+            name             : name,
+            latitude_deg     : latitude_deg,
+            longitude_deg    : longitude_deg,
+            elevation_ft     : elevation_ft,
+            continent        : continent,
+            iso_country      : iso_country,
+            iso_region       : iso_region,
+            municipality     : municipality,
+            scheduled_service: scheduled_service,
+            gps_code         : gps_code,
+            iata_code        : iata_code,
+            local_code       : local_code,
+            home_link        : home_link,
+            wikipedia_link   : wikipedia_link,
+            keywords         : keywords,
+            score            : score,
+            last_updated     : moment(),
+            createdAt        : moment()
+        };
+    
+        console.log(newAirport, 113)
+        
+        const status = await Airport.create(newAirport);
+        console.log(status, 115)
+        if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
+        
+        return res.status(200).json({msg: 'New Airline Information saved successfully.'});
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
 
 exports.edit = async (req, res) => {
     try {

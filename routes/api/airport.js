@@ -21,7 +21,7 @@ router.post('/getAirportByCountry/', airportController.getAirportByCountry);
     @desc           Save New Airline Data
     @access         Private
  */
-/*router.post('/store', airportController.store);*/
+router.post('/store', airportController.store);
 
 /*
     @route          get /api/airport/edit/:id

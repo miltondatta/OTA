@@ -6,6 +6,8 @@ import {setCurrentUser, logoutUser}     from './actions/authActions';
 import {Provider}                       from 'react-redux';
 import store                            from './stores';
 
+
+
 // Component
 import Navbar        from './components/layout/Navbar';
 import Landing       from './components/layout/Landing';
@@ -19,12 +21,13 @@ import Profile       from "./components/profile/Profile";
 import Verification  from "./components/profile/Verification";
 import PaymentInfo   from "./components/payment-info/PaymentInfo";
 import Airline       from "./components/airline/Airline";
-import AirlineAdd    from "./components/airline/AirlineAdd";
-import AirlineEdit   from "./components/airline/AirlineEdit";
-import UserIndex     from "./components/users/UserIndex";
-import UserEdit      from "./components/users/UserEdit";
-import AirportIndex  from "./components/airports/AirportIndex";
+import AirlineAdd   from "./components/airline/AirlineAdd";
+import AirlineEdit  from "./components/airline/AirlineEdit";
+import UserIndex    from "./components/users/UserIndex";
+import UserEdit     from "./components/users/UserEdit";
+import AirportIndex from "./components/airports/AirportIndex";
 import AirportEdit  from "./components/airports/AirportEdit";
+import AirportAdd   from "./components/airports/AirportAdd";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -73,6 +76,7 @@ function App() {
                 <Route exact path='/users/edit/:id' component={UserEdit}/>
                 <Route exact path='/airports' component={AirportIndex}/>
                 <Route exact path='/airport/edit/:id' component={AirportEdit}/>
+                <Route exact path='/airport_add' component={AirportAdd}/>
                 <Footer/>
             </Router>
         </Provider>

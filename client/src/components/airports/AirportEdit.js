@@ -195,7 +195,7 @@ const UserEdit = ({history, match}) => {
                         />
                         <div className="card bg-light">
                             <div className="card-header">
-                                Edit Airlines
+                                Edit Airport
                             </div>
                             <div className="card-body">
                                 <Form onSubmit={e => onSubmit(e)}>
