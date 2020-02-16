@@ -12,6 +12,7 @@ import {base_url} from "../../utils/Urls";
 
 const UserEdit = ({history, match}) => {
     const [airportIndex, setAirportIndex] = useState([]);
+    const [countryList, setcountryList] = useState([]);
     
     const [formData, setFormData] = useState({
                                                  id               : '',
@@ -35,7 +36,10 @@ const UserEdit = ({history, match}) => {
                                                  score            : '',
                                                  last_updated     : '',
                                              });
-    
+    const fetchCountryList = async () => {
+        const res = await axios.get(base_url + `api/country/all`);
+        setcountryList(res.data);
+    };
     useEffect(() => {
         const id        = match.params.id;
         const fetchData = async () => {
@@ -65,6 +69,7 @@ const UserEdit = ({history, match}) => {
         };
         
         fetchData();
+        fetchCountryList();
     }, []);
     
     const [addMessage, setAddMessage] = useState({
@@ -131,6 +136,8 @@ const UserEdit = ({history, match}) => {
                         last_updated     : '',
                     });
     };
+    
+
     
     async function updateAirlines(data) {
         try {
@@ -271,9 +278,18 @@ const UserEdit = ({history, match}) => {
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIso_country">
                                                 <Form.Label>Iso Country</Form.Label>
-                                                <Form.Control type="text" name="iso_country" value={iso_country}
-                                                              onChange={e => onChange(e)}
-                                                              placeholder="Enter Iso Country" required/>
+                                                <select className="form-control" name="iso_country" value={iso_country}
+                                                        onChange={e => onChange(e)}>
+                                                    {countryList.length > 0 ?
+                                                     <Fragment>
+                                                         <option>Select Country</option>
+                                                         {countryList.map((value, key) => (
+                                                             <option value={value.iso3166_1_alpha_2}
+                                                                     key={key}>{value.country_name}</option>
+                                                         ))}
+                                                     </Fragment> :
+                                                     <option>Select Country</option>}
+                                                </select>
                                             </Form.Group>
                                         </div>
                                     </div>
