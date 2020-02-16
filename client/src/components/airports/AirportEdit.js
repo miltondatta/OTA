@@ -12,34 +12,42 @@ import {base_url} from "../../utils/Urls";
 
 const UserEdit = ({history, match}) => {
     const [airportIndex, setAirportIndex] = useState([]);
-    const [countryList, setcountryList] = useState([]);
+    const [countryList, setcountryList]   = useState([]);
+    const [formData, setFormData]         = useState({
+                                                         id               : '',
+                                                         ident            : '',
+                                                         type             : '',
+                                                         name             : '',
+                                                         latitude_deg     : '',
+                                                         longitude_deg    : '',
+                                                         elevation_ft     : '',
+                                                         continent        : '',
+                                                         iso_country      : '',
+                                                         iso_region       : '',
+                                                         municipality     : '',
+                                                         scheduled_service: '',
+                                                         gps_code         : '',
+                                                         iata_code        : '',
+                                                         local_code       : '',
+                                                         home_link        : '',
+                                                         wikipedia_link   : '',
+                                                         keywords         : '',
+                                                         score            : '',
+                                                         last_updated     : '',
+                                                     });
+    const [addMessage, setAddMessage]     = useState({
+                                                         show   : false,
+                                                         variant: '',
+                                                         heading: '',
+                                                         message: '',
+                                                         disable: false
+                                                     });
     
-    const [formData, setFormData] = useState({
-                                                 id               : '',
-                                                 ident            : '',
-                                                 type             : '',
-                                                 name             : '',
-                                                 latitude_deg     : '',
-                                                 longitude_deg    : '',
-                                                 elevation_ft     : '',
-                                                 continent        : '',
-                                                 iso_country      : '',
-                                                 iso_region       : '',
-                                                 municipality     : '',
-                                                 scheduled_service: '',
-                                                 gps_code         : '',
-                                                 iata_code        : '',
-                                                 local_code       : '',
-                                                 home_link        : '',
-                                                 wikipedia_link   : '',
-                                                 keywords         : '',
-                                                 score            : '',
-                                                 last_updated     : '',
-                                             });
     const fetchCountryList = async () => {
         const res = await axios.get(base_url + `api/country/all`);
         setcountryList(res.data);
     };
+    
     useEffect(() => {
         const id        = match.params.id;
         const fetchData = async () => {
@@ -71,14 +79,6 @@ const UserEdit = ({history, match}) => {
         fetchData();
         fetchCountryList();
     }, []);
-    
-    const [addMessage, setAddMessage] = useState({
-                                                     show   : false,
-                                                     variant: '',
-                                                     heading: '',
-                                                     message: '',
-                                                     disable: false
-                                                 });
     
     const onChange = e => {
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -136,8 +136,6 @@ const UserEdit = ({history, match}) => {
                         last_updated     : '',
                     });
     };
-    
-
     
     async function updateAirlines(data) {
         try {

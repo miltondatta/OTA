@@ -12,41 +12,39 @@ import {validateInput} from "../../utils/funcitons";
 
 const AirportAdd = ({history, match}) => {
     const [airportIndex, setAirportIndex] = useState([]);
-    const [countryList, setcountryList] = useState([]);
-    
-    const [formData, setFormData] = useState({
-                                                 ident            : '',
-                                                 type             : '',
-                                                 name             : '',
-                                                 latitude_deg     : '',
-                                                 longitude_deg    : '',
-                                                 elevation_ft     : '',
-                                                 continent        : '',
-                                                 iso_country      : '',
-                                                 iso_region       : '',
-                                                 municipality     : '',
-                                                 scheduled_service: '',
-                                                 gps_code         : '',
-                                                 iata_code        : '',
-                                                 local_code       : '',
-                                                 home_link        : '',
-                                                 wikipedia_link   : '',
-                                                 keywords         : '',
-                                                 score            : '',
-                                                 last_updated     : '',
-                                             });
+    const [countryList, setcountryList]   = useState([]);
+    const [addMessage, setAddMessage]     = useState({
+                                                         show   : false,
+                                                         variant: '',
+                                                         heading: '',
+                                                         message: '',
+                                                         disable: false
+                                                     });
+    const [formData, setFormData]         = useState({
+                                                         ident            : '',
+                                                         type             : '',
+                                                         name             : '',
+                                                         latitude_deg     : '',
+                                                         longitude_deg    : '',
+                                                         elevation_ft     : '',
+                                                         continent        : '',
+                                                         iso_country      : '',
+                                                         iso_region       : '',
+                                                         municipality     : '',
+                                                         scheduled_service: '',
+                                                         gps_code         : '',
+                                                         iata_code        : '',
+                                                         local_code       : '',
+                                                         home_link        : '',
+                                                         wikipedia_link   : '',
+                                                         keywords         : '',
+                                                         score            : '',
+                                                         last_updated     : '',
+                                                     });
     
     useEffect(() => {
         fetchCountryList();
     }, []);
-    
-    const [addMessage, setAddMessage] = useState({
-                                                     show   : false,
-                                                     variant: '',
-                                                     heading: '',
-                                                     message: '',
-                                                     disable: false
-                                                 });
     
     const fetchCountryList = async () => {
         const res = await axios.get(base_url + `api/country/all`);
@@ -135,10 +133,11 @@ const AirportAdd = ({history, match}) => {
                         last_updated     : '',
                     });
     };
+    
     const {
               ident, type, name, latitude_deg, longitude_deg, elevation_ft, continent, iso_country, iso_region, municipality,
               scheduled_service, gps_code, iata_code, local_code, home_link, wikipedia_link, keywords, score, last_updated,
-          }             = formData;
+          } = formData;
     
     const {show, variant, heading, message, disable} = addMessage;
     
