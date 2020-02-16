@@ -6,11 +6,12 @@ import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 import Proptypes    from 'prop-types';
 import {connect}    from "react-redux";
 import {logoutUser} from "../../actions/authActions";
+import {withRouter} from 'react-router-dom';
 
 // Image
 import logo from '../../assets/img/logo.png';
 
-function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
+function Menubar({history,logoutUser, auth: {isAuthenticated, user}}) {
     const guestLinks = (
         <Fragment>
             <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
@@ -45,8 +46,8 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                         
                         {isAuthenticated &&
                         <NavDropdown title="Master Data" id="collasible-nav-dropdown">
-                            <Link to={'/users_index'} className={'dropdown-item'}>Users</Link>
-                            <Link to={'/airports'} className={'dropdown-item'}>Airports</Link>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/users_index'} className={'dropdown-item'}>Users</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/airports'} className={'dropdown-item'}>Airports</Link></NavDropdown.Item>
                         </NavDropdown>
                         }
                         
@@ -55,7 +56,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                             <Link to={'/profile'} className={'dropdown-item'}>Profile</Link>
                             <Link to={'#'} className={'dropdown-item'} onClick={e => {
                                 e.preventDefault();
-                                logoutUser();
+                                logoutUser(history);
                             }}>Logout</Link>
                         </NavDropdown>
                         }
@@ -76,4 +77,4 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {logoutUser};
-export default connect(mapStateToProps, mapDispatchToProps)(Menubar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Menubar));

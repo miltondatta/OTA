@@ -51,10 +51,11 @@ export const setCurrentUser = decoded => {
 
 
 // Log user out
-export const logoutUser = () => dispatch => {
+export const logoutUser = (history) => dispatch => {
     localStorage.removeItem('jwtToken');
     setAuthToken(false);
     dispatch(setCurrentUser({}));
+    history.push('/');
 };
 
 
