@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from "react";
 import {Button, ButtonToolbar, Form}          from "react-bootstrap";
 import axios                                  from "axios";
 import {withRouter}                           from 'react-router-dom';
-
+import {validateInput} from "../../utils/funcitons";
 // Css
 import '../../assets/css/airline.css';
 
@@ -81,7 +81,10 @@ const UserEdit = ({history, match}) => {
     }, []);
     
     const onChange = e => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+        let valid = validateInput(e);
+        if (valid || valid === '') {
+            setFormData({...formData, [e.target.name]: valid});
+        }
     };
     
     const onSubmit = e => {
