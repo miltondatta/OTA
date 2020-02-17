@@ -14,18 +14,20 @@ module.exports = {
                 type: Sequelize.STRING
             }, end_point: {
                 type: Sequelize.STRING
-            },status_id       : {
+            }, status_id: {
                 type        : Sequelize.INTEGER,
                 allowNull   : false,
                 defaultValue: 3
             },
             createdAt   : {
-                allowNull: false,
-                type     : Sequelize.DATE
+                allowNull   : false,
+                type        : Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             },
             updatedAt   : {
-                allowNull: false,
-                type     : Sequelize.DATE
+                allowNull   : false,
+                type        : Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             }
         });
     },

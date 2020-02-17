@@ -17,6 +17,8 @@ module.exports = {
                 type     : Sequelize.DOUBLE,
                 allowNull: false,
                 unique   : true
+            }, discount_unit: {
+                type: Sequelize.ENUM('ps', 'fxd')
             }, discount_type: {
                 type: Sequelize.ENUM('a', 'd')
             }, status_id    : {
@@ -25,16 +27,25 @@ module.exports = {
                 defaultValue: 3
             },
             createdAt       : {
-                allowNull: false,
-                type     : Sequelize.DATE
+                allowNull   : false,
+                type        : Sequelize.DATE,
+                defaultValue: new Date()
             },
             updatedAt       : {
-                allowNull: false,
-                type     : Sequelize.DATE
+                allowNull   : false,
+                type        : Sequelize.DATE,
+                defaultValue: new Date()
             }
         });
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('fixed_values');
+        
+        return queryInterface.sequelize.transaction(t => {
+            return Promise.all([
+                                   queryInterface.dropTable('fixed_values'),
+                                   queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_fixed_values_discount_type";'),
+                                   queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_fixed_values_discount_unit";'),
+                               ]);
+        });
     }
 };

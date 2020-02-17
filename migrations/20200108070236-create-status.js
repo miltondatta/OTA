@@ -2,25 +2,25 @@
 module.exports = {
     up  : (queryInterface, Sequelize) => {
         return queryInterface.createTable('status', {
-            id       : {
+            id         : {
                 allowNull    : false,
                 autoIncrement: true,
                 primaryKey   : true,
                 type         : Sequelize.INTEGER
             },
-            status_id: {
+            status_id  : {
                 allowNull: false,
                 type     : Sequelize.INTEGER
             },
-            status_name     : {
+            status_name: {
                 allowNull: false,
                 type     : Sequelize.STRING
             },
-            createdAt: {
+            createdAt  : {
                 allowNull: true,
                 type     : Sequelize.DATE
             },
-            updatedAt: {
+            updatedAt  : {
                 allowNull: true,
                 type     : Sequelize.DATE
             }

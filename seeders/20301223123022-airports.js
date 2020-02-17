@@ -4,7 +4,7 @@ module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('airports', [
             {
-                "id"               : 2434,
+                
                 "ident"            : "EGLL",
                 "type"             : "large_airport",
                 "name"             : "London Heathrow Airport",
@@ -26,7 +26,7 @@ module.exports = {
                 "last_updated"     : "2018-09-16T02:32:35+00:00"
             },
             {
-                "id"               : 3632,
+                
                 "ident"            : "KLAX",
                 "type"             : "large_airport",
                 "name"             : "Los Angeles International Airport",
@@ -48,7 +48,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:55+00:00"
             },
             {
-                "id"               : 3754,
+                
                 "ident"            : "KORD",
                 "type"             : "large_airport",
                 "name"             : "Chicago O'Hare International Airport",
@@ -70,7 +70,7 @@ module.exports = {
                 "last_updated"     : "2018-09-16T02:35:35+00:00"
             },
             {
-                "id"               : 3622,
+                
                 "ident"            : "KJFK",
                 "type"             : "large_airport",
                 "name"             : "John F Kennedy International Airport",
@@ -92,7 +92,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:54+00:00"
             },
             {
-                "id"               : 3384,
+                
                 "ident"            : "KATL",
                 "type"             : "large_airport",
                 "name"             : "Hartsfield Jackson Atlanta International Airport",
@@ -114,7 +114,7 @@ module.exports = {
                 "last_updated"     : "2018-09-19T14:50:01+00:00"
             },
             {
-                "id"               : 2513,
+                
                 "ident"            : "EHAM",
                 "type"             : "large_airport",
                 "name"             : "Amsterdam Airport Schiphol",
@@ -136,7 +136,7 @@ module.exports = {
                 "last_updated"     : "2018-09-14T06:20:40+00:00"
             },
             {
-                "id"               : 4185,
+                
                 "ident"            : "LFPG",
                 "type"             : "large_airport",
                 "name"             : "Charles de Gaulle International Airport",
@@ -158,7 +158,7 @@ module.exports = {
                 "last_updated"     : "2018-09-15T03:23:45+00:00"
             },
             {
-                "id"               : 3878,
+                
                 "ident"            : "KSFO",
                 "type"             : "large_airport",
                 "name"             : "San Francisco International Airport",
@@ -180,7 +180,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 2212,
+                
                 "ident"            : "EDDF",
                 "type"             : "large_airport",
                 "name"             : "Frankfurt am Main Airport",
@@ -202,7 +202,7 @@ module.exports = {
                 "last_updated"     : "2017-06-08T15:45:19+00:00"
             },
             {
-                "id"               : 3521,
+                
                 "ident"            : "KEWR",
                 "type"             : "large_airport",
                 "name"             : "Newark Liberty International Airport",
@@ -224,7 +224,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3488,
+                
                 "ident"            : "KDFW",
                 "type"             : "large_airport",
                 "name"             : "Dallas Fort Worth International Airport",
@@ -246,7 +246,7 @@ module.exports = {
                 "last_updated"     : "2018-09-19T14:53:02+00:00"
             },
             {
-                "id"               : 3631,
+                
                 "ident"            : "KLAS",
                 "type"             : "large_airport",
                 "name"             : "McCarran International Airport",
@@ -268,7 +268,7 @@ module.exports = {
                 "last_updated"     : "2010-07-05T16:48:39+00:00"
             },
             {
-                "id"               : 3670,
+                
                 "ident"            : "KMCO",
                 "type"             : "large_airport",
                 "name"             : "Orlando International Airport",
@@ -290,7 +290,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3643,
+                
                 "ident"            : "KLGA",
                 "type"             : "large_airport",
                 "name"             : "La Guardia Airport",
@@ -312,7 +312,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:55+00:00"
             },
             {
-                "id"               : 3486,
+                
                 "ident"            : "KDEN",
                 "type"             : "large_airport",
                 "name"             : "Denver International Airport",
@@ -334,7 +334,7 @@ module.exports = {
                 "last_updated"     : "2015-11-13T09:28:42+00:00"
             },
             {
-                "id"               : 3602,
+                
                 "ident"            : "KIAD",
                 "type"             : "large_airport",
                 "name"             : "Washington Dulles International Airport",
@@ -356,7 +356,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:53+00:00"
             },
             {
-                "id"               : 3685,
+                
                 "ident"            : "KMIA",
                 "type"             : "large_airport",
                 "name"             : "Miami International Airport",
@@ -378,7 +378,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3772,
+                
                 "ident"            : "KPHX",
                 "type"             : "large_airport",
                 "name"             : "Phoenix Sky Harbor International Airport",
@@ -400,7 +400,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3422,
+                
                 "ident"            : "KBOS",
                 "type"             : "large_airport",
                 "name"             : "General Edward Lawrence Logan International Airport",
@@ -422,7 +422,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:48+00:00"
             },
             {
-                "id"               : 3875,
+                
                 "ident"            : "KSEA",
                 "type"             : "large_airport",
                 "name"             : "Seattle Tacoma International Airport",
@@ -444,7 +444,7 @@ module.exports = {
                 "last_updated"     : "2018-09-19T14:50:47+00:00"
             },
             {
-                "id"               : 2429,
+                
                 "ident"            : "EGKK",
                 "type"             : "large_airport",
                 "name"             : "London Gatwick Airport",
@@ -466,7 +466,7 @@ module.exports = {
                 "last_updated"     : "2018-09-15T03:32:04+00:00"
             },
             {
-                "id"               : 3771,
+                
                 "ident"            : "KPHL",
                 "type"             : "large_airport",
                 "name"             : "Philadelphia International Airport",
@@ -488,7 +488,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3604,
+                
                 "ident"            : "KIAH",
                 "type"             : "large_airport",
                 "name"             : "George Bush Intercontinental Houston Airport",
@@ -510,7 +510,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3457,
+                
                 "ident"            : "KCLT",
                 "type"             : "large_airport",
                 "name"             : "Charlotte Douglas International Airport",
@@ -532,7 +532,7 @@ module.exports = {
                 "last_updated"     : "2009-01-30T14:52:52+00:00"
             },
             {
-                "id"               : 1990,
+                
                 "ident"            : "CYYZ",
                 "type"             : "large_airport",
                 "name"             : "Lester B. Pearson International Airport",
@@ -554,7 +554,7 @@ module.exports = {
                 "last_updated"     : "2009-10-15T13:44:39+00:00"
             },
             {
-                "id"               : 3497,
+                
                 "ident"            : "KDTW",
                 "type"             : "large_airport",
                 "name"             : "Detroit Metropolitan Wayne County Airport",
@@ -576,7 +576,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3483,
+                
                 "ident"            : "KDCA",
                 "type"             : "large_airport",
                 "name"             : "Ronald Reagan Washington National Airport",
@@ -598,7 +598,7 @@ module.exports = {
                 "last_updated"     : "2016-12-13T09:13:00+00:00"
             },
             {
-                "id"               : 2218,
+                
                 "ident"            : "EDDM",
                 "type"             : "large_airport",
                 "name"             : "Munich Airport",
@@ -620,7 +620,7 @@ module.exports = {
                 "last_updated"     : "2018-09-14T06:19:46+00:00"
             },
             {
-                "id"               : 4004,
+                
                 "ident"            : "LEBL",
                 "type"             : "large_airport",
                 "name"             : "Barcelona International Airport",
@@ -642,7 +642,7 @@ module.exports = {
                 "last_updated"     : "2018-09-15T03:30:02+00:00"
             },
             {
-                "id"               : 3709,
+                
                 "ident"            : "KMSP",
                 "type"             : "large_airport",
                 "name"             : "Minneapolis-St Paul International/Wold-Chamberlain Airport",
@@ -664,7 +664,7 @@ module.exports = {
                 "last_updated"     : "2018-09-19T14:51:47+00:00"
             },
             {
-                "id"               : 4372,
+                
                 "ident"            : "LIRF",
                 "type"             : "large_airport",
                 "name"             : "Leonardo da Vinci–Fiumicino Airport",
@@ -686,7 +686,7 @@ module.exports = {
                 "last_updated"     : "2016-10-08T00:37:02+00:00"
             },
             {
-                "id"               : 4019,
+                
                 "ident"            : "LEMD",
                 "type"             : "large_airport",
                 "name"             : "Adolfo Suárez Madrid–Barajas Airport",
@@ -708,7 +708,7 @@ module.exports = {
                 "last_updated"     : "2018-09-13T12:25:48+00:00"
             },
             {
-                "id"               : 2155,
+                
                 "ident"            : "EBBR",
                 "type"             : "large_airport",
                 "name"             : "Brussels Airport",
@@ -730,7 +730,7 @@ module.exports = {
                 "last_updated"     : "2011-06-29T18:07:02+00:00"
             },
             {
-                "id"               : 2542,
+                
                 "ident"            : "EKCH",
                 "type"             : "large_airport",
                 "name"             : "Copenhagen Kastrup Airport",
@@ -752,7 +752,7 @@ module.exports = {
                 "last_updated"     : "2015-09-19T15:12:02+00:00"
             },
             {
-                "id"               : 4505,
+                
                 "ident"            : "LSZH",
                 "type"             : "large_airport",
                 "name"             : "Zürich Airport",
@@ -774,7 +774,7 @@ module.exports = {
                 "last_updated"     : "2018-09-21T03:05:35+00:00"
             },
             {
-                "id"               : 3862,
+                
                 "ident"            : "KSAN",
                 "type"             : "large_airport",
                 "name"             : "San Diego International Airport",
@@ -796,7 +796,7 @@ module.exports = {
                 "last_updated"     : "2014-12-10T01:00:52+00:00"
             },
             {
-                "id"               : 3887,
+                
                 "ident"            : "KSLC",
                 "type"             : "large_airport",
                 "name"             : "Salt Lake City International Airport",
@@ -818,7 +818,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3531,
+                
                 "ident"            : "KFLL",
                 "type"             : "large_airport",
                 "name"             : "Fort Lauderdale Hollywood International Airport",
@@ -840,7 +840,7 @@ module.exports = {
                 "last_updated"     : "2018-09-16T02:40:06+00:00"
             },
             {
-                "id"               : 3435,
+                
                 "ident"            : "KBWI",
                 "type"             : "large_airport",
                 "name"             : "Baltimore/Washington International Thurgood Marshall Airport",
@@ -862,7 +862,7 @@ module.exports = {
                 "last_updated"     : "2018-09-16T02:37:47+00:00"
             },
             {
-                "id"               : 3673,
+                
                 "ident"            : "KMDW",
                 "type"             : "large_airport",
                 "name"             : "Chicago Midway International Airport",
@@ -884,7 +884,7 @@ module.exports = {
                 "last_updated"     : "2018-09-16T02:34:32+00:00"
             },
             {
-                "id"               : 2533,
+                
                 "ident"            : "EIDW",
                 "type"             : "large_airport",
                 "name"             : "Dublin Airport",
@@ -906,7 +906,7 @@ module.exports = {
                 "last_updated"     : "2018-07-19T09:23:39+00:00"
             },
             {
-                "id"               : 26887,
+                
                 "ident"            : "WSSS",
                 "type"             : "large_airport",
                 "name"             : "Singapore Changi Airport",
@@ -928,7 +928,7 @@ module.exports = {
                 "last_updated"     : "2016-12-24T14:43:39+00:00"
             },
             {
-                "id"               : 1941,
+                
                 "ident"            : "CYVR",
                 "type"             : "large_airport",
                 "name"             : "Vancouver International Airport",
@@ -950,7 +950,7 @@ module.exports = {
                 "last_updated"     : "2013-07-22T11:09:16+00:00"
             },
             {
-                "id"               : 4434,
+                
                 "ident"            : "LOWW",
                 "type"             : "large_airport",
                 "name"             : "Vienna International Airport",
@@ -972,7 +972,7 @@ module.exports = {
                 "last_updated"     : "2015-08-08T12:17:38+00:00"
             },
             {
-                "id"               : 3905,
+                
                 "ident"            : "KSTL",
                 "type"             : "large_airport",
                 "name"             : "St Louis Lambert International Airport",
@@ -994,7 +994,7 @@ module.exports = {
                 "last_updated"     : "2018-09-21T03:04:43+00:00"
             },
             {
-                "id"               : 5531,
+                
                 "ident"            : "RJAA",
                 "type"             : "large_airport",
                 "name"             : "Narita International Airport",
@@ -1016,7 +1016,7 @@ module.exports = {
                 "last_updated"     : "2015-01-23T13:00:50+00:00"
             },
             {
-                "id"               : 5453,
+                
                 "ident"            : "PHNL",
                 "type"             : "large_airport",
                 "name"             : "Daniel K Inouye International Airport",
@@ -1038,7 +1038,7 @@ module.exports = {
                 "last_updated"     : "2018-09-16T02:42:33+00:00"
             },
             {
-                "id"               : 1928,
+                
                 "ident"            : "CYUL",
                 "type"             : "large_airport",
                 "name"             : "Montreal / Pierre Elliott Trudeau International Airport",
@@ -1060,7 +1060,7 @@ module.exports = {
                 "last_updated"     : "2014-03-16T22:14:44+00:00"
             },
             {
-                "id"               : 5235,
+                
                 "ident"            : "OMDB",
                 "type"             : "large_airport",
                 "name"             : "Dubai International Airport",
@@ -1082,7 +1082,7 @@ module.exports = {
                 "last_updated"     : "2013-05-04T06:01:33+00:00"
             },
             {
-                "id"               : 2476,
+                
                 "ident"            : "EGSS",
                 "type"             : "large_airport",
                 "name"             : "London Stansted Airport",
@@ -1104,7 +1104,7 @@ module.exports = {
                 "last_updated"     : "2012-11-12T18:56:40+00:00"
             },
             {
-                "id"               : 4408,
+                
                 "ident"            : "LKPR",
                 "type"             : "large_airport",
                 "name"             : "Václav Havel Airport Prague",
@@ -1126,7 +1126,7 @@ module.exports = {
                 "last_updated"     : "2016-10-16T16:24:57+00:00"
             },
             {
-                "id"               : 26535,
+                
                 "ident"            : "VHHH",
                 "type"             : "large_airport",
                 "name"             : "Hong Kong International Airport",
@@ -1148,7 +1148,7 @@ module.exports = {
                 "last_updated"     : "2018-09-15T13:33:37+00:00"
             },
             {
-                "id"               : 3768,
+                
                 "ident"            : "KPDX",
                 "type"             : "large_airport",
                 "name"             : "Portland International Airport",
@@ -1170,7 +1170,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:28:03+00:00"
             },
             {
-                "id"               : 2701,
+                
                 "ident"            : "ESSA",
                 "type"             : "large_airport",
                 "name"             : "Stockholm-Arlanda Airport",
@@ -1192,7 +1192,7 @@ module.exports = {
                 "last_updated"     : "2015-07-28T21:54:56+00:00"
             },
             {
-                "id"               : 27145,
+                
                 "ident"            : "YSSY",
                 "type"             : "large_airport",
                 "name"             : "Sydney Kingsford Smith International Airport",
@@ -1214,7 +1214,7 @@ module.exports = {
                 "last_updated"     : "2008-06-26T14:52:34+00:00"
             },
             {
-                "id"               : 3926,
+                
                 "ident"            : "KTPA",
                 "type"             : "large_airport",
                 "name"             : "Tampa International Airport",
@@ -1236,7 +1236,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 4461,
+                
                 "ident"            : "LPPT",
                 "type"             : "large_airport",
                 "name"             : "Humberto Delgado Airport (Lisbon Portela Airport)",
@@ -1258,7 +1258,7 @@ module.exports = {
                 "last_updated"     : "2018-03-17T17:43:44+00:00"
             },
             {
-                "id"               : 4528,
+                
                 "ident"            : "LTBA",
                 "type"             : "large_airport",
                 "name"             : "Atatürk International Airport",
@@ -1280,7 +1280,7 @@ module.exports = {
                 "last_updated"     : "2019-04-14T22:13:30+00:00"
             },
             {
-                "id"               : 3471,
+                
                 "ident"            : "KCVG",
                 "type"             : "large_airport",
                 "name"             : "Cincinnati Northern Kentucky International Airport",
@@ -1302,7 +1302,7 @@ module.exports = {
                 "last_updated"     : "2010-09-23T09:14:54+00:00"
             },
             {
-                "id"               : 3711,
+                
                 "ident"            : "KMSY",
                 "type"             : "large_airport",
                 "name"             : "Louis Armstrong New Orleans International Airport",
@@ -1324,7 +1324,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 28118,
+                
                 "ident"            : "VTBS",
                 "type"             : "large_airport",
                 "name"             : "Suvarnabhumi Airport",
@@ -1346,7 +1346,7 @@ module.exports = {
                 "last_updated"     : "2009-01-29T16:23:22+00:00"
             },
             {
-                "id"               : 2223,
+                
                 "ident"            : "EDDT",
                 "type"             : "large_airport",
                 "name"             : "Berlin-Tegel Airport",
@@ -1368,7 +1368,7 @@ module.exports = {
                 "last_updated"     : "2018-09-21T03:06:36+00:00"
             },
             {
-                "id"               : 3420,
+                
                 "ident"            : "KBNA",
                 "type"             : "large_airport",
                 "name"             : "Nashville International Airport",
@@ -1390,7 +1390,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3778,
+                
                 "ident"            : "KPIT",
                 "type"             : "large_airport",
                 "name"             : "Pittsburgh International Airport",
@@ -1412,7 +1412,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:28:03+00:00"
             },
             {
-                "id"               : 4340,
+                
                 "ident"            : "LIMC",
                 "type"             : "large_airport",
                 "name"             : "Malpensa International Airport",
@@ -1434,7 +1434,7 @@ module.exports = {
                 "last_updated"     : "2016-09-15T13:44:55+00:00"
             },
             {
-                "id"               : 3744,
+                
                 "ident"            : "KOAK",
                 "type"             : "large_airport",
                 "name"             : "Metropolitan Oakland International Airport",
@@ -1456,7 +1456,7 @@ module.exports = {
                 "last_updated"     : "2017-05-27T22:59:41+00:00"
             },
             {
-                "id"               : 2578,
+                
                 "ident"            : "ENGM",
                 "type"             : "large_airport",
                 "name"             : "Oslo Gardermoen Airport",
@@ -1478,7 +1478,7 @@ module.exports = {
                 "last_updated"     : "2015-08-14T11:43:32+00:00"
             },
             {
-                "id"               : 3883,
+                
                 "ident"            : "KSJC",
                 "type"             : "large_airport",
                 "name"             : "Norman Y. Mineta San Jose International Airport",
@@ -1500,7 +1500,7 @@ module.exports = {
                 "last_updated"     : "2017-05-27T23:04:55+00:00"
             },
             {
-                "id"               : 3844,
+                
                 "ident"            : "KRDU",
                 "type"             : "large_airport",
                 "name"             : "Raleigh Durham International Airport",
@@ -1522,7 +1522,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3386,
+                
                 "ident"            : "KAUS",
                 "type"             : "large_airport",
                 "name"             : "Austin Bergstrom International Airport",
@@ -1544,7 +1544,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 4296,
+                
                 "ident"            : "LHBP",
                 "type"             : "large_airport",
                 "name"             : "Budapest Liszt Ferenc International Airport",
@@ -1566,7 +1566,7 @@ module.exports = {
                 "last_updated"     : "2018-10-09T00:04:01+00:00"
             },
             {
-                "id"               : 4762,
+                
                 "ident"            : "MMUN",
                 "type"             : "large_airport",
                 "name"             : "Cancún International Airport",
@@ -1588,7 +1588,7 @@ module.exports = {
                 "last_updated"     : "2011-06-13T12:26:12+00:00"
             },
             {
-                "id"               : 3675,
+                
                 "ident"            : "KMEM",
                 "type"             : "large_airport",
                 "name"             : "Memphis International Airport",
@@ -1610,7 +1610,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 4251,
+                
                 "ident"            : "LGAV",
                 "type"             : "large_airport",
                 "name"             : "Eleftherios Venizelos International Airport",
@@ -1632,7 +1632,7 @@ module.exports = {
                 "last_updated"     : "2013-11-08T08:51:37+00:00"
             },
             {
-                "id"               : 4189,
+                
                 "ident"            : "LFPO",
                 "type"             : "large_airport",
                 "name"             : "Paris-Orly Airport",
@@ -1654,7 +1654,7 @@ module.exports = {
                 "last_updated"     : "2016-10-02T05:09:17+00:00"
             },
             {
-                "id"               : 4490,
+                
                 "ident"            : "LSGG",
                 "type"             : "large_airport",
                 "name"             : "Geneva Cointrin International Airport",
@@ -1676,7 +1676,7 @@ module.exports = {
                 "last_updated"     : "2009-01-30T17:54:37+00:00"
             },
             {
-                "id"               : 3668,
+                
                 "ident"            : "KMCI",
                 "type"             : "large_airport",
                 "name"             : "Kansas City International Airport",
@@ -1698,7 +1698,7 @@ module.exports = {
                 "last_updated"     : "2016-05-31T09:33:29+00:00"
             },
             {
-                "id"               : 3863,
+                
                 "ident"            : "KSAT",
                 "type"             : "large_airport",
                 "name"             : "San Antonio International Airport",
@@ -1720,7 +1720,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 2398,
+                
                 "ident"            : "EGCC",
                 "type"             : "large_airport",
                 "name"             : "Manchester Airport",
@@ -1742,7 +1742,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 2217,
+                
                 "ident"            : "EDDL",
                 "type"             : "large_airport",
                 "name"             : "Düsseldorf Airport",
@@ -1764,7 +1764,7 @@ module.exports = {
                 "last_updated"     : "2017-06-08T15:44:10+00:00"
             },
             {
-                "id"               : 2307,
+                
                 "ident"            : "EFHK",
                 "type"             : "large_airport",
                 "name"             : "Helsinki Vantaa Airport",
@@ -1786,7 +1786,7 @@ module.exports = {
                 "last_updated"     : "2015-07-30T15:00:21+00:00"
             },
             {
-                "id"               : 3588,
+                
                 "ident"            : "KHOU",
                 "type"             : "large_airport",
                 "name"             : "William P Hobby Airport",
@@ -1808,7 +1808,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:52+00:00"
             },
             {
-                "id"               : 27188,
+                
                 "ident"            : "ZBAA",
                 "type"             : "large_airport",
                 "name"             : "Beijing Capital International Airport",
@@ -1830,7 +1830,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3894,
+                
                 "ident"            : "KSNA",
                 "type"             : "large_airport",
                 "name"             : "John Wayne Airport-Orange County Airport",
@@ -1852,7 +1852,7 @@ module.exports = {
                 "last_updated"     : "2010-01-26T11:26:00+00:00"
             },
             {
-                "id"               : 1973,
+                
                 "ident"            : "CYYC",
                 "type"             : "large_airport",
                 "name"             : "Calgary International Airport",
@@ -1874,7 +1874,7 @@ module.exports = {
                 "last_updated"     : "2014-03-18T23:08:53+00:00"
             },
             {
-                "id"               : 26874,
+                
                 "ident"            : "WMKK",
                 "type"             : "large_airport",
                 "name"             : "Kuala Lumpur International Airport",
@@ -1896,7 +1896,7 @@ module.exports = {
                 "last_updated"     : "2015-08-02T19:22:21+00:00"
             },
             {
-                "id"               : 3454,
+                
                 "ident"            : "KCLE",
                 "type"             : "large_airport",
                 "name"             : "Cleveland Hopkins International Airport",
@@ -1918,7 +1918,7 @@ module.exports = {
                 "last_updated"     : "2010-10-22T20:04:02+00:00"
             },
             {
-                "id"               : 123,
+                
                 "ident"            : "BIKF",
                 "type"             : "large_airport",
                 "name"             : "Keflavik International Airport",
@@ -1940,7 +1940,7 @@ module.exports = {
                 "last_updated"     : "2016-01-04T17:20:26+00:00"
             },
             {
-                "id"               : 4731,
+                
                 "ident"            : "MMMX",
                 "type"             : "large_airport",
                 "name"             : "Licenciado Benito Juarez International Airport",
@@ -1962,7 +1962,7 @@ module.exports = {
                 "last_updated"     : "2018-05-04T00:43:52+00:00"
             },
             {
-                "id"               : 3610,
+                
                 "ident"            : "KIND",
                 "type"             : "large_airport",
                 "name"             : "Indianapolis International Airport",
@@ -1984,7 +1984,7 @@ module.exports = {
                 "last_updated"     : "2016-07-08T18:41:42+00:00"
             },
             {
-                "id"               : 3479,
+                
                 "ident"            : "KDAL",
                 "type"             : "large_airport",
                 "name"             : "Dallas Love Field",
@@ -2006,7 +2006,7 @@ module.exports = {
                 "last_updated"     : "2017-06-18T20:36:36+00:00"
             },
             {
-                "id"               : 4035,
+                
                 "ident"            : "LEPA",
                 "type"             : "large_airport",
                 "name"             : "Palma De Mallorca Airport",
@@ -2028,7 +2028,7 @@ module.exports = {
                 "last_updated"     : "2010-08-31T21:55:29+00:00"
             },
             {
-                "id"               : 16091,
+                
                 "ident"            : "KABQ",
                 "type"             : "large_airport",
                 "name"             : "Albuquerque International Sunport",
@@ -2050,7 +2050,7 @@ module.exports = {
                 "last_updated"     : "2018-09-15T18:43:33+00:00"
             },
             {
-                "id"               : 27066,
+                
                 "ident"            : "YMML",
                 "type"             : "large_airport",
                 "name"             : "Melbourne International Airport",
@@ -2072,7 +2072,7 @@ module.exports = {
                 "last_updated"     : "2017-03-06T19:29:22+00:00"
             },
             {
-                "id"               : 2462,
+                
                 "ident"            : "EGPH",
                 "type"             : "large_airport",
                 "name"             : "Edinburgh Airport",
@@ -2094,7 +2094,7 @@ module.exports = {
                 "last_updated"     : "2009-02-24T17:18:55+00:00"
             },
             {
-                "id"               : 4368,
+                
                 "ident"            : "LIPZ",
                 "type"             : "large_airport",
                 "name"             : "Venice Marco Polo Airport",
@@ -2116,7 +2116,7 @@ module.exports = {
                 "last_updated"     : "2016-07-02T10:46:17+00:00"
             },
             {
-                "id"               : 3690,
+                
                 "ident"            : "KMKE",
                 "type"             : "large_airport",
                 "name"             : "General Mitchell International Airport",
@@ -2138,7 +2138,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 27223,
+                
                 "ident"            : "ZSPD",
                 "type"             : "large_airport",
                 "name"             : "Shanghai Pudong International Airport",
@@ -2160,7 +2160,7 @@ module.exports = {
                 "last_updated"     : "2009-01-30T18:17:35+00:00"
             },
             {
-                "id"               : 2419,
+                
                 "ident"            : "EGGW",
                 "type"             : "large_airport",
                 "name"             : "London Luton Airport",
@@ -2182,7 +2182,7 @@ module.exports = {
                 "last_updated"     : "2009-02-24T10:04:22+00:00"
             },
             {
-                "id"               : 4156,
+                
                 "ident"            : "LFMN",
                 "type"             : "large_airport",
                 "name"             : "Nice-Côte d'Azur Airport",
@@ -2204,7 +2204,7 @@ module.exports = {
                 "last_updated"     : "2010-08-31T21:55:57+00:00"
             },
             {
-                "id"               : 2637,
+                
                 "ident"            : "EPWA",
                 "type"             : "large_airport",
                 "name"             : "Warsaw Chopin Airport",
@@ -2226,7 +2226,7 @@ module.exports = {
                 "last_updated"     : "2010-09-18T17:31:27+00:00"
             },
             {
-                "id"               : 2792,
+                
                 "ident"            : "FAJS",
                 "type"             : "large_airport",
                 "name"             : "OR Tambo International Airport",
@@ -2248,7 +2248,7 @@ module.exports = {
                 "last_updated"     : "2017-12-30T08:54:28+00:00"
             },
             {
-                "id"               : 5653,
+                
                 "ident"            : "RKSI",
                 "type"             : "large_airport",
                 "name"             : "Incheon International Airport",
@@ -2270,7 +2270,7 @@ module.exports = {
                 "last_updated"     : "2008-12-19T20:11:18+00:00"
             },
             {
-                "id"               : 4020,
+                
                 "ident"            : "LEMG",
                 "type"             : "large_airport",
                 "name"             : "Málaga Airport",
@@ -2292,7 +2292,7 @@ module.exports = {
                 "last_updated"     : "2009-03-10T12:41:55+00:00"
             },
             {
-                "id"               : 2209,
+                
                 "ident"            : "EDDB",
                 "type"             : "large_airport",
                 "name"             : "Berlin-Schönefeld Airport",
@@ -2314,7 +2314,7 @@ module.exports = {
                 "last_updated"     : "2017-06-08T15:41:39+00:00"
             },
             {
-                "id"               : 26555,
+                
                 "ident"            : "VIDP",
                 "type"             : "large_airport",
                 "name"             : "Indira Gandhi International Airport",
@@ -2336,7 +2336,7 @@ module.exports = {
                 "last_updated"     : "2017-12-15T03:08:58+00:00"
             },
             {
-                "id"               : 3458,
+                
                 "ident"            : "KCMH",
                 "type"             : "large_airport",
                 "name"             : "John Glenn Columbus International Airport",
@@ -2358,7 +2358,7 @@ module.exports = {
                 "last_updated"     : "2018-04-19T16:19:05+00:00"
             },
             {
-                "id"               : 1840,
+                
                 "ident"            : "CYOW",
                 "type"             : "large_airport",
                 "name"             : "Ottawa Macdonald-Cartier International Airport",
@@ -2380,7 +2380,7 @@ module.exports = {
                 "last_updated"     : "2016-02-01T15:38:41+00:00"
             },
             {
-                "id"               : 6384,
+                
                 "ident"            : "TJSJ",
                 "type"             : "large_airport",
                 "name"             : "Luis Munoz Marin International Airport",
@@ -2402,7 +2402,7 @@ module.exports = {
                 "last_updated"     : "2013-08-29T11:26:26+00:00"
             },
             {
-                "id"               : 3932,
+                
                 "ident"            : "KTUS",
                 "type"             : "large_airport",
                 "name"             : "Tucson International Airport",
@@ -2424,7 +2424,7 @@ module.exports = {
                 "last_updated"     : "2009-02-03T07:41:37+00:00"
             },
             {
-                "id"               : 26396,
+                
                 "ident"            : "UUEE",
                 "type"             : "large_airport",
                 "name"             : "Sheremetyevo International Airport",
@@ -2446,7 +2446,7 @@ module.exports = {
                 "last_updated"     : "2016-10-24T15:52:44+00:00"
             },
             {
-                "id"               : 2214,
+                
                 "ident"            : "EDDH",
                 "type"             : "large_airport",
                 "name"             : "Hamburg Airport",
@@ -2468,7 +2468,7 @@ module.exports = {
                 "last_updated"     : "2015-09-25T16:42:22+00:00"
             },
             {
-                "id"               : 5023,
+                
                 "ident"            : "NZAA",
                 "type"             : "large_airport",
                 "name"             : "Auckland International Airport",
@@ -2490,7 +2490,7 @@ module.exports = {
                 "last_updated"     : "2014-01-05T02:58:00+00:00"
             },
             {
-                "id"               : 2216,
+                
                 "ident"            : "EDDK",
                 "type"             : "large_airport",
                 "name"             : "Cologne Bonn Airport",
@@ -2512,7 +2512,7 @@ module.exports = {
                 "last_updated"     : "2015-09-18T15:00:07+00:00"
             },
             {
-                "id"               : 3396,
+                
                 "ident"            : "KBDL",
                 "type"             : "large_airport",
                 "name"             : "Bradley International Airport",
@@ -2534,7 +2534,7 @@ module.exports = {
                 "last_updated"     : "2010-09-23T10:12:19+00:00"
             },
             {
-                "id"               : 3431,
+                
                 "ident"            : "KBUF",
                 "type"             : "large_airport",
                 "name"             : "Buffalo Niagara International Airport",
@@ -2556,7 +2556,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:48+00:00"
             },
             {
-                "id"               : 4345,
+                
                 "ident"            : "LIML",
                 "type"             : "large_airport",
                 "name"             : "Milano Linate Airport",
@@ -2578,7 +2578,7 @@ module.exports = {
                 "last_updated"     : "2016-09-27T09:52:59+00:00"
             },
             {
-                "id"               : 5910,
+                
                 "ident"            : "SBGR",
                 "type"             : "large_airport",
                 "name"             : "Guarulhos - Governador André Franco Montoro International Airport",
@@ -2600,7 +2600,7 @@ module.exports = {
                 "last_updated"     : "2009-08-16T13:33:48+00:00"
             },
             {
-                "id"               : 5388,
+                
                 "ident"            : "PANC",
                 "type"             : "large_airport",
                 "name"             : "Ted Stevens Anchorage International Airport",
@@ -2622,7 +2622,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3620,
+                
                 "ident"            : "KJAX",
                 "type"             : "large_airport",
                 "name"             : "Jacksonville International Airport",
@@ -2644,7 +2644,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 5689,
+                
                 "ident"            : "RPLL",
                 "type"             : "large_airport",
                 "name"             : "Ninoy Aquino International Airport",
@@ -2666,7 +2666,7 @@ module.exports = {
                 "last_updated"     : "2017-09-22T10:49:59+00:00"
             },
             {
-                "id"               : 26434,
+                
                 "ident"            : "VABB",
                 "type"             : "large_airport",
                 "name"             : "Chhatrapati Shivaji International Airport",
@@ -2688,7 +2688,7 @@ module.exports = {
                 "last_updated"     : "2013-04-12T01:27:48+00:00"
             },
             {
-                "id"               : 2461,
+                
                 "ident"            : "EGPF",
                 "type"             : "large_airport",
                 "name"             : "Glasgow International Airport",
@@ -2710,7 +2710,7 @@ module.exports = {
                 "last_updated"     : "2012-11-16T12:49:27+00:00"
             },
             {
-                "id"               : 26638,
+                
                 "ident"            : "VTBD",
                 "type"             : "large_airport",
                 "name"             : "Don Mueang International Airport",
@@ -2732,7 +2732,7 @@ module.exports = {
                 "last_updated"     : "2014-01-27T11:03:44+00:00"
             },
             {
-                "id"               : 4411,
+                
                 "ident"            : "LLBG",
                 "type"             : "large_airport",
                 "name"             : "Ben Gurion International Airport",
@@ -2754,7 +2754,7 @@ module.exports = {
                 "last_updated"     : "2009-01-30T17:44:05+00:00"
             },
             {
-                "id"               : 3183,
+                
                 "ident"            : "HECA",
                 "type"             : "large_airport",
                 "name"             : "Cairo International Airport",
@@ -2776,7 +2776,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 26901,
+                
                 "ident"            : "YBBN",
                 "type"             : "large_airport",
                 "name"             : "Brisbane International Airport",
@@ -2798,7 +2798,7 @@ module.exports = {
                 "last_updated"     : "2008-06-26T14:52:34+00:00"
             },
             {
-                "id"               : 5781,
+                
                 "ident"            : "SAEZ",
                 "type"             : "large_airport",
                 "name"             : "Ministro Pistarini International Airport",
@@ -2820,7 +2820,7 @@ module.exports = {
                 "last_updated"     : "2014-03-22T11:40:17+00:00"
             },
             {
-                "id"               : 3512,
+                
                 "ident"            : "KELP",
                 "type"             : "medium_airport",
                 "name"             : "El Paso International Airport",
@@ -2842,7 +2842,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:50+00:00"
             },
             {
-                "id"               : 1926,
+                
                 "ident"            : "CYTZ",
                 "type"             : "medium_airport",
                 "name"             : "Billy Bishop Toronto City Centre Airport",
@@ -2864,7 +2864,7 @@ module.exports = {
                 "last_updated"     : "2016-02-10T17:34:10+00:00"
             },
             {
-                "id"               : 5528,
+                
                 "ident"            : "RCTP",
                 "type"             : "large_airport",
                 "name"             : "Taiwan Taoyuan International Airport",
@@ -2886,7 +2886,7 @@ module.exports = {
                 "last_updated"     : "2016-12-02T13:57:21+00:00"
             },
             {
-                "id"               : 5226,
+                
                 "ident"            : "OMAA",
                 "type"             : "large_airport",
                 "name"             : "Abu Dhabi International Airport",
@@ -2908,7 +2908,7 @@ module.exports = {
                 "last_updated"     : "2009-07-05T21:11:13+00:00"
             },
             {
-                "id"               : 3747,
+                
                 "ident"            : "KOKC",
                 "type"             : "large_airport",
                 "name"             : "Will Rogers World Airport",
@@ -2930,7 +2930,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 26751,
+                
                 "ident"            : "WADD",
                 "type"             : "large_airport",
                 "name"             : "Ngurah Rai (Bali) International Airport",
@@ -2952,7 +2952,7 @@ module.exports = {
                 "last_updated"     : "2015-06-14T12:12:46+00:00"
             },
             {
-                "id"               : 3081,
+                
                 "ident"            : "GCLP",
                 "type"             : "large_airport",
                 "name"             : "Gran Canaria Airport",
@@ -2974,7 +2974,7 @@ module.exports = {
                 "last_updated"     : "2009-03-10T12:41:08+00:00"
             },
             {
-                "id"               : 4370,
+                
                 "ident"            : "LIRA",
                 "type"             : "large_airport",
                 "name"             : "Ciampino–G. B. Pastine International Airport",
@@ -2996,7 +2996,7 @@ module.exports = {
                 "last_updated"     : "2017-10-24T14:40:18+00:00"
             },
             {
-                "id"               : 1717,
+                
                 "ident"            : "CYEG",
                 "type"             : "large_airport",
                 "name"             : "Edmonton International Airport",
@@ -3018,7 +3018,7 @@ module.exports = {
                 "last_updated"     : "2010-09-23T11:50:13+00:00"
             },
             {
-                "id"               : 1946,
+                
                 "ident"            : "CYWG",
                 "type"             : "large_airport",
                 "name"             : "Winnipeg / James Armstrong Richardson International Airport",
@@ -3040,7 +3040,7 @@ module.exports = {
                 "last_updated"     : "2014-03-18T21:49:35+00:00"
             },
             {
-                "id"               : 2775,
+                
                 "ident"            : "FACT",
                 "type"             : "large_airport",
                 "name"             : "Cape Town International Airport",
@@ -3062,7 +3062,7 @@ module.exports = {
                 "last_updated"     : "2013-12-06T22:30:37+00:00"
             },
             {
-                "id"               : 3892,
+                
                 "ident"            : "KSMF",
                 "type"             : "large_airport",
                 "name"             : "Sacramento International Airport",
@@ -3084,7 +3084,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3853,
+                
                 "ident"            : "KRNO",
                 "type"             : "large_airport",
                 "name"             : "Reno Tahoe International Airport",
@@ -3106,7 +3106,7 @@ module.exports = {
                 "last_updated"     : "2009-02-03T07:40:35+00:00"
             },
             {
-                "id"               : 3432,
+                
                 "ident"            : "KBUR",
                 "type"             : "medium_airport",
                 "name"             : "Bob Hope Airport",
@@ -3128,7 +3128,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 2222,
+                
                 "ident"            : "EDDS",
                 "type"             : "large_airport",
                 "name"             : "Stuttgart Airport",
@@ -3150,7 +3150,7 @@ module.exports = {
                 "last_updated"     : "2015-01-05T11:24:44+00:00"
             },
             {
-                "id"               : 2389,
+                
                 "ident"            : "EGBB",
                 "type"             : "large_airport",
                 "name"             : "Birmingham International Airport",
@@ -3172,7 +3172,7 @@ module.exports = {
                 "last_updated"     : "2013-04-07T05:13:22+00:00"
             },
             {
-                "id"               : 3755,
+                
                 "ident"            : "KORF",
                 "type"             : "large_airport",
                 "name"             : "Norfolk International Airport",
@@ -3194,7 +3194,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3766,
+                
                 "ident"            : "KPBI",
                 "type"             : "large_airport",
                 "name"             : "Palm Beach International Airport",
@@ -3216,7 +3216,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 5455,
+                
                 "ident"            : "PHOG",
                 "type"             : "medium_airport",
                 "name"             : "Kahului Airport",
@@ -3238,7 +3238,7 @@ module.exports = {
                 "last_updated"     : "2017-04-23T11:02:22+00:00"
             },
             {
-                "id"               : 3795,
+                
                 "ident"            : "KPVD",
                 "type"             : "large_airport",
                 "name"             : "Theodore Francis Green State Airport",
@@ -3260,7 +3260,7 @@ module.exports = {
                 "last_updated"     : "2019-03-29T19:59:13+00:00"
             },
             {
-                "id"               : 6217,
+                
                 "ident"            : "SPIM",
                 "type"             : "large_airport",
                 "name"             : "Jorge Chávez International Airport",
@@ -3282,7 +3282,7 @@ module.exports = {
                 "last_updated"     : "2018-04-27T15:04:18+00:00"
             },
             {
-                "id"               : 4427,
+                
                 "ident"            : "LMML",
                 "type"             : "large_airport",
                 "name"             : "Malta International Airport",
@@ -3304,7 +3304,7 @@ module.exports = {
                 "last_updated"     : "2017-08-14T22:19:06+00:00"
             },
             {
-                "id"               : 3644,
+                
                 "ident"            : "KLGB",
                 "type"             : "medium_airport",
                 "name"             : "Long Beach /Daugherty Field/ Airport",
@@ -3326,7 +3326,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:56+00:00"
             },
             {
-                "id"               : 5627,
+                
                 "ident"            : "RJTT",
                 "type"             : "large_airport",
                 "name"             : "Tokyo Haneda International Airport",
@@ -3348,7 +3348,7 @@ module.exports = {
                 "last_updated"     : "2016-11-21T16:05:24+00:00"
             },
             {
-                "id"               : 5906,
+                
                 "ident"            : "SBGL",
                 "type"             : "large_airport",
                 "name"             : "Rio Galeão – Tom Jobim International Airport",
@@ -3370,7 +3370,7 @@ module.exports = {
                 "last_updated"     : "2015-11-12T03:52:06+00:00"
             },
             {
-                "id"               : 2430,
+                
                 "ident"            : "EGLC",
                 "type"             : "medium_airport",
                 "name"             : "London City Airport",
@@ -3392,7 +3392,7 @@ module.exports = {
                 "last_updated"     : "2016-03-15T12:52:27+00:00"
             },
             {
-                "id"               : 3751,
+                
                 "ident"            : "KOMA",
                 "type"             : "large_airport",
                 "name"             : "Eppley Airfield",
@@ -3414,7 +3414,7 @@ module.exports = {
                 "last_updated"     : "2018-09-15T19:06:19+00:00"
             },
             {
-                "id"               : 3873,
+                
                 "ident"            : "KSDF",
                 "type"             : "large_airport",
                 "name"             : "Louisville International Standiford Field",
@@ -3436,7 +3436,7 @@ module.exports = {
                 "last_updated"     : "2016-12-13T10:50:18+00:00"
             },
             {
-                "id"               : 4515,
+                
                 "ident"            : "LTAI",
                 "type"             : "large_airport",
                 "name"             : "Antalya International Airport",
@@ -3458,7 +3458,7 @@ module.exports = {
                 "last_updated"     : "2016-05-20T02:42:02+00:00"
             },
             {
-                "id"               : 1770,
+                
                 "ident"            : "CYHZ",
                 "type"             : "large_airport",
                 "name"             : "Halifax / Stanfield International Airport",
@@ -3480,7 +3480,7 @@ module.exports = {
                 "last_updated"     : "2010-09-27T23:27:43+00:00"
             },
             {
-                "id"               : 6015,
+                
                 "ident"            : "SCEL",
                 "type"             : "large_airport",
                 "name"             : "Comodoro Arturo Merino Benítez International Airport",
@@ -3502,7 +3502,7 @@ module.exports = {
                 "last_updated"     : "2009-01-31T17:19:23+00:00"
             },
             {
-                "id"               : 2570,
+                
                 "ident"            : "ENBR",
                 "type"             : "large_airport",
                 "name"             : "Bergen Airport Flesland",
@@ -3524,7 +3524,7 @@ module.exports = {
                 "last_updated"     : "2015-11-28T21:23:48+00:00"
             },
             {
-                "id"               : 3450,
+                
                 "ident"            : "KCHS",
                 "type"             : "large_airport",
                 "name"             : "Charleston Air Force Base-International Airport",
@@ -3546,7 +3546,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:27:48+00:00"
             },
             {
-                "id"               : 4341,
+                
                 "ident"            : "LIME",
                 "type"             : "large_airport",
                 "name"             : "Il Caravaggio International Airport",
@@ -3568,7 +3568,7 @@ module.exports = {
                 "last_updated"     : "2016-08-22T14:09:21+00:00"
             },
             {
-                "id"               : 3752,
+                
                 "ident"            : "KONT",
                 "type"             : "large_airport",
                 "name"             : "Ontario International Airport",
@@ -3590,7 +3590,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3847,
+                
                 "ident"            : "KRIC",
                 "type"             : "large_airport",
                 "name"             : "Richmond International Airport",
@@ -3612,7 +3612,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 2758,
+                
                 "ident"            : "EVRA",
                 "type"             : "large_airport",
                 "name"             : "Riga International Airport",
@@ -3634,7 +3634,7 @@ module.exports = {
                 "last_updated"     : "2009-04-07T13:06:39+00:00"
             },
             {
-                "id"               : 3913,
+                
                 "ident"            : "KSYR",
                 "type"             : "large_airport",
                 "name"             : "Syracuse Hancock International Airport",
@@ -3656,7 +3656,7 @@ module.exports = {
                 "last_updated"     : "2009-07-11T20:52:07+00:00"
             },
             {
-                "id"               : 3864,
+                
                 "ident"            : "KSAV",
                 "type"             : "large_airport",
                 "name"             : "Savannah Hilton Head International Airport",
@@ -3678,7 +3678,7 @@ module.exports = {
                 "last_updated"     : "2010-01-23T11:28:05+00:00"
             },
             {
-                "id"               : 3757,
+                
                 "ident"            : "KOSH",
                 "type"             : "medium_airport",
                 "name"             : "Wittman Regional Airport",
@@ -3700,7 +3700,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 4810,
+                
                 "ident"            : "MROC",
                 "type"             : "medium_airport",
                 "name"             : "Juan Santamaria International Airport",
@@ -3722,7 +3722,7 @@ module.exports = {
                 "last_updated"     : "2008-08-10T07:52:45+00:00"
             },
             {
-                "id"               : 3406,
+                
                 "ident"            : "KBHM",
                 "type"             : "large_airport",
                 "name"             : "Birmingham-Shuttlesworth International Airport",
@@ -3744,7 +3744,7 @@ module.exports = {
                 "last_updated"     : "2015-07-27T15:10:43+00:00"
             },
             {
-                "id"               : 3421,
+                
                 "ident"            : "KBOI",
                 "type"             : "large_airport",
                 "name"             : "Boise Air Terminal/Gowen Field",
@@ -3766,7 +3766,7 @@ module.exports = {
                 "last_updated"     : "2018-10-05T16:50:47+00:00"
             },
             {
-                "id"               : 26674,
+                
                 "ident"            : "VTSP",
                 "type"             : "large_airport",
                 "name"             : "Phuket International Airport",
@@ -3788,7 +3788,7 @@ module.exports = {
                 "last_updated"     : "2017-04-28T19:11:13+00:00"
             },
             {
-                "id"               : 4793,
+                
                 "ident"            : "MPTO",
                 "type"             : "large_airport",
                 "name"             : "Tocumen International Airport",
@@ -3810,7 +3810,7 @@ module.exports = {
                 "last_updated"     : "2011-08-30T16:41:58+00:00"
             },
             {
-                "id"               : 3589,
+                
                 "ident"            : "KHPN",
                 "type"             : "medium_airport",
                 "name"             : "Westchester County Airport",
@@ -3832,7 +3832,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3371,
+                
                 "ident"            : "KALB",
                 "type"             : "medium_airport",
                 "name"             : "Albany International Airport",
@@ -3854,7 +3854,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 4258,
+                
                 "ident"            : "LGIR",
                 "type"             : "large_airport",
                 "name"             : "Heraklion International Nikos Kazantzakis Airport",
@@ -3876,7 +3876,7 @@ module.exports = {
                 "last_updated"     : "2010-09-01T11:49:57+00:00"
             },
             {
-                "id"               : 3206,
+                
                 "ident"            : "HKJK",
                 "type"             : "large_airport",
                 "name"             : "Jomo Kenyatta International Airport",
@@ -3898,7 +3898,7 @@ module.exports = {
                 "last_updated"     : "2014-03-14T11:29:28+00:00"
             },
             {
-                "id"               : 3083,
+                
                 "ident"            : "GCTS",
                 "type"             : "large_airport",
                 "name"             : "Tenerife South Airport",
@@ -3920,7 +3920,7 @@ module.exports = {
                 "last_updated"     : "2009-11-01T22:38:14+00:00"
             },
             {
-                "id"               : 3552,
+                
                 "ident"            : "KGEG",
                 "type"             : "large_airport",
                 "name"             : "Spokane International Airport",
@@ -3942,7 +3942,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 26708,
+                
                 "ident"            : "VVTS",
                 "type"             : "large_airport",
                 "name"             : "Tan Son Nhat International Airport",
@@ -3964,7 +3964,7 @@ module.exports = {
                 "last_updated"     : "2010-09-08T18:23:20+00:00"
             },
             {
-                "id"               : 3481,
+                
                 "ident"            : "KDAY",
                 "type"             : "large_airport",
                 "name"             : "James M Cox Dayton International Airport",
@@ -3986,7 +3986,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3605,
+                
                 "ident"            : "KICT",
                 "type"             : "large_airport",
                 "name"             : "Wichita Eisenhower National Airport",
@@ -4008,7 +4008,7 @@ module.exports = {
                 "last_updated"     : "2018-10-04T13:56:29+00:00"
             },
             {
-                "id"               : 3707,
+                
                 "ident"            : "KMSN",
                 "type"             : "large_airport",
                 "name"             : "Dane County Regional Truax Field",
@@ -4030,7 +4030,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3984,
+                
                 "ident"            : "LDDU",
                 "type"             : "medium_airport",
                 "name"             : "Dubrovnik Airport",
@@ -4052,7 +4052,7 @@ module.exports = {
                 "last_updated"     : "2008-12-19T20:08:33+00:00"
             },
             {
-                "id"               : 26835,
+                
                 "ident"            : "WIII",
                 "type"             : "large_airport",
                 "name"             : "Soekarno-Hatta International Airport",
@@ -4074,7 +4074,7 @@ module.exports = {
                 "last_updated"     : "2013-02-07T12:57:41+00:00"
             },
             {
-                "id"               : 3858,
+                
                 "ident"            : "KRSW",
                 "type"             : "large_airport",
                 "name"             : "Southwest Florida International Airport",
@@ -4096,7 +4096,7 @@ module.exports = {
                 "last_updated"     : "2009-04-15T21:59:48+00:00"
             },
             {
-                "id"               : 3796,
+                
                 "ident"            : "KPWM",
                 "type"             : "large_airport",
                 "name"             : "Portland International Jetport",
@@ -4118,7 +4118,7 @@ module.exports = {
                 "last_updated"     : "2019-07-19T14:25:54+00:00"
             },
             {
-                "id"               : 3855,
+                
                 "ident"            : "KROC",
                 "type"             : "large_airport",
                 "name"             : "Greater Rochester International Airport",
@@ -4140,7 +4140,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 3684,
+                
                 "ident"            : "KMHT",
                 "type"             : "large_airport",
                 "name"             : "Manchester-Boston Regional Airport",
@@ -4162,7 +4162,7 @@ module.exports = {
                 "last_updated"     : "2019-03-29T20:00:09+00:00"
             },
             {
-                "id"               : 4482,
+                
                 "ident"            : "LROP",
                 "type"             : "large_airport",
                 "name"             : "Henri Coandă International Airport",
@@ -4184,7 +4184,7 @@ module.exports = {
                 "last_updated"     : "2016-09-09T07:42:26+00:00"
             },
             {
-                "id"               : 2648,
+                
                 "ident"            : "ESGG",
                 "type"             : "large_airport",
                 "name"             : "Gothenburg-Landvetter Airport",
@@ -4206,7 +4206,7 @@ module.exports = {
                 "last_updated"     : "2015-07-30T15:03:17+00:00"
             },
             {
-                "id"               : 3980,
+                
                 "ident"            : "LCLK",
                 "type"             : "large_airport",
                 "name"             : "Larnaca International Airport",
@@ -4228,7 +4228,7 @@ module.exports = {
                 "last_updated"     : "2009-07-01T17:27:29+00:00"
             },
             {
-                "id"               : 3463,
+                
                 "ident"            : "KCOS",
                 "type"             : "large_airport",
                 "name"             : "City of Colorado Springs Municipal Airport",
@@ -4250,7 +4250,7 @@ module.exports = {
                 "last_updated"     : "2019-03-29T20:00:45+00:00"
             },
             {
-                "id"               : 2157,
+                
                 "ident"            : "EBCI",
                 "type"             : "large_airport",
                 "name"             : "Brussels South Charleroi Airport",
@@ -4272,7 +4272,7 @@ module.exports = {
                 "last_updated"     : "2019-04-08T19:18:00+00:00"
             },
             {
-                "id"               : 5448,
+                
                 "ident"            : "PHKO",
                 "type"             : "medium_airport",
                 "name"             : "Ellison Onizuka Kona International At Keahole Airport",
@@ -4294,7 +4294,7 @@ module.exports = {
                 "last_updated"     : "2017-12-30T11:13:08+00:00"
             },
             {
-                "id"               : 5536,
+                
                 "ident"            : "RJBB",
                 "type"             : "large_airport",
                 "name"             : "Kansai International Airport",
@@ -4316,7 +4316,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 26394,
+                
                 "ident"            : "UUDD",
                 "type"             : "large_airport",
                 "name"             : "Domodedovo International Airport",
@@ -4338,7 +4338,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 5315,
+                
                 "ident"            : "OYGD",
                 "type"             : "medium_airport",
                 "name"             : "Al Ghaidah International Airport",
@@ -4360,7 +4360,7 @@ module.exports = {
                 "last_updated"     : "2008-08-03T11:48:34+00:00"
             },
             {
-                "id"               : 5675,
+                
                 "ident"            : "ROKJ",
                 "type"             : "medium_airport",
                 "name"             : "Kumejima Airport",
@@ -4382,7 +4382,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 5684,
+                
                 "ident"            : "ROYN",
                 "type"             : "medium_airport",
                 "name"             : "Yonaguni Airport",
@@ -4404,7 +4404,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 5703,
+                
                 "ident"            : "RPMJ",
                 "type"             : "medium_airport",
                 "name"             : "Jolo Airport",
@@ -4426,7 +4426,7 @@ module.exports = {
                 "last_updated"     : "2008-06-13T14:30:04+00:00"
             },
             {
-                "id"               : 5705,
+                
                 "ident"            : "RPMN",
                 "type"             : "medium_airport",
                 "name"             : "Sanga Sanga Airport",
@@ -4446,6 +4446,341 @@ module.exports = {
                 "keywords"         : "SGS",
                 "score"            : 800,
                 "last_updated"     : "2018-01-01T16:57:24+00:00"
+            }, {
+                
+                "ident"            : "VGZR",
+                "type"             : "large_airport",
+                "name"             : "Hazrat Shahjalal International Airport",
+                "latitude_deg"     : 23.843347,
+                "longitude_deg"    : 90.397783,
+                "elevation_ft"     : 30,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-3",
+                "municipality"     : "Dhaka",
+                "scheduled_service": 1,
+                "gps_code"         : "VGHS",
+                "iata_code"        : "DAC",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "https://en.wikipedia.org/wiki/Shahjalal_International_Airport",
+                "keywords"         : "VGZR, Zia International Airport, Dacca International Airport, Hazrat Shahjalal International Airport",
+                "score"            : 1050,
+                "last_updated"     : "2019-01-13T12:00:15+00:00"
+            }, {
+                "ident"            : "VGEG",
+                "type"             : "medium_airport",
+                "name"             : "Shah Amanat International Airport",
+                "latitude_deg"     : 22.24959945678711,
+                "longitude_deg"    : 91.81330108642578,
+                "elevation_ft"     : 12,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-2",
+                "municipality"     : "Chittagong",
+                "scheduled_service": 1,
+                "gps_code"         : "VGEG",
+                "iata_code"        : "CGP",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Shah_Amanat_International_Airport",
+                "keywords"         : "M.A. Hannan International Airport",
+                "score"            : 1050,
+                "last_updated"     : "2009-06-26T08:28:59+00:00"
+            }, {
+                
+                "ident"            : "VGCB",
+                "type"             : "medium_airport",
+                "name"             : "Cox's Bazar Airport",
+                "latitude_deg"     : 21.452199935913086,
+                "longitude_deg"    : 91.96389770507812,
+                "elevation_ft"     : 12,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-2",
+                "municipality"     : "Cox's Bazar",
+                "scheduled_service": 1,
+                "gps_code"         : "VGCB",
+                "iata_code"        : "CXB",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Cox's_Bazar_Airport",
+                "keywords"         : "",
+                "score"            : 800,
+                "last_updated"     : "2009-06-26T07:41:09+00:00"
+            }, {
+                
+                "ident"            : "VGSY",
+                "type"             : "medium_airport",
+                "name"             : "Osmany International Airport",
+                "latitude_deg"     : 24.963199615478516,
+                "longitude_deg"    : 91.8667984008789,
+                "elevation_ft"     : 50,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-6",
+                "municipality"     : "Sylhet",
+                "scheduled_service": 1,
+                "gps_code"         : "VGSY",
+                "iata_code"        : "ZYL",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Osmani_International_Airport",
+                "keywords"         : "",
+                "score"            : 925,
+                "last_updated"     : "2009-06-26T07:43:46+00:00"
+            }, {
+                
+                "ident"            : "VGBR",
+                "type"             : "medium_airport",
+                "name"             : "Barisal Airport",
+                "latitude_deg"     : 22.801000595092773,
+                "longitude_deg"    : 90.30120086669922,
+                "elevation_ft"     : 23,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-1",
+                "municipality"     : "Barisal",
+                "scheduled_service": 1,
+                "gps_code"         : "VGBR",
+                "iata_code"        : "BZL",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Barisal_Airport",
+                "keywords"         : "",
+                "score"            : 800,
+                "last_updated"     : "2009-06-26T07:39:05+00:00"
+            }, {
+                
+                "ident"            : "VGJR",
+                "type"             : "medium_airport",
+                "name"             : "Jessore Airport",
+                "latitude_deg"     : 23.183799743652344,
+                "longitude_deg"    : 89.16079711914062,
+                "elevation_ft"     : 20,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-4",
+                "municipality"     : "Jashahor",
+                "scheduled_service": 1,
+                "gps_code"         : "VGJR",
+                "iata_code"        : "JSR",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Jessore_Airport",
+                "keywords"         : "",
+                "score"            : 800,
+                "last_updated"     : "2009-06-26T07:43:15+00:00"
+            }, {
+                
+                "ident"            : "VGSD",
+                "type"             : "medium_airport",
+                "name"             : "Saidpur Airport",
+                "latitude_deg"     : 25.759199142456055,
+                "longitude_deg"    : 88.90889739990234,
+                "elevation_ft"     : 125,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-5",
+                "municipality"     : "Saidpur",
+                "scheduled_service": 1,
+                "gps_code"         : "VGSD",
+                "iata_code"        : "SPD",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Saidpur_Airport",
+                "keywords"         : "",
+                "score"            : 800,
+                "last_updated"     : "2009-06-26T07:44:14+00:00"
+            }, {
+                
+                "ident"            : "VGCM",
+                "type"             : "small_airport",
+                "name"             : "Comilla Airport",
+                "latitude_deg"     : 23.43720054626465,
+                "longitude_deg"    : 91.189697265625,
+                "elevation_ft"     : 25,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-2",
+                "municipality"     : "Comilla",
+                "scheduled_service": 0,
+                "gps_code"         : "VGCM",
+                "iata_code"        : "CLA",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "",
+                "keywords"         : "",
+                "score"            : 50,
+                "last_updated"     : "2009-06-26T07:40:27+00:00"
+            }, {
+                
+                "ident"            : "VGRJ",
+                "type"             : "medium_airport",
+                "name"             : "Shah Mokhdum Airport",
+                "latitude_deg"     : 24.43720054626465,
+                "longitude_deg"    : 88.61650085449219,
+                "elevation_ft"     : 64,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-5",
+                "municipality"     : "Rajshahi",
+                "scheduled_service": 1,
+                "gps_code"         : "VGRJ",
+                "iata_code"        : "RJH",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Shah_Makhdum_Airport",
+                "keywords"         : "",
+                "score"            : 800,
+                "last_updated"     : "2009-06-26T07:45:13+00:00"
+            }, {
+                
+                "ident"            : "VGIS",
+                "type"             : "medium_airport",
+                "name"             : "Ishurdi Airport",
+                "latitude_deg"     : 24.15250015258789,
+                "longitude_deg"    : 89.04940032958984,
+                "elevation_ft"     : 45,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-5",
+                "municipality"     : "Ishurdi",
+                "scheduled_service": 0,
+                "gps_code"         : "VGIS",
+                "iata_code"        : "IRD",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "",
+                "keywords"         : "",
+                "score"            : 250,
+                "last_updated"     : "2009-06-26T07:42:19+00:00"
+            }, {
+                
+                "ident"            : "VGTJ",
+                "type"             : "small_airport",
+                "name"             : "Tejgaon Airport",
+                "latitude_deg"     : 23.778799057006836,
+                "longitude_deg"    : 90.38269805908203,
+                "elevation_ft"     : 24,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-3",
+                "municipality"     : "Dhaka",
+                "scheduled_service": 0,
+                "gps_code"         : "VGTJ",
+                "iata_code"        : "",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Tejgaon_Airport",
+                "keywords"         : "",
+                "score"            : 50,
+                "last_updated"     : "2009-06-26T07:50:09+00:00"
+            }, {
+                
+                "ident"            : "VGLM",
+                "type"             : "small_airport",
+                "name"             : "Lalmonirhat Airport",
+                "latitude_deg"     : 25.887500762939453,
+                "longitude_deg"    : 89.43309783935547,
+                "elevation_ft"     : 106,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-5",
+                "municipality"     : "Lalmonirhat",
+                "scheduled_service": 0,
+                "gps_code"         : "VGLM",
+                "iata_code"        : "LLJ",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "",
+                "keywords"         : "",
+                "score"            : 50,
+                "last_updated"     : "2009-06-26T07:51:49+00:00"
+            }, {
+                
+                "ident"            : "VGSH",
+                "type"             : "small_airport",
+                "name"             : "Shamshernagar Airport",
+                "latitude_deg"     : 24.416999816900002,
+                "longitude_deg"    : 91.8830032349,
+                "elevation_ft"     : 56,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-6",
+                "municipality"     : "Shamshernagar",
+                "scheduled_service": 0,
+                "gps_code"         : "VGSH",
+                "iata_code"        : "ZHM",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Shamshernagar_STOLport",
+                "keywords"         : "",
+                "score"            : 50,
+                "last_updated"     : "2013-11-03T01:10:24+00:00"
+            }, {
+                
+                "ident"            : "VGSG",
+                "type"             : "small_airport",
+                "name"             : "Thakurgaon Airport",
+                "latitude_deg"     : 26.016399383544922,
+                "longitude_deg"    : 88.40360260009766,
+                "elevation_ft"     : 176,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-5",
+                "municipality"     : "Thakurgaon",
+                "scheduled_service": 0,
+                "gps_code"         : "VGSG",
+                "iata_code"        : "TKR",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "",
+                "keywords"         : "",
+                "score"            : 50,
+                "last_updated"     : "2009-06-26T07:50:34+00:00"
+            }, {
+                
+                "ident"            : "VGBG",
+                "type"             : "small_airport",
+                "name"             : "Bogra Airport",
+                "latitude_deg"     : 24.8668,
+                "longitude_deg"    : 89.3165,
+                "elevation_ft"     : 69,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-5",
+                "municipality"     : "Bogra",
+                "scheduled_service": 0,
+                "gps_code"         : "VGBG",
+                "iata_code"        : "",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Bogra_STOLport",
+                "keywords"         : "",
+                "score"            : 0,
+                "last_updated"     : "2014-07-23T16:07:58+00:00"
+            }, {
+                
+                "ident"            : "KHL",
+                "type"             : "closed",
+                "name"             : "Khan Jahan Ali Airport",
+                "latitude_deg"     : 22.6486,
+                "longitude_deg"    : 89.6454,
+                "elevation_ft"     : 21,
+                "continent"        : "AS",
+                "iso_country"      : "BD",
+                "iso_region"       : "BD-4",
+                "municipality"     : "Khulna",
+                "scheduled_service": 0,
+                "gps_code"         : "",
+                "iata_code"        : "KHL",
+                "local_code"       : "",
+                "home_link"        : "",
+                "wikipedia_link"   : "http://en.wikipedia.org/wiki/Khan_Jahan_Ali_Airport",
+                "keywords"         : "Mongla, Bagerhat",
+                "score"            : 0,
+                "last_updated"     : "2014-12-20T02:54:13+00:00"
             },
         
         ], {});

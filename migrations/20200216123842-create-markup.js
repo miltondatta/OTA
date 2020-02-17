@@ -10,11 +10,11 @@ module.exports = {
             }, flight_type     : {
                 type: Sequelize.INTEGER
             }, from_city       : {
-                type: Sequelize.INTEGER
+                type: Sequelize.STRING
             }, to_city         : {
-                type: Sequelize.INTEGER
+                type: Sequelize.STRING
             }, plating_carrier : {
-                type: Sequelize.INTEGER
+                type: Sequelize.STRING
             }, travel_date_from: {
                 type: Sequelize.DATE
             }, travel_date_to  : {
@@ -28,8 +28,6 @@ module.exports = {
             }, user_id         : {
                 type: Sequelize.INTEGER
             }, api_source_id   : {
-                type: Sequelize.INTEGER
-            }, markup_type     : {
                 type: Sequelize.INTEGER
             }, markup_value    : {
                 type: Sequelize.DOUBLE
