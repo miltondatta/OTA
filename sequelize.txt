@@ -1,5 +1,5 @@
 sequelize model:create --name user --attributes name:string,details:text
-sequelize model:generate --name user --attributes name:string,details:text
+sequelize model:generate --name user --attributes "name:string, UserId:integer,complete:boolean,body:text"
 sequelize db:migrate
 sequelize db:migrate:undo:all
 sequelize db:seed

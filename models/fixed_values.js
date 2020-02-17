@@ -4,8 +4,14 @@ module.exports = (sequelize, DataTypes) => {
         discount_name: DataTypes.STRING,
         discount_code: DataTypes.STRING,
         discount     : DataTypes.DOUBLE,
-        discount_unit: DataTypes.ENUM,
-        discount_type: DataTypes.ENUM,
+        discount_unit: {
+            type  : DataTypes.ENUM,
+            values: ['ps', 'fxd']
+        },
+        discount_type: {
+            type  : DataTypes.ENUM,
+            values: ['a', 'd']
+        },
         status_id    : DataTypes.INTEGER
     }, {});
     fixed_discount.associate = function (models) {
