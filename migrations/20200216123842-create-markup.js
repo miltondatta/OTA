@@ -36,9 +36,10 @@ module.exports = {
             }, max_amount      : {
                 type: Sequelize.DOUBLE
             }, status_id       : {
-                type: Sequelize.INTEGER
+                type        : Sequelize.INTEGER,
+                allowNull   : false,
+                defaultValue: 3
             },
-            
             createdAt: {
                 allowNull: false,
                 type     : Sequelize.DATE

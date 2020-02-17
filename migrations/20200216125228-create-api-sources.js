@@ -14,8 +14,10 @@ module.exports = {
                 type: Sequelize.STRING
             }, end_point: {
                 type: Sequelize.STRING
-            }, status_id: {
-                type: Sequelize.INTEGER
+            },status_id       : {
+                type        : Sequelize.INTEGER,
+                allowNull   : false,
+                defaultValue: 3
             },
             createdAt   : {
                 allowNull: false,
