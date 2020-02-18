@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Card, Form} from "react-bootstrap";
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import Alerts from "../alert/alerts";
 // Redux
@@ -21,6 +21,7 @@ class Login extends Component {
             variant: '',
             heading: '',
             message: '',
+            authenticated:false,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -29,7 +30,8 @@ class Login extends Component {
 
     componentDidMount() {
         if (this.props.auth.isAuthenticated) {
-            this.props.history.push('/');
+            /*this.props.history.push('/');*/
+            this.setState({authenticated:true})
         }
 
         if (localStorage.registration_success) {
@@ -74,6 +76,9 @@ class Login extends Component {
     render() {
         return (
             <div className="login-area">
+                {this.state.authenticated &&
+                    <Redirect to={'/'}/>
+                }
                 <div className="login-overlay">
                     <div className="container login-area-container">
                         <div className="row">
