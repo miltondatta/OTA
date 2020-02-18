@@ -84,7 +84,7 @@ const AirportIndex = () => {
         }
         localStorage.removeItem('airport_update_message');
     }, []);
-    const deleteUser = async () => {
+    const deleteAirport = async () => {
         try {
             const config = {
                 headers: {
@@ -254,7 +254,7 @@ const AirportIndex = () => {
                             Close
                         </Button>
                         <Button variant="outline-danger" onClick={() => {
-                            deleteUser();
+                            deleteAirport();
                             handleClose();
                         }}>
                             Confirm Delete

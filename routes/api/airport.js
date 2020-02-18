@@ -44,6 +44,6 @@ router.post('/update', airportController.update);
     @desc           Delete Airline Data
     @access         Private
  */
-/*router.post('/delete', airportController.delete);*/
+router.post('/delete', airportController.delete);
 
 module.exports = router;

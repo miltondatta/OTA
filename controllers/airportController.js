@@ -46,21 +46,6 @@ exports.getAirportByCountry = async (req, res) => {
     }
 };
 
-/*exports.checkIata = async (req, res) => {
- try {
- const iata = req.query.iata;
- if (!iata) return res.status(400).json({msg: 'Iata not found!'});
- 
- const airline = await Airline.findOne({where: {iata}});
- if (airline) return res.status(400).json({msg: 'This iata code is already exist!'});
- 
- return res.json({'success': true});
- } catch (err) {
- console.error(err.message);
- return res.status(500).json({msg: 'Server Error!'});
- }
- };*/
-
 exports.store = async (req, res) => {
     try {
         const {
@@ -203,17 +188,17 @@ exports.update = async (req, res) => {
     }
 };
 
-/*
- exports.delete = async (req, res) => {
- try {
- const {id} = req.body;
- 
- const status = await Airline.destroy({where: {id}});
- if (!status) return res.status(400).json({msg: 'Please try again!'});
- 
- return res.status(200).json({msg: 'One Airline deleted successfully!'});
- } catch (err) {
- console.error(err.message);
- return res.status(500).json({msg: 'Server Error!'});
- }
- };*/
+exports.delete = async (req, res) => {
+    console.log('called');
+    try {
+        const {id} = req.body;
+        console.log(id)
+        const status = await Airport.destroy({where: {id}});
+        if (!status) return res.status(400).json({msg: 'Please try again!'});
+        
+        return res.status(200).json({msg: 'One Airport deleted successfully!'});
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
