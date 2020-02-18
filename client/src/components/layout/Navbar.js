@@ -6,12 +6,11 @@ import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 import Proptypes    from 'prop-types';
 import {connect}    from "react-redux";
 import {logoutUser} from "../../actions/authActions";
-import {withRouter} from 'react-router-dom';
 
 // Image
 import logo from '../../assets/img/logo.png';
 
-function Menubar({history,logoutUser, auth: {isAuthenticated, user}}) {
+function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
     const guestLinks = (
         <Fragment>
             <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
@@ -56,7 +55,7 @@ function Menubar({history,logoutUser, auth: {isAuthenticated, user}}) {
                             <Link to={'/profile'} className={'dropdown-item'}>Profile</Link>
                             <Link to={'#'} className={'dropdown-item'} onClick={e => {
                                 e.preventDefault();
-                                logoutUser(history);
+                                logoutUser();
                             }}>Logout</Link>
                         </NavDropdown>
                         }
@@ -77,4 +76,4 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {logoutUser};
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Menubar));
+export default connect(mapStateToProps, mapDispatchToProps)(Menubar);

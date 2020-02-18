@@ -16,7 +16,6 @@ exports.index = async (req, res) => {
         
         return res.status(200).json(airports);
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
@@ -41,7 +40,6 @@ exports.getAirportByCountry = async (req, res) => {
         
         return res.status(200).json(airports);
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
@@ -97,7 +95,6 @@ exports.store = async (req, res) => {
         
         return res.status(200).json({msg: 'New Airline Information saved successfully.'});
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
@@ -122,7 +119,6 @@ exports.edit = async (req, res) => {
         
         return res.status(200).json(airport_data);
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Errors!'});
     }
 };
@@ -183,22 +179,17 @@ exports.update = async (req, res) => {
         
         return res.status(200).json({msg: 'Airport Information updated successfully.'});
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
 
 exports.delete = async (req, res) => {
-    console.log('called');
     try {
         const {id} = req.body;
-        console.log(id)
         const status = await Airport.destroy({where: {id}});
         if (!status) return res.status(400).json({msg: 'Please try again!'});
-        
         return res.status(200).json({msg: 'One Airport deleted successfully!'});
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});
     }
 };

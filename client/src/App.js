@@ -8,25 +8,26 @@ import store                            from './stores';
 import PrivateRoute                     from "./utils/private_route/private_route";
 
 // Component
-import Navbar        from './components/layout/Navbar';
-import Landing       from './components/layout/Landing';
-import Footer        from './components/layout/Footer';
-import Login         from './components/auth/Login';
-import Register      from './components/auth/Register';
-import FlightList    from './components/flights/FlightList';
-import FlightPayment from './components/payments/FlightPayment';
-import Contact       from "./components/contact/Contact";
-import Profile       from "./components/profile/Profile";
-import Verification  from "./components/profile/Verification";
-import PaymentInfo   from "./components/payment-info/PaymentInfo";
-import Airline       from "./components/airline/Airline";
-import AirlineAdd    from "./components/airline/AirlineAdd";
-import AirlineEdit   from "./components/airline/AirlineEdit";
-import UserIndex     from "./components/users/UserIndex";
-import UserEdit      from "./components/users/UserEdit";
-import AirportIndex  from "./components/airports/AirportIndex";
-import AirportEdit   from "./components/airports/AirportEdit";
-import AirportAdd    from "./components/airports/AirportAdd";
+import Navbar           from './components/layout/Navbar';
+import Landing          from './components/layout/Landing';
+import Footer           from './components/layout/Footer';
+import Login            from './components/auth/Login';
+import Register         from './components/auth/Register';
+import FlightList       from './components/flights/FlightList';
+import FlightPayment    from './components/payments/FlightPayment';
+import Contact          from "./components/contact/Contact";
+import Profile          from "./components/profile/Profile";
+import Verification     from "./components/profile/Verification";
+import PaymentInfo      from "./components/payment-info/PaymentInfo";
+import Airline          from "./components/airline/Airline";
+import AirlineAdd       from "./components/airline/AirlineAdd";
+import AirlineEdit      from "./components/airline/AirlineEdit";
+import UserIndex        from "./components/users/UserIndex";
+import UserEdit         from "./components/users/UserEdit";
+import AirportIndex     from "./components/airports/AirportIndex";
+import AirportEdit      from "./components/airports/AirportEdit";
+import AirportAdd       from "./components/airports/AirportAdd";
+import FixedValuesIndex from "./components/fixed-values/FixedValuesIndex";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,6 +36,7 @@ import './assets/css/common.css';
 
 // Check for token
 if (localStorage.jwtToken) {
+    console.log("jwt token");
     // Set auth token header auth
     setAuthToken(localStorage.jwtToken);
     // Decode token and get user info and exp
@@ -67,15 +69,16 @@ function App() {
                 <Route exact path='/flight-payment-info' component={PaymentInfo}/>
                 <Route exact path='/verification/:uuid' component={Verification}/>
                 <Route exact path='/contact' component={Contact}/>
-                <PrivateRoute exact path='/profile' component={Profile}/>
-                <PrivateRoute exact path='/airline' component={Airline}/>
-                <PrivateRoute exact path='/airline-add' component={AirlineAdd}/>
-                <PrivateRoute exact path='/airline/edit/:id' component={AirlineEdit}/>
-                <PrivateRoute exact path='/users_index' component={UserIndex}/>
-                <PrivateRoute exact path='/users/edit/:id' component={UserEdit}/>
-                <PrivateRoute exact path='/airports' component={AirportIndex}/>
-                <PrivateRoute exact path='/airport/edit/:id' component={AirportEdit}/>
-                <PrivateRoute exact path='/airport_add' component={AirportAdd}/>
+                <Route exact path='/profile' component={Profile}/>
+                <Route exact path='/airline' component={Airline}/>
+                <Route exact path='/airline-add' component={AirlineAdd}/>
+                <Route exact path='/airline/edit/:id' component={AirlineEdit}/>
+                <Route exact path='/users_index' component={UserIndex}/>
+                <Route exact path='/users/edit/:id' component={UserEdit}/>
+                <Route exact path='/airports' component={AirportIndex}/>
+                <Route exact path='/airport/edit/:id' component={AirportEdit}/>
+                <Route exact path='/airport_add' component={AirportAdd}/>
+                <Route exact path='/fixed_values' component={FixedValuesIndex}/>
                 <Footer/>
             </Router>
         </Provider>

@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-    const fixed_discount     = sequelize.define('fixed_values', {
+    const fixed_values     = sequelize.define('fixed_values', {
         discount_name: DataTypes.STRING,
         discount_code: DataTypes.STRING,
         discount     : DataTypes.DOUBLE,
@@ -12,10 +13,16 @@ module.exports = (sequelize, DataTypes) => {
             type  : DataTypes.ENUM,
             values: ['a', 'd']
         },
-        status_id    : DataTypes.INTEGER
+        status_id    : {
+            type:DataTypes.INTEGER,
+            /*references: {
+                model: status,
+                key: 'id'
+            }*/
+        }
     }, {});
-    fixed_discount.associate = function (models) {
+    fixed_values.associate = function (models) {
         // associations can be defined here
     };
-    return fixed_discount;
+    return fixed_values;
 };

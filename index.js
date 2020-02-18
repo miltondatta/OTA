@@ -31,6 +31,9 @@ const Airline = require('./routes/api/airline');
 // Define Port Routes
 const Airport = require('./routes/api/airport');
 
+// Define Fixed Values Routes
+const Fixed_values = require('./routes/api/fixed_values');
+
 //Define AIR Routes 
 const air = require('./routes/api/air');
 
@@ -50,6 +53,8 @@ app.use('/api/country/', country);
 app.use('/api/passenger/', passenger);
 app.use('/api/airline/', Airline);
 app.use('/api/airport/', Airport);
+app.use('/api/airport/', Airport);
+app.use('/api/fixed_values/', Fixed_values);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);
