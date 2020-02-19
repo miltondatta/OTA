@@ -26,7 +26,6 @@ exports.index = async (req, res) => {
 
 exports.store = async (req, res) => {
     try {
-        console.log(req.body);
         const {
                   discount_name,
                   discount_code,
@@ -45,11 +44,11 @@ exports.store = async (req, res) => {
             status_id    : status_id,
         };
         const status          = await FixedValues.create(newFixed_values);
+        console.log(status,'status data');
         if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'New Fixed Information saved successfully.'});
     } catch (err) {
-        console.log(err, 47)
         return res.status(500).json({msg: err.errors})
     }
 };

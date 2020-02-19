@@ -47,6 +47,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                         <NavDropdown title="Master Data" id="collasible-nav-dropdown">
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/users_index'} className={'dropdown-item'}>Users</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/airports'} className={'dropdown-item'}>Airports</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/fixed_values'} className={'dropdown-item'}>Fixed Values</Link></NavDropdown.Item>
                         </NavDropdown>
                         }
                         

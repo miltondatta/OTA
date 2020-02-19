@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {Link}                                 from "react-router-dom";
-import {Badge, Modal, Button}                 from "react-bootstrap";
+import {Badge, Modal, Button, Form}           from "react-bootstrap";
 import {faEdit, faTrashAlt}                   from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon}                      from "@fortawesome/react-fontawesome";
 import axios                                  from 'axios';
@@ -10,13 +10,13 @@ import moment                                 from 'moment';
 import '../../assets/css/airline.css';
 import Alerts                                 from "../alert/alerts";
 import {base_url}                             from "../../utils/Urls";
+import {validateInput}                        from "../../utils/funcitons";
+import {func}                                 from "prop-types";
 
 const FixedValuesIndex = () => {
     const [fixed_values, set_fixed_values] = useState([]);
-    const [deleteInfo, setDeleteInfo]      = useState({
-                                                          id  : '',
-                                                          name: ''
-                                                      });
+    
+    const [deleteInfo, setDeleteInfo] = useState({id: '', name: ''});
     
     const [fixedValueDataMessage, setFixedValueDataMessage] = useState({
                                                                            show   : false,
@@ -24,11 +24,23 @@ const FixedValuesIndex = () => {
                                                                            heading: '',
                                                                            message: '',
                                                                        });
-    const {show, variant, heading, message}                 = fixedValueDataMessage;
     
-    const [modalShow, setShow] = useState(false);
-    const handleClose          = () => setShow(false);
-    const handleShow           = () => setShow(true);
+    const [addMessage, setAddMessage] = useState({
+                                                     show   : false,
+                                                     variant: '',
+                                                     heading: '',
+                                                     message: '',
+                                                     disable: false
+                                                 });
+    
+    const {show, variant, heading, message} = fixedValueDataMessage;
+    
+    const [modalShow, setShow]            = useState(false);
+    const [saveButton, setSaveButton]     = useState(true);
+    const [updateButton, setUpdateButton] = useState(false);
+    
+    const handleClose = () => setShow(false);
+    const handleShow  = () => setShow(true);
     
     const fetchData = async () => {
         const result = await axios.get(`/api/fixed_values/all`);
@@ -38,29 +50,40 @@ const FixedValuesIndex = () => {
     useEffect(() => {
         fetchData();
         
-        const fixed_value_add_message = localStorage.getItem('fixed_value_add_message');
-        if (fixed_value_add_message) {
-            setFixedValueDataMessage({
-                                         show    : true,
-                                         variant : 'success',
-                                         headding: 'New Fixed Value Added!',
-                                         message : fixed_value_add_message
-                                     });
-        }
-        localStorage.removeItem('fixed_value_add_message');
-        
-        const fixed_value_update_message = localStorage.getItem('fixed_value_update_message');
-        if (fixed_value_update_message) {
-            setFixedValueDataMessage({
-                                         show    : true,
-                                         variant : 'success',
-                                         headding: 'Fixed Value updated',
-                                         message : fixed_value_update_message
-                                     });
-        }
-        localStorage.removeItem('fixed_value_update_message');
     }, []);
-    const deleteAirport = async () => {
+    
+    const [formData, setFormData] = useState({
+                                                 id           : '',
+                                                 discount_name: '',
+                                                 discount_code: '',
+                                                 discount     : '',
+                                                 discount_unit: '',
+                                                 discount_type: '',
+                                                 status_id    : '',
+                                             });
+    
+    const {id, discount_name, discount_code, discount, discount_unit, discount_type, status_id} = formData;
+    
+    const onChange = e => {
+        let valid = validateInput(e);
+        if (valid || valid === '') {
+            setFormData({...formData, [e.target.name]: valid});
+        }
+    };
+    
+    const resetFormData = e => {
+        setFormData({
+                        id           : '',
+                        discount_name: '',
+                        discount_code: '',
+                        discount     : '',
+                        discount_unit: '',
+                        discount_type: '',
+                        status_id    : '',
+                    });
+    };
+    
+    const deleteFixedValue = async () => {
         try {
             const config = {
                 headers: {
@@ -95,6 +118,79 @@ const FixedValuesIndex = () => {
         }
     };
     
+    function setDataForUpdate(id) {
+        fixed_values.find(item => {
+            if (item.id == id) {
+                setFormData({
+                                id           : item.id,
+                                discount_name: item.discount_name,
+                                discount_code: item.discount_code,
+                                discount     : item.discount,
+                                discount_unit: item.discount_unit,
+                                discount_type: item.discount_type,
+                                status_id    : item.status_id,
+                            });
+                setUpdateButton(true);
+                setSaveButton(false);
+            }
+        });
+    }
+    
+    const saveFormData = async (data) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            console.log(formData, 'form data');
+            const res = await axios.post(`/api/fixed_values/store/`, formData, config);
+            
+            console.log(res, 'Log of Response');
+            setAddMessage({
+                              show    : true,
+                              variant : 'success',
+                              headding: 'Fixed Value Add!',
+                              message : 'New Fixed Value Added!'
+                          });
+            
+            resetFormData();
+            fetchData();
+        } catch (err) {
+            setAddMessage({
+                              show   : true,
+                              variant: 'danger',
+                              heading: 'Add Error!',
+                              message: "Error... Please Try again. ",
+                          });
+        }
+        
+    };
+    
+    const updateFormData = async (data) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            const res = await axios.post(base_url + `api/fixed_values/update/`, data, config);
+            
+            localStorage.setItem('fixed_value_update_message', res.data.msg);
+            
+            return res.data;
+        } catch (err) {
+            setAddMessage({
+                              show   : true,
+                              variant: 'danger',
+                              heading: 'Fixed Value Update Error!',
+                              message: err.response.data.msg,
+                          });
+            return err.response.data;
+        }
+    }
+    
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid fixedValues-area-container">
@@ -111,13 +207,90 @@ const FixedValuesIndex = () => {
                     <h2>Fixed Value Information</h2>
                 </div>
                 
-                <div className="row pb-3">
-                    <div className="col-md-12 col-sm-12 col-12 mx-auto">
-                        <Link to="/airport_add" className="btn btn-outline-primary d-block ml-auto mb-2"
-                              style={{width: 80}}>Create</Link>
+                <div className="row pb-3 custom-border-bottom">
+                    <div className="col-md-12 col-sm-12 col-12 mx-auto  ">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="formName">
+                                    <Form.Label>Discount Name</Form.Label>
+                                    <Form.Control type="text" name="discount_name" value={discount_name}
+                                                  onChange={e => onChange(e)}
+                                                  placeholder="Enter name"/>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Discount Code</Form.Label>
+                                    <Form.Control type="text" name="discount_code" value={discount_code}
+                                                  onChange={e => onChange(e)}
+                                                  placeholder="Enter Code" required/>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Discount</Form.Label>
+                                    <Form.Control type="text" name="discount" value={discount}
+                                                  onChange={e => onChange(e)} data-number={'float_only'}
+                                                  placeholder="Enter discount" required/>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="discount_unit">
+                                    <Form.Label>Discount Unit</Form.Label>
+                                    <select className="form-control" name="discount_unit" value={discount_unit}
+                                            onChange={e => onChange(e)}>
+                                        <Fragment>
+                                            <option>Select Discount Unit</option>
+                                            <option value='ps' key='ps'>Percentage</option>
+                                            <option value='fxd' key='fxd'>Fixed Price</option>
+                                        </Fragment>
+                                    </select>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="discount_type">
+                                    <Form.Label>Discount Type</Form.Label>
+                                    <select className="form-control" name="discount_type" value={discount_type}
+                                            onChange={e => onChange(e)}>
+                                        <Fragment>
+                                            <option>Select Discount Type</option>
+                                            <option value='d' key='d'>Discount</option>
+                                            <option value='a' key='a'>Addition</option>
+                                        </Fragment>
+                                    </select>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="status_id">
+                                    <Form.Label>Status</Form.Label>
+                                    <select className="form-control" name="status_id" value={status_id}
+                                            onChange={e => onChange(e)}>
+                                        <Fragment>
+                                            <option>Select Status</option>
+                                            <option value='3' key='3'>Active</option>
+                                            <option value='4' key='4'>Inactive</option>
+                                        </Fragment>
+                                    </select>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <Button variant="outline-warning" type="reset" className="ml-2"
+                                    onClick={e => resetFormData(e)}>Reset</Button>
+                            {saveButton === true ?
+                             <Button variant="outline-info" className="ml-2"
+                                     onClick={e => saveFormData(e)}>Save</Button> : ""}
+                            {updateButton === true ?
+                             <Button variant="outline-success" className="ml-2"
+                                     onClick={e => updateFormData(e)}>Update</Button> : ""}
+                        </div>
                     </div>
-                    
-                    <div className="col-md-8 col-sm-12 col-12 mx-auto">
+                </div>
+                
+                <div className="row pb-3">
+                    <div className="col-md-8 col-sm-12 col-12 mx-auto mt-4">
                         <table className="table table-bordered table-responsive-md text-center table-striped table-hover table-condensed">
                             <thead className="font-weight-bold">
                             <tr>
@@ -143,9 +316,9 @@ const FixedValuesIndex = () => {
                                         <td>{value.discount_type}</td>
                                         <td>{value.status_id}</td>
                                         <td className="d-flex justify-content-center">
-                                            <Link to={`airport/edit/${value.id}`} className="btn btn-sm btn-info">
+                                            <button onClick={e => setDataForUpdate(value.id)} className="btn btn-sm btn-info">
                                                 <FontAwesomeIcon icon={faEdit}/>
-                                            </Link>
+                                            </button>
                                             <Button className="btn btn-sm btn-danger ml-2" onClick={() => {
                                                 setDeleteInfo({
                                                                   id  : value.id,
@@ -182,7 +355,7 @@ const FixedValuesIndex = () => {
                             Close
                         </Button>
                         <Button variant="outline-danger" onClick={() => {
-                            deleteAirport();
+                            deleteFixedValue();
                             handleClose();
                         }}>
                             Confirm Delete
