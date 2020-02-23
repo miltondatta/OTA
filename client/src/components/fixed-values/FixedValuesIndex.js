@@ -18,13 +18,6 @@ const FixedValuesIndex = () => {
     
     const [deleteInfo, setDeleteInfo] = useState({id: '', name: ''});
     
-    const [fixedValueDataMessage, setFixedValueDataMessage] = useState({
-                                                                           show   : false,
-                                                                           variant: '',
-                                                                           heading: '',
-                                                                           message: '',
-                                                                       });
-    
     const [addMessage, setAddMessage] = useState({
                                                      show   : false,
                                                      variant: '',
@@ -33,7 +26,7 @@ const FixedValuesIndex = () => {
                                                      disable: false
                                                  });
     
-    const {show, variant, heading, message} = fixedValueDataMessage;
+    const {show, variant, heading, message} = addMessage;
     
     const [modalShow, setShow]            = useState(false);
     const [saveButton, setSaveButton]     = useState(true);
@@ -97,24 +90,24 @@ const FixedValuesIndex = () => {
             
             const result = await axios.post(`api/fixed_values/delete/`, data, config);
             
-            setFixedValueDataMessage({
-                                         show   : true,
-                                         variant: 'success',
-                                         heading: 'Fixed Value Delete Message!',
-                                         message: result.data.msg
-                                     });
+            setAddMessage({
+                              show   : true,
+                              variant: 'success',
+                              heading: 'Fixed Value Delete Message!',
+                              message: "Fixed Value Deleted Successfully"
+                          });
             
             fetchData();
             
             return result.data;
             
         } catch (err) {
-            setFixedValueDataMessage({
-                                         show   : true,
-                                         variant: 'danger',
-                                         heading: 'Fixed Value Delete Message!',
-                                         message: err.response.data.msg,
-                                     });
+            setAddMessage({
+                              show   : true,
+                              variant: 'danger',
+                              heading: 'Fixed Value Delete Error!',
+                              message: 'Fixed Value is not deleted',
+                          });
         }
     };
     
@@ -143,10 +136,8 @@ const FixedValuesIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            console.log(formData, 'form data');
-            const res = await axios.post(`/api/fixed_values/store/`, formData, config);
+            const res    = await axios.post(`/api/fixed_values/store/`, formData, config);
             
-            console.log(res, 'Log of Response');
             setAddMessage({
                               show    : true,
                               variant : 'success',
@@ -167,7 +158,7 @@ const FixedValuesIndex = () => {
         
     };
     
-    const updateFormData = async (data) => {
+    const updateFormData = async () => {
         try {
             const config = {
                 headers: {
@@ -175,19 +166,22 @@ const FixedValuesIndex = () => {
                 }
             };
             
-            const res = await axios.post(base_url + `api/fixed_values/update/`, data, config);
+            const res = await axios.post(base_url + `api/fixed_values/update/`, formData, config);
             
-            localStorage.setItem('fixed_value_update_message', res.data.msg);
-            
-            return res.data;
+            setAddMessage({
+                              show   : true,
+                              variant: 'success',
+                              heading: 'Fixed Value Update Message!',
+                              message: "Fixed Value Updated Successfully"
+                          });
+            fetchData();
         } catch (err) {
             setAddMessage({
                               show   : true,
                               variant: 'danger',
                               heading: 'Fixed Value Update Error!',
-                              message: err.response.data.msg,
+                              message: 'Fixed Value is not Updated',
                           });
-            return err.response.data;
         }
     }
     
@@ -325,9 +319,9 @@ const FixedValuesIndex = () => {
                                                                   name: value.discount_name
                                                               });
                                                 
-                                                setFixedValueDataMessage({
-                                                                             show: false
-                                                                         });
+                                                setAddMessage({
+                                                                  show: false
+                                                              });
                                                 handleShow();
                                             }}>
                                                 <FontAwesomeIcon icon={faTrashAlt}/>
