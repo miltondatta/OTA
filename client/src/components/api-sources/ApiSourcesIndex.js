@@ -13,8 +13,8 @@ import {base_url}                             from "../../utils/Urls";
 import {validateInput}                        from "../../utils/funcitons";
 import {func}                                 from "prop-types";
 
-const FixedValuesIndex = () => {
-    const [fixed_values, set_fixed_values] = useState([]);
+const ApiSourcesIndex = () => {
+    const [data_list, set_data_list] = useState([]);
     
     const [deleteInfo, setDeleteInfo] = useState({id: '', name: ''});
     
@@ -36,8 +36,8 @@ const FixedValuesIndex = () => {
     const handleShow  = () => setShow(true);
     
     const fetchData = async () => {
-        const result = await axios.get(`/api/fixed_values/all`);
-        set_fixed_values(result.data);
+        const result = await axios.get(`/api/api_sources/all`);
+        set_data_list(result.data);
     };
     
     useEffect(() => {
@@ -46,16 +46,14 @@ const FixedValuesIndex = () => {
     }, []);
     
     const [formData, setFormData] = useState({
-                                                 id           : '',
-                                                 discount_name: '',
-                                                 discount_code: '',
-                                                 discount     : '',
-                                                 discount_unit: '',
-                                                 discount_type: '',
-                                                 status_id    : '',
+                                                 id       : '',
+                                                 api_code : '',
+                                                 api_name : '',
+                                                 end_point: '',
+                                                 status_id: '',
                                              });
     
-    const {id, discount_name, discount_code, discount, discount_unit, discount_type, status_id} = formData;
+    const {id, api_code, api_name, end_point, status_id} = formData;
     
     const onChange = e => {
         let valid = validateInput(e);
@@ -66,13 +64,11 @@ const FixedValuesIndex = () => {
     
     const resetFormData = e => {
         setFormData({
-                        id           : '',
-                        discount_name: '',
-                        discount_code: '',
-                        discount     : '',
-                        discount_unit: '',
-                        discount_type: '',
-                        status_id    : '',
+                        id       : '',
+                        api_code : '',
+                        api_name : '',
+                        end_point: '',
+                        status_id: '',
                     });
     };
     
@@ -88,13 +84,13 @@ const FixedValuesIndex = () => {
                 id: deleteInfo.id
             };
             
-            const result = await axios.post(`api/fixed_values/delete/`, data, config);
+            const result = await axios.post(`api/api_sources/delete/`, data, config);
             
             setAddMessage({
                               show   : true,
                               variant: 'success',
-                              heading: 'Fixed Value Delete Message!',
-                              message: `Fixed Value ${deleteInfo.name} has been deleted.`
+                              heading: 'Data Delete Message!',
+                              message: `Api Source, ${deleteInfo.name} has been deleted.`
                           });
             
             fetchData();
@@ -105,23 +101,21 @@ const FixedValuesIndex = () => {
             setAddMessage({
                               show   : true,
                               variant: 'danger',
-                              heading: 'Fixed Value Delete Error!',
-                              message: 'Fixed Value is not deleted',
+                              heading: 'Data Delete Error!',
+                              message: 'Api Source is not deleted',
                           });
         }
     };
     
     function setDataForUpdate(id) {
-        fixed_values.find(item => {
+        data_list.find(item => {
             if (item.id == id) {
                 setFormData({
-                                id           : item.id,
-                                discount_name: item.discount_name,
-                                discount_code: item.discount_code,
-                                discount     : item.discount,
-                                discount_unit: item.discount_unit,
-                                discount_type: item.discount_type,
-                                status_id    : item.status_id,
+                                id       : item.id,
+                                api_code : item.api_code,
+                                api_name : item.api_name,
+                                end_point: item.end_point,
+                                status_id: item.status_id,
                             });
                 setUpdateButton(true);
                 setSaveButton(false);
@@ -136,14 +130,14 @@ const FixedValuesIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            let fxd_name = formData.discount_name;
-            const res    = await axios.post(`/api/fixed_values/store/`, formData, config);
+            let fxd_name = formData.api_name;
+            const res    = await axios.post(`/api/api_sources/store/`, formData, config);
             
             setAddMessage({
                               show    : true,
                               variant : 'success',
-                              headding: 'Fixed Value Add!',
-                              message : `New Fixed Value, ${fxd_name} has been Added!`
+                              headding: 'Data Add!',
+                              message : `Api Source, ${fxd_name} has been Added!`
                           });
             
             resetFormData();
@@ -166,22 +160,22 @@ const FixedValuesIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            let fxd_name = formData.discount_name;
-            const res    = await axios.post(base_url + `api/fixed_values/update/`, formData, config);
+            let fxd_name = formData.api_name;
+            const res    = await axios.post(base_url + `api/api_sources/update/`, formData, config);
             
             setAddMessage({
                               show   : true,
                               variant: 'success',
-                              heading: 'Fixed Value Update Message!',
-                              message: `Fixed Value, ${fxd_name} has been Updated Successfully`
+                              heading: 'Data Update Message!',
+                              message: `Api Source, ${fxd_name} has been Updated Successfully`
                           });
             fetchData();
         } catch (err) {
             setAddMessage({
                               show   : true,
                               variant: 'danger',
-                              heading: 'Fixed Value Update Error!',
-                              message: 'Fixed Value is not Updated',
+                              heading: 'Data Update Error!',
+                              message: 'Api Source is not Updated',
                           });
         }
     }
@@ -199,7 +193,7 @@ const FixedValuesIndex = () => {
                 </div>
                 
                 <div className="text-center pb-3">
-                    <h2>Fixed Value Information</h2>
+                    <h2>Api Source Information</h2>
                 </div>
                 
                 <div className="row pb-3 custom-border-bottom">
@@ -208,7 +202,7 @@ const FixedValuesIndex = () => {
                             <div className="col-md-4">
                                 <Form.Group controlId="formName">
                                     <Form.Label>Name</Form.Label>
-                                    <Form.Control type="text" name="discount_name" value={discount_name}
+                                    <Form.Control type="text" name="api_code" value={api_code}
                                                   onChange={e => onChange(e)}
                                                   placeholder="Enter name"/>
                                 </Form.Group>
@@ -216,47 +210,21 @@ const FixedValuesIndex = () => {
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Code</Form.Label>
-                                    <Form.Control type="text" name="discount_code" value={discount_code}
+                                    <Form.Control type="text" name="api_name" value={api_name}
                                                   onChange={e => onChange(e)}
                                                   placeholder="Enter Code" required/>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
-                                    <Form.Label>Amount</Form.Label>
-                                    <Form.Control type="text" name="discount" value={discount}
-                                                  onChange={e => onChange(e)} data-number={'float_only'}
-                                                  placeholder="Enter discount" required/>
+                                    <Form.Label>End Point</Form.Label>
+                                    <Form.Control type="text" name="end_point" value={end_point}
+                                                  onChange={e => onChange(e)}
+                                                  placeholder="Enter End Point" required/>
                                 </Form.Group>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group controlId="discount_unit">
-                                    <Form.Label>Unit</Form.Label>
-                                    <select className="form-control" name="discount_unit" value={discount_unit}
-                                            onChange={e => onChange(e)}>
-                                        <Fragment>
-                                            <option>Select Unit</option>
-                                            <option value='ps' key='ps'>Percentage</option>
-                                            <option value='fxd' key='fxd'>Fixed Price</option>
-                                        </Fragment>
-                                    </select>
-                                </Form.Group>
-                            </div>
-                            <div className="col-md-4">
-                                <Form.Group controlId="discount_type">
-                                    <Form.Label>Type</Form.Label>
-                                    <select className="form-control" name="discount_type" value={discount_type}
-                                            onChange={e => onChange(e)}>
-                                        <Fragment>
-                                            <option>Select Type</option>
-                                            <option value='d' key='d'>Discount</option>
-                                            <option value='a' key='a'>Addition</option>
-                                        </Fragment>
-                                    </select>
-                                </Form.Group>
-                            </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="status_id">
                                     <Form.Label>Status</Form.Label>
@@ -292,25 +260,19 @@ const FixedValuesIndex = () => {
                                 <td>Serial No</td>
                                 <td>Name</td>
                                 <td>Code</td>
-                                <td>Amount</td>
-                                <td>Unit</td>
-                                <td>Type</td>
+                                <td>End Point</td>
                                 <td>Status</td>
                                 <td>Action</td>
                             </tr>
                             </thead>
                             <tbody>
-                            {fixed_values.length > 0 ? <Fragment>
-                                {fixed_values.map((value, key) => (
+                            {data_list.length > 0 ? <Fragment>
+                                {data_list.map((value, key) => (
                                     <tr key={key}>
                                         <td>{key + 1}</td>
-                                        <td>{value.discount_name}</td>
-                                        <td>{value.discount_code}</td>
-                                        <td>{value.discount}</td>
-                                        <td>
-                                            {(value.discount_unit) === 'ps' ? 'Percentage' : 'Fixed'}
-                                        </td>
-                                        <td>{(value.discount_type) === 'd' ? 'Discount' : 'Addition'}</td>
+                                        <td>{value.api_code}</td>
+                                        <td>{value.api_name}</td>
+                                        <td>{value.end_point}</td>
                                         <td>{value.status.status_name}</td>
                                         <td className="d-flex justify-content-center">
                                             <button onClick={e => setDataForUpdate(value.id)} className="btn btn-sm btn-info">
@@ -319,7 +281,7 @@ const FixedValuesIndex = () => {
                                             <Button className="btn btn-sm btn-danger ml-2" onClick={() => {
                                                 setDeleteInfo({
                                                                   id  : value.id,
-                                                                  name: value.discount_name
+                                                                  name: value.api_name
                                                               });
                                                 
                                                 setAddMessage({
@@ -344,7 +306,7 @@ const FixedValuesIndex = () => {
                 
                 <Modal show={modalShow} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Fixed Values Information Remove</Modal.Title>
+                        <Modal.Title>Api Source Remove</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Are you sure you want to delete <span>{deleteInfo.name}</span> from here.</Modal.Body>
                     <Modal.Footer>
@@ -364,4 +326,4 @@ const FixedValuesIndex = () => {
     </Fragment>
 };
 
-export default FixedValuesIndex;
+export default ApiSourcesIndex;

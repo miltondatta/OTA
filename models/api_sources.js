@@ -4,10 +4,16 @@ module.exports = (sequelize, DataTypes) => {
         api_code : DataTypes.STRING,
         api_name : DataTypes.STRING,
         end_point: DataTypes.STRING,
-        status_id: DataTypes.INTEGER
+        status_id    : {
+            type      : DataTypes.INTEGER,
+            references: {
+                model: 'status',
+                key  : 'id'
+            }
+        }
     }, {});
     api_sources.associate = function (models) {
-        // associations can be defined here
+        api_sources.belongsTo(models.status, {foreignKey: 'status_id', as: 'status'})
     };
     return api_sources;
 };

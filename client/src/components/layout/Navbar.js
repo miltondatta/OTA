@@ -48,6 +48,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/users_index'} className={'dropdown-item'}>Users</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/airports'} className={'dropdown-item'}>Airports</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/fixed_values'} className={'dropdown-item'}>Fixed Values</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/api_sources'} className={'dropdown-item'}>Api Sources</Link></NavDropdown.Item>
                         </NavDropdown>
                         }
                         

@@ -33,6 +33,7 @@ import FixedValuesIndex from "./components/fixed-values/FixedValuesIndex";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications/lib/notifications.css';
 import './assets/css/common.css';
+import ApiSourcesIndex  from "./components/api-sources/ApiSourcesIndex";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -79,6 +80,7 @@ function App() {
                 <Route exact path='/airport/edit/:id' component={AirportEdit}/>
                 <Route exact path='/airport_add' component={AirportAdd}/>
                 <Route exact path='/fixed_values' component={FixedValuesIndex}/>
+                <Route exact path='/api_sources' component={ApiSourcesIndex}/>
                 <Footer/>
             </Router>
         </Provider>

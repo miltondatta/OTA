@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
-const dotenv = require('dotenv');
+const app     = express();
+const dotenv  = require('dotenv');
 dotenv.config();
 
 // DB Connection
@@ -12,38 +12,16 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-
-//Define Users Routes
-const users = require('./routes/api/users');
-
-//Define Contact Routes
-const contact = require('./routes/api/contact');
-
-//Define Country Routes
-const country = require('./routes/api/country');
-
-//Define Passenger Routes
-const passenger = require('./routes/api/passenger');
-
-// Define Airline Routes
-const Airline = require('./routes/api/airline');
-
-// Define Port Routes
-const Airport = require('./routes/api/airport');
-
-// Define Fixed Values Routes
+const users        = require('./routes/api/users');
+const contact      = require('./routes/api/contact');
+const country      = require('./routes/api/country');
+const passenger    = require('./routes/api/passenger');
+const Airline      = require('./routes/api/airline');
+const Airport      = require('./routes/api/airport');
 const Fixed_values = require('./routes/api/fixed_values');
-
-//Define AIR Routes 
-const air = require('./routes/api/air');
-
-//Define Hotels Routes
-
-//Define Cruise Routes
-
-//Define GLOBAL Routes
-const global = require('./routes/api/global');
-
+const Api_sources  = require('./routes/api/api_sources');
+const air          = require('./routes/api/air');
+const global       = require('./routes/api/global');
 
 //Use All Routes
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
@@ -55,10 +33,10 @@ app.use('/api/airline/', Airline);
 app.use('/api/airport/', Airport);
 app.use('/api/airport/', Airport);
 app.use('/api/fixed_values/', Fixed_values);
+app.use('/api/api_sources/', Api_sources);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);
-
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
