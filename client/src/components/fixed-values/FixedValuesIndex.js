@@ -207,7 +207,7 @@ const FixedValuesIndex = () => {
                         <div className="row">
                             <div className="col-md-4">
                                 <Form.Group controlId="formName">
-                                    <Form.Label>Discount Name</Form.Label>
+                                    <Form.Label>Name</Form.Label>
                                     <Form.Control type="text" name="discount_name" value={discount_name}
                                                   onChange={e => onChange(e)}
                                                   placeholder="Enter name"/>
@@ -215,7 +215,7 @@ const FixedValuesIndex = () => {
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
-                                    <Form.Label>Discount Code</Form.Label>
+                                    <Form.Label>Code</Form.Label>
                                     <Form.Control type="text" name="discount_code" value={discount_code}
                                                   onChange={e => onChange(e)}
                                                   placeholder="Enter Code" required/>
@@ -223,7 +223,7 @@ const FixedValuesIndex = () => {
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
-                                    <Form.Label>Discount</Form.Label>
+                                    <Form.Label>Amount</Form.Label>
                                     <Form.Control type="text" name="discount" value={discount}
                                                   onChange={e => onChange(e)} data-number={'float_only'}
                                                   placeholder="Enter discount" required/>
@@ -233,11 +233,11 @@ const FixedValuesIndex = () => {
                         <div className="row">
                             <div className="col-md-4">
                                 <Form.Group controlId="discount_unit">
-                                    <Form.Label>Discount Unit</Form.Label>
+                                    <Form.Label>Unit</Form.Label>
                                     <select className="form-control" name="discount_unit" value={discount_unit}
                                             onChange={e => onChange(e)}>
                                         <Fragment>
-                                            <option>Select Discount Unit</option>
+                                            <option>Select Unit</option>
                                             <option value='ps' key='ps'>Percentage</option>
                                             <option value='fxd' key='fxd'>Fixed Price</option>
                                         </Fragment>
@@ -246,11 +246,11 @@ const FixedValuesIndex = () => {
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="discount_type">
-                                    <Form.Label>Discount Type</Form.Label>
+                                    <Form.Label>Type</Form.Label>
                                     <select className="form-control" name="discount_type" value={discount_type}
                                             onChange={e => onChange(e)}>
                                         <Fragment>
-                                            <option>Select Discount Type</option>
+                                            <option>Select Type</option>
                                             <option value='d' key='d'>Discount</option>
                                             <option value='a' key='a'>Addition</option>
                                         </Fragment>
@@ -290,11 +290,11 @@ const FixedValuesIndex = () => {
                             <thead className="font-weight-bold">
                             <tr>
                                 <td>Serial No</td>
-                                <td>Discount Name</td>
-                                <td>Discount Code</td>
-                                <td>Discount</td>
-                                <td>Discount Unit</td>
-                                <td>Discount Type</td>
+                                <td>Name</td>
+                                <td>Code</td>
+                                <td>Amount</td>
+                                <td>Unit</td>
+                                <td>Type</td>
                                 <td>Status</td>
                                 <td>Action</td>
                             </tr>
