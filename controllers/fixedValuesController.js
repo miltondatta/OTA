@@ -1,17 +1,15 @@
 const FixedValues = require('../models').fixed_values;
 const moment      = require("moment");
-const status_model = require('../models').status;
+const status      = require('../models').status;
 
 exports.index = async (req, res) => {
     try {
         const fixed_val = await FixedValues.findAll(
             {
-                attributes                    : ["id", "discount_name", "discount_code", "discount", "discount_unit", "discount_type", "status_id"],
-                /*include                       : [{
-                    model     : status_model,
-                    attributes: ["name"]
-                }
-                ],*/
+                attributes: ["id", "discount_name", "discount_code", "discount", "discount_unit",
+                             "discount_type", "status_id"],
+                include   : 'status',
+                
                 order: [['id', 'DESC']], limit: 10
             }
         );
@@ -44,7 +42,6 @@ exports.store = async (req, res) => {
             status_id    : status_id,
         };
         const status          = await FixedValues.create(newFixed_values);
-        console.log(status,'status data');
         if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'New Fixed Information saved successfully.'});

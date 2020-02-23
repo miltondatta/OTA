@@ -25,10 +25,10 @@ module.exports = {
                 type        : Sequelize.INTEGER,
                 allowNull   : false,
                 defaultValue: 3,
-                /*references: {
+                references  : {
                     model: 'status',
-                    key: 'id'
-                }*/
+                    key  : 'id'
+                }
             },
             createdAt       : {
                 allowNull   : false,

@@ -167,7 +167,7 @@ const FixedValuesIndex = () => {
                 }
             };
             let fxd_name = formData.discount_name;
-            const res = await axios.post(base_url + `api/fixed_values/update/`, formData, config);
+            const res    = await axios.post(base_url + `api/fixed_values/update/`, formData, config);
             
             setAddMessage({
                               show   : true,
@@ -308,10 +308,10 @@ const FixedValuesIndex = () => {
                                         <td>{value.discount_code}</td>
                                         <td>{value.discount}</td>
                                         <td>
-                                            {(value.discount_unit)== 'ps'?'Percentage':'Fixed'}
+                                            {(value.discount_unit) === 'ps' ? 'Percentage' : 'Fixed'}
                                         </td>
-                                        <td>{(value.discount_type)== 'd'?'Discount':'Addition'}</td>
-                                        <td>{value.status_id}</td>
+                                        <td>{(value.discount_type) === 'd' ? 'Discount' : 'Addition'}</td>
+                                        <td>{value.status.status_name}</td>
                                         <td className="d-flex justify-content-center">
                                             <button onClick={e => setDataForUpdate(value.id)} className="btn btn-sm btn-info">
                                                 <FontAwesomeIcon icon={faEdit}/>

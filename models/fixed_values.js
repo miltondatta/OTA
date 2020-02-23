@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => {
             values: ['a', 'd']
         },
         status_id    : {
-            type:DataTypes.INTEGER,
-            /*references: {
-                model: status,
-                key: 'id'
-            }*/
+            type      : DataTypes.INTEGER,
+            references: {
+                model: 'status',
+                key  : 'id'
+            }
         }
     }, {});
     fixed_values.associate = function (models) {
-        // associations can be defined here
+        fixed_values.belongsTo(models.status, {foreignKey: 'status_id', as: 'status'})
     };
     return fixed_values;
 };
