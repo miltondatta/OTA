@@ -229,7 +229,7 @@ const AirportAdd = ({history, match}) => {
                                         </div>
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIso_country">
-                                                <Form.Label>Iso Country</Form.Label>
+                                                <Form.Label>ISO Country</Form.Label>
                                                 <select className="form-control" name="iso_country" value={iso_country}
                                                         onChange={e => onChange(e)}>
                                                     {countryList.length > 0 ?
@@ -249,10 +249,10 @@ const AirportAdd = ({history, match}) => {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIso_region">
-                                                <Form.Label>Iso_region</Form.Label>
+                                                <Form.Label>ISO Region</Form.Label>
                                                 <Form.Control type="text" name="iso_region" value={iso_region}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Iso_region"/>
+                                                              placeholder="Enter ISO Region"/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
@@ -276,7 +276,7 @@ const AirportAdd = ({history, match}) => {
                                         </div>
                                         <div className="col-md-6">
                                             <Form.Group controlId="formGps_code">
-                                                <Form.Label>Gps Code</Form.Label>
+                                                <Form.Label>GPS Code</Form.Label>
                                                 <Form.Control type="text" name="gps_code" value={gps_code}
                                                               onChange={e => onChange(e)}
                                                               placeholder="Enter Gps Code" required/>
@@ -287,10 +287,10 @@ const AirportAdd = ({history, match}) => {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIata_code">
-                                                <Form.Label>Iata Code</Form.Label>
+                                                <Form.Label>IATA Code</Form.Label>
                                                 <Form.Control type="text" name="iata_code" value={iata_code}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Iata Code"/>
+                                                              placeholder="Enter IATA Code"/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">

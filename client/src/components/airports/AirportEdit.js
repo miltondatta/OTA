@@ -249,10 +249,10 @@ const UserEdit = ({history, match}) => {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <Form.Group controlId="formLatitude_deg">
-                                                <Form.Label>Latitude_deg</Form.Label>
+                                                <Form.Label>Latitude Deg</Form.Label>
                                                 <Form.Control type="text" name="latitude_deg" value={latitude_deg}
                                                               onChange={e => onChange(e)} data-number={'float_only'}
-                                                              placeholder="Enter latitude_deg" required/>
+                                                              placeholder="Enter latitude nDeg" required/>
                                             </Form.Group>
                                         </div>
                                         
@@ -278,7 +278,7 @@ const UserEdit = ({history, match}) => {
                                         </div>
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIso_country">
-                                                <Form.Label>Iso Country</Form.Label>
+                                                <Form.Label>ISO Country</Form.Label>
                                                 <select className="form-control" name="iso_country" value={iso_country}
                                                         onChange={e => onChange(e)}>
                                                     {countryList.length > 0 ?
@@ -298,10 +298,10 @@ const UserEdit = ({history, match}) => {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIso_region">
-                                                <Form.Label>Iso_region</Form.Label>
+                                                <Form.Label>ISO Region</Form.Label>
                                                 <Form.Control type="text" name="iso_region" value={iso_region}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Iso_region"/>
+                                                              placeholder="Enter ISO Region"/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
@@ -336,10 +336,10 @@ const UserEdit = ({history, match}) => {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <Form.Group controlId="formIata_code">
-                                                <Form.Label>Iata Code</Form.Label>
+                                                <Form.Label>IATA Code</Form.Label>
                                                 <Form.Control type="text" name="iata_code" value={iata_code}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Iata Code"/>
+                                                              placeholder="Enter IATA Code"/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">

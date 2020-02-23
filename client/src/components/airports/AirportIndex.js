@@ -31,7 +31,7 @@ const AirportIndex = () => {
     const getFilteredData = async () => {
         
         const filter_data = {iso_country: filterState.country};
-        const result      = await axios.post(base_url +  `api/airport/getAirportByCountry`, filter_data);
+        const result      = await axios.post(base_url + `api/airport/getAirportByCountry`, filter_data);
         setairportData(result.data);
     };
     
@@ -72,7 +72,7 @@ const AirportIndex = () => {
                                   });
         }
         localStorage.removeItem('airport_add_message');
-    
+        
         const airport_update_message = localStorage.getItem('airport_update_message');
         if (airport_update_message) {
             setairportDataMessage({
@@ -171,22 +171,22 @@ const AirportIndex = () => {
                                 <td>Ident</td>
                                 <td>Type</td>
                                 <td>Name</td>
-                                <td>Latitude_deg</td>
-                                <td>Longitude_deg</td>
-                                <td>Elevation_ft</td>
+                                <td>Latitude Deg</td>
+                                <td>Longitude Deg</td>
+                                <td>Elevation FT</td>
                                 <td>Continent</td>
-                                <td>Iso_country</td>
-                                <td>Iso_region</td>
+                                <td>ISO Country</td>
+                                <td>ISO Region</td>
                                 <td>Municipality</td>
-                                <td>Scheduled_service</td>
-                                <td>Gps_code</td>
-                                <td>Iata_code</td>
-                                <td>Local_code</td>
+                                <td>Scheduled Service</td>
+                                <td>GPS Code</td>
+                                <td>IATA Code</td>
+                                <td>Local Code</td>
                                 <td>Home_link</td>
-                                <td>Wikipedia_link</td>
+                                <td>Wikipedia Link</td>
                                 <td>Keywords</td>
                                 <td>Score</td>
-                                <td>Last_updated</td>
+                                <td>Last Updated</td>
                                 <td>Action</td>
                             </tr>
                             </thead>
