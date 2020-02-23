@@ -94,7 +94,7 @@ const FixedValuesIndex = () => {
                               show   : true,
                               variant: 'success',
                               heading: 'Fixed Value Delete Message!',
-                              message: "Fixed Value Deleted Successfully"
+                              message: `Fixed Value ${deleteInfo.name} has been deleted.`
                           });
             
             fetchData();
@@ -136,13 +136,14 @@ const FixedValuesIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
+            let fxd_name = formData.discount_name;
             const res    = await axios.post(`/api/fixed_values/store/`, formData, config);
             
             setAddMessage({
                               show    : true,
                               variant : 'success',
                               headding: 'Fixed Value Add!',
-                              message : 'New Fixed Value Added!'
+                              message : `New Fixed Value, ${fxd_name} has been Added!`
                           });
             
             resetFormData();
@@ -165,14 +166,14 @@ const FixedValuesIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            
+            let fxd_name = formData.discount_name;
             const res = await axios.post(base_url + `api/fixed_values/update/`, formData, config);
             
             setAddMessage({
                               show   : true,
                               variant: 'success',
                               heading: 'Fixed Value Update Message!',
-                              message: "Fixed Value Updated Successfully"
+                              message: `Fixed Value, ${fxd_name} has been Updated Successfully`
                           });
             fetchData();
         } catch (err) {
