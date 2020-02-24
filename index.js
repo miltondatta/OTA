@@ -17,11 +17,12 @@ const contact      = require('./routes/api/contact');
 const country      = require('./routes/api/country');
 const passenger    = require('./routes/api/passenger');
 const Airline      = require('./routes/api/airline');
+const air          = require('./routes/api/air');
+const global       = require('./routes/api/global');
 const Airport      = require('./routes/api/airport');
 const Fixed_values = require('./routes/api/fixed_values');
 const Api_sources  = require('./routes/api/api_sources');
-const air          = require('./routes/api/air');
-const global       = require('./routes/api/global');
+const ConfPromo    = require('./routes/api/configure_promotion');
 
 //Use All Routes
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
@@ -34,6 +35,7 @@ app.use('/api/airport/', Airport);
 app.use('/api/airport/', Airport);
 app.use('/api/fixed_values/', Fixed_values);
 app.use('/api/api_sources/', Api_sources);
+app.use('/api/configure_promotion/', ConfPromo);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);

@@ -8,32 +8,35 @@ import store                            from './stores';
 import PrivateRoute                     from "./utils/private_route/private_route";
 
 // Component
-import Navbar           from './components/layout/Navbar';
-import Landing          from './components/layout/Landing';
-import Footer           from './components/layout/Footer';
-import Login            from './components/auth/Login';
-import Register         from './components/auth/Register';
-import FlightList       from './components/flights/FlightList';
-import FlightPayment    from './components/payments/FlightPayment';
-import Contact          from "./components/contact/Contact";
-import Profile          from "./components/profile/Profile";
-import Verification     from "./components/profile/Verification";
-import PaymentInfo      from "./components/payment-info/PaymentInfo";
-import Airline          from "./components/airline/Airline";
-import AirlineAdd       from "./components/airline/AirlineAdd";
-import AirlineEdit      from "./components/airline/AirlineEdit";
-import UserIndex        from "./components/users/UserIndex";
-import UserEdit         from "./components/users/UserEdit";
-import AirportIndex     from "./components/airports/AirportIndex";
-import AirportEdit      from "./components/airports/AirportEdit";
-import AirportAdd       from "./components/airports/AirportAdd";
-import FixedValuesIndex from "./components/fixed-values/FixedValuesIndex";
+import Navbar                      from './components/layout/Navbar';
+import Landing                     from './components/layout/Landing';
+import Footer                      from './components/layout/Footer';
+import Login                       from './components/auth/Login';
+import Register                    from './components/auth/Register';
+import FlightList                  from './components/flights/FlightList';
+import FlightPayment               from './components/payments/FlightPayment';
+import Contact                     from "./components/contact/Contact";
+import Profile                     from "./components/profile/Profile";
+import Verification                from "./components/profile/Verification";
+import PaymentInfo                 from "./components/payment-info/PaymentInfo";
+import Airline                     from "./components/airline/Airline";
+import AirlineAdd                  from "./components/airline/AirlineAdd";
+import AirlineEdit                 from "./components/airline/AirlineEdit";
+import UserIndex                   from "./components/users/UserIndex";
+import UserEdit                    from "./components/users/UserEdit";
+import AirportIndex                from "./components/airports/AirportIndex";
+import AirportEdit                 from "./components/airports/AirportEdit";
+import AirportAdd                  from "./components/airports/AirportAdd";
+import FixedValuesIndex            from "./components/fixed-values/FixedValuesIndex";
+import ApiSourcesIndex             from "./components/api-sources/ApiSourcesIndex";
+import PromotionConfigurationIndex from "./components/promotions/PromotionConfigurationIndex";
+
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications/lib/notifications.css';
 import './assets/css/common.css';
-import ApiSourcesIndex  from "./components/api-sources/ApiSourcesIndex";
+
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -81,6 +84,7 @@ function App() {
                 <Route exact path='/airport_add' component={AirportAdd}/>
                 <Route exact path='/fixed_values' component={FixedValuesIndex}/>
                 <Route exact path='/api_sources' component={ApiSourcesIndex}/>
+                <Route exact path='/configure_promotion' component={PromotionConfigurationIndex}/>
                 <Footer/>
             </Router>
         </Provider>
