@@ -19,7 +19,7 @@ class SliderComponent extends Component {
                         <div className="inner">
                             <h1>{article.title}</h1>
                             <p>{article.description}</p>
-                            <button>{article.button}</button>
+                            <button className="slider-button">{article.button}</button>
                         </div>
                     </div>)}
             </Slider>

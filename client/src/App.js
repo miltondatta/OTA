@@ -40,7 +40,6 @@ import './assets/css/common.css';
 
 // Check for token
 if (localStorage.jwtToken) {
-    console.log("jwt token");
     // Set auth token header auth
     setAuthToken(localStorage.jwtToken);
     // Decode token and get user info and exp

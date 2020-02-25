@@ -5,13 +5,14 @@ import {faEdit, faTrashAlt}                   from "@fortawesome/free-solid-svg-
 import {FontAwesomeIcon}                      from "@fortawesome/react-fontawesome";
 import axios                                  from 'axios';
 import moment                                 from 'moment';
-
+import DatePicker                             from 'react-datepicker2';
 // Import Css
 import '../../assets/css/airline.css';
 import Alerts                                 from "../alert/alerts";
-import {base_url}                             from "../../utils/Urls";
+import {base_url, login}                      from "../../utils/Urls";
 import {validateInput}                        from "../../utils/funcitons";
 import {func}                                 from "prop-types";
+import TimePicker                             from 'react-time-picker';
 
 const PromotionConfigurationIndex = () => {
     const [data_list, set_data_list] = useState([]);
@@ -25,6 +26,8 @@ const PromotionConfigurationIndex = () => {
                                                      message: '',
                                                      disable: false
                                                  });
+    
+    const [apiSources, setapiSources] = useState([]);
     
     const {show, variant, heading, message} = addMessage;
     
@@ -41,9 +44,14 @@ const PromotionConfigurationIndex = () => {
         set_data_list(result.data);
     };
     
+    const fetchApiSourcesList = async () => {
+        const res = await axios.get(base_url + `api/api_sources/all`);
+        setapiSources(res.data);
+    };
+    
     useEffect(() => {
         fetchData();
-        
+        fetchApiSourcesList();
     }, []);
     
     const [formData, setFormData] = useState({
@@ -77,6 +85,9 @@ const PromotionConfigurationIndex = () => {
               travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class, user_group_id, user_id, api_source_id,
               promo_type, value_type, value, max_amount, status_id,
           } = formData;
+    
+    const booking_list = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+                          "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     
     const onChange = e => {
         let valid = validateInput(e);
@@ -267,7 +278,7 @@ const PromotionConfigurationIndex = () => {
                               message: 'Api Source is not Updated',
                           });
         }
-    }
+    };
     
     return <Fragment>
         <div className="user-area">
@@ -351,34 +362,58 @@ const PromotionConfigurationIndex = () => {
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_from">
                                     <Form.Label>Issue Date From</Form.Label>
-                                    <Form.Control type="text" name="issue_date_from" value={issue_date_from}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Select Issue Date"/>
+                                    <DatePicker timePicker={false}
+                                                placeholder="e.g. 2020/03/03/"
+                                                name="issue_date_from"
+                                                id="issue_date_from"
+                                                className="form-control"
+                                                inputFormat="DD/MM/YYYY"
+                                                value={issue_date_from}
+                                                onChange={issue_date_from => setFormData({...formData, issue_date_from: issue_date_from})}
+                                    />
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_to">
                                     <Form.Label>Issue Date To</Form.Label>
-                                    <Form.Control type="text" name="issue_date_to" value={issue_date_to}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Select Issue Date"/>
+                                    <DatePicker timePicker={false}
+                                                placeholder="e.g. 2020/03/03/"
+                                                name="issue_date_to"
+                                                id="issue_date_to"
+                                                className="form-control"
+                                                inputFormat="DD/MM/YYYY"
+                                                value={issue_date_to}
+                                                onChange={issue_date_to => setFormData({...formData, issue_date_to: issue_date_to})}
+                                    />
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="travel_date_from">
                                     <Form.Label>Travel Date From</Form.Label>
-                                    <Form.Control type="text" name="travel_date_from" value={travel_date_from}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Select Travel Date"/>
+                                    <DatePicker timePicker={false}
+                                                placeholder="e.g. 2020/03/03/"
+                                                name="travel_date_from"
+                                                id="travel_date_from"
+                                                className="form-control"
+                                                inputFormat="DD/MM/YYYY"
+                                                value={travel_date_from}
+                                                onChange={travel_date_from => setFormData({...formData, travel_date_from: travel_date_from})}
+                                    />
                                 </Form.Group>
                             </div>
                             
                             <div className="col-md-3">
                                 <Form.Group controlId="travel_date_to">
                                     <Form.Label>Travel Date To</Form.Label>
-                                    <Form.Control type="text" name="travel_date_to" value={travel_date_to}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Select Travel Date"/>
+                                    <DatePicker timePicker={false}
+                                                placeholder="e.g. 2020/03/03/"
+                                                name="travel_date_to"
+                                                id="travel_date_to"
+                                                className="form-control"
+                                                inputFormat="DD/MM/YYYY"
+                                                value={travel_date_to}
+                                                onChange={travel_date_to => setFormData({...formData, travel_date_to: travel_date_to})}
+                                    />
                                 </Form.Group>
                             </div>
                         </div>
@@ -387,17 +422,25 @@ const PromotionConfigurationIndex = () => {
                             <div className="col-md-3">
                                 <Form.Group controlId="time_from">
                                     <Form.Label>Flight Time From</Form.Label>
-                                    <Form.Control type="text" name="time_from" value={time_from}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Select Time"/>
+                                    <TimePicker
+                                        className="form-control"
+                                        value={time_from}
+                                        id="time_from"
+                                        onChange={time_from => setFormData({...formData, time_from: time_from})}
+                                    />
+                                
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_to">
                                     <Form.Label>Flight Time To</Form.Label>
-                                    <Form.Control type="text" name="time_to" value={time_to}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Select Time"/>
+                                    <TimePicker
+                                        className="form-control"
+                                        value={time_to}
+                                        id="time_to"
+                                        onChange={time_to => setFormData({...formData, time_to: time_to})}
+                                    />
+                                
                                 </Form.Group>
                             </div>
                             
@@ -423,15 +466,15 @@ const PromotionConfigurationIndex = () => {
                                             onChange={e => onChange(e)}>
                                         <Fragment>
                                             <option>Select Booking Class</option>
-                                            <option value='A' key='A'>A</option>
-                                            <option value='B' key='B'>B</option>
-                                            <option value='C' key='C'>C</option>
+                                            {booking_list.map((value) => {
+                                                return <option value={value} key={value}>{value}</option>
+                                            })}
                                         </Fragment>
                                     </select>
                                 </Form.Group>
                             </div>
                         </div>
-    
+                        
                         <div className="row">
                             <div className="col-md-3">
                                 <Form.Group controlId="user_group_id">
@@ -464,11 +507,15 @@ const PromotionConfigurationIndex = () => {
                                             onChange={e => onChange(e)}>
                                         <Fragment>
                                             <option>Select Api Source</option>
+                                            {apiSources.map((value, key) => (
+                                                <option value={value.api_name}
+                                                        key={key}>{value.api_name}</option>
+                                            ))}
                                         </Fragment>
                                     </select>
                                 </Form.Group>
                             </div>
-    
+                            
                             <div className="col-md-3">
                                 <Form.Group controlId="status_id">
                                     <Form.Label>Status</Form.Label>
@@ -515,16 +562,16 @@ const PromotionConfigurationIndex = () => {
                                 <Form.Group controlId="value">
                                     <Form.Label>Value</Form.Label>
                                     <Form.Control type="text" name="value" value={value}
-                                                  onChange={e => onChange(e)}
+                                                  onChange={e => onChange(e)} data-number={'float_only'}
                                                   placeholder="Enter Value"/>
                                 </Form.Group>
                             </div>
-    
+                            
                             <div className="col-md-3">
                                 <Form.Group controlId="max_amount">
                                     <Form.Label>Maximum Amount</Form.Label>
                                     <Form.Control type="text" name="max_amount" value={max_amount}
-                                                  onChange={e => onChange(e)}
+                                                  onChange={e => onChange(e)} data-number={'float_only'}
                                                   placeholder="Enter Maximum Amount"/>
                                 </Form.Group>
                             </div>

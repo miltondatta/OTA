@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {Button, ButtonToolbar, Form}          from "react-bootstrap";
+import {Button, Form}          from "react-bootstrap";
 import axios                                  from "axios";
 import {withRouter}                           from 'react-router-dom';
 
@@ -10,8 +10,7 @@ import Alerts          from "../alert/alerts";
 import {base_url}      from "../../utils/Urls";
 import {validateInput} from "../../utils/funcitons";
 
-const AirportAdd = ({history, match}) => {
-    const [airportIndex, setAirportIndex] = useState([]);
+const AirportAdd = ({history}) => {
     const [countryList, setcountryList]   = useState([]);
     const [addMessage, setAddMessage]     = useState({
                                                          show   : false,

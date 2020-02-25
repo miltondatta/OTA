@@ -29,9 +29,9 @@ body {
     }
 }
 
-.selectToday {
+/*.selectToday {
     display: none !important;
-}
+}*/
 
 .custom-border-bottom {
     border-bottom: 1px solid #dadada;
@@ -40,4 +40,8 @@ body {
 .container-fluid {
     padding-left: 100px !important;
     padding-right: 100px !important;
+}
+
+.react-time-picker__wrapper {
+    border: none;
 }
