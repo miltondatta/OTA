@@ -95,7 +95,7 @@ const PromotionConfigurationIndex = () => {
                                                  value_type       : '',
                                                  value            : '',
                                                  max_amount       : '',
-                                                 status_id        : '',
+                                                 status_id        : 3,
                                              });
     
     const {
@@ -245,7 +245,7 @@ const PromotionConfigurationIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            console.log(formData)
+            
             let fxd_name = formData.promotion_name;
             const res    = await axios.post(`/api/configure_promotion/store`, formData, config);
             
@@ -469,7 +469,7 @@ const PromotionConfigurationIndex = () => {
                                          </Fragment> :
                                          <option>Select Plating Carrier</option>}
                                     </select>
-                                    
+                                
                                 </Form.Group>
                             </div>
                         </div>
@@ -621,7 +621,7 @@ const PromotionConfigurationIndex = () => {
                                         <Fragment>
                                             <option>Select Api Source</option>
                                             {apiSources.map((value, key) => (
-                                                <option value={value.api_name}
+                                                <option value={value.id}
                                                         key={key}>{value.api_name}</option>
                                             ))}
                                         </Fragment>
@@ -693,7 +693,7 @@ const PromotionConfigurationIndex = () => {
                                     onClick={e => resetFormData(e)}>Reset</Button>
                             {saveButton === true ?
                              <Button variant="outline-info" className="ml-2"
-                                     onClick={e => saveFormData(e)}>Save</Button> : ""}
+                                     onClick={e => {saveFormData(e)}}>Save</Button> : ""}
                             {searchButton === true ?
                              <Button variant="outline-warning" className="ml-2"
                                      onClick={e => searchFormData(e)}>Search</Button> : ""}

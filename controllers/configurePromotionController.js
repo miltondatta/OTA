@@ -1,4 +1,4 @@
-const configPromo = require('../models').configure_promotion;
+const configPromo = require('../models').promotion_configurations;
 const moment      = require("moment");
 const status      = require('../models').status;
 
@@ -53,7 +53,7 @@ exports.store = async (req, res) => {
                   max_amount,
                   status_id
               } = req.body;
-        
+        console.log(req.body, 'line 56 status');
         const new_data_list = {
             promotion_name   : promotion_name,
             promotion_code   : promotion_code,
@@ -63,17 +63,17 @@ exports.store = async (req, res) => {
             to_city          : to_city,
             flight_type      : flight_type,
             plating_carrier  : plating_carrier,
-            issue_date_from  : issue_date_from,
-            issue_date_to    : issue_date_to,
-            travel_date_from : travel_date_from,
-            travel_date_to   : travel_date_to,
-            time_from        : time_from,
-            time_to          : time_to,
+            issue_date_from  : (issue_date_from === '') ? null : issue_date_from,
+            issue_date_to    : (issue_date_to === '') ? null : issue_date_to,
+            travel_date_from : (travel_date_from === '') ? null : travel_date_from,
+            travel_date_to   : (travel_date_to === '') ? null : travel_date_to,
+            time_from        : (time_from === '') ? null : time_from,
+            time_to          : (time_to === '') ? null : time_to,
             travel_class_id  : travel_class_id,
             booking_class    : booking_class,
             user_group_id    : user_group_id,
             user_id          : user_id,
-            api_source_id    : api_source_id,
+            api_source_id    : (api_source_id === '') ? null : api_source_id,
             promo_type       : promo_type,
             value_type       : value_type,
             value            : value,
@@ -81,10 +81,12 @@ exports.store = async (req, res) => {
             status_id        : status_id
         };
         const status        = await configPromo.create(new_data_list);
+        console.log(status, 'line 84 status');
         if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'New Promotion condition saved successfully.'});
     } catch (err) {
+        console.error(err, 'line 90 error status');
         return res.status(500).json({msg: err.errors})
     }
 };

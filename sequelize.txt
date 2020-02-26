@@ -1,7 +1,7 @@
 sequelize model:create --name user --attributes name:string,details:text
 sequelize model:generate --name user --attributes "name:string, UserId:integer,complete:boolean,body:text"
-sequelize db:migrate
 sequelize db:migrate:undo:all
+sequelize db:migrate
 sequelize db:seed
 sequelize db:seed:all
 sequelize db:seed:undo
@@ -10,6 +10,9 @@ sequelize db:seed --seed 20200108070313-status
 sequelize db:seed --seed 20301223123022-airports.js
 sequelize seed:generate --name airports
 
+sequelize db:migrate:undo:all
+sequelize db:migrate
+sequelize db:seed:all
 
 
 import {validateInput} from "../../utils/funcitons";

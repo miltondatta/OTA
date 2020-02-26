@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    const promotion_configuration     = sequelize.define('promotion_configuration', {
+    const promotion_configuration     = sequelize.define('promotion_configurations', {
         promotion_name   : DataTypes.STRING,
         promotion_code   : DataTypes.STRING,
         from_city_country: DataTypes.STRING,
@@ -17,14 +17,20 @@ module.exports = (sequelize, DataTypes) => {
         time_to          : DataTypes.TIME,
         travel_class_id  : DataTypes.STRING,
         booking_class    : DataTypes.STRING,
-        user_group_id    : DataTypes.INTEGER,
-        user_id          : DataTypes.INTEGER,
+        user_group_id    : DataTypes.STRING,
+        user_id          : DataTypes.STRING,
         api_source_id    : DataTypes.INTEGER,
         promo_type       : DataTypes.STRING,
         value_type       : DataTypes.STRING,
         value            : DataTypes.DOUBLE,
         max_amount       : DataTypes.DOUBLE,
-        status_id        : DataTypes.INTEGER,
+        status_id    : {
+            type      : DataTypes.INTEGER,
+            references: {
+                model: 'status',
+                key  : 'id'
+            }
+        }
     }, {});
     promotion_configuration.associate = function (models) {
         promotion_configuration.belongsTo(models.status, {foreignKey: 'status_id', as: 'status'})
