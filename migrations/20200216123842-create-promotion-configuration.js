@@ -2,63 +2,67 @@
 module.exports = {
     up  : (queryInterface, Sequelize) => {
         return queryInterface.createTable('promotion_configuration', {
-            id                 : {
+            id                  : {
                 allowNull    : false,
                 autoIncrement: true,
                 primaryKey   : true,
                 type         : Sequelize.INTEGER
-            }, promotion_name  : {
+            }, promotion_name   : {
                 type: Sequelize.STRING
-            }, promotion_code  : {
+            }, promotion_code   : {
                 type: Sequelize.STRING
-            }, from_city       : {
+            }, from_city_country: {
                 type: Sequelize.STRING
-            }, to_city         : {
+            }, from_city        : {
                 type: Sequelize.STRING
-            }, flight_type     : {
+            }, to_city          : {
                 type: Sequelize.STRING
-            }, plating_carrier : {
+            }, to_city_country  : {
                 type: Sequelize.STRING
-            }, issue_date_from : {
+            }, flight_type      : {
+                type: Sequelize.STRING
+            }, plating_carrier  : {
+                type: Sequelize.STRING
+            }, issue_date_from  : {
                 type: Sequelize.DATE
-            }, issue_date_to   : {
+            }, issue_date_to    : {
                 type: Sequelize.DATE
-            }, travel_date_from: {
+            }, travel_date_from : {
                 type: Sequelize.DATE
-            }, travel_date_to  : {
+            }, travel_date_to   : {
                 type: Sequelize.DATE
-            }, time_from       : {
+            }, time_from        : {
                 type: Sequelize.TIME
-            }, time_to         : {
+            }, time_to          : {
                 type: Sequelize.TIME
-            }, travel_class_id : {
+            }, travel_class_id  : {
                 type: Sequelize.STRING
-            }, booking_class   : {
+            }, booking_class    : {
                 type: Sequelize.STRING
-            }, user_group_id   : {
+            }, user_group_id    : {
                 type: Sequelize.INTEGER
-            }, user_id         : {
+            }, user_id          : {
                 type: Sequelize.INTEGER
-            }, api_source_id   : {
+            }, api_source_id    : {
                 type: Sequelize.INTEGER
-            }, promo_type      : {
+            }, promo_type       : {
                 type: Sequelize.STRING
-            }, value_type      : {
+            }, value_type       : {
                 type: Sequelize.STRING
-            }, value           : {
+            }, value            : {
                 type: Sequelize.DOUBLE
-            }, max_amount      : {
+            }, max_amount       : {
                 type: Sequelize.DOUBLE
-            }, status_id       : {
+            }, status_id        : {
                 type        : Sequelize.INTEGER,
                 allowNull   : false,
                 defaultValue: 3
             },
-            createdAt          : {
+            createdAt           : {
                 allowNull: false,
                 type     : Sequelize.DATE
             },
-            updatedAt          : {
+            updatedAt           : {
                 allowNull: false,
                 type     : Sequelize.DATE
             }

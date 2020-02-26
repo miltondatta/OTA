@@ -31,10 +31,14 @@ const PromotionConfigurationIndex = () => {
     
     const {show, variant, heading, message} = addMessage;
     
-    const [modalShow, setShow]            = useState(false);
-    const [saveButton, setSaveButton]     = useState(true);
-    const [updateButton, setUpdateButton] = useState(false);
-    const [searchButton, setSearchButton] = useState(true);
+    const [modalShow, setShow]                = useState(false);
+    const [saveButton, setSaveButton]         = useState(true);
+    const [updateButton, setUpdateButton]     = useState(false);
+    const [searchButton, setSearchButton]     = useState(true);
+    const [countryList, setcountryList]       = useState([]);
+    const [fromCityList, setfromCityList]     = useState([]);
+    const [toCityList, settoCityList]         = useState([]);
+    const [platingCarrier, setplatingCarrier] = useState([]);
     
     const handleClose = () => setShow(false);
     const handleShow  = () => setShow(true);
@@ -49,39 +53,53 @@ const PromotionConfigurationIndex = () => {
         setapiSources(res.data);
     };
     
+    const fetchCountryList = async () => {
+        const res = await axios.get(base_url + `api/country/all`);
+        setcountryList(res.data);
+    };
+    
+    const fetchPlatingCarrier = async () => {
+        const res = await axios.get(base_url + `api/airline/getFilteredAirlines`);
+        setplatingCarrier(res.data);
+    };
+    
     useEffect(() => {
         fetchData();
         fetchApiSourcesList();
+        fetchCountryList();
+        fetchPlatingCarrier();
     }, []);
     
     const [formData, setFormData] = useState({
-                                                 id              : '',
-                                                 promotion_name  : '',
-                                                 promotion_code  : '',
-                                                 from_city       : '',
-                                                 to_city         : '',
-                                                 flight_type     : '',
-                                                 plating_carrier : '',
-                                                 issue_date_from : '',
-                                                 issue_date_to   : '',
-                                                 travel_date_from: '',
-                                                 travel_date_to  : '',
-                                                 time_from       : '',
-                                                 time_to         : '',
-                                                 travel_class_id : '',
-                                                 booking_class   : '',
-                                                 user_group_id   : '',
-                                                 user_id         : '',
-                                                 api_source_id   : '',
-                                                 promo_type      : '',
-                                                 value_type      : '',
-                                                 value           : '',
-                                                 max_amount      : '',
-                                                 status_id       : '',
+                                                 id               : '',
+                                                 promotion_name   : '',
+                                                 promotion_code   : '',
+                                                 from_city_country: '',
+                                                 from_city        : '',
+                                                 to_city_country  : '',
+                                                 to_city          : '',
+                                                 flight_type      : '',
+                                                 plating_carrier  : '',
+                                                 issue_date_from  : '',
+                                                 issue_date_to    : '',
+                                                 travel_date_from : '',
+                                                 travel_date_to   : '',
+                                                 time_from        : '',
+                                                 time_to          : '',
+                                                 travel_class_id  : '',
+                                                 booking_class    : '',
+                                                 user_group_id    : '',
+                                                 user_id          : '',
+                                                 api_source_id    : '',
+                                                 promo_type       : '',
+                                                 value_type       : '',
+                                                 value            : '',
+                                                 max_amount       : '',
+                                                 status_id        : '',
                                              });
     
     const {
-              id, promotion_name, promotion_code, from_city, to_city, flight_type, plating_carrier, issue_date_from, issue_date_to,
+              id, promotion_name, promotion_code, from_city_country, from_city, to_city_country, to_city, flight_type, plating_carrier, issue_date_from, issue_date_to,
               travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class, user_group_id, user_id, api_source_id,
               promo_type, value_type, value, max_amount, status_id,
           } = formData;
@@ -96,31 +114,56 @@ const PromotionConfigurationIndex = () => {
         }
     };
     
+    const loadFromCity = lfc => {
+        getFilteredFromCityData(lfc);
+    };
+    
+    const getFilteredFromCityData = async (lfc) => {
+        setFormData({...formData, [lfc.target.name]: lfc.target.value});
+        const filter_data = {iso_country: lfc.target.value};
+        const result      = await axios.post(base_url + `api/airport/getAirportByCountry`, filter_data);
+        setfromCityList(result.data);
+    };
+    
+    const loadToCity = tfc => {
+        getFilteredToCityData(tfc);
+    };
+    
+    const getFilteredToCityData = async (tfc) => {
+        setFormData({...formData, [tfc.target.name]: tfc.target.value});
+        const filter_data = {iso_country: tfc.target.value};
+        const result      = await axios.post(base_url + `api/airport/getAirportByCountry`, filter_data);
+        settoCityList(result.data);
+        
+    };
+    
     const resetFormData = e => {
         setFormData({
-                        id              : '',
-                        promotion_name  : '',
-                        promotion_code  : '',
-                        from_city       : '',
-                        to_city         : '',
-                        flight_type     : '',
-                        plating_carrier : '',
-                        issue_date_from : '',
-                        issue_date_to   : '',
-                        travel_date_from: '',
-                        travel_date_to  : '',
-                        time_from       : '',
-                        time_to         : '',
-                        travel_class_id : '',
-                        booking_class   : '',
-                        user_group_id   : '',
-                        user_id         : '',
-                        api_source_id   : '',
-                        promo_type      : '',
-                        value_type      : '',
-                        value           : '',
-                        max_amount      : '',
-                        status_id       : '',
+                        id               : '',
+                        promotion_name   : '',
+                        promotion_code   : '',
+                        from_city_country: '',
+                        from_city        : '',
+                        to_city_country  : '',
+                        to_city          : '',
+                        flight_type      : '',
+                        plating_carrier  : '',
+                        issue_date_from  : '',
+                        issue_date_to    : '',
+                        travel_date_from : '',
+                        travel_date_to   : '',
+                        time_from        : '',
+                        time_to          : '',
+                        travel_class_id  : '',
+                        booking_class    : '',
+                        user_group_id    : '',
+                        user_id          : '',
+                        api_source_id    : '',
+                        promo_type       : '',
+                        value_type       : '',
+                        value            : '',
+                        max_amount       : '',
+                        status_id        : '',
                     });
     };
     
@@ -163,29 +206,31 @@ const PromotionConfigurationIndex = () => {
         data_list.find(item => {
             if (item.id == id) {
                 setFormData({
-                                id              : item.id,
-                                promotion_name  : item.promotion_name,
-                                promotion_code  : item.promotion_code,
-                                from_city       : item.from_city,
-                                to_city         : item.to_city,
-                                flight_type     : item.flight_type,
-                                plating_carrier : item.plating_carrier,
-                                issue_date_from : item.issue_date_from,
-                                issue_date_to   : item.issue_date_to,
-                                travel_date_from: item.travel_date_from,
-                                travel_date_to  : item.travel_date_to,
-                                time_from       : item.time_from,
-                                time_to         : item.time_to,
-                                travel_class_id : item.travel_class_id,
-                                booking_class   : item.booking_class,
-                                user_group_id   : item.user_group_id,
-                                user_id         : item.user_id,
-                                api_source_id   : item.api_source_id,
-                                promo_type      : item.promo_type,
-                                value_type      : item.value_type,
-                                value           : item.value,
-                                max_amount      : item.max_amount,
-                                status_id       : item.status_id,
+                                id               : item.id,
+                                promotion_name   : item.promotion_name,
+                                promotion_code   : item.promotion_code,
+                                from_city_country: item.from_city_country,
+                                from_city        : item.from_city,
+                                to_city          : item.to_city,
+                                to_city_country  : item.to_city_country,
+                                flight_type      : item.flight_type,
+                                plating_carrier  : item.plating_carrier,
+                                issue_date_from  : item.issue_date_from,
+                                issue_date_to    : item.issue_date_to,
+                                travel_date_from : item.travel_date_from,
+                                travel_date_to   : item.travel_date_to,
+                                time_from        : item.time_from,
+                                time_to          : item.time_to,
+                                travel_class_id  : item.travel_class_id,
+                                booking_class    : item.booking_class,
+                                user_group_id    : item.user_group_id,
+                                user_id          : item.user_id,
+                                api_source_id    : item.api_source_id,
+                                promo_type       : item.promo_type,
+                                value_type       : item.value_type,
+                                value            : item.value,
+                                max_amount       : item.max_amount,
+                                status_id        : item.status_id,
                             });
                 setUpdateButton(true);
                 setSaveButton(false);
@@ -200,14 +245,15 @@ const PromotionConfigurationIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            let fxd_name = formData.api_name;
-            const res    = await axios.post(`/api/configure_promotion/store/`, formData, config);
+            console.log(formData)
+            let fxd_name = formData.promotion_name;
+            const res    = await axios.post(`/api/configure_promotion/store`, formData, config);
             
             setAddMessage({
                               show    : true,
                               variant : 'success',
-                              headding: 'Data Add!',
-                              message : `Api Source, ${fxd_name} has been Added!`
+                              headding: 'Data Added!',
+                              message : `Promotion Name, ${fxd_name} has been Added!`
                           });
             
             resetFormData();
@@ -298,6 +344,7 @@ const PromotionConfigurationIndex = () => {
                 
                 <div className="row pb-3 custom-border-bottom">
                     <div className="col-md-12 col-sm-12 col-12 mx-auto  ">
+                        
                         <div className="row">
                             <div className="col-md-4">
                                 <Form.Group controlId="formPromotion_name">
@@ -319,22 +366,81 @@ const PromotionConfigurationIndex = () => {
                         
                         <div className="row">
                             <div className="col-md-3">
-                                <Form.Group controlId="formFrom_city">
-                                    <Form.Label>From City</Form.Label>
-                                    <Form.Control type="text" name="from_city" value={from_city}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Enter City Name"/>
+                                <Form.Group controlId="from_city_country">
+                                    <Form.Label>From City Country</Form.Label>
+                                    
+                                    <select className="form-control" name="from_city_country" value={from_city_country}
+                                            onChange={lfc => loadFromCity(lfc)}>
+                                        {countryList.length > 0 ?
+                                         <Fragment>
+                                             <option>Select Country</option>
+                                             {countryList.map((value, key) => (
+                                                 <option value={value.iso3166_1_alpha_2}
+                                                         key={key}>{value.country_name}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select Country</option>}
+                                    </select>
                                 </Form.Group>
                             </div>
-                            
+                            <div className="col-md-3">
+                                <Form.Group controlId="formFrom_city">
+                                    <Form.Label>From City</Form.Label>
+                                    
+                                    <select className="form-control" name="from_city" value={from_city}
+                                            onChange={e => onChange(e)}>
+                                        {fromCityList.length > 0 ?
+                                         <Fragment>
+                                             <option>Select From City</option>
+                                             {fromCityList.map((value, key) => (
+                                                 <option value={value.iata_code}
+                                                         key={key}>{value.municipality}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select From City</option>}
+                                    </select>
+                                
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-3">
+                                <Form.Group controlId="to_city">
+                                    <Form.Label>To City Country</Form.Label>
+                                    
+                                    <select className="form-control" name="to_city_country" value={to_city_country}
+                                            onChange={tfc => loadToCity(tfc)}>
+                                        {countryList.length > 0 ?
+                                         <Fragment>
+                                             <option>Select Country</option>
+                                             {countryList.map((value, key) => (
+                                                 <option value={value.iso3166_1_alpha_2}
+                                                         key={key}>{value.country_name}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select Country</option>}
+                                    </select>
+                                </Form.Group>
+                            </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="formTo_city">
                                     <Form.Label>To City</Form.Label>
-                                    <Form.Control type="text" name="to_city" value={to_city}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Enter City Name"/>
+                                    
+                                    <select className="form-control" name="to_city" value={to_city}
+                                            onChange={e => onChange(e)}>
+                                        {toCityList.length > 0 ?
+                                         <Fragment>
+                                             <option>Select To City</option>
+                                             {toCityList.map((value, key) => (
+                                                 <option value={value.iata_code}
+                                                         key={key}>{value.municipality}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select To City</option>}
+                                    </select>
                                 </Form.Group>
                             </div>
+                        </div>
+                        
+                        <div className="row">
                             <div className="col-md-3">
                                 <Form.Group controlId="flight_type">
                                     <Form.Label>Flight Type</Form.Label>
@@ -351,9 +457,19 @@ const PromotionConfigurationIndex = () => {
                             <div className="col-md-3">
                                 <Form.Group controlId="plating_carrier">
                                     <Form.Label>Plating Carrier</Form.Label>
-                                    <Form.Control type="text" name="plating_carrier" value={plating_carrier}
-                                                  onChange={e => onChange(e)}
-                                                  placeholder="Enter Plating Carrier Name"/>
+                                    <select className="form-control" name="plating_carrier" value={plating_carrier}
+                                            onChange={e => onChange(e)}>
+                                        {platingCarrier.length > 0 ?
+                                         <Fragment>
+                                             <option>Select Plating Carrier</option>
+                                             {platingCarrier.map((value, key) => (
+                                                 <option value={value.id}
+                                                         key={key}>{value.name}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select Plating Carrier</option>}
+                                    </select>
+                                    
                                 </Form.Group>
                             </div>
                         </div>
@@ -401,7 +517,6 @@ const PromotionConfigurationIndex = () => {
                                     />
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="travel_date_to">
                                     <Form.Label>Travel Date To</Form.Label>
@@ -443,7 +558,6 @@ const PromotionConfigurationIndex = () => {
                                 
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="travel_class_id">
                                     <Form.Label>Travel Class</Form.Label>
@@ -458,7 +572,6 @@ const PromotionConfigurationIndex = () => {
                                     </select>
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="booking_class">
                                     <Form.Label>Booking Class</Form.Label>
@@ -515,7 +628,6 @@ const PromotionConfigurationIndex = () => {
                                     </select>
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="status_id">
                                     <Form.Label>Status</Form.Label>
@@ -566,7 +678,6 @@ const PromotionConfigurationIndex = () => {
                                                   placeholder="Enter Value"/>
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="max_amount">
                                     <Form.Label>Maximum Amount</Form.Label>
