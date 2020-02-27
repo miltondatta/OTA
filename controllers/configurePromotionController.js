@@ -2,6 +2,8 @@ const configPromo = require('../models').promotion_configurations;
 const moment      = require("moment");
 const status      = require('../models').status;
 
+const validatePromotionConfigurationInput = require('../validator/promotionConfiguration');
+
 exports.index = async (req, res) => {
     try {
         const data_list = await configPromo.findAll(
@@ -20,12 +22,19 @@ exports.index = async (req, res) => {
         
         return res.status(200).json(data_list);
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Error!'});
     }
 };
 
 exports.store = async (req, res) => {
+    
+    const {errors, isValid} = validatePromotionConfigurationInput(req.body);
+    
+    // Check Validation
+    if (!isValid) {
+        return res.status(400).json({errors, isValid});
+    }
+    
     try {
         const {
                   promotion_name,
@@ -53,7 +62,7 @@ exports.store = async (req, res) => {
                   max_amount,
                   status_id
               } = req.body;
-        console.log(req.body, 'line 56 status');
+        
         const new_data_list = {
             promotion_name   : promotion_name,
             promotion_code   : promotion_code,
@@ -77,16 +86,16 @@ exports.store = async (req, res) => {
             promo_type       : promo_type,
             value_type       : value_type,
             value            : value,
-            max_amount       : max_amount,
+            max_amount       : (max_amount === '') ? null : max_amount,
             status_id        : status_id
         };
         const status        = await configPromo.create(new_data_list);
-        console.log(status, 'line 84 status');
+        
         if (!status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'New Promotion condition saved successfully.'});
     } catch (err) {
-        console.error(err, 'line 90 error status');
+        
         return res.status(500).json({msg: err.errors})
     }
 };
@@ -113,7 +122,6 @@ exports.edit = async (req, res) => {
         
         return res.status(200).json(data_list);
     } catch (err) {
-        console.error(err.message);
         return res.status(500).json({msg: 'Server Errors!'});
     }
 };

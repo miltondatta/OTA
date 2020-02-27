@@ -8,10 +8,10 @@ module.exports = {
                 primaryKey   : true,
                 type         : Sequelize.INTEGER
             }, promotion_name   : {
-                type: Sequelize.STRING,
+                type     : Sequelize.STRING,
                 allowNull: true,
             }, promotion_code   : {
-                type: Sequelize.STRING,
+                type     : Sequelize.STRING,
                 allowNull: true,
             }, from_city_country: {
                 type     : Sequelize.STRING,
@@ -65,16 +65,16 @@ module.exports = {
                 type     : Sequelize.INTEGER,
                 allowNull: true,
             }, promo_type       : {
-                type: Sequelize.STRING,
+                type     : Sequelize.STRING,
                 allowNull: true,
             }, value_type       : {
-                type: Sequelize.STRING,
+                type     : Sequelize.STRING,
                 allowNull: true,
             }, value            : {
-                type: Sequelize.DOUBLE,
+                type     : Sequelize.DOUBLE,
                 allowNull: true,
             }, max_amount       : {
-                type: Sequelize.DOUBLE,
+                type     : Sequelize.DOUBLE,
                 allowNull: true,
             }, status_id        : {
                 type        : Sequelize.INTEGER,

@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         value_type       : DataTypes.STRING,
         value            : DataTypes.DOUBLE,
         max_amount       : DataTypes.DOUBLE,
-        status_id    : {
+        status_id        : {
             type      : DataTypes.INTEGER,
             references: {
                 model: 'status',

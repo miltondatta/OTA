@@ -13,6 +13,7 @@ import {base_url, login}                      from "../../utils/Urls";
 import {validateInput}                        from "../../utils/funcitons";
 import {func}                                 from "prop-types";
 import TimePicker                             from 'react-time-picker';
+import classnames                             from 'classnames';
 
 const PromotionConfigurationIndex = () => {
     const [data_list, set_data_list] = useState([]);
@@ -39,6 +40,7 @@ const PromotionConfigurationIndex = () => {
     const [fromCityList, setfromCityList]     = useState([]);
     const [toCityList, settoCityList]         = useState([]);
     const [platingCarrier, setplatingCarrier] = useState([]);
+    const [errors, seterrors]                 = useState([]);
     
     const handleClose = () => setShow(false);
     const handleShow  = () => setShow(true);
@@ -259,12 +261,15 @@ const PromotionConfigurationIndex = () => {
             resetFormData();
             fetchData();
         } catch (err) {
-            setAddMessage({
-                              show   : true,
-                              variant: 'danger',
-                              heading: 'Add Error!',
-                              message: "Error... Please Try again. ",
-                          });
+            seterrors({...err.response.data.errors})
+            if (err.response.data.isValid) {
+                setAddMessage({
+                                  show   : true,
+                                  variant: 'danger',
+                                  heading: 'Add Error!',
+                                  message: "Error... Please Try again Later. ",
+                              });
+            }
         }
         
     };
@@ -325,7 +330,6 @@ const PromotionConfigurationIndex = () => {
                           });
         }
     };
-    
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid fixedValues-area-container">
@@ -351,7 +355,13 @@ const PromotionConfigurationIndex = () => {
                                     <Form.Label>Promotion Name</Form.Label>
                                     <Form.Control type="text" name="promotion_name" value={promotion_name}
                                                   onChange={e => onChange(e)}
-                                                  placeholder="Enter Promotion Name" required/>
+                                                  placeholder="Enter Promotion Name" required
+                                                  className={classnames('form-control', {
+                                                      'is-invalid': errors.promotion_name
+                                                  })}/>
+                                    {errors.promotion_name && (
+                                        <div className="invalid-feedback">{errors.promotion_name}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
@@ -359,7 +369,14 @@ const PromotionConfigurationIndex = () => {
                                     <Form.Label>Promotion Code</Form.Label>
                                     <Form.Control type="text" name="promotion_code" value={promotion_code}
                                                   onChange={e => onChange(e)}
-                                                  placeholder="Enter Promotion Code" required/>
+                                                  placeholder="Enter Promotion Code" required
+                                                  className={classnames('form-control', {
+                                                      'is-invalid': errors.promotion_code
+                                                  })}
+                                    />
+                                    {errors.promotion_code && (
+                                        <div className="invalid-feedback">{errors.promotion_code}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                         </div>
@@ -647,27 +664,40 @@ const PromotionConfigurationIndex = () => {
                             <div className="col-md-3">
                                 <Form.Group controlId="promo_type">
                                     <Form.Label>Promo Type</Form.Label>
-                                    <select className="form-control" name="promo_type" value={promo_type}
-                                            onChange={e => onChange(e)}>
+                                    <select name="promo_type" value={promo_type}
+                                            onChange={e => onChange(e)}
+                                            className={classnames('form-control', {
+                                                'is-invalid': errors.promo_type
+                                            })}>
                                         <Fragment>
                                             <option>Select Promo Type</option>
                                             <option value='d' key='d'>Discount</option>
                                             <option value='a' key='a'>Addition</option>
                                         </Fragment>
+                                    
                                     </select>
+                                    {errors.promo_type && (
+                                        <div className="invalid-feedback">{errors.promo_type}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="value_type">
                                     <Form.Label>Value Type</Form.Label>
-                                    <select className="form-control" name="value_type" value={value_type}
-                                            onChange={e => onChange(e)}>
+                                    <select name="value_type" value={value_type}
+                                            onChange={e => onChange(e)}
+                                            className={classnames('form-control', {
+                                                'is-invalid': errors.value_type
+                                            })}>
                                         <Fragment>
                                             <option>Select Value Type</option>
                                             <option value='ps' key='ps'>Percentage</option>
                                             <option value='fxd' key='fxd'>Fixed Price</option>
                                         </Fragment>
                                     </select>
+                                    {errors.value_type && (
+                                        <div className="invalid-feedback">{errors.value_type}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
@@ -675,7 +705,13 @@ const PromotionConfigurationIndex = () => {
                                     <Form.Label>Value</Form.Label>
                                     <Form.Control type="text" name="value" value={value}
                                                   onChange={e => onChange(e)} data-number={'float_only'}
-                                                  placeholder="Enter Value"/>
+                                                  placeholder="Enter Value"
+                                                  className={classnames('form-control', {
+                                                      'is-invalid': errors.value
+                                                  })}/>
+                                    {errors.value && (
+                                        <div className="invalid-feedback">{errors.value}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
@@ -693,7 +729,9 @@ const PromotionConfigurationIndex = () => {
                                     onClick={e => resetFormData(e)}>Reset</Button>
                             {saveButton === true ?
                              <Button variant="outline-info" className="ml-2"
-                                     onClick={e => {saveFormData(e)}}>Save</Button> : ""}
+                                     onClick={e => {
+                                         saveFormData(e)
+                                     }}>Save</Button> : ""}
                             {searchButton === true ?
                              <Button variant="outline-warning" className="ml-2"
                                      onClick={e => searchFormData(e)}>Search</Button> : ""}
@@ -713,9 +751,10 @@ const PromotionConfigurationIndex = () => {
                                 <td>Serial No</td>
                                 <td>Promotion Name</td>
                                 <td>Promotion Code</td>
-                                <td>Markup Type</td>
+                                <td>Promo Type</td>
                                 <td>Value Type</td>
                                 <td>Value</td>
+                                <td>Max Amount</td>
                                 <td>Status</td>
                                 <td>Action</td>
                             </tr>
@@ -730,6 +769,7 @@ const PromotionConfigurationIndex = () => {
                                         <td>{(value.promo_type) === 'd' ? 'Discount' : 'Addition'}</td>
                                         <td>{(value.value_type) === 'ps' ? 'Percentage' : 'Fixed'}</td>
                                         <td>{value.value}</td>
+                                        <td>{value.max_amount}</td>
                                         <td>{value.status.status_name}</td>
                                         <td className="d-flex justify-content-center">
                                             <button onClick={e => setDataForUpdate(value.id)} className="btn btn-sm btn-info">
