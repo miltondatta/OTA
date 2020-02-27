@@ -103,7 +103,7 @@ const PromotionConfigurationIndex = () => {
               travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class, user_group_id, user_id, api_source_id,
               promo_type, value_type, value, max_amount, status_id,
           } = formData;
-    
+
     const onChange = e => {
         let valid = validateInput(e);
         if (valid || valid === '') {
@@ -205,41 +205,44 @@ const PromotionConfigurationIndex = () => {
     const setDataForUpdate = async (id) => {
         const item = await axios.get(base_url + `api/configure_promotion/edit/${id}`);
         
-        const result      = await item && axios.post(base_url + `api/airport/getAirportByCountry`, item.data.from_city_count);
-        setfromCityList(result.data);
+        const from_city_lst = await axios.post(base_url + `api/airport/getAirportByCountry`, {iso_country: item.data.from_city_country});
+        setfromCityList(from_city_lst.data);
+        
+        const to_city_lst = await axios.post(base_url + `api/airport/getAirportByCountry`, {iso_country: item.data.to_city_country});
+        settoCityList(to_city_lst.data);
         
         await setFormData({
-                        id               : item.data.id,
-                        promotion_name   : item.data.promotion_name,
-                        promotion_code   : item.data.promotion_code,
-                        from_city_country: item.data.from_city_country,
-                        from_city        : item.data.from_city,
-                        to_city          : item.data.to_city,
-                        to_city_country  : item.data.to_city_country,
-                        flight_type      : item.data.flight_type,
-                        plating_carrier  : item.data.plating_carrier,
-                        issue_date_from  : item.data.issue_date_from,
-                        issue_date_to    : item.data.issue_date_to,
-                        travel_date_from : item.data.travel_date_from,
-                        travel_date_to   : item.data.travel_date_to,
-                        time_from        : item.data.time_from,
-                        time_to          : item.data.time_to,
-                        travel_class_id  : item.data.travel_class_id,
-                        booking_class    : item.data.booking_class,
-                        user_group_id    : item.data.user_group_id,
-                        user_id          : item.data.user_id,
-                        api_source_id    : item.data.api_source_id,
-                        promo_type       : item.data.promo_type,
-                        value_type       : item.data.value_type,
-                        value            : item.data.value,
-                        max_amount       : item.data.max_amount,
-                        status_id        : item.data.status_id,
-                    });
+                              id               : item.data.id,
+                              promotion_name   : item.data.promotion_name,
+                              promotion_code   : item.data.promotion_code,
+                              from_city_country: item.data.from_city_country,
+                              from_city        : item.data.from_city,
+                              to_city          : item.data.to_city,
+                              to_city_country  : item.data.to_city_country,
+                              flight_type      : item.data.flight_type,
+                              plating_carrier  : item.data.plating_carrier,
+                              issue_date_from  : item.data.issue_date_from != '' ? moment(item.data.issue_date_from) : '',
+                              issue_date_to    : item.data.issue_date_to != '' ? moment(item.data.issue_date_to) : '',
+                              travel_date_from : item.data.travel_date_from != '' ? moment(item.data.travel_date_from) : '',
+                              travel_date_to   : item.data.travel_date_to != '' ? moment(item.data.travel_date_to) : '',
+                              time_from        : item.data.time_from,
+                              time_to          : item.data.time_to,
+                              travel_class_id  : item.data.travel_class_id,
+                              booking_class    : item.data.booking_class,
+                              user_group_id    : item.data.user_group_id,
+                              user_id          : item.data.user_id,
+                              api_source_id    : item.data.api_source_id,
+                              promo_type       : item.data.promo_type,
+                              value_type       : item.data.value_type,
+                              value            : item.data.value,
+                              max_amount       : item.data.max_amount,
+                              status_id        : item.data.status_id,
+                          });
+        
         setUpdateButton(true);
         setSaveButton(false);
         setSearchButton(false);
-        console.log(formData);
-        console.log(item);
+        
     };
     
     const saveFormData = async (data) => {
@@ -494,6 +497,7 @@ const PromotionConfigurationIndex = () => {
                         </div>
                         
                         <div className="row">
+                            
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_from">
                                     <Form.Label>Issue Date From</Form.Label>
@@ -508,6 +512,7 @@ const PromotionConfigurationIndex = () => {
                                     />
                                 </Form.Group>
                             </div>
+                            
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_to">
                                     <Form.Label>Issue Date To</Form.Label>
@@ -522,6 +527,7 @@ const PromotionConfigurationIndex = () => {
                                     />
                                 </Form.Group>
                             </div>
+                            
                             <div className="col-md-3">
                                 <Form.Group controlId="travel_date_from">
                                     <Form.Label>Travel Date From</Form.Label>
