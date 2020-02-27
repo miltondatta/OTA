@@ -16,21 +16,19 @@ import TimePicker                             from 'react-time-picker';
 import classnames                             from 'classnames';
 
 const PromotionConfigurationIndex = () => {
-    const [data_list, set_data_list] = useState([]);
-    
-    const [deleteInfo, setDeleteInfo] = useState({id: '', name: ''});
-    
-    const [addMessage, setAddMessage] = useState({
-                                                     show   : false,
-                                                     variant: '',
-                                                     heading: '',
-                                                     message: '',
-                                                     disable: false
-                                                 });
-    
-    const [apiSources, setapiSources] = useState([]);
-    
+    const [data_list, set_data_list]        = useState([]);
+    const [deleteInfo, setDeleteInfo]       = useState({id: '', name: ''});
+    const [addMessage, setAddMessage]       = useState({
+                                                           show   : false,
+                                                           variant: '',
+                                                           heading: '',
+                                                           message: '',
+                                                           disable: false
+                                                       });
+    const [apiSources, setapiSources]       = useState([]);
     const {show, variant, heading, message} = addMessage;
+    const booking_list                      = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+                                               "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     
     const [modalShow, setShow]                = useState(false);
     const [saveButton, setSaveButton]         = useState(true);
@@ -106,9 +104,6 @@ const PromotionConfigurationIndex = () => {
               promo_type, value_type, value, max_amount, status_id,
           } = formData;
     
-    const booking_list = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-                          "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    
     const onChange = e => {
         let valid = validateInput(e);
         if (valid || valid === '') {
@@ -165,8 +160,11 @@ const PromotionConfigurationIndex = () => {
                         value_type       : '',
                         value            : '',
                         max_amount       : '',
-                        status_id        : '',
+                        status_id        : 3,
                     });
+        setUpdateButton(false);
+        setSaveButton(true);
+        setSearchButton(true);
     };
     
     const deleteFixedValue = async () => {
@@ -204,41 +202,45 @@ const PromotionConfigurationIndex = () => {
         }
     };
     
-    function setDataForUpdate(id) {
-        data_list.find(item => {
-            if (item.id == id) {
-                setFormData({
-                                id               : item.id,
-                                promotion_name   : item.promotion_name,
-                                promotion_code   : item.promotion_code,
-                                from_city_country: item.from_city_country,
-                                from_city        : item.from_city,
-                                to_city          : item.to_city,
-                                to_city_country  : item.to_city_country,
-                                flight_type      : item.flight_type,
-                                plating_carrier  : item.plating_carrier,
-                                issue_date_from  : item.issue_date_from,
-                                issue_date_to    : item.issue_date_to,
-                                travel_date_from : item.travel_date_from,
-                                travel_date_to   : item.travel_date_to,
-                                time_from        : item.time_from,
-                                time_to          : item.time_to,
-                                travel_class_id  : item.travel_class_id,
-                                booking_class    : item.booking_class,
-                                user_group_id    : item.user_group_id,
-                                user_id          : item.user_id,
-                                api_source_id    : item.api_source_id,
-                                promo_type       : item.promo_type,
-                                value_type       : item.value_type,
-                                value            : item.value,
-                                max_amount       : item.max_amount,
-                                status_id        : item.status_id,
-                            });
-                setUpdateButton(true);
-                setSaveButton(false);
-            }
-        });
-    }
+    const setDataForUpdate = async (id) => {
+        const item = await axios.get(base_url + `api/configure_promotion/edit/${id}`);
+        
+        const result      = await item && axios.post(base_url + `api/airport/getAirportByCountry`, item.data.from_city_count);
+        setfromCityList(result.data);
+        
+        await setFormData({
+                        id               : item.data.id,
+                        promotion_name   : item.data.promotion_name,
+                        promotion_code   : item.data.promotion_code,
+                        from_city_country: item.data.from_city_country,
+                        from_city        : item.data.from_city,
+                        to_city          : item.data.to_city,
+                        to_city_country  : item.data.to_city_country,
+                        flight_type      : item.data.flight_type,
+                        plating_carrier  : item.data.plating_carrier,
+                        issue_date_from  : item.data.issue_date_from,
+                        issue_date_to    : item.data.issue_date_to,
+                        travel_date_from : item.data.travel_date_from,
+                        travel_date_to   : item.data.travel_date_to,
+                        time_from        : item.data.time_from,
+                        time_to          : item.data.time_to,
+                        travel_class_id  : item.data.travel_class_id,
+                        booking_class    : item.data.booking_class,
+                        user_group_id    : item.data.user_group_id,
+                        user_id          : item.data.user_id,
+                        api_source_id    : item.data.api_source_id,
+                        promo_type       : item.data.promo_type,
+                        value_type       : item.data.value_type,
+                        value            : item.data.value,
+                        max_amount       : item.data.max_amount,
+                        status_id        : item.data.status_id,
+                    });
+        setUpdateButton(true);
+        setSaveButton(false);
+        setSearchButton(false);
+        console.log(formData);
+        console.log(item);
+    };
     
     const saveFormData = async (data) => {
         try {

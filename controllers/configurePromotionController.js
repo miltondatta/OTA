@@ -104,12 +104,12 @@ exports.edit = async (req, res) => {
     try {
         const id        = req.params.id;
         const data_list = await configPromo.findOne({
-                                                        attributes: ["id", "promotion_name", "promotion_code", "from_city", "to_city",
-                                                                     "flight_type", "plating_carrier", "issue_date_from", "issue_date_to",
-                                                                     "travel_date_from", "travel_date_to", "time_from", "time_to",
-                                                                     "travel_class_id", "booking_class", "user_group_id", "user_id",
-                                                                     "api_source_id", "promo_type", "value_type", "value", "max_amount",
-                                                                     "status_id",
+                                                        attributes: ["id", "promotion_name", "promotion_code", "from_city_country", "from_city",
+                                                                     "to_city_country", "to_city", "flight_type", "plating_carrier",
+                                                                     "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
+                                                                     "time_from", "time_to", "travel_class_id", "booking_class", "user_group_id",
+                                                                     "user_id", "api_source_id", "promo_type", "value_type", "value",
+                                                                     "max_amount", "status_id",
                                                         ],
                                                         where     : {
                                                             id: id
