@@ -103,7 +103,7 @@ const PromotionConfigurationIndex = () => {
               issue_date_from, issue_date_to, travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class,
               user_group_id, user_id, api_source_id, promo_type, value_type, value, max_amount, status_id,
           } = formData;
-
+    
     const onChange = e => {
         let valid = validateInput(e);
         if (valid || valid === '') {
@@ -281,32 +281,26 @@ const PromotionConfigurationIndex = () => {
     };
     
     const searchFormData = async (data) => {
-        /*try {
-         const config = {
-         headers: {
-         'Content-Type': 'application/json'
-         }
-         };
-         let fxd_name = formData.api_name;
-         const res    = await axios.post(`/api/configure_promotion/store/`, formData, config);
-         
-         setAddMessage({
-         show    : true,
-         variant : 'success',
-         headding: 'Data Add!',
-         message : `Api Source, ${fxd_name} has been Added!`
-         });
-         
-         resetFormData();
-         fetchData();
-         } catch (err) {
-         setAddMessage({
-         show   : true,
-         variant: 'danger',
-         heading: 'Add Error!',
-         message: "Error... Please Try again. ",
-         });
-         }*/
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            let fxd_name = formData.promotion_name;
+            const res    = await axios.post(base_url + `api/configure_promotion/search/`, formData, config);
+            set_data_list(res.data);
+        } catch (err) {
+            seterrors({...err.response.data.errors})
+            if (err.response.data.isValid) {
+                setAddMessage({
+                                  show   : true,
+                                  variant: 'danger',
+                                  heading: 'Add Error!',
+                                  message: "Error... Please Try again Later. ",
+                              });
+            }
+        }
         
     };
     
@@ -542,7 +536,7 @@ const PromotionConfigurationIndex = () => {
                                                 className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={travel_date_from}
-                                                onChange={travel_date_from => setFormData((pv)=> ({...pv, travel_date_from: travel_date_from}))}
+                                                onChange={travel_date_from => setFormData((pv) => ({...pv, travel_date_from: travel_date_from}))}
                                     />
                                 </Form.Group>
                             </div>
@@ -556,7 +550,7 @@ const PromotionConfigurationIndex = () => {
                                                 className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={travel_date_to}
-                                                onChange={travel_date_to => setFormData((pv)=>({...pv, travel_date_to: travel_date_to}))}
+                                                onChange={travel_date_to => setFormData((pv) => ({...pv, travel_date_to: travel_date_to}))}
                                     />
                                 </Form.Group>
                             </div>

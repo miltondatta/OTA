@@ -9,13 +9,15 @@ exports.index = async (req, res) => {
     try {
         const data_list = await configPromo.findAll(
             {
-                attributes: ["id", "promotion_name", "promotion_code", "from_city", "to_city", "flight_type", "plating_carrier",
-                             "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to", "time_from", "time_to",
-                             "travel_class_id", "booking_class", "user_group_id", "user_id", "api_source_id", "promo_type",
-                             "value_type", "value", "max_amount", "status_id",
+                attributes: ["id", "promotion_name", "promotion_code", "from_city_country", "from_city", "to_city_country", "to_city",
+                             "flight_type", "plating_carrier", "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
+                             "time_from", "time_to", "travel_class_id", "booking_class", "user_group_id", "user_id", "api_source_id",
+                             "promo_type", "value_type", "value", "max_amount", "status_id",
                 ],
                 include   : 'status',
-                where     : {status_id: {[Op.ne]: -1}},
+                where     : {
+                    status_id: {[Op.ne]: -1}
+                },
                 order     : [['id', 'DESC']],
                 limit     : 10
             }
@@ -215,6 +217,63 @@ exports.delete = async (req, res) => {
         if (!status) return res.status(400).json({msg: 'Please try again!'});
         
         return res.status(200).json({msg: 'One Promotion condition deleted successfully!'});
+    } catch (err) {
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
+
+exports.search = async (req, res) => {
+    let obj = [];
+    try {
+        let search_param = req.body;
+        Object.keys(search_param).forEach((item, index) => {
+            if (search_param[item]) {
+                if (item === ('promotion_name' || 'promotion_code')) {
+                    obj.push({[item]: {[Op.like]: "%" + search_param[item] + "%"}})
+                }
+                
+                if (item === ("issue_date_from" || "issue_date_to" || "travel_date_from" || "travel_date_to")) {
+                    let date_format_from =  moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    obj.push({[item]: {[Op.between]: [date_format_from,date_format_from]}})
+                }
+                
+                // if (item === ('time_from' || 'time_to')) {
+                //
+                // }
+                
+                if (item === ('from_city_country' || 'from_city' || 'to_city_country' || 'to_city' || 'flight_type' || 'plating_carrier' ||
+                    'status_id' || 'travel_class_id' || 'booking_class' || 'user_group_id' || 'user_id' || 'api_source_id' || 'promo_type' ||
+                    'value_type' || 'value' || 'max_amount')) {
+                    obj.push({[item]: {[Op.eq]: search_param[item]}})
+                }
+                
+            }
+        });
+        
+        console.log(obj,256);
+        const data_list = await configPromo.findAll(
+            {
+                attributes: ["id", "promotion_name", "promotion_code", "from_city_country", "from_city",
+                             "to_city_country", "to_city", "flight_type", "plating_carrier",
+                             "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
+                             "time_from", "time_to", "travel_class_id", "booking_class", "user_group_id",
+                             "user_id", "api_source_id", "promo_type", "value_type", "value",
+                             "max_amount", "status_id",
+                ],
+                include   : 'status',
+                where     : {
+                    [Op.and]: [
+                        ...obj
+                    ]
+                },
+                order     : [['id', 'DESC']],
+            }
+        );
+        console.log(data_list, '264');
+        return res.status(200).json(data_list);
+        
+        // console.log(obj);
+        
     } catch (err) {
         return res.status(500).json({msg: 'Server Error!'});
     }

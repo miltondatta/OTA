@@ -1,5 +1,5 @@
-const exprss                = require('express');
-const router                = exprss.Router();
+const exprss              = require('express');
+const router              = exprss.Router();
 const confPromoController = require('../../controllers/configurePromotionController');
 
 /*
@@ -38,5 +38,12 @@ router.post('/update', confPromoController.update);
  @access         Private
  */
 router.post('/delete', confPromoController.delete);
+
+/*
+ @route          POST api/configure_promotion/search/
+ @desc           Search FixedValues Data
+ @access         Private
+ */
+router.post('/search', confPromoController.search);
 
 module.exports = router;
