@@ -228,22 +228,31 @@ exports.search = async (req, res) => {
         let search_param = req.body;
         Object.keys(search_param).forEach((item, index) => {
             if (search_param[item]) {
-                if (item === ('promotion_name' || 'promotion_code')) {
+                // if (item === ('promotion_name' || 'promotion_code')) {
+                //     obj.push({[item]: {[Op.like]: "%" + search_param[item] + "%"}})
+                // }
+                //
+                // if (item === ("issue_date_from" || "issue_date_to" || "travel_date_from" || "travel_date_to")) {
+                //     let date_format_from =  moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                //     obj.push({[item]: {[Op.between]: [date_format_from,date_format_from]}})
+                // }
+                //
+                // // if (item === ('time_from' || 'time_to')) {
+                // //
+                // // }
+                //
+                // if (item === ('from_city_country' || 'from_city' || 'to_city_country' || 'to_city' || 'flight_type' || 'plating_carrier' ||
+                //     'status_id' || 'travel_class_id' || 'booking_class' || 'user_group_id' || 'user_id' || 'api_source_id' || 'promo_type' ||
+                //     'value_type' || 'value' || 'max_amount')) {
+                //     obj.push({[item]: {[Op.eq]: search_param[item]}})
+                // }
+    
+                if (item.includes('promotion')) {
                     obj.push({[item]: {[Op.like]: "%" + search_param[item] + "%"}})
-                }
-                
-                if (item === ("issue_date_from" || "issue_date_to" || "travel_date_from" || "travel_date_to")) {
+                } else if (item.includes('date')) {
                     let date_format_from =  moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
                     obj.push({[item]: {[Op.between]: [date_format_from,date_format_from]}})
-                }
-                
-                // if (item === ('time_from' || 'time_to')) {
-                //
-                // }
-                
-                if (item === ('from_city_country' || 'from_city' || 'to_city_country' || 'to_city' || 'flight_type' || 'plating_carrier' ||
-                    'status_id' || 'travel_class_id' || 'booking_class' || 'user_group_id' || 'user_id' || 'api_source_id' || 'promo_type' ||
-                    'value_type' || 'value' || 'max_amount')) {
+                } else {
                     obj.push({[item]: {[Op.eq]: search_param[item]}})
                 }
                 
