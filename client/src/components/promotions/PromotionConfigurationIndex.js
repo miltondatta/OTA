@@ -335,6 +335,7 @@ const PromotionConfigurationIndex = () => {
                           });
         }
     };
+    
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid fixedValues-area-container">
@@ -497,7 +498,6 @@ const PromotionConfigurationIndex = () => {
                         </div>
                         
                         <div className="row">
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_from">
                                     <Form.Label>Issue Date From</Form.Label>
@@ -508,11 +508,10 @@ const PromotionConfigurationIndex = () => {
                                                 className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={issue_date_from}
-                                                onChange={issue_date_from => setFormData({...formData, issue_date_from: issue_date_from})}
+                                                onChange={issue_date_from => setFormData((pv) => ({...pv, issue_date_from}))}
                                     />
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_to">
                                     <Form.Label>Issue Date To</Form.Label>
@@ -523,11 +522,10 @@ const PromotionConfigurationIndex = () => {
                                                 className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={issue_date_to}
-                                                onChange={issue_date_to => setFormData({...formData, issue_date_to: issue_date_to})}
+                                                onChange={issue_date_to => setFormData((pv) => ({...pv, issue_date_to}))}
                                     />
                                 </Form.Group>
                             </div>
-                            
                             <div className="col-md-3">
                                 <Form.Group controlId="travel_date_from">
                                     <Form.Label>Travel Date From</Form.Label>
@@ -538,7 +536,7 @@ const PromotionConfigurationIndex = () => {
                                                 className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={travel_date_from}
-                                                onChange={travel_date_from => setFormData({...formData, travel_date_from: travel_date_from})}
+                                                onChange={travel_date_from => setFormData((pv)=> ({...pv, travel_date_from: travel_date_from}))}
                                     />
                                 </Form.Group>
                             </div>
@@ -552,7 +550,7 @@ const PromotionConfigurationIndex = () => {
                                                 className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={travel_date_to}
-                                                onChange={travel_date_to => setFormData({...formData, travel_date_to: travel_date_to})}
+                                                onChange={travel_date_to => setFormData((pv)=>({...pv, travel_date_to: travel_date_to}))}
                                     />
                                 </Form.Group>
                             </div>
