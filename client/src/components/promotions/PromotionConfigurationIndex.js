@@ -168,7 +168,7 @@ const PromotionConfigurationIndex = () => {
         setSearchButton(true);
     };
     
-    const deleteFixedValue = async () => {
+    const deletePromotion = async () => {
         try {
             const config = {
                 headers: {
@@ -317,7 +317,7 @@ const PromotionConfigurationIndex = () => {
                     'Content-Type': 'application/json'
                 }
             };
-            let fxd_name = formData.api_name;
+            let fxd_name = formData.promotion_name;
             const res    = await axios.post(base_url + `api/configure_promotion/update/`, formData, config);
             
             setAddMessage({
@@ -804,7 +804,7 @@ const PromotionConfigurationIndex = () => {
                                     </tr>
                                 ))}
                             </Fragment> : <tr>
-                                 <td colSpan={8}>
+                                 <td colSpan={9}>
                                      No data found!
                                  </td>
                              </tr>}
@@ -823,7 +823,7 @@ const PromotionConfigurationIndex = () => {
                             Close
                         </Button>
                         <Button variant="outline-danger" onClick={() => {
-                            deleteFixedValue();
+                            deletePromotion();
                             handleClose();
                         }}>
                             Confirm Delete

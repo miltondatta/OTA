@@ -1,7 +1,8 @@
-const configPromo = require('../models').promotion_configurations;
-const moment      = require("moment");
-const status      = require('../models').status;
-
+const {Sequelize}                         = require('../models/index');
+const configPromo                         = require('../models').promotion_configurations;
+const moment                              = require("moment");
+const status                              = require('../models').status;
+const Op                                  = Sequelize.Op;
 const validatePromotionConfigurationInput = require('../validator/promotionConfiguration');
 
 exports.index = async (req, res) => {
@@ -9,13 +10,14 @@ exports.index = async (req, res) => {
         const data_list = await configPromo.findAll(
             {
                 attributes: ["id", "promotion_name", "promotion_code", "from_city", "to_city", "flight_type", "plating_carrier",
-                             "issue_date_from",
-                             "issue_date_to", "travel_date_from", "travel_date_to", "time_from", "time_to", "travel_class_id", "booking_class",
-                             "user_group_id", "user_id", "api_source_id", "promo_type", "value_type", "value", "max_amount", "status_id",
+                             "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to", "time_from", "time_to",
+                             "travel_class_id", "booking_class", "user_group_id", "user_id", "api_source_id", "promo_type",
+                             "value_type", "value", "max_amount", "status_id",
                 ],
                 include   : 'status',
-                
-                order: [['id', 'DESC']], limit: 10
+                where     : {status_id: {[Op.ne]: -1}},
+                order     : [['id', 'DESC']],
+                limit     : 10
             }
         );
         if (!data_list) return res.status(400).json({msg: 'Something else!'});
@@ -128,7 +130,7 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
     const {errors, isValid} = validatePromotionConfigurationInput(req.body);
-
+    
     if (!isValid) {
         return res.status(400).json({errors, isValid});
     }
@@ -189,25 +191,27 @@ exports.update = async (req, res) => {
             max_amount       : (max_amount === '') ? null : max_amount,
             status_id        : status_id
         };
-        console.log(update_data_list,192);
-        const status = await configPromo.findOne({where: {id}});
+        const status           = await configPromo.findOne({where: {id}});
         if (!status) return res.status(400).json({msg: 'This Api Sources not found!'});
         
         const update_status = await configPromo.update(update_data_list, {where: {id}});
-        console.log(update_status,197);
         if (!update_status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'Promotion condition updated successfully.'});
     } catch (err) {
-        console.log(err,202);
         return res.status(500).json({msg: err.errors})
     }
 };
 
 exports.delete = async (req, res) => {
     try {
-        const {id}   = req.body;
-        const status = await configPromo.destroy({where: {id}});
+        const {id}          = req.body;
+        const delete_status = {
+            id       : id,
+            status_id: -1,
+        };
+        const status        = await configPromo.findOne({where: {id}});
+        const update_status = await configPromo.update(delete_status, {where: {id}});
         if (!status) return res.status(400).json({msg: 'Please try again!'});
         
         return res.status(200).json({msg: 'One Promotion condition deleted successfully!'});
