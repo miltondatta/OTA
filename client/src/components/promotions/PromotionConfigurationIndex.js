@@ -99,9 +99,9 @@ const PromotionConfigurationIndex = () => {
                                              });
     
     const {
-              id, promotion_name, promotion_code, from_city_country, from_city, to_city_country, to_city, flight_type, plating_carrier, issue_date_from, issue_date_to,
-              travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class, user_group_id, user_id, api_source_id,
-              promo_type, value_type, value, max_amount, status_id,
+              id, promotion_name, promotion_code, from_city_country, from_city, to_city_country, to_city, flight_type, plating_carrier,
+              issue_date_from, issue_date_to, travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class,
+              user_group_id, user_id, api_source_id, promo_type, value_type, value, max_amount, status_id,
           } = formData;
 
     const onChange = e => {
@@ -162,6 +162,7 @@ const PromotionConfigurationIndex = () => {
                         max_amount       : '',
                         status_id        : 3,
                     });
+        seterrors([]);
         setUpdateButton(false);
         setSaveButton(true);
         setSearchButton(true);
@@ -221,10 +222,10 @@ const PromotionConfigurationIndex = () => {
                               to_city_country  : item.data.to_city_country,
                               flight_type      : item.data.flight_type,
                               plating_carrier  : item.data.plating_carrier,
-                              issue_date_from  : item.data.issue_date_from != '' ? moment(item.data.issue_date_from) : '',
-                              issue_date_to    : item.data.issue_date_to != '' ? moment(item.data.issue_date_to) : '',
-                              travel_date_from : item.data.travel_date_from != '' ? moment(item.data.travel_date_from) : '',
-                              travel_date_to   : item.data.travel_date_to != '' ? moment(item.data.travel_date_to) : '',
+                              issue_date_from  : item.data.issue_date_from ? moment(item.data.issue_date_from) : '',
+                              issue_date_to    : item.data.issue_date_to ? moment(item.data.issue_date_to) : '',
+                              travel_date_from : item.data.travel_date_from ? moment(item.data.travel_date_from) : '',
+                              travel_date_to   : item.data.travel_date_to ? moment(item.data.travel_date_to) : '',
                               time_from        : item.data.time_from,
                               time_to          : item.data.time_to,
                               travel_class_id  : item.data.travel_class_id,
@@ -309,7 +310,7 @@ const PromotionConfigurationIndex = () => {
         
     };
     
-    const updateFormData = async () => {
+    const updateFormData = async (data) => {
         try {
             const config = {
                 headers: {
@@ -325,14 +326,19 @@ const PromotionConfigurationIndex = () => {
                               heading: 'Data Update Message!',
                               message: `Api Source, ${fxd_name} has been Updated Successfully`
                           });
+            
+            resetFormData();
             fetchData();
         } catch (err) {
-            setAddMessage({
-                              show   : true,
-                              variant: 'danger',
-                              heading: 'Data Update Error!',
-                              message: 'Api Source is not Updated',
-                          });
+            seterrors({...err.response.data.errors})
+            if (err.response.data.isValid) {
+                setAddMessage({
+                                  show   : true,
+                                  variant: 'danger',
+                                  heading: 'Add Error!',
+                                  message: "Error... Please Try again Later. ",
+                              });
+            }
         }
     };
     

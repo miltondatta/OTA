@@ -127,6 +127,12 @@ exports.edit = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
+    const {errors, isValid} = validatePromotionConfigurationInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json({errors, isValid});
+    }
+    
     try {
         const {
                   id,
@@ -166,33 +172,35 @@ exports.update = async (req, res) => {
             to_city          : to_city,
             flight_type      : flight_type,
             plating_carrier  : plating_carrier,
-            issue_date_from  : issue_date_from,
-            issue_date_to    : issue_date_to,
-            travel_date_from : travel_date_from,
-            travel_date_to   : travel_date_to,
-            time_from        : time_from,
-            time_to          : time_to,
+            issue_date_from  : (issue_date_from === '') ? null : issue_date_from,
+            issue_date_to    : (issue_date_to === '') ? null : issue_date_to,
+            travel_date_from : (travel_date_from === '') ? null : travel_date_from,
+            travel_date_to   : (travel_date_to === '') ? null : travel_date_to,
+            time_from        : (time_from === '') ? null : time_from,
+            time_to          : (time_to === '') ? null : time_to,
             travel_class_id  : travel_class_id,
             booking_class    : booking_class,
             user_group_id    : user_group_id,
             user_id          : user_id,
-            api_source_id    : api_source_id,
+            api_source_id    : (api_source_id === '') ? null : api_source_id,
             promo_type       : promo_type,
             value_type       : value_type,
             value            : value,
-            max_amount       : max_amount,
+            max_amount       : (max_amount === '') ? null : max_amount,
             status_id        : status_id
         };
-        
+        console.log(update_data_list,192);
         const status = await configPromo.findOne({where: {id}});
         if (!status) return res.status(400).json({msg: 'This Api Sources not found!'});
         
         const update_status = await configPromo.update(update_data_list, {where: {id}});
+        console.log(update_status,197);
         if (!update_status) return res.status(400).json({msg: 'Please try again with full information!'});
         
         return res.status(200).json({msg: 'Promotion condition updated successfully.'});
     } catch (err) {
-        return res.status(500).json({msg: 'Server Error!'});
+        console.log(err,202);
+        return res.status(500).json({msg: err.errors})
     }
 };
 
