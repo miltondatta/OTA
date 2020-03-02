@@ -223,7 +223,14 @@ exports.delete = async (req, res) => {
 };
 
 exports.search = async (req, res) => {
-    let obj = [];
+    let obj              = [];
+    let issue_date_from  = '';
+    let issue_date_to    = '';
+    let travel_date_from = '';
+    let travel_date_to   = '';
+    let time_from        = '';
+    let time_to          = '';
+    
     try {
         let search_param = req.body;
         Object.keys(search_param).forEach((item, index) => {
@@ -231,16 +238,54 @@ exports.search = async (req, res) => {
                 if (item.includes('promotion_')) {
                     obj.push({[item]: {[Op.like]: "%" + search_param[item] + "%"}})
                 } else if (item.includes('_date_')) {
-                    let date_format = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
-                    obj.push({[item]: {[Op.between]: [date_format, date_format]}})
+                    
+                    if (item === ("issue_date_from")) {
+                        issue_date_from = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    }
+                    if (item === ("issue_date_to")) {
+                        issue_date_to = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    }
+                    if (issue_date_from !== '' && issue_date_to !== '') {
+                        obj.push({
+                                     [Op.or]: [{"issue_date_from": {[Op.between]: [issue_date_from, issue_date_to]}},
+                                               {"issue_date_to": {[Op.between]: [issue_date_from, issue_date_to]}}]
+                                 })
+                    }
+                    
+                    if (item === ("travel_date_from")) {
+                        travel_date_from = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    }
+                    if (item === ("travel_date_to")) {
+                        travel_date_to = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    }
+                    if (travel_date_from !== '' && travel_date_to !== '') {
+                        obj.push({
+                                     [Op.or]: [{"travel_date_from": {[Op.between]: [travel_date_from, travel_date_to]}},
+                                               {"travel_date_to": {[Op.between]: [travel_date_from, travel_date_to]}}]
+                                 })
+                    }
+                    
                 } else if (item.includes('time_')) {
-                    let time_format = moment(search_param[item], "HH:mm").format("HH:mm:ss");
-                    obj.push({[item]: {[Op.between]: [time_format, time_format]}})
+                    
+                    if (item === ("time_from")) {
+                        time_from = moment(search_param[item], "HH:mm").format("HH:mm:ss");
+                    }
+                    if (item === ("time_to")) {
+                        time_to = moment(search_param[item], "HH:mm").format("HH:mm:ss");
+                    }
+                    if (time_from !== '' && time_to !== '') {
+                        obj.push({
+                                     [Op.or]: [{"time_from": {[Op.between]: [time_from, time_to]}},
+                                               {"time_to": {[Op.between]: [time_from, time_to]}}]
+                                 })
+                    }
+                    
                 } else {
                     obj.push({[item]: {[Op.eq]: search_param[item]}})
                 }
             }
         });
+        
         const data_list = await configPromo.findAll(
             {
                 attributes: ["id", "promotion_name", "promotion_code", "from_city_country", "from_city",
@@ -256,7 +301,7 @@ exports.search = async (req, res) => {
                         ...obj
                     ]
                 },
-                order     : [['id', 'DESC']],
+                order     : [['id', 'DESC']]
             }
         );
         return res.status(200).json(data_list);
