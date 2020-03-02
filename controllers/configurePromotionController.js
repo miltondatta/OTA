@@ -228,38 +228,19 @@ exports.search = async (req, res) => {
         let search_param = req.body;
         Object.keys(search_param).forEach((item, index) => {
             if (search_param[item]) {
-                // if (item === ('promotion_name' || 'promotion_code')) {
-                //     obj.push({[item]: {[Op.like]: "%" + search_param[item] + "%"}})
-                // }
-                //
-                // if (item === ("issue_date_from" || "issue_date_to" || "travel_date_from" || "travel_date_to")) {
-                //     let date_format_from =  moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
-                //     obj.push({[item]: {[Op.between]: [date_format_from,date_format_from]}})
-                // }
-                //
-                // // if (item === ('time_from' || 'time_to')) {
-                // //
-                // // }
-                //
-                // if (item === ('from_city_country' || 'from_city' || 'to_city_country' || 'to_city' || 'flight_type' || 'plating_carrier' ||
-                //     'status_id' || 'travel_class_id' || 'booking_class' || 'user_group_id' || 'user_id' || 'api_source_id' || 'promo_type' ||
-                //     'value_type' || 'value' || 'max_amount')) {
-                //     obj.push({[item]: {[Op.eq]: search_param[item]}})
-                // }
-    
-                if (item.includes('promotion')) {
+                if (item.includes('promotion_')) {
                     obj.push({[item]: {[Op.like]: "%" + search_param[item] + "%"}})
-                } else if (item.includes('date')) {
-                    let date_format_from =  moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
-                    obj.push({[item]: {[Op.between]: [date_format_from,date_format_from]}})
+                } else if (item.includes('_date_')) {
+                    let date_format = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    obj.push({[item]: {[Op.between]: [date_format, date_format]}})
+                } else if (item.includes('time_')) {
+                    let time_format = moment(search_param[item], "HH:mm").format("HH:mm:ss");
+                    obj.push({[item]: {[Op.between]: [time_format, time_format]}})
                 } else {
                     obj.push({[item]: {[Op.eq]: search_param[item]}})
                 }
-                
             }
         });
-        
-        console.log(obj,256);
         const data_list = await configPromo.findAll(
             {
                 attributes: ["id", "promotion_name", "promotion_code", "from_city_country", "from_city",
@@ -278,10 +259,7 @@ exports.search = async (req, res) => {
                 order     : [['id', 'DESC']],
             }
         );
-        console.log(data_list, '264');
         return res.status(200).json(data_list);
-        
-        // console.log(obj);
         
     } catch (err) {
         return res.status(500).json({msg: 'Server Error!'});
