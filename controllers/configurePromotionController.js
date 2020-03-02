@@ -1,9 +1,10 @@
-const {Sequelize}                         = require('../models/index');
-const configPromo                         = require('../models').promotion_configurations;
-const moment                              = require("moment");
-const status                              = require('../models').status;
-const Op                                  = Sequelize.Op;
-const validatePromotionConfigurationInput = require('../validator/promotionConfiguration');
+const {Sequelize}        = require('../models/index');
+const configPromo        = require('../models').promotion_configurations;
+const moment             = require("moment");
+const status             = require('../models').status;
+const Op                 = Sequelize.Op;
+const promoSaveValidator = require('../validator/promotion/promoSaveValidator');
+const promoSearchValidator = require('../validator/promotion/promoSearchValidator');
 
 exports.index = async (req, res) => {
     try {
@@ -32,7 +33,7 @@ exports.index = async (req, res) => {
 
 exports.store = async (req, res) => {
     
-    const {errors, isValid} = validatePromotionConfigurationInput(req.body);
+    const {errors, isValid} = promoSaveValidator(req.body);
     if (!isValid) {
         return res.status(400).json({errors, isValid});
     }
@@ -221,6 +222,10 @@ exports.delete = async (req, res) => {
 };
 
 exports.search = async (req, res) => {
+    const {errors, isValid} = promoSearchValidator(req.body);
+    if (!isValid) {
+        return res.status(400).json({errors, isValid});
+    }
     let obj              = [];
     let issue_date_from  = '';
     let issue_date_to    = '';

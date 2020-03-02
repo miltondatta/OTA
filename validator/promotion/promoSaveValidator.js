@@ -1,7 +1,7 @@
 const Validator = require('validator');
-const isEmpty   = require('./is-empty');
+const isEmpty   = require('../is-empty');
 
-module.exports = function validatePromotionConfigurationInput(data) {
+module.exports = function promoSaveValidator(data) {
     let errors = {};
     
     data.promotion_name = !isEmpty(data.promotion_name) ? data.promotion_name : '';
@@ -49,7 +49,6 @@ module.exports = function validatePromotionConfigurationInput(data) {
     }
     
     if (!data.time_from && data.time_to) {
-        errors.time_from = 'Flight Time From field needs to fill up';
     }
     
     return {
