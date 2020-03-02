@@ -4,9 +4,9 @@ const isEmpty   = require('./is-empty');
 module.exports = function validatePromotionConfigurationInput(data) {
     let errors = {};
     
-     data.promotion_name = !isEmpty(data.promotion_name) ? data.promotion_name : '';
-     data.promotion_code = !isEmpty(data.promotion_code) ? data.promotion_code : '';
-     data.promo_type     = !isEmpty(data.promo_type) ? data.promo_type : '';
+    data.promotion_name = !isEmpty(data.promotion_name) ? data.promotion_name : '';
+    data.promotion_code = !isEmpty(data.promotion_code) ? data.promotion_code : '';
+    data.promo_type     = !isEmpty(data.promo_type) ? data.promo_type : '';
     
     if (Validator.isEmpty(data.promotion_name)) {
         errors.promotion_name = 'Promotion Name field is required';
@@ -26,6 +26,30 @@ module.exports = function validatePromotionConfigurationInput(data) {
     
     if (!data.value) {
         errors.value = 'Value field is required';
+    }
+    
+    if (data.issue_date_from && !data.issue_date_to) {
+        errors.issue_date_to = 'Issue date to field needs to fill up';
+    }
+    
+    if (!data.issue_date_from && data.issue_date_to) {
+        errors.issue_date_from = 'Issue date from field needs to fill up';
+    }
+    
+    if (data.travel_date_from && !data.travel_date_to) {
+        errors.travel_date_to = 'Travel date to field needs to fill up';
+    }
+    
+    if (!data.travel_date_from && data.travel_date_to) {
+        errors.travel_date_from = 'Travel date from field needs to fill up';
+    }
+    
+    if (data.time_from && !data.time_to) {
+        errors.time_to = 'Flight Time To field needs to fill up';
+    }
+    
+    if (!data.time_from && data.time_to) {
+        errors.time_from = 'Flight Time From field needs to fill up';
     }
     
     return {

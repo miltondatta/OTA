@@ -33,8 +33,6 @@ exports.index = async (req, res) => {
 exports.store = async (req, res) => {
     
     const {errors, isValid} = validatePromotionConfigurationInput(req.body);
-    
-    // Check Validation
     if (!isValid) {
         return res.status(400).json({errors, isValid});
     }

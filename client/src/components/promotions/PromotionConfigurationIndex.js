@@ -505,11 +505,15 @@ const PromotionConfigurationIndex = () => {
                                                 placeholder="e.g. 2020/03/03/"
                                                 name="issue_date_from"
                                                 id="issue_date_from"
-                                                className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={issue_date_from}
                                                 onChange={issue_date_from => setFormData((pv) => ({...pv, issue_date_from}))}
-                                    />
+                                                className={classnames('form-control', {
+                                                    'is-invalid': errors.issue_date_from
+                                                })}/>
+                                    {errors.issue_date_from && (
+                                        <div className="invalid-feedback">{errors.issue_date_from}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
@@ -519,11 +523,15 @@ const PromotionConfigurationIndex = () => {
                                                 placeholder="e.g. 2020/03/03/"
                                                 name="issue_date_to"
                                                 id="issue_date_to"
-                                                className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={issue_date_to}
                                                 onChange={issue_date_to => setFormData((pv) => ({...pv, issue_date_to}))}
-                                    />
+                                                className={classnames('form-control', {
+                                                    'is-invalid': errors.issue_date_to
+                                                })}/>
+                                    {errors.issue_date_to && (
+                                        <div className="invalid-feedback">{errors.issue_date_to}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
@@ -533,11 +541,15 @@ const PromotionConfigurationIndex = () => {
                                                 placeholder="e.g. 2020/03/03/"
                                                 name="travel_date_from"
                                                 id="travel_date_from"
-                                                className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={travel_date_from}
                                                 onChange={travel_date_from => setFormData((pv) => ({...pv, travel_date_from: travel_date_from}))}
-                                    />
+                                                className={classnames('form-control', {
+                                                    'is-invalid': errors.travel_date_from
+                                                })}/>
+                                    {errors.travel_date_from && (
+                                        <div className="invalid-feedback">{errors.travel_date_from}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
@@ -547,11 +559,15 @@ const PromotionConfigurationIndex = () => {
                                                 placeholder="e.g. 2020/03/03/"
                                                 name="travel_date_to"
                                                 id="travel_date_to"
-                                                className="form-control"
                                                 inputFormat="DD/MM/YYYY"
                                                 value={travel_date_to}
                                                 onChange={travel_date_to => setFormData((pv) => ({...pv, travel_date_to: travel_date_to}))}
-                                    />
+                                                className={classnames('form-control', {
+                                                    'is-invalid': errors.travel_date_to
+                                                })}/>
+                                    {errors.travel_date_to && (
+                                        <div className="invalid-feedback">{errors.travel_date_to}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                         </div>
@@ -561,24 +577,30 @@ const PromotionConfigurationIndex = () => {
                                 <Form.Group controlId="time_from">
                                     <Form.Label>Flight Time From</Form.Label>
                                     <TimePicker
-                                        className="form-control"
                                         value={time_from}
                                         id="time_from"
                                         onChange={time_from => setFormData({...formData, time_from: time_from})}
-                                    />
-                                
+                                        className={classnames('form-control', {
+                                            'is-invalid': errors.time_from
+                                        })}/>
+                                    {errors.time_from && (
+                                        <div className="invalid-feedback">{errors.time_from}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="issue_date_to">
                                     <Form.Label>Flight Time To</Form.Label>
                                     <TimePicker
-                                        className="form-control"
                                         value={time_to}
                                         id="time_to"
                                         onChange={time_to => setFormData({...formData, time_to: time_to})}
-                                    />
-                                
+                                        className={classnames('form-control', {
+                                            'is-invalid': errors.time_to
+                                        })}/>
+                                    {errors.time_to && (
+                                        <div className="invalid-feedback">{errors.time_to}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
