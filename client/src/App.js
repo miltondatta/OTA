@@ -30,13 +30,12 @@ import AirportAdd                  from "./components/airports/AirportAdd";
 import FixedValuesIndex            from "./components/fixed-values/FixedValuesIndex";
 import ApiSourcesIndex             from "./components/api-sources/ApiSourcesIndex";
 import PromotionConfigurationIndex from "./components/promotions/PromotionConfigurationIndex";
-
+import UserGroup                   from "./components/user-group/UserGroupIndex";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications/lib/notifications.css';
 import './assets/css/common.css';
-
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -84,6 +83,7 @@ function App() {
                 <Route exact path='/fixed_values' component={FixedValuesIndex}/>
                 <Route exact path='/api_sources' component={ApiSourcesIndex}/>
                 <Route exact path='/configure_promotion' component={PromotionConfigurationIndex}/>
+                <Route exact path='/user_group' component={UserGroup}/>
                 <Footer/>
             </Router>
         </Provider>

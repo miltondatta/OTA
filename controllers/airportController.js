@@ -115,9 +115,7 @@ exports.edit = async (req, res) => {
                                                    }
         );
         return res.status(200).json(airport_data);
-        if (!airport_data) return res.status(400).json({msg: 'Airport information not found!'});
         
-        return res.status(200).json(airport_data);
     } catch (err) {
         return res.status(500).json({msg: 'Server Errors!'});
     }
