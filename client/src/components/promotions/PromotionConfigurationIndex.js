@@ -35,6 +35,7 @@ const PromotionConfigurationIndex = () => {
     const [updateButton, setUpdateButton]     = useState(false);
     const [searchButton, setSearchButton]     = useState(true);
     const [countryList, setcountryList]       = useState([]);
+    const [userGroupList, setUserGroupList]   = useState([]);
     const [fromCityList, setfromCityList]     = useState([]);
     const [toCityList, settoCityList]         = useState([]);
     const [platingCarrier, setplatingCarrier] = useState([]);
@@ -56,6 +57,17 @@ const PromotionConfigurationIndex = () => {
     const fetchCountryList = async () => {
         const res = await axios.get(base_url + `api/country/all`);
         setcountryList(res.data);
+    };
+    
+    const fetchUserGroupList = async () => {
+        const res = await axios.get(base_url + `api/user_group/all_active`);
+        setUserGroupList(res.data);
+    };
+    
+    const fetchUserRoleList = async () => {
+        const res = await axios.get(base_url + `api/users/all_role`);
+        console.log(res.data);
+        setUserGroupList(res.data);
     };
     
     const fetchPlatingCarrier = async () => {
@@ -108,6 +120,17 @@ const PromotionConfigurationIndex = () => {
         let valid = validateInput(e);
         if (valid || valid === '') {
             setFormData({...formData, [e.target.name]: valid});
+        }
+    };
+    
+    const onChangeUserType = lfc => {
+        setFormData({...formData, [lfc.target.name]: lfc.target.value});
+        if(lfc.target.value == 'ug'){
+            fetchUserGroupList();
+        }else if(lfc.target.value == 'ur'){
+            fetchUserRoleList();
+        }else{
+            setUserGroupList([]);
         }
     };
     
@@ -638,7 +661,7 @@ const PromotionConfigurationIndex = () => {
                                 <Form.Group controlId="user_group_id">
                                     <Form.Label>User Type</Form.Label>
                                     <select className="form-control" name="user_group_id" value={user_group_id}
-                                            onChange={e => onChange(e)}>
+                                            onChange={e => onChangeUserType(e)}>
                                         <Fragment>
                                             <option>Select Type</option>
                                             <option value='ur' key='ur'>User Role</option>
@@ -652,9 +675,30 @@ const PromotionConfigurationIndex = () => {
                                     <Form.Label>User ID</Form.Label>
                                     <select className="form-control" name="user_id" value={user_id}
                                             onChange={e => onChange(e)}>
-                                        <Fragment>
-                                            <option>Select Item</option>
-                                        </Fragment>
+                                        
+                                        {user_group_id == 'ug' &&
+                                         userGroupList.length > 0 ?
+                                         <Fragment>
+                                             <option>Select Item</option>
+                                             {userGroupList.map((value, key) => (
+                                                 <option value={value.id}
+                                                         key={key}>{value.group_name}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select Item group</option>
+                                        }
+                                        {user_group_id == 'ur' &&
+                                         userGroupList.length > 0 ?
+                                         <Fragment>
+                                             <option>Select Item</option>
+                                             {userGroupList.map((value, key) => (
+                                                 <option value={value.id}
+                                                         key={key}>{value.role_eng}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select Item role</option>
+                                        }
+                                        
                                     </select>
                                 </Form.Group>
                             </div>

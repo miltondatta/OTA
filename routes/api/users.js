@@ -90,6 +90,14 @@ router.post('/confirm', users_controller.confirm_by_email);
  */
 router.post('/role', users_controller.getRole);
 
+
+/*
+ @route          GET api/users/all_role
+ @desc           Get Users Role
+ @access         Private
+ */
+router.get('/all_role', users_controller.getAllRole);
+
 /*
  @route          GET api/users/index
  @desc           Get All User

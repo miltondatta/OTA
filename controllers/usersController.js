@@ -206,6 +206,20 @@ exports.getRole = async (req, res) => {
     }
 };
 
+exports.getAllRole = async (req, res) => {
+    try {
+        const status = await user_role.findAll({
+                                                   attributes: ["id","user_type", "role", "role_eng"],
+                                               });
+        if (!status) res.status(400).json({msg: 'Please try again!'});
+        
+        return res.status(200).json(status);
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
+
 exports.index = async (req, res) => {
     try {
         const users = await user.findAll(

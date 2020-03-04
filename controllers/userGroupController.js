@@ -18,6 +18,25 @@ exports.index = async (req, res) => {
     }
 };
 
+exports.allActive = async (req, res) => {
+    try {
+        const user_group = await UserGroup.findAll(
+            {
+                attributes: ["id", "group_name", "description", "status_id",],
+                where     : {
+                    status_id : 3
+                },
+                order: [['id', 'DESC']]
+            }
+        );
+        if (!user_group) return res.status(400).json({msg: 'Something else!'});
+        
+        return res.status(200).json(user_group);
+    } catch (err) {
+        return res.status(500).json({msg: 'Server Error!'});
+    }
+};
+
 exports.getUserGroupByCountry = async (req, res) => {
     const iso_country = req.body.iso_country;
     

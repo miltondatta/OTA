@@ -10,6 +10,13 @@ const apiUserGroupController = require('../../controllers/userGroupController');
 router.get('/all', apiUserGroupController.index);
 
 /*
+ @route          GET api/user_group/all_active/
+ @desc           Get All User Group Data
+ @access         Private
+ */
+router.get('/all_active', apiUserGroupController.allActive);
+
+/*
  @route          POST api/user_group/store/
  @desc           Save New User Group Data
  @access         Private
