@@ -86,7 +86,7 @@ class UserGroupIndex extends Component {
                             });
     };
     
-    saveFormData = async (data) => {
+    saveFormData = async () => {
         let fxd_name = this.state.group_name;
         if (fxd_name === '') {
             alert("Please input the Group name.");
@@ -250,7 +250,7 @@ class UserGroupIndex extends Component {
                                     {saveButton === true ?
                                      <Button variant="outline-info" className="ml-2"
                                              onClick={e => {
-                                                 this.saveFormData(e);
+                                                 this.saveFormData();
                                              }}>Save</Button> : ""}
                                     {updateButton === true ?
                                      <Button variant="outline-success" className="ml-2"
