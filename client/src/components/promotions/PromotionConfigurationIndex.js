@@ -235,6 +235,14 @@ const PromotionConfigurationIndex = () => {
         const to_city_lst = await axios.post(base_url + `api/airport/getAirportByCountry`, {iso_country: item.data.to_city_country});
         settoCityList(to_city_lst.data);
         
+        if(item.data.user_group_id == 'ug'){
+            fetchUserGroupList();
+        }else if(item.data.user_group_id == 'ur'){
+            fetchUserRoleList();
+        }else{
+            setUserGroupList([]);
+        }
+        
         await setFormData({
                               id               : item.data.id,
                               promotion_name   : item.data.promotion_name,
@@ -672,34 +680,39 @@ const PromotionConfigurationIndex = () => {
                             </div>
                             <div className="col-md-3">
                                 <Form.Group controlId="user_id">
-                                    <Form.Label>User ID</Form.Label>
-                                    <select className="form-control" name="user_id" value={user_id}
-                                            onChange={e => onChange(e)}>
+                                    <Form.Label>User type ID</Form.Label>
+                                    <select name="user_id" value={user_id}
+                                            onChange={e => onChange(e)}
+                                            className={classnames('form-control', {
+                                                'is-invalid': errors.user_id
+                                            })}>
                                         
-                                        {user_group_id == 'ug' &&
+                                        {user_group_id === 'ug' ?
                                          userGroupList.length > 0 ?
                                          <Fragment>
-                                             <option>Select Item</option>
+                                             <option>Select User Group</option>
                                              {userGroupList.map((value, key) => (
                                                  <option value={value.id}
                                                          key={key}>{value.group_name}</option>
                                              ))}
                                          </Fragment> :
-                                         <option>Select Item group</option>
+                                         <option>Select Item group</option>:''
                                         }
-                                        {user_group_id == 'ur' &&
+                                        {user_group_id === 'ur' ?
                                          userGroupList.length > 0 ?
                                          <Fragment>
-                                             <option>Select Item</option>
+                                             <option>Select User Role</option>
                                              {userGroupList.map((value, key) => (
                                                  <option value={value.id}
                                                          key={key}>{value.role_eng}</option>
                                              ))}
                                          </Fragment> :
-                                         <option>Select Item role</option>
+                                         <option>Select Item role</option>:''
                                         }
-                                        
                                     </select>
+                                    {errors.user_id && (
+                                        <div className="invalid-feedback">{errors.user_id}</div>
+                                    )}
                                 </Form.Group>
                             </div>
                             <div className="col-md-3">
@@ -816,7 +829,7 @@ const PromotionConfigurationIndex = () => {
                 </div>
                 
                 <div className="row pb-3">
-                    <div className="col-md-8 col-sm-12 col-12 mx-auto mt-4">
+                    <div className="col-md-12 col-sm-12 col-12 mx-auto mt-4">
                         <table className="table table-bordered table-responsive-md text-center table-striped table-hover table-condensed">
                             <thead className="font-weight-bold">
                             <tr>

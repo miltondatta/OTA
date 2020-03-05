@@ -49,8 +49,12 @@ module.exports = function promoSaveValidator(data) {
     }
     
     if (!data.time_from && data.time_to) {
+        errors.time_to = 'Flight Time From field needs to fill up';
     }
     
+    if (!data.user_id && data.user_group_id) {
+        errors.user_id = 'Please select User Type Id when select User Type';
+    }
     return {
         errors,
         isValid: isEmpty(errors)
