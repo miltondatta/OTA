@@ -50,6 +50,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/fixed_values'} className={'dropdown-item'}>Fixed Values</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/api_sources'} className={'dropdown-item'}>Api Sources</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/user_group'} className={'dropdown-item'}>User Group</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/user_group_mapping'} className={'dropdown-item'}>User Group Mapping</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/configure_promotion'} className={'dropdown-item'}>Promotion Configuration</Link></NavDropdown.Item>
                         </NavDropdown>
                         }

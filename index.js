@@ -24,6 +24,7 @@ const Fixed_values = require('./routes/api/fixed_values');
 const Api_sources  = require('./routes/api/api_sources');
 const ConfPromo    = require('./routes/api/configure_promotion');
 const UserGroup    = require('./routes/api/user_group');
+const UserGroupMapping    = require('./routes/api/user_group_mapping');
 
 //Use All Routes
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
@@ -38,6 +39,7 @@ app.use('/api/fixed_values/', Fixed_values);
 app.use('/api/api_sources/', Api_sources);
 app.use('/api/configure_promotion/', ConfPromo);
 app.use('/api/user_group/', UserGroup);
+app.use('/api/user_group_mapping/', UserGroupMapping);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);
