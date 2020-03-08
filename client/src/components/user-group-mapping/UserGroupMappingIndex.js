@@ -13,6 +13,7 @@ class UserGroupMappingIndex extends Component {
         super(props);
         this.state = {
             group_id               : '',
+            group_name               : '',
             user_id                : '',
             all_active_group_data  : [],
             all_user_data          : [],
@@ -31,7 +32,10 @@ class UserGroupMappingIndex extends Component {
     
     handleChange = e => {
         const {name, value} = e.target;
+        let index = e.nativeEvent.target.selectedIndex;
+        let label = e.nativeEvent.target[index].text;
         this.setState({[name] : value});
+        this.setState({group_name : label});
     };
     
     handleGroupChange = e => {
@@ -70,14 +74,14 @@ class UserGroupMappingIndex extends Component {
                               show     : true,
                               variant  : 'success',
                               headding : 'Data Added!',
-                              message  : `User group ${fxd_name} has been ${sort_message}`
+                              message  : `Users Successfully ${sort_message} in  ${fxd_name}`
                           });
         } else if (variant === 'danger') {
             this.setState({
                               show    : true,
                               variant : 'danger',
                               heading : 'Add Error...!',
-                              message : `User group ${fxd_name} has not been ${sort_message} Please Try again Later.`,
+                              message : `Users not ${sort_message} in  ${fxd_name}`,
                           });
         }
     };
@@ -90,11 +94,6 @@ class UserGroupMappingIndex extends Component {
                           all_assigned_user_data : [],
                           idHolder               : [],
             
-                          show    : '',
-                          variant : '',
-                          heading : '',
-                          message : '',
-            
                           saveButton : true,
                       });
     };
@@ -103,7 +102,6 @@ class UserGroupMappingIndex extends Component {
         const {id, user_id, group_id, all_assigned_user_data} = this.state;
         return {
             group_id               : group_id,
-            user_id                : user_id,
             all_assigned_user_data : all_assigned_user_data,
         };
     };
@@ -131,12 +129,13 @@ class UserGroupMappingIndex extends Component {
                     'Content-Type' : 'application/json'
                 }
             };
-            const res    = await axios.post(`/api/user_group/store`, this.prepareFormData(), config);
-            this.settingMessage('success', fxd_name, 'Added !');
+            const res    = await axios.post(`/api/user_group_mapping/store`, this.prepareFormData(), config);
+            console.log(res);
+            this.settingMessage('success', fxd_name, 'Added');
             this.resetFormData();
             this.fetchData();
         } catch (err) {
-            this.settingMessage('danger', fxd_name, 'Added !');
+            this.settingMessage('danger', fxd_name, 'Added');
         }
     };
     
@@ -148,6 +147,7 @@ class UserGroupMappingIndex extends Component {
         arr.push(itemToAdd);
         return arr;
     };
+    
     findArrayItemFromObject = (arr, itemToFindId) => {
         let foundItem = arr.find(item => {
             if (item.id === itemToFindId) {

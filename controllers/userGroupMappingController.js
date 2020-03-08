@@ -21,19 +21,17 @@ exports.index = async (req, res) => {
 };
 
 exports.store = async (req, res) => {
+    const {group_id, all_assigned_user_data} = req.body;
+    let group_dt                             = [];
+    
     try {
-        const {
-                  group_id,
-                  user_id,
-              } = req.body;
         
-        const newUserGroup = {
-            group_id  : group_id,
-            user_id   : user_id,
-            createdAt : moment()
-        };
-        const status       = await UserGroupMapping.create(newUserGroup);
-        if (!status) return res.status(400).json({msg : 'Please try again with full information!'});
+        const status = await UserGroupMapping.destroy({where : {group_id : group_id}});
+        all_assigned_user_data.forEach((item) => {
+            group_dt.push({group_id : group_id, user_id : item.id});
+        });
+        const creation_status = await UserGroupMapping.bulkCreate(group_dt);
+        if (!creation_status) return res.status(400).json({msg : 'Please try again with full information!'});
         
         return res.status(200).json({msg : 'New User Group saved successfully.'});
     } catch (err) {
