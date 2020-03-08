@@ -60,11 +60,11 @@ class UserGroupMappingIndex extends Component {
                                                                       this.setState({all_user_data : res.data});
                                                                   })
                                                                   .catch(err => {
-                                                                      console.log(err.msg);
+                                                                  
                                                                   });
                                           })
                                           .catch(err => {
-                                              console.log(err.msg);
+                                          
                                           });
     };
     
@@ -112,7 +112,6 @@ class UserGroupMappingIndex extends Component {
                                 this.setState({all_active_group_data : res.data});
                             })
                             .catch(err => {
-                                console.log(err.msg);
                             });
     };
     
@@ -130,7 +129,6 @@ class UserGroupMappingIndex extends Component {
                 }
             };
             const res    = await axios.post(`/api/user_group_mapping/store`, this.prepareFormData(), config);
-            console.log(res);
             this.settingMessage('success', fxd_name, 'Added');
             this.resetFormData();
             this.fetchData();
