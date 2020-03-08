@@ -1,7 +1,7 @@
-const UserGroupMapping = require('../models').user_group_mapping;
-const moment           = require("moment");
-const { QueryTypes } = require('sequelize');
-const { sequelize, Sequelize } = require('../models/index');
+const UserGroupMapping       = require('../models').user_group_mapping;
+const moment                 = require("moment");
+const {QueryTypes}           = require('sequelize');
+const {sequelize, Sequelize} = require('../models/index');
 
 exports.index = async (req, res) => {
     try {
@@ -43,19 +43,48 @@ exports.store = async (req, res) => {
 
 exports.edit = async (req, res) => {
     try {
-        const group_id              = req.params.id;
+        const group_id        = req.params.id;
         const user_group_data = await sequelize.query(
-            // 'SELECT * FROM users WHERE name LIKE :search_name',
-            'select ugm.group_id,ugm.user_id,u.name,u.email,u.mobile from users as u right join (select *from user_group_mappings where group_id = :group_id) as ugm on u.id = ugm.user_id',
+            'select u.id,ugm.group_id,ugm.user_id,u.name,u.email,u.mobile from users as u right join (select * from user_group_mappings where group_id = :group_id) as ugm on u.id = ugm.user_id',
             {
                 replacements : {group_id : group_id},
                 type         : QueryTypes.SELECT
             }
         );
-        console.log(user_group_data);
         return res.status(200).json(user_group_data);
     } catch (err) {
-        console.log(err, 'error from 64');
+        return res.status(500).json({msg : 'Server Errors!'});
+    }
+};
+
+exports.assignedUsers = async (req, res) => {
+    try {
+        const group_id        = req.params.id;
+        const user_group_data = await sequelize.query(
+            'select * from users where id in (select user_id from user_group_mappings where group_id = :group_id);',
+            {
+                replacements : {group_id : group_id},
+                type         : QueryTypes.SELECT
+            }
+        );
+        return res.status(200).json(user_group_data);
+    } catch (err) {
+        return res.status(500).json({msg : 'Server Errors!'});
+    }
+};
+
+exports.notAssignedUsers = async (req, res) => {
+    try {
+        const group_id        = req.params.id;
+        const user_group_data = await sequelize.query(
+            'select * from users where id not in (select user_id from user_group_mappings where group_id = :group_id);',
+            {
+                replacements : {group_id : group_id},
+                type         : QueryTypes.SELECT
+            }
+        );
+        return res.status(200).json(user_group_data);
+    } catch (err) {
         return res.status(500).json({msg : 'Server Errors!'});
     }
 };

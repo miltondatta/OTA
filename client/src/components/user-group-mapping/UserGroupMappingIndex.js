@@ -41,7 +41,7 @@ class UserGroupMappingIndex extends Component {
     
     gettingUserData = async (group_id) => {
         
-        const assigned_users = await axios.get(base_url + `api/user_group_mapping/edit/${group_id}`)
+        const assigned_users = await axios.get(base_url + `api/user_group_mapping/assignedUsers/${group_id}`)
                                           .then(res => {
                                               this.setState({all_assigned_user_data : res.data});
                                               let users_id = [];
@@ -51,7 +51,7 @@ class UserGroupMappingIndex extends Component {
                                               this.setState({idHolder : [...this.state.idHolder, ...users_id]});
                                           })
                                           .then(ass_res => {
-                                              const result = axios.get(`api/users/index`)
+                                              const result = axios.get(base_url + `api/user_group_mapping/notAssignedUsers/${group_id}`)
                                                                   .then(res => {
                                                                       this.setState({all_user_data : res.data});
                                                                   })
@@ -111,7 +111,6 @@ class UserGroupMappingIndex extends Component {
     fetchData = () => {
         const result = axios.get(`/api/user_group/all_active`)
                             .then(res => {
-                                console.log(res.data);
                                 this.setState({all_active_group_data : res.data});
                             })
                             .catch(err => {
@@ -141,37 +140,42 @@ class UserGroupMappingIndex extends Component {
         }
     };
     
-    /*setDeleteInfo = (delete_id, delete_name) => {
-        this.setState({
-                          delete_id   : delete_id,
-                          delete_name : delete_name,
-                          modal_show  : true
-                      });
+    removeArrayItemFromObject = (arr, itemToRemoveId) => {
+        return arr.filter(item => item.id !== itemToRemoveId);
     };
-    */
-    /*setDataForUpdate = id => {
-        this.state.all_data.find(item => {
-            if (item.id === id) {
-                this.setState({
-                                  id           : item.id,
-                                  group_name   : item.group_name,
-                                  description  : item.description,
-                                  status_id    : item.status_id,
-                                  saveButton   : false,
-                                  updateButton : true,
-                                  idHolder     : [...this.state.idHolder, item.id]
-                              });
+    
+    mergeArrayItemToObject  = (arr, itemToAdd) => {
+        arr.push(itemToAdd);
+        return arr;
+    };
+    findArrayItemFromObject = (arr, itemToFindId) => {
+        let foundItem = arr.find(item => {
+            if (item.id === itemToFindId) {
+                return item;
             }
         });
-    };*/
-    
+        return foundItem;
+    };
     
     assignToGroup = (user_id) => {
-        console.log(user_id);
+        let find_item = this.findArrayItemFromObject(this.state.all_user_data, user_id);
+        if (find_item) {
+            let merged_array  = this.mergeArrayItemToObject(this.state.all_assigned_user_data, find_item);
+            let removed_array = this.removeArrayItemFromObject(this.state.all_user_data, user_id);
+            this.setState({all_user_data : removed_array});
+            this.setState({all_assigned_user_data : merged_array});
+        }
+        
     };
     
     removeFromGroup = (user_id) => {
-        console.log(user_id);
+        let find_item = this.findArrayItemFromObject(this.state.all_assigned_user_data, user_id);
+        if (find_item) {
+            let removed_array = this.removeArrayItemFromObject(this.state.all_assigned_user_data, user_id);
+            let merged_array  = this.mergeArrayItemToObject(this.state.all_user_data, find_item);
+            this.setState({all_user_data : merged_array});
+            this.setState({all_assigned_user_data : removed_array});
+        }
     };
     
     updateFormData = async (e) => {
@@ -232,7 +236,7 @@ class UserGroupMappingIndex extends Component {
                                             <div className="col-md-6">
                                                 <Form.Group controlId="group_id">
                                                     <Form.Label>Group List</Form.Label>
-                    
+                                                    
                                                     <select className="form-control" name="group_id" value={group_id}
                                                             onChange={this.handleGroupChange}>
                                                         {all_active_group_data.length > 0 ?
@@ -273,17 +277,11 @@ class UserGroupMappingIndex extends Component {
                                                         <td>{value.email}</td>
                                                         <td>{value.mobile}</td>
                                                         <td className="d-flex justify-content-center">
-                                                            {idHolder.includes(value.id) ?
-                                                             <Button className="btn btn-sm btn-danger ml-2" onClick={(e) => {
-                                                                 this.removeFromGroup(value.id);
-                                                             }}>
-                                                                 <FontAwesomeIcon icon={faTrashAlt}/>
-                                                             </Button> :
-                                                             <button onClick={e => this.assignToGroup(value.id)}
-                                                                     className="btn btn-sm btn-info">
-                                                                 <FontAwesomeIcon icon={faPlusSquare}/>
-                                                             </button>}
-                    
+                                                            
+                                                            <button onClick={e => this.assignToGroup(value.id)}
+                                                                    className="btn btn-sm btn-info">
+                                                                <FontAwesomeIcon icon={faPlusSquare}/>
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))}
@@ -318,7 +316,7 @@ class UserGroupMappingIndex extends Component {
                                                         <td>{value.mobile}</td>
                                                         <td className="d-flex justify-content-center">
                                                             {<Button className="btn btn-sm btn-danger ml-2" onClick={(e) => {
-                                                                this.removeFromGroup(value.user_id);
+                                                                this.removeFromGroup(value.id);
                                                             }}>
                                                                 <FontAwesomeIcon icon={faTrashAlt}/>
                                                             </Button>}

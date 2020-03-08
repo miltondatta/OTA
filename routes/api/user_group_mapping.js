@@ -39,4 +39,22 @@ router.post('/update', apiUserGroupMappingController.update);
  */
 router.post('/delete', apiUserGroupMappingController.delete);
 
+
+/*
+ @route          get api/user_group_mapping/assignedUsers/:id
+ @desc           Get User Group Data By ID
+ @access         Private
+ */
+
+router.get('/assignedUsers/:id', apiUserGroupMappingController.assignedUsers);
+
+/*
+ @route          get api/user_group_mapping/notAssignedUsers/:id
+ @desc           Get User Group Data By ID
+ @access         Private
+ */
+
+router.get('/notAssignedUsers/:id', apiUserGroupMappingController.notAssignedUsers);
+
+
 module.exports = router;
