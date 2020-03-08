@@ -129,4 +129,13 @@ router.get('/edit/:id', users_controller.edit);
 
 router.post('/update', users_controller.update);
 
+
+/*
+ @route          POST api/users/updateUsersBalance/
+ @desc           Save New Airline Data
+ @access         Private
+ */
+
+router.post('/updateUsersBalance', users_controller.updateUsersBalance);
+
 module.exports = router;

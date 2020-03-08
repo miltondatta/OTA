@@ -1,13 +1,14 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {Link}                                 from "react-router-dom";
-import {Badge, Modal, Button}                 from "react-bootstrap";
-import {faEdit, faTrashAlt}                   from "@fortawesome/free-solid-svg-icons";
+import {Badge, Modal, Button, Form}           from "react-bootstrap";
+import {faEdit, faTrashAlt, faMoneyBillAlt}   from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon}                      from "@fortawesome/react-fontawesome";
 import axios                                  from 'axios';
 
 // Import Css
 import '../../assets/css/airline.css';
 import Alerts                                 from "../alert/alerts";
+import {validateInput}                        from "../../utils/funcitons";
 
 const UserIndex = () => {
     
@@ -19,20 +20,38 @@ const UserIndex = () => {
     const [userIndex, setUserIndex] = useState([]);
     
     const [userIndexMessage, setUserIndexMessage] = useState({
-                                                                 show   : false,
-                                                                 variant: '',
-                                                                 heading: '',
-                                                                 message: '',
+                                                                 show    : false,
+                                                                 variant : '',
+                                                                 heading : '',
+                                                                 message : '',
                                                              });
     
     const [modalShow, setShow] = useState(false);
-    const handleClose          = () => setShow(false);
-    const handleShow           = () => setShow(true);
     
-    const [deleteInfo, setDeleteInfo] = useState({
-                                                     id  : '',
-                                                     name: ''
-                                                 });
+    const handleClose = () => setShow(false);
+    const handleShow  = () => setShow(true);
+    
+    const [modalBalanceShow, setBalanceShow] = useState(false);
+    const handleCloseBalance                 = () => setBalanceShow(false);
+    const handleShowBalance                  = () => setBalanceShow(true);
+    
+    const [deleteInfo, setDeleteInfo]       = useState({
+                                                           id   : '',
+                                                           name : ''
+                                                       });
+    const [updateBalance, setUpdateBalance] = useState({
+                                                           user_id   : '',
+                                                           user_name : '',
+                                                           balance   : ''
+                                                       });
+    
+    const setBalanceAmount = e => {
+        let valid = validateInput(e);
+        if (valid || valid === '') {
+            setUpdateBalance({...updateBalance, balance : valid});
+        }
+        
+    };
     
     const {show, variant, heading, message} = userIndexMessage;
     
@@ -43,10 +62,10 @@ const UserIndex = () => {
         const userIndex_add_message = localStorage.getItem('userIndex_add_message');
         if (userIndex_add_message) {
             setUserIndexMessage({
-                                    show    : true,
-                                    variant : 'success',
-                                    headding: 'New User Added!',
-                                    message : userIndex_add_message
+                                    show     : true,
+                                    variant  : 'success',
+                                    headding : 'New User Added!',
+                                    message  : userIndex_add_message
                                 });
         }
         localStorage.removeItem('userIndex_add_message');
@@ -54,10 +73,10 @@ const UserIndex = () => {
         const user_update_message = localStorage.getItem('user_update_message');
         if (user_update_message) {
             setUserIndexMessage({
-                                    show    : true,
-                                    variant : 'success',
-                                    headding: 'User Updated!',
-                                    message : user_update_message
+                                    show     : true,
+                                    variant  : 'success',
+                                    headding : 'User Updated!',
+                                    message  : user_update_message
                                 });
         }
         localStorage.removeItem('user_update_message');
@@ -67,22 +86,22 @@ const UserIndex = () => {
     const deleteUser = async () => {
         try {
             const config = {
-                headers: {
-                    'Content-Type': 'application/json'
+                headers : {
+                    'Content-Type' : 'application/json'
                 }
             };
             
             const data = {
-                id: deleteInfo.id
+                id : deleteInfo.id
             };
             
             const result = await axios.post(`api/users/delete/`, data, config);
             
             setUserIndexMessage({
-                                    show   : true,
-                                    variant: 'success',
-                                    heading: 'User Delete Message!',
-                                    message: result.data.msg
+                                    show    : true,
+                                    variant : 'success',
+                                    heading : 'User Delete Message!',
+                                    message : result.data.msg
                                 });
             
             fetchData();
@@ -91,10 +110,49 @@ const UserIndex = () => {
             
         } catch (err) {
             setUserIndexMessage({
-                                    show   : true,
-                                    variant: 'danger',
-                                    heading: 'Airline Delete Message!',
-                                    message: err.response.data.msg,
+                                    show    : true,
+                                    variant : 'danger',
+                                    heading : 'Airline Delete Message!',
+                                    message : err.response.data.msg,
+                                });
+        }
+    };
+    
+    const updateUserBalance = async () => {
+        try {
+            const config = {
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            };
+            
+            const data = {
+                update_info : updateBalance
+            };
+            
+            const result = await axios.post(`api/users/updateUsersBalance/`, data, config);
+            
+            setUserIndexMessage({
+                                    show    : true,
+                                    variant : 'success',
+                                    heading : 'Amount Added !',
+                                    message : `Amount: ${updateBalance.balance} has been added to ${updateBalance.user_name}`
+                                });
+            setUpdateBalance({
+                                 user_id   : '',
+                                 user_name : '',
+                                 balance   : ''
+                             });
+            fetchData();
+            
+            return result.data;
+            
+        } catch (err) {
+            setUserIndexMessage({
+                                    show    : true,
+                                    variant : 'danger',
+                                    heading : 'Amount not added !',
+                                    message : err.response.data.msg,
                                 });
         }
     };
@@ -116,9 +174,9 @@ const UserIndex = () => {
                 </div>
                 
                 <div className="row pb-3">
-                    <div className="col-md-8 col-sm-12 col-12 mx-auto">
+                    <div className="col-md-12 col-sm-12 col-12 mx-auto">
                         <Link to="/register" className="btn btn-outline-primary d-block ml-auto mb-2"
-                              style={{width: 80}}>Create</Link>
+                              style={{width : 80}}>Create</Link>
                         
                         <table className="table table-bordered table-responsive-md text-center">
                             <thead className="font-weight-bold">
@@ -127,7 +185,10 @@ const UserIndex = () => {
                                 <td>Name</td>
                                 <td>Email</td>
                                 <td>Mobile</td>
+                                <td>Credit Limit</td>
+                                <td>Balance</td>
                                 <td>Status</td>
+                                <td>Assign <br/> Balance</td>
                                 <td>Action</td>
                             </tr>
                             </thead>
@@ -139,10 +200,25 @@ const UserIndex = () => {
                                         <td>{value.name}</td>
                                         <td>{value.email}</td>
                                         <td>{value.mobile}</td>
+                                        <td>{value.credit_limit}</td>
+                                        <td>{value.balance}</td>
                                         <td>
                                             <Badge variant={(value.status === 3) ? 'success' : 'danger'}>{(value.status === 3) ?
                                                                                                           'Active' :
                                                                                                           'Inactive'}</Badge>
+                                        </td>
+                                        <td>
+                                            <Button className="btn btn-sm btn-warning ml-2" onClick={() => {
+                                                
+                                                setUpdateBalance(prevState => ({
+                                                    ...prevState,
+                                                    user_id   : value.id,
+                                                    user_name : value.name
+                                                }));
+                                                handleShowBalance();
+                                            }}> <span>Assign Balance  </span>
+                                                <FontAwesomeIcon icon={faMoneyBillAlt}/>
+                                            </Button>
                                         </td>
                                         <td className="d-flex justify-content-center">
                                             <Link to={`users/edit/${value.id}`} className="btn btn-sm btn-info">
@@ -150,12 +226,11 @@ const UserIndex = () => {
                                             </Link>
                                             <Button className="btn btn-sm btn-danger ml-2" onClick={() => {
                                                 setDeleteInfo({
-                                                                  id  : value.id,
-                                                                  name: value.name
+                                                                  id   : value.id,
+                                                                  name : value.name
                                                               });
-                                                
                                                 setUserIndexMessage({
-                                                                        show: false
+                                                                        show : false
                                                                     });
                                                 handleShow();
                                             }}>
@@ -165,7 +240,7 @@ const UserIndex = () => {
                                     </tr>
                                 ))}
                             </Fragment> : <tr>
-                                 <td colSpan={8}>
+                                 <td colSpan={9}>
                                      No data found!
                                  </td>
                              </tr>}
@@ -176,7 +251,7 @@ const UserIndex = () => {
                 
                 <Modal show={modalShow} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Airline Information Remove</Modal.Title>
+                        <Modal.Title>User Information Remove</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Are you sure you want to delete <span>{deleteInfo.name}</span> from here.</Modal.Body>
                     <Modal.Footer>
@@ -191,9 +266,35 @@ const UserIndex = () => {
                         </Button>
                     </Modal.Footer>
                 </Modal>
+                
+                <Modal show={modalBalanceShow} onHide={handleCloseBalance}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add User Balance</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>You are adding balance for <b>{updateBalance.user_name}</b></Modal.Body>
+                    <div className="col-md-6">
+                        <Form.Group controlId="formProfile">
+                            <Form.Label>Amount :</Form.Label>
+                            <Form.Control type="text" name="mobile" value={updateBalance.balance}
+                                          onChange={e => setBalanceAmount(e)} data-number={'float_only'}
+                                          placeholder="Enter Amount" autocomplete="off" required/>
+                        </Form.Group>
+                    </div>
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={handleCloseBalance}>
+                            Close
+                        </Button>
+                        <Button variant="outline-info" onClick={() => {
+                            updateUserBalance();
+                            handleCloseBalance();
+                        }}>
+                            Confirm Add
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </div>
-    </Fragment>
+    </Fragment>;
 };
 
 export default UserIndex;
