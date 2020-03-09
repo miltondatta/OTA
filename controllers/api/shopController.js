@@ -9,6 +9,7 @@ const travelport = require('../travelport/travelportController');
 
 const airport = require('../../models').airport;
 const airline = require('../../models').airline;
+const promotionCalculation = require('../../utility/promotionCalculations');
 
 /*
  //Test Amadeus
@@ -35,7 +36,7 @@ exports.shop = async (req, res) => {
     let iatas    = [];
     let airlines = [];
     
-    fs.readFile("api_output/travelport/shop.txt", {encoding: 'utf-8'}, function (err, apiData) {
+    fs.readFile("api_output/travelport/shop.txt", {encoding : 'utf-8'}, function (err, apiData) {
         if (!err) {
             let parseData = JSON.parse(apiData);
             for (let i = 0; i < parseData.length; i++) {
@@ -43,7 +44,7 @@ exports.shop = async (req, res) => {
                 directions.forEach(flight => {
                     for (let j = 0; j < flight.length; j++) {
                         let flightData           = {};
-                        flightData['api_source']     = 1;
+                        flightData['api_source'] = 1;
                         flightData['totalPrice'] = parseData[i].totalPrice;
                         flightData['basePrice']  = parseData[i].basePrice;
                         flightData['taxes']      = parseData[i].taxes;
@@ -105,9 +106,9 @@ exports.shop = async (req, res) => {
             //Get City data By IATA Code
             if (iatas.length) {
                 airport.findAll({
-                                    attributes: ['iata_code', 'municipality'],
-                                    where     : {
-                                        iata_code: iatas
+                                    attributes : ['iata_code', 'municipality'],
+                                    where      : {
+                                        iata_code : iatas
                                     }
                                 }).then(modelDatas => {
                     let cities = [];
@@ -116,9 +117,9 @@ exports.shop = async (req, res) => {
                     });
                     //Get AirLine Data By Plating Carrier and Airlne
                     airline.findAll({
-                                        attributes: ['iata', 'name'],
-                                        where     : {
-                                            iata: airlines
+                                        attributes : ['iata', 'name'],
+                                        where      : {
+                                            iata : airlines
                                         }
                                     }).then(records => {
                         let airline_names = [];
@@ -137,11 +138,11 @@ exports.shop = async (req, res) => {
                                 segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
                             });
                         });
-                        
+                        const new_shopData = promotionCalculation(shopData);
                         let response        = {};
                         response['status']  = true;
                         response['message'] = 'Successfully process your request!';
-                        response['data']    = shopData;
+                        response['data']    = new_shopData;
                         return res.status(200).json(response);
                     });
                 });
@@ -321,21 +322,21 @@ exports.shop = async (req, res) => {
     const {from, to, departureDate, ADT, CNN, INF, cabins} = req.body;
     //For travelport - Params preparation
     const params                                           = {
-        legs      : [
+        legs       : [
             {
-                from         : from,
-                to           : to,
-                departureDate: departureDate
+                from          : from,
+                to            : to,
+                departureDate : departureDate
             }
         ],
-        passengers: {
-            ADT: parseInt(ADT),
-            CNN: parseInt(CNN),
-            INF: parseInt(INF)
+        passengers : {
+            ADT : parseInt(ADT),
+            CNN : parseInt(CNN),
+            INF : parseInt(INF)
         },
-        cabins    : [cabins],
-        pricing   : {
-            currency: 'USD'
+        cabins     : [cabins],
+        pricing    : {
+            currency : 'USD'
         }
     };
     
@@ -415,9 +416,9 @@ exports.shop = async (req, res) => {
                       //Get City data By IATA Code
                       if (iatas.length) {
                           airport.findAll({
-                                              attributes: ['iata_code', 'municipality'],
-                                              where     : {
-                                                  iata_code: iatas
+                                              attributes : ['iata_code', 'municipality'],
+                                              where      : {
+                                                  iata_code : iatas
                                               }
                                           }).then(modelDatas => {
                               let cities = [];
@@ -426,9 +427,9 @@ exports.shop = async (req, res) => {
                               });
                               //Get AirLine Data By Plating Carrier and Airlne
                               airline.findAll({
-                                                  attributes: ['iata', 'name'],
-                                                  where     : {
-                                                      iata: airlines
+                                                  attributes : ['iata', 'name'],
+                                                  where      : {
+                                                      iata : airlines
                                                   }
                                               }).then(records => {
                                   let airline_names = [];
@@ -459,7 +460,7 @@ exports.shop = async (req, res) => {
                       }
                   },
                   apiErr => {
-                      return res.status(200).json({'status': false, 'message': 'There is a problem in your request, please try again later!'});
+                      return res.status(200).json({'status' : false, 'message' : 'There is a problem in your request, please try again later!'});
                   }
               );
     
