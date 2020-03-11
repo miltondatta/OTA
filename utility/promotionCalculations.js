@@ -1,4 +1,5 @@
-const FixedValues = require('../models').fixed_values;
+const FixedValues   = require('../models').fixed_values;
+const PromotionConf = require('../models').promotion_configurations;
 
 let flightData = [];
 
@@ -6,8 +7,14 @@ const promotionCalculations = (flightData_prarm) => {
     flightData = flightData_prarm;
     FixedValues.findAll({where : {status_id : 3}})
                .then(fixed_values => {
-                    applyFixedValues(fixed_values, flightData);
+                   PromotionConf.findAll({where : {status_id : 3}})
+                                .then(
+                                    promotions => {
+                                        //flightData = calculatePromotion(flightData, promotions);
+                                        //flightData = applyFixedValues(fixed_values, flightData);
+                                    });
                });
+    
     return flightData;
 };
 
@@ -44,9 +51,9 @@ const calculateFare = (totalPrice, basePrice, taxes, std_commission, ait, fxd_va
     let ait_amount       = 0;
     let airlines_payment = 0;
     let shown_fare       = 0;
-    totalPrice           = parseFloat(parseFare(totalPrice, "USD"));
-    basePrice            = parseFloat(parseFare(basePrice, "USD"));
-    taxes                = parseFloat(parseFare(taxes, "USD"));
+    totalPrice           = parseFloat(totalPrice);
+    basePrice            = parseFloat(basePrice);
+    taxes                = parseFloat(taxes);
     ait_amount           = parseFloat((totalPrice * ait).toFixed(2));
     airlines_fare        = parseFloat((basePrice * (100 - std_commission)) / 100);
     airlines_payment     = parseFloat((airlines_fare + taxes + ait_amount).toFixed(2));
@@ -70,8 +77,175 @@ const calculateFare = (totalPrice, basePrice, taxes, std_commission, ait, fxd_va
     return calculated_fare;
 };
 
-const parseFare = (amount, currency) => {
-    return amount.substring(currency.length);
+const calculatePromotion = (flightData, promotions) => {
+    let promotion_applied_flightData = [];
+    flightData.forEach(fl_data => {
+        promotions.forEach(promo_data => {
+            let promo_elegibility_arr = [];
+            //check form city to city
+            if (promo_data.from_city && promo_data.to_city) {
+                if (
+                    promo_data.from_city === fl_data.from &&
+                    promo_data.to_city === fl_data.to
+                ) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check form city to city
+            
+            //check Plating Carrier
+            if (promo_data.plating_carrier) {
+                if (promo_data.plating_carrier === fl_data.platingCarrier) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check Plating Carrier
+            
+            //check Flight Type
+            if (promo_data.flight_type) {
+                let is_domestic = isDomestic(fl_data.from, fl_data.to);
+                if (promo_data.flight_type === "doms" && is_domestic === true) {
+                    promo_elegibility_arr.push(true);
+                } else if (promo_data.flight_type === "intn" && is_domestic === false) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check Flight Type
+            
+            //check bookingClass
+            if (promo_data.booking_class) {
+                if (promo_data.booking_class === fl_data.segments[0].bookingClass) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check bookingClass
+            
+            //check Api source
+            if (promo_data.api_source_id) {
+                if (promo_data.api_source_id === fl_data.api_source) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check Api source
+            
+            //check issue_date_from form issue_date_to
+            if (promo_data.issue_date_from && promo_data.issue_date_to) {
+                let today = moment(new Date());
+                let issue_date_from = moment(promo_data.issue_date_from).format(
+                    "YYYY-MM-DD"
+                );
+                let issue_date_to = moment(promo_data.issue_date_to).format(
+                    "YYYY-MM-DD"
+                );
+                if (today.isBetween(issue_date_from, issue_date_to)) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check issue_date_from form issue_date_to
+            
+            //check travel_date_from form travel_date_to
+            if (promo_data.travel_date_from && promo_data.travel_date_to) {
+                let travel_date = moment(fl_data.first_departure);
+                let travel_date_from = moment(promo_data.travel_date_from).format(
+                    "YYYY-MM-DD"
+                );
+                let travel_date_to = moment(promo_data.travel_date_to);
+                
+                if (travel_date.isBetween(travel_date_from, travel_date_to)) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check travel_date_from form travel_date_to
+            
+            //check travel_time_from form travel_time_to
+            if (promo_data.time_from && promo_data.time_to) {
+                let flight_time_int = convertToMinuteInteger(
+                    moment(fl_data.first_departure).format("HH:mm:ss")
+                );
+                let time_from_int = convertToMinuteInteger(
+                    moment(promo_data.time_from, "HH:mm:ss").format("HH:mm:ss")
+                );
+                let time_to_int = convertToMinuteInteger(
+                    moment(promo_data.time_to, "HH:mm:ss").format("HH:mm:ss")
+                );
+                
+                if (
+                    flight_time_int >= time_from_int &&
+                    flight_time_int <= time_to_int
+                ) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            
+            //check travel_time_from form travel_time_to
+            //apply not !
+            if (promo_elegibility_arr.includes(false)) {
+                let promo_amount = 0;
+                var promo_fare_amount = 0;
+                if (promo_data.promo_type === "d") {
+                    if (promo_data.value_type === "ps") {
+                        promo_amount = parseFloat(
+                            ((fl_data.basePrice * promo_data.value) / 100).toFixed(2)
+                        );
+                    } else {
+                        promo_amount = promo_data.value;
+                    }
+                    if (promo_data.max_amount) {
+                        if (promo_amount > promo_data.max_amount) {
+                            promo_amount = promo_data.max_amount;
+                        }
+                    }
+                    promo_fare_amount = fl_data.basePrice - promo_amount;
+                } else {
+                    if (promo_data.value_type === "ps") {
+                        promo_amount = parseFloat(
+                            ((fl_data.basePrice * promo_data.value) / 100).toFixed(2)
+                        );
+                    } else {
+                        promo_amount = promo_data.value;
+                    }
+                    if (promo_data.max_amount) {
+                        if (promo_amount > promo_data.max_amount) {
+                            promo_amount = promo_data.max_amount;
+                        }
+                    }
+                    promo_fare_amount = fl_data.basePrice + promo_amount;
+                }
+                
+                fl_data.promo_amount = promo_amount;
+                fl_data.promo_fare_amount = promo_fare_amount;
+                fl_data.promo_id = promo_data.id;
+                
+                promotion_applied_flightData.push(fl_data);
+            }
+        });
+    });
+    return promotion_applied_flightData;
+};
+
+const isDomestic = (fl_data_from, fl_data_to) => {
+    return false;//database calling
+};
+
+const convertToMinuteInteger = time_string => {
+    let splited_string = time_string.split(":");
+    return splited_string[0] * 60 + splited_string[1];
 };
 
 module.exports = promotionCalculations;

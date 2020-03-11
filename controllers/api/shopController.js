@@ -7,8 +7,8 @@ var moment       = require("moment");
 const travelport = require('../travelport/travelportController');
 //const amadeus    = require('../amadeus/amadeusController');
 
-const airport = require('../../models').airport;
-const airline = require('../../models').airline;
+const airport              = require('../../models').airport;
+const airline              = require('../../models').airline;
 const promotionCalculation = require('../../utility/promotionCalculations');
 
 /*
@@ -45,9 +45,10 @@ exports.shop = async (req, res) => {
                     for (let j = 0; j < flight.length; j++) {
                         let flightData           = {};
                         flightData['api_source'] = 1;
-                        flightData['totalPrice'] = parseData[i].totalPrice;
-                        flightData['basePrice']  = parseData[i].basePrice;
-                        flightData['taxes']      = parseData[i].taxes;
+                        flightData['currency']   = 'USD';
+                        flightData['totalPrice'] = parseFare(parseData[i].totalPrice, 'USD');
+                        flightData['basePrice']  = parseFare(parseData[i].basePrice, 'USD');
+                        flightData['taxes']      = parseFare(parseData[i].taxes, 'USD');
                         flightData['from']       = flight[j].from;
                         flightData['to']         = flight[j].to;
                         iatas.push(flight[j].from);
@@ -138,12 +139,12 @@ exports.shop = async (req, res) => {
                                 segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
                             });
                         });
-                        const new_shopData = promotionCalculation(shopData);
+                        //let new_shopData = promotionCalculation(shopData);
                         let response        = {};
                         response['status']  = true;
                         response['message'] = 'Successfully process your request!';
-                        response['data']    = new_shopData;
-                        return res.status(200).json(response);
+                        response['data']    = shopData;
+                        return res.status(200).json(shopData);
                     });
                 });
             }
@@ -464,4 +465,8 @@ exports.shop = async (req, res) => {
                   }
               );
     
+};
+
+const parseFare = (amount, currency) => {
+    return amount.substring(currency.length);
 };
