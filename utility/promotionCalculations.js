@@ -3,9 +3,13 @@ const PromotionConf = require('../models').promotion_configurations;
 
 let flightData = [];
 
-const promotionCalculations = (flightData_prarm) => {
+const promotionCalculations = async (flightData_prarm) => {
     flightData = flightData_prarm;
-    FixedValues.findAll({where : {status_id : 3}})
+    let fixed_values = await FixedValues.findAll({where : {status_id : 3}});
+    let promotions   = await PromotionConf.findAll({where : {status_id : 3}});
+    
+    console.log(promotions);
+            /*
                .then(fixed_values => {
                    PromotionConf.findAll({where : {status_id : 3}})
                                 .then(
@@ -13,7 +17,7 @@ const promotionCalculations = (flightData_prarm) => {
                                         //flightData = calculatePromotion(flightData, promotions);
                                         //flightData = applyFixedValues(fixed_values, flightData);
                                     });
-               });
+               }); */
     
     return flightData;
 };
