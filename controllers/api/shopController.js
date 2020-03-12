@@ -2,16 +2,14 @@
 //We Will Define Parameter Here for Request Based on API Name
 //Only Call Particular Function Like Shop from here, will create more controller like Book, Ticket Sepearately 
 
-var fs           = require("fs");
-var moment       = require("moment");
-const util       = require('util');
+var fs     = require("fs");
+var moment = require("moment");
+const util = require('util');
 
-const readFile   = util.promisify(fs.readFile);
+const readFile = util.promisify(fs.readFile);
 
 const travelport = require('../travelport/travelportController');
 //const amadeus    = require('../amadeus/amadeusController');
-
-
 
 const airport              = require('../../models').airport;
 const airline              = require('../../models').airline;
@@ -35,135 +33,134 @@ const promotionCalculation = require('../../utility/promotionCalculations');
  };
  return; */
 
-
- exports.shop = async (req, res) => {
+exports.shop = async (req, res) => {
     
     //Prepare data from file
-        let shopData = [];
-        let iatas    = [];
-        let airlines = [];
-        let apiData  = await readFile("api_output/travelport/shop.txt");
-        
-
-        let parseData = JSON.parse(apiData);
-            for (let i = 0; i < parseData.length; i++) {
-                let directions = parseData[i].directions;
-                directions.forEach(flight => {
-                    for (let j = 0; j < flight.length; j++) {
-                        let flightData           = {};
-                        flightData['api_source'] = 1;
-                        flightData['currency']   = 'USD';
-                        flightData['totalPrice'] = parseFare(parseData[i].totalPrice, 'USD');
-                        flightData['basePrice']  = parseFare(parseData[i].basePrice, 'USD');
-                        flightData['taxes']      = parseFare(parseData[i].taxes, 'USD');
-                        flightData['from']       = flight[j].from;
-                        flightData['to']         = flight[j].to;
-                        iatas.push(flight[j].from);
-                        iatas.push(flight[j].to);
-                        flightData['from_city']           = flight[j].from;
-                        flightData['to_city']             = flight[j].to;
-                        flightData['platingCarrier']      = flight[j].platingCarrier;
-                        flightData['platingCarrier_name'] = flight[j].platingCarrier;
-                        airlines.push(flightData['platingCarrier']);
-                        let dataSegments               = flight[j].segments;
-                        let segmentLength              = dataSegments.length;
-                        flightData['first_departure']  = dataSegments[0].departure;
-                        flightData['last_arrival']     = dataSegments[segmentLength - 1].arrival;
-                        let start_date                 = moment(flightData['first_departure']);
-                        let end_date                   = moment(flightData['last_arrival']);
-                        let minutes                    = parseInt(moment.duration(end_date.diff(start_date)).asMinutes());
-                        flightData['same_day_arrival'] = (moment(start_date).format('YYYY-MM-DD') == moment(end_date).format('YYYY-MM-DD')) ?
-                                                         true : false;
-                        let total_duration             = '';
-                        total_duration += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
-                        total_duration += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';
-                        flightData['total_duration']   = total_duration;
-                        
-                        let segments = [];
-                        for (let k = 0; k < segmentLength; k++) {
-                            let segment          = {};
-                            segment['from']      = dataSegments[k].from;
-                            segment['to']        = dataSegments[k].to;
-                            segment['from_city'] = dataSegments[k].from;
-                            segment['to_city']   = dataSegments[k].to;
-                            iatas.push(segment['to']);
-                            segment['departure']    = dataSegments[k].departure;
-                            segment['arrival']      = dataSegments[k].arrival;
-                            segment['airline']      = dataSegments[k].airline;
-                            segment['airline_name'] = dataSegments[k].airline;
-                            airlines.push(dataSegments[k].airline);
-                            segment['flightNumber']   = dataSegments[k].flightNumber;
-                            segment['duration']       = dataSegments[k].duration[0];
-                            minutes                   = parseInt(dataSegments[k].duration[0]);
-                            total_duration            = '';
-                            total_duration += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
-                            total_duration += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';
-                            segment['total_duration'] = total_duration;
-                            segment['bookingClass']   = dataSegments[k].bookingClass;
-                            segment['baggage']        = dataSegments[k].baggage[0].amount + ' ' + dataSegments[k].baggage[0].units;
-                            segments.push(segment);
-                        }
-                        flightData['segments'] = segments;
-                        flightData['stoppage'] = (segmentLength > 1) ? ((segmentLength - 1) + ' stops') : 'Direct';
-                        shopData.push(flightData);
-                    }
-                    
-                });
+    let shopData = [];
+    let iatas    = [];
+    let airlines = [];
+    let apiData  = await readFile("api_output/travelport/shop.txt");
+    
+    let parseData = JSON.parse(apiData);
+    for (let i = 0; i < parseData.length; i++) {
+        let directions = parseData[i].directions;
+        directions.forEach(flight => {
+            for (let j = 0; j < flight.length; j++) {
+                let flightData                 = {};
+                flightData['api_source']       = 1;
+                flightData['is_promo_applied'] = 0;
+                flightData['currency']         = 'USD';
+                flightData['totalPrice']       = parseFare(parseData[i].totalPrice, 'USD');
+                flightData['basePrice']        = parseFare(parseData[i].basePrice, 'USD');
+                flightData['taxes']            = parseFare(parseData[i].taxes, 'USD');
+                flightData['execTotalPrice']   = parseFare(parseData[i].totalPrice, 'USD');
+                flightData['execBasePrice']    = parseFare(parseData[i].basePrice, 'USD');
+                flightData['actualTotalPrice'] = parseFare(parseData[i].totalPrice, 'USD');
+                flightData['actualBasePrice']  = parseFare(parseData[i].basePrice, 'USD');
+                flightData['from']             = flight[j].from;
+                flightData['to']               = flight[j].to;
+                iatas.push(flight[j].from);
+                iatas.push(flight[j].to);
+                flightData['from_city']           = flight[j].from;
+                flightData['to_city']             = flight[j].to;
+                flightData['platingCarrier']      = flight[j].platingCarrier;
+                flightData['platingCarrier_name'] = flight[j].platingCarrier;
+                airlines.push(flightData['platingCarrier']);
+                let dataSegments               = flight[j].segments;
+                let segmentLength              = dataSegments.length;
+                flightData['first_departure']  = dataSegments[0].departure;
+                flightData['last_arrival']     = dataSegments[segmentLength - 1].arrival;
+                let start_date                 = moment(flightData['first_departure']);
+                let end_date                   = moment(flightData['last_arrival']);
+                let minutes                    = parseInt(moment.duration(end_date.diff(start_date)).asMinutes());
+                flightData['same_day_arrival'] = (moment(start_date).format('YYYY-MM-DD') == moment(end_date).format('YYYY-MM-DD')) ?
+                                                 true : false;
+                let total_duration             = '';
+                total_duration += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
+                total_duration += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';
+                flightData['total_duration']   = total_duration;
+                
+                let segments = [];
+                for (let k = 0; k < segmentLength; k++) {
+                    let segment          = {};
+                    segment['from']      = dataSegments[k].from;
+                    segment['to']        = dataSegments[k].to;
+                    segment['from_city'] = dataSegments[k].from;
+                    segment['to_city']   = dataSegments[k].to;
+                    iatas.push(segment['to']);
+                    segment['departure']    = dataSegments[k].departure;
+                    segment['arrival']      = dataSegments[k].arrival;
+                    segment['airline']      = dataSegments[k].airline;
+                    segment['airline_name'] = dataSegments[k].airline;
+                    airlines.push(dataSegments[k].airline);
+                    segment['flightNumber']   = dataSegments[k].flightNumber;
+                    segment['duration']       = dataSegments[k].duration[0];
+                    minutes                   = parseInt(dataSegments[k].duration[0]);
+                    total_duration            = '';
+                    total_duration += (minutes >= 60) ? parseInt(minutes / 60) + 'h ' : '';
+                    total_duration += (minutes % 60 > 0) ? parseInt(minutes % 60) + 'm' : '';
+                    segment['total_duration'] = total_duration;
+                    segment['bookingClass']   = dataSegments[k].bookingClass;
+                    segment['baggage']        = dataSegments[k].baggage[0].amount + ' ' + dataSegments[k].baggage[0].units;
+                    segments.push(segment);
+                }
+                flightData['segments'] = segments;
+                flightData['stoppage'] = (segmentLength > 1) ? ((segmentLength - 1) + ' stops') : 'Direct';
+                shopData.push(flightData);
             }
-
-
-        if (iatas.length) {
-            let airports = await airport.findAll({
-                attributes: ['iata_code', 'municipality'],
-                where: {
-                    iata_code: iatas
-                }
-            });
-            let cities = [];
-            airports.map(function (record) {
-                cities[record.iata_code] = record.municipality;
-            });
-
-
-            let airlineData = await airline.findAll({
-                attributes : ['iata', 'name'],
-                where      : {
-                    iata : airlines
-                }
-            });
-            let airline_names = [];
-            airlineData.map(function (record) {
-                airline_names[record.iata] = record.name;
-            });
-
-
-            shopData.forEach(element => {
-                element.from_city           = cities[element.from] ? cities[element.from] : element.from;
-                element.to_city             = cities[element.to] ? cities[element.to] : element.to;
-                element.platingCarrier_name = airline_names[element.platingCarrier] ? airline_names[element.platingCarrier] :
-                                              element.platingCarrier;
-                element.segments.forEach(segment => {
-                    segment.from_city    = cities[segment.from] ? cities[segment.from] : segment.from;
-                    segment.to_city      = cities[segment.to] ? cities[segment.to] : segment.to;
-                    segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
-                });
-            });
-
-            let shopDataAfterFilter    = await promotionCalculation(shopData);
-            let response        = {};
-            response['status']  = true;
-            response['message'] = 'Successfully process your request!';
-            response['data']    = shopDataAfterFilter;
-            return res.status(200).json(response);
-        } else {
-            let response        = {};
-            response['status']  = true;
-            response['message'] = 'Successfully process your request!';
-            response['data']    = shopData;
-            return res.status(200).json(response);
-        }
+            
+        });
+    }
+    
+    if (iatas.length) {
+        let airports = await airport.findAll({
+                                                 attributes : ['iata_code', 'municipality'],
+                                                 where      : {
+                                                     iata_code : iatas
+                                                 }
+                                             });
+        let cities   = [];
+        airports.map(function (record) {
+            cities[record.iata_code] = record.municipality;
+        });
         
-
+        let airlineData   = await airline.findAll({
+                                                      attributes : ['iata', 'name'],
+                                                      where      : {
+                                                          iata : airlines
+                                                      }
+                                                  });
+        let airline_names = [];
+        airlineData.map(function (record) {
+            airline_names[record.iata] = record.name;
+        });
+        
+        shopData.forEach(element => {
+            element.from_city           = cities[element.from] ? cities[element.from] : element.from;
+            element.to_city             = cities[element.to] ? cities[element.to] : element.to;
+            element.platingCarrier_name = airline_names[element.platingCarrier] ? airline_names[element.platingCarrier] :
+                                          element.platingCarrier;
+            element.segments.forEach(segment => {
+                segment.from_city    = cities[segment.from] ? cities[segment.from] : segment.from;
+                segment.to_city      = cities[segment.to] ? cities[segment.to] : segment.to;
+                segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
+            });
+        });
+        
+        let shopDataAfterFilter = await promotionCalculation(shopData);
+        let response            = {};
+        response['status']      = true;
+        response['message']     = 'Successfully process your request!';
+        response['data']        = shopDataAfterFilter;
+        return res.status(200).json(response);
+    } else {
+        let response        = {};
+        response['status']  = true;
+        response['message'] = 'Successfully process your request!';
+        response['data']    = shopData;
+        return res.status(200).json(response);
+    }
+    
     return;
     
     /*

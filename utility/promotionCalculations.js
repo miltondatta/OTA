@@ -1,28 +1,23 @@
 const FixedValues   = require('../models').fixed_values;
 const PromotionConf = require('../models').promotion_configurations;
+const moment        = require("moment");
 
 let flightData = [];
 
 const promotionCalculations = async (flightData_prarm) => {
-    flightData = flightData_prarm;
+    flightData       = flightData_prarm;
     let fixed_values = await FixedValues.findAll({where : {status_id : 3}});
     let promotions   = await PromotionConf.findAll({where : {status_id : 3}});
     
-    console.log(promotions);
-            /*
-               .then(fixed_values => {
-                   PromotionConf.findAll({where : {status_id : 3}})
-                                .then(
-                                    promotions => {
-                                        //flightData = calculatePromotion(flightData, promotions);
-                                        //flightData = applyFixedValues(fixed_values, flightData);
-                                    });
-               }); */
+    let fixed_value_applied = await applyFixedValues(fixed_values, flightData);
+    let promo_applied       = await calculatePromotion(promotions, flightData);
+    
+    console.log(flightData);
     
     return flightData;
 };
 
-const applyFixedValues = (fixed_values, flightData) => {
+const applyFixedValues = async (fixed_values, flightData) => {
     let std_commission = 0;
     let ait            = 0;
     let fxd_value      = 0;
@@ -40,10 +35,14 @@ const applyFixedValues = (fixed_values, flightData) => {
     });
     flightData.forEach(fl_dt => {
         let calculated_fare    = calculateFare(fl_dt.totalPrice, fl_dt.basePrice, fl_dt.taxes, std_commission, ait, fxd_value, fxd_value_type);
-        fl_dt.shown_fare       = calculated_fare.shown_fare;
+        fl_dt.totalPrice       = calculated_fare.shown_fare;
+        fl_dt.basePrice        = calculated_fare.shown_base_fare;
+        fl_dt.execTotalPrice   = calculated_fare.shown_fare;
+        fl_dt.execBasePrice    = calculated_fare.shown_base_fare;
         fl_dt.airlines_fare    = calculated_fare.airlines_fare;
-        fl_dt.ait_amount       = calculated_fare.ait_amount;
         fl_dt.airlines_payment = calculated_fare.airlines_payment;
+        fl_dt.ait_amount       = calculated_fare.ait_amount;
+        fl_dt.fxd_amount       = calculated_fare.fxd_amount;
     });
     
     return flightData;
@@ -55,18 +54,23 @@ const calculateFare = (totalPrice, basePrice, taxes, std_commission, ait, fxd_va
     let ait_amount       = 0;
     let airlines_payment = 0;
     let shown_fare       = 0;
-    totalPrice           = parseFloat(totalPrice);
-    basePrice            = parseFloat(basePrice);
-    taxes                = parseFloat(taxes);
-    ait_amount           = parseFloat((totalPrice * ait).toFixed(2));
-    airlines_fare        = parseFloat((basePrice * (100 - std_commission)) / 100);
-    airlines_payment     = parseFloat((airlines_fare + taxes + ait_amount).toFixed(2));
+    let shown_base_fare  = 0;
+    let fxd_amount       = 0;
+    
+    totalPrice       = parseFloat(totalPrice);
+    basePrice        = parseFloat(basePrice);
+    taxes            = parseFloat(taxes);
+    ait_amount       = parseFloat((basePrice * ait).toFixed(2));
+    airlines_fare    = parseFloat((basePrice * (100 - std_commission)) / 100);
+    airlines_payment = parseFloat((airlines_fare + taxes + ait_amount).toFixed(3));
     if (fxd_value_type === "fxd") {
-        shown_fare = parseFloat((totalPrice + fxd_value).toFixed(2));
+        fxd_amount      = fxd_value;
+        shown_fare      = parseFloat((totalPrice + fxd_amount).toFixed(3));
+        shown_base_fare = parseFloat((basePrice + fxd_amount).toFixed(3));
     } else if (fxd_value_type === "ps") {
-        shown_fare = parseFloat(
-            (totalPrice + (totalPrice * fxd_value) / 100).toFixed(2)
-        );
+        fxd_amount      = parseFloat(((totalPrice * fxd_value) / 100).toFixed(3));
+        shown_fare      = parseFloat((totalPrice + fxd_amount).toFixed(3));
+        shown_base_fare = parseFloat((basePrice + fxd_amount).toFixed(3));
     }
     calculated_fare =
         {
@@ -75,14 +79,15 @@ const calculateFare = (totalPrice, basePrice, taxes, std_commission, ait, fxd_va
             totalPrice,
             ait_amount,
             airlines_fare,
-            shown_fare
+            shown_fare,
+            shown_base_fare,
+            fxd_amount
         };
     
     return calculated_fare;
 };
 
-const calculatePromotion = (flightData, promotions) => {
-    let promotion_applied_flightData = [];
+const calculatePromotion = async (promotions, flightData) => {
     flightData.forEach(fl_data => {
         promotions.forEach(promo_data => {
             let promo_elegibility_arr = [];
@@ -144,11 +149,11 @@ const calculatePromotion = (flightData, promotions) => {
             
             //check issue_date_from form issue_date_to
             if (promo_data.issue_date_from && promo_data.issue_date_to) {
-                let today = moment(new Date());
+                let today           = moment(new Date());
                 let issue_date_from = moment(promo_data.issue_date_from).format(
                     "YYYY-MM-DD"
                 );
-                let issue_date_to = moment(promo_data.issue_date_to).format(
+                let issue_date_to   = moment(promo_data.issue_date_to).format(
                     "YYYY-MM-DD"
                 );
                 if (today.isBetween(issue_date_from, issue_date_to)) {
@@ -161,11 +166,11 @@ const calculatePromotion = (flightData, promotions) => {
             
             //check travel_date_from form travel_date_to
             if (promo_data.travel_date_from && promo_data.travel_date_to) {
-                let travel_date = moment(fl_data.first_departure);
+                let travel_date      = moment(fl_data.first_departure);
                 let travel_date_from = moment(promo_data.travel_date_from).format(
                     "YYYY-MM-DD"
                 );
-                let travel_date_to = moment(promo_data.travel_date_to);
+                let travel_date_to   = moment(promo_data.travel_date_to);
                 
                 if (travel_date.isBetween(travel_date_from, travel_date_to)) {
                     promo_elegibility_arr.push(true);
@@ -180,10 +185,10 @@ const calculatePromotion = (flightData, promotions) => {
                 let flight_time_int = convertToMinuteInteger(
                     moment(fl_data.first_departure).format("HH:mm:ss")
                 );
-                let time_from_int = convertToMinuteInteger(
+                let time_from_int   = convertToMinuteInteger(
                     moment(promo_data.time_from, "HH:mm:ss").format("HH:mm:ss")
                 );
-                let time_to_int = convertToMinuteInteger(
+                let time_to_int     = convertToMinuteInteger(
                     moment(promo_data.time_to, "HH:mm:ss").format("HH:mm:ss")
                 );
                 
@@ -199,13 +204,13 @@ const calculatePromotion = (flightData, promotions) => {
             
             //check travel_time_from form travel_time_to
             //apply not !
-            if (promo_elegibility_arr.includes(false)) {
-                let promo_amount = 0;
+            if (!promo_elegibility_arr.includes(false)) {
+                let promo_amount      = 0;
                 var promo_fare_amount = 0;
                 if (promo_data.promo_type === "d") {
                     if (promo_data.value_type === "ps") {
                         promo_amount = parseFloat(
-                            ((fl_data.basePrice * promo_data.value) / 100).toFixed(2)
+                            ((fl_data.basePrice * promo_data.value) / 100).toFixed(3)
                         );
                     } else {
                         promo_amount = promo_data.value;
@@ -219,7 +224,7 @@ const calculatePromotion = (flightData, promotions) => {
                 } else {
                     if (promo_data.value_type === "ps") {
                         promo_amount = parseFloat(
-                            ((fl_data.basePrice * promo_data.value) / 100).toFixed(2)
+                            ((fl_data.basePrice * promo_data.value) / 100).toFixed(3)
                         );
                     } else {
                         promo_amount = promo_data.value;
@@ -232,15 +237,15 @@ const calculatePromotion = (flightData, promotions) => {
                     promo_fare_amount = fl_data.basePrice + promo_amount;
                 }
                 
-                fl_data.promo_amount = promo_amount;
+                fl_data.totalPrice        = promo_fare_amount + parseFloat(fl_data.taxes);
+                fl_data.basePrice         = promo_fare_amount;
+                fl_data.promo_amount      = promo_amount;
                 fl_data.promo_fare_amount = promo_fare_amount;
-                fl_data.promo_id = promo_data.id;
-                
-                promotion_applied_flightData.push(fl_data);
+                fl_data.promo_id          = promo_data.id;
+                fl_data.is_promo_applied  = 1;
             }
         });
     });
-    return promotion_applied_flightData;
 };
 
 const isDomestic = (fl_data_from, fl_data_to) => {

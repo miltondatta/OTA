@@ -17577,7 +17577,7 @@ module.exports = {
                 
                 "name"     : "China United Airlines",
                 "alias"    : "",
-                "iata"     : "HR",
+                "iata"     : "CHR",
                 "icao"     : "CUA",
                 "callsign" : "LIANHANG",
                 "country"  : "China",
@@ -26467,7 +26467,7 @@ module.exports = {
                 
                 "name"     : "Hahn Air",
                 "alias"    : "",
-                "iata"     : "HRA",
+                "iata"     : "HR",
                 "icao"     : "HHN",
                 "callsign" : "ROOSTER",
                 "country"  : "Germany",
