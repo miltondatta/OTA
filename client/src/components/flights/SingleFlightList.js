@@ -144,7 +144,7 @@ const SingleFlightList = ({history, shop, index}) => {
                         </div>
                     </div>*/}
 
-                    <p className="single-flight-amount">{shop.totalPrice}</p>
+                    <p className="single-flight-amount">{shop.totalPrice} {shop.currency}</p>
                     <div>
                         <Button variant="outline-info" onClick={() => history.push('/flight-payment', { selectedIndex: index })}>Book Now</Button>
                         <Button variant="outline-dark ml-3" onClick={() => setShowModal(false)}>Close</Button>

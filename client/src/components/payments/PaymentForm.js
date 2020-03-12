@@ -114,13 +114,12 @@ const PaymentForm = ({getAllCountryList, country: {countries}, savePassengerInfo
         masterPassengerData.push(adultFormData);
         masterPassengerData.push(childFormData);
         masterPassengerData.push(infantFormData);
-        console.log(selectedFlight);
         let bookInfo = {
             passengers: masterPassengerData,
             phone: { countryCode: countryCode, location: selectedFlight.from, number: number },
-            segments: selectedFlight.segments 
+            segments: selectedFlight.segments, //only segment.
+            selectedFlight: selectedFlight,
         };
-        console.log(bookInfo);
         savePassengerInfo(bookInfo, true);
     };
 

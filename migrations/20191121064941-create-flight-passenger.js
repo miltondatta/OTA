@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING(50)
       },
       nationality: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(50)
       },
       gender: {
         type: Sequelize.STRING(15)
@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       passport_number: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.STRING(30)
       },
       passport_expiry_date: {
         type: Sequelize.DATE

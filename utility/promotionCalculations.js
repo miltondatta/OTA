@@ -12,8 +12,6 @@ const promotionCalculations = async (flightData_prarm) => {
     let fixed_value_applied = await applyFixedValues(fixed_values, flightData);
     let promo_applied       = await calculatePromotion(promotions, flightData);
     
-    console.log(flightData);
-    
     return flightData;
 };
 
