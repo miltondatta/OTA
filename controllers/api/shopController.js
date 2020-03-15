@@ -147,11 +147,12 @@ exports.shop = async (req, res) => {
             });
         });
         
-        let shopDataAfterFilter = await promotionCalculation(shopData);
+        let shopDataAfterCalculation = await promotionCalculation(shopData);
+        console.log(shopDataAfterCalculation);
         let response            = {};
         response['status']      = true;
         response['message']     = 'Successfully process your request!';
-        response['data']        = shopDataAfterFilter;
+        response['data']        = shopDataAfterCalculation;
         return res.status(200).json(response);
     } else {
         let response        = {};
