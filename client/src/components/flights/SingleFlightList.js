@@ -55,7 +55,7 @@ const SingleFlightList = ({history, shop, index}) => {
                                 <span className="d-block single-flight-departure-time">{shop.total_duration}</span>
                             </div>
                             <div className="col-md-3 col-sm-6 col-6 single-flight-list-mobile text-right">
-                                <span className="single-flight-amount">{shop.totalPrice}</span>
+                                <span className="single-flight-amount">{parseFloat(shop.totalPrice).toFixed(2)} {shop.currency}</span>
                             </div>
                         </div>
                         <div className="row pt-3 mr-0">
@@ -144,7 +144,7 @@ const SingleFlightList = ({history, shop, index}) => {
                         </div>
                     </div>*/}
 
-                    <p className="single-flight-amount">{shop.totalPrice} {shop.currency}</p>
+                    <p className="single-flight-amount">{parseFloat(shop.totalPrice).toFixed(2)} {shop.currency}</p>
                     <div>
                         <Button variant="outline-info" onClick={() => history.push('/flight-payment', { selectedIndex: index })}>Book Now</Button>
                         <Button variant="outline-dark ml-3" onClick={() => setShowModal(false)}>Close</Button>

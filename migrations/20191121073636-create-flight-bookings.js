@@ -37,7 +37,7 @@ module.exports = {
                 defaultValue : null,
             },
             promo_id             : {
-                type         : Sequelize.INTEGER,
+                type         : Sequelize.STRING,
                 allowNull    : true,
                 defaultValue : null,
             },
@@ -106,10 +106,10 @@ module.exports = {
                 defaultValue : null,
                 type         : Sequelize.DOUBLE,
             },
-            promo_fare_amount    : {
+            promo_amount_desc    : {
+                type         : Sequelize.STRING,
                 allowNull    : true,
                 defaultValue : null,
-                type         : Sequelize.DOUBLE,
             },
             from                 : {
                 type         : Sequelize.STRING,
@@ -122,6 +122,11 @@ module.exports = {
                 defaultValue : null,
             },
             from_city            : {
+                type         : Sequelize.STRING,
+                allowNull    : true,
+                defaultValue : null,
+            },
+            to_city            : {
                 type         : Sequelize.STRING,
                 allowNull    : true,
                 defaultValue : null,

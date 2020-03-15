@@ -87,6 +87,11 @@ const calculateFare = (totalPrice, basePrice, taxes, std_commission, ait, fxd_va
 
 const calculatePromotion = async (promotions, flightData) => {
     flightData.forEach(fl_data => {
+        let promo_fare_amount  = 0;
+        let total_promo_amount = 0;
+        let promo_id_array     = [];
+        let promo_amount_array = [];
+        
         promotions.forEach(promo_data => {
             let promo_elegibility_arr = [];
             //check form city to city
@@ -203,8 +208,7 @@ const calculatePromotion = async (promotions, flightData) => {
             //check travel_time_from form travel_time_to
             //apply not !
             if (!promo_elegibility_arr.includes(false)) {
-                let promo_amount      = 0;
-                var promo_fare_amount = 0;
+                let promo_amount = 0;
                 if (promo_data.promo_type === "d") {
                     if (promo_data.value_type === "ps") {
                         promo_amount = parseFloat(
@@ -218,7 +222,9 @@ const calculatePromotion = async (promotions, flightData) => {
                             promo_amount = promo_data.max_amount;
                         }
                     }
-                    promo_fare_amount = fl_data.basePrice - promo_amount;
+                    total_promo_amount += promo_amount;
+                    promo_amount_array.push(promo_amount + '-' + 'discount');
+                    promo_id_array.push(promo_data.id);
                 } else {
                     if (promo_data.value_type === "ps") {
                         promo_amount = parseFloat(
@@ -232,17 +238,20 @@ const calculatePromotion = async (promotions, flightData) => {
                             promo_amount = promo_data.max_amount;
                         }
                     }
-                    promo_fare_amount = fl_data.basePrice + promo_amount;
+                    total_promo_amount -= promo_amount;
+                    promo_amount_array.push(promo_amount + '-' + 'addition');
+                    promo_id_array.push(promo_data.id);
                 }
-                
-                fl_data.totalPrice        = promo_fare_amount + parseFloat(fl_data.taxes);
-                fl_data.basePrice         = promo_fare_amount;
-                fl_data.promo_amount      = promo_amount;
-                fl_data.promo_fare_amount = promo_fare_amount;
-                fl_data.promo_id          = promo_data.id;
-                fl_data.is_promo_applied  = 1;
             }
         });
+        
+        promo_fare_amount         = parseFloat(fl_data.basePrice) - parseFloat(total_promo_amount);
+        fl_data.totalPrice        = parseFloat(promo_fare_amount) + parseFloat(fl_data.taxes);
+        fl_data.basePrice         = promo_fare_amount;
+        fl_data.promo_amount      = total_promo_amount;
+        fl_data.promo_amount_desc = promo_amount_array.toString();
+        fl_data.promo_id          = promo_id_array.toString();
+        fl_data.is_promo_applied  = 1;
     });
 };
 

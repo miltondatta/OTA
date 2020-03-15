@@ -104,8 +104,11 @@ exports.shop = async (req, res) => {
                     segment['baggage']        = dataSegments[k].baggage[0].amount + ' ' + dataSegments[k].baggage[0].units;
                     segments.push(segment);
                 }
-                flightData['segments'] = segments;
-                flightData['stoppage'] = (segmentLength > 1) ? ((segmentLength - 1) + ' stops') : 'Direct';
+                flightData['segments']          = segments;
+                flightData['stoppage']          = (segmentLength > 1) ? ((segmentLength - 1) + ' stops') : 'Direct';
+                flightData['promo_amount']      = '';
+                flightData['promo_amount_desc'] = '';
+                flightData['promo_id']          = '';
                 shopData.push(flightData);
             }
             
@@ -148,11 +151,11 @@ exports.shop = async (req, res) => {
         });
         
         let shopDataAfterCalculation = await promotionCalculation(shopData);
-        console.log(shopDataAfterCalculation);
-        let response            = {};
-        response['status']      = true;
-        response['message']     = 'Successfully process your request!';
-        response['data']        = shopDataAfterCalculation;
+        
+        let response        = {};
+        response['status']  = true;
+        response['message'] = 'Successfully process your request!';
+        response['data']    = shopDataAfterCalculation;
         return res.status(200).json(response);
     } else {
         let response        = {};
