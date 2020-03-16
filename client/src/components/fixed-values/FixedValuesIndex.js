@@ -285,7 +285,7 @@ const FixedValuesIndex = () => {
                 </div>
                 
                 <div className="row pb-3">
-                    <div className="col-md-8 col-sm-12 col-12 mx-auto mt-4">
+                    <div className="col-md-12 col-sm-12 col-12 mx-auto mt-4">
                         <table className="table table-bordered table-responsive-md text-center table-striped table-hover table-condensed">
                             <thead className="font-weight-bold">
                             <tr>
