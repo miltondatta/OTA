@@ -191,7 +191,7 @@ const UserEdit = ({history, match}) => {
     const {show, variant, heading, message, disable} = addMessage;
     
     return <Fragment>
-        <div className="airline-area">
+        <div className="">
             <div className="container-fluid airline-area-container">
                 <div className="row">
                     <div className="col-md-8 mx-auto">
@@ -201,9 +201,12 @@ const UserEdit = ({history, match}) => {
                             heading={heading}
                             message={message}
                         />
+                        <div className="text-center pb-3">
+                            <h2>Edit Airport</h2>
+                        </div>
                         <div className="card bg-light">
                             <div className="card-header">
-                                Edit Airport
+                                Edit {name} Airport
                             </div>
                             <div className="card-body">
                                 <Form onSubmit={e => onSubmit(e)}>

@@ -141,7 +141,7 @@ const AirportAdd = ({history}) => {
     const {show, variant, heading, message, disable} = addMessage;
     
     return <Fragment>
-        <div className="airline-area">
+        <div className="">
             <div className="container-fluid airline-area-container">
                 <div className="row">
                     <div className="col-md-8 mx-auto">
@@ -151,6 +151,9 @@ const AirportAdd = ({history}) => {
                             heading={heading}
                             message={message}
                         />
+                        <div className="text-center pb-3">
+                            <h2>Add New Airport</h2>
+                        </div>
                         <div className="card bg-light">
                             <div className="card-header">
                                 Add Airport

@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 
 // Import Css
-import '../../assets/css/airline.css';
+//import '../../assets/css/airline.css';
 import Alerts from "../alert/alerts";
 
 const Airline = () => {
@@ -86,7 +86,7 @@ const Airline = () => {
     };
 
     return <Fragment>
-        <div className="airline-area">
+        <div className="">
             <div className="container-fluid airline-area-container">
                 <div className="col-md-8 mx-auto">
                     <Alerts
@@ -101,8 +101,8 @@ const Airline = () => {
                     <h2>Airlines Information</h2>
                 </div>
 
-                <div className="row">
-                    <div className="col-md-8 col-sm-12 col-12 mx-auto">
+                <div className="row pb-3">
+                    <div className="col-md-12 col-sm-12 col-12 mx-auto">
                         <Link to="airline-add" className="btn btn-outline-primary d-block ml-auto mb-2" style={{width: 80}}>Create</Link>
 
                         <table className="table table-bordered table-responsive-md text-center">

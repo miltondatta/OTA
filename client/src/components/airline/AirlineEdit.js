@@ -1,138 +1,139 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {Button, ButtonToolbar, Form} from "react-bootstrap";
-import axios from "axios";
-import {withRouter} from 'react-router-dom';
+import {Button, ButtonToolbar, Form}          from "react-bootstrap";
+import axios                                  from "axios";
+import {withRouter}                           from 'react-router-dom';
 
 // Css
 import '../../assets/css/airline.css';
 
 // Redux
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import PropTypes           from "prop-types";
+import {connect}           from "react-redux";
 import {getAllCountryList} from "../../actions/countryActions";
-import Alerts from "../alert/alerts";
-import {base_url} from "../../utils/Urls";
+import Alerts              from "../alert/alerts";
+import {base_url}          from "../../utils/Urls";
 
-const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) => {
+const AirlineEdit = ({getAllCountryList, country : {countries}, history, match}) => {
     const [airline, setAirline] = useState({});
-
+    
     const [formData, setFormData] = useState({
-        id: '',
-        name: '',
-        iata: '',
-        icao: '',
-        callsign: '',
-        country: '',
-        active: false
-    });
-
+                                                 id       : '',
+                                                 name     : '',
+                                                 iata     : '',
+                                                 icao     : '',
+                                                 callsign : '',
+                                                 country  : '',
+                                                 active   : false
+                                             });
+    
     useEffect(() => {
         getAllCountryList();
-        const id = match.params.id;
+        const id        = match.params.id;
         const fetchData = async () => {
-            const result = await axios.get( base_url + `api/airline/edit/${id}`);
+            const result = await axios.get(base_url + `api/airline/edit/${id}`);
             setFormData({
-                id: result.data.id,
-                name: result.data.name,
-                iata: result.data.iata,
-                icao: result.data.icao,
-                callsign: result.data.callsign,
-                country: result.data.country,
-                active: result.data.active
-            });
+                            id       : result.data.id,
+                            name     : result.data.name,
+                            iata     : result.data.iata,
+                            icao     : result.data.icao,
+                            callsign : result.data.callsign,
+                            country  : result.data.country,
+                            active   : result.data.active
+                        });
         };
-
+        
         fetchData();
     }, []);
-
+    
     const [addMessage, setAddMessage] = useState({
-        show: false,
-        variant: '',
-        heading: '',
-        message: '',
-        disable: false
-    });
-
+                                                     show    : false,
+                                                     variant : '',
+                                                     heading : '',
+                                                     message : '',
+                                                     disable : false
+                                                 });
+    
     const onChange = e => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+        setFormData({...formData, [e.target.name] : e.target.value});
     };
-
+    
     const addNewAirline = async (data) => {
         try {
             const config = {
-                headers: {
-                    'Content-Type': 'application/json'
+                headers : {
+                    'Content-Type' : 'application/json'
                 }
             };
-
-            const res = await axios.post(`/api/airline/store`, data, config);
-
+            
+            const res = await axios.post(`/api/airline/update`, data, config);
+            
             localStorage.setItem('airline_add_message', res.data.msg);
-
+            
             history.push('/airline');
             return res.data;
         } catch (err) {
             setAddMessage({
-                show: true,
-                variant: 'danger',
-                heading: 'Airline Add Error!',
-                message: err.response.data.msg,
-            });
+                              show    : true,
+                              variant : 'danger',
+                              heading : 'Airline update Error!',
+                              message : err.response.data.msg,
+                          });
             return err.response.data;
         }
     };
-
+    
     const onSubmit = e => {
         e.preventDefault();
         const data = {
-            name: formData.name,
-            iata: formData.iata.toUpperCase(),
-            icao: formData.icao.toUpperCase(),
-            callsign: formData.callsign.toUpperCase(),
-            country: formData.country,
-            active: formData.active ? 'Y' : 'N',
+            id       : formData.id,
+            name     : formData.name,
+            iata     : formData.iata.toUpperCase(),
+            icao     : formData.icao.toUpperCase(),
+            callsign : formData.callsign.toUpperCase(),
+            country  : formData.country,
+            active   : formData.active ? 'Y' : 'N',
         };
-
+        
         const res = addNewAirline(data);
     };
-
+    
     const resetFormData = e => {
         e.preventDefault();
         setFormData({
-            name: '',
-            iata: '',
-            icao: '',
-            callsign: '',
-            country: '',
-            active: false
-        });
+                        name     : '',
+                        iata     : '',
+                        icao     : '',
+                        callsign : '',
+                        country  : '',
+                        active   : false
+                    });
     };
-
+    
     const checkIata = async e => {
         try {
             const iata = (e.target.value).toUpperCase();
-
+            
             const result = await axios.get(`/api/airline/check/iata/?iata=${iata}`);
             setAddMessage({
-                show: false,
-                disable: false
-            });
+                              show    : false,
+                              disable : false
+                          });
         } catch (err) {
             setAddMessage({
-                show: true,
-                variant: 'danger',
-                heading: 'IATA CODE ERROR!',
-                message: err.response.data.msg,
-                disable: true
-            });
+                              show    : true,
+                              variant : 'danger',
+                              heading : 'IATA CODE ERROR!',
+                              message : err.response.data.msg,
+                              disable : true
+                          });
         }
     };
-
+    
     const {name, iata, icao, callsign, country, active} = formData;
-    const {show, variant, heading, message, disable} = addMessage;
-
+    const {show, variant, heading, message, disable}    = addMessage;
+    
     return <Fragment>
-        <div className="airline-area">
+        <div className="">
             <div className="container-fluid airline-area-container">
                 <div className="row">
                     <div className="col-md-8 mx-auto">
@@ -142,9 +143,12 @@ const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) 
                             heading={heading}
                             message={message}
                         />
+                        <div className="text-center pb-3">
+                            <h2>Edit Airline</h2>
+                        </div>
                         <div className="card bg-light">
                             <div className="card-header">
-                                Add New Airline
+                                Edit {name} Airline
                             </div>
                             <div className="card-body">
                                 <Form onSubmit={e => onSubmit(e)}>
@@ -156,7 +160,7 @@ const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) 
                                                               onChange={e => onChange(e)}
                                                               placeholder="Enter Airline Name" required/>
                                             </Form.Group>
-
+                                            
                                             <Form.Group controlId="formAirlineIATA">
                                                 <Form.Label>IATA Code</Form.Label>
                                                 <Form.Control type="text" name="iata" value={iata.toUpperCase()}
@@ -165,7 +169,7 @@ const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) 
                                                                   onChange(e);
                                                               }} placeholder="Enter iata Code" required/>
                                             </Form.Group>
-
+                                            
                                             <Form.Group controlId="formAirlineICAO">
                                                 <Form.Label>ICAO Code</Form.Label>
                                                 <Form.Control type="text" name="icao" value={icao.toUpperCase()}
@@ -180,40 +184,39 @@ const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) 
                                                               onChange={e => onChange(e)}
                                                               placeholder="Enter Call Sign"/>
                                             </Form.Group>
-
+                                            
                                             <Form.Group controlId="formAirlineCountry">
                                                 <Form.Label>Country</Form.Label>
                                                 <select className="form-control" name="country" value={country}
                                                         onChange={e => onChange(e)} required>
                                                     {countries.length > 0 ?
-                                                        <Fragment>
-                                                            <option>Select Country</option>
-                                                            {countries.map((value, key) => (
-                                                                <option value={value.country_name}
-                                                                        key={key}>{value.country_name}</option>
-                                                            ))}
-                                                        </Fragment> :
-                                                        <option>Select Country</option>}
+                                                     <Fragment>
+                                                         <option>Select Country</option>
+                                                         {countries.map((value, key) => (
+                                                             <option value={value.country_name}
+                                                                     key={key}>{value.country_name}</option>
+                                                         ))}
+                                                     </Fragment> :
+                                                     <option>Select Country</option>}
                                                 </select>
                                             </Form.Group>
-
+                                            
                                             <Form.Group className="pt-4">
                                                 <Form.Check
                                                     type="switch"
                                                     name="active"
                                                     value={active}
                                                     onChange={e => {
-                                                        setFormData({...formData, [e.target.name]: !active});
+                                                        setFormData({...formData, [e.target.name] : !active});
                                                     }}
                                                     id="custom-switch"
                                                     label="Is Active"/>
                                             </Form.Group>
                                         </div>
                                     </div>
-
+                                    
                                     <div className="d-flex justify-content-center">
-                                        <Button variant="outline-success" type="submit" className="" disabled={disable}>Add
-                                            Now</Button>
+                                        <Button variant="outline-success" type="submit" className="" disabled={disable}>Update</Button>
                                         <Button variant="outline-warning" type="reset" className="ml-2"
                                                 onClick={e => resetFormData(e)}>Reset</Button>
                                     </div>
@@ -228,12 +231,12 @@ const AirlineEdit = ({getAllCountryList, country: {countries}, history, match}) 
 };
 
 AirlineEdit.propTypes = {
-    getAllCountryList: PropTypes.func.isRequired,
-    country: PropTypes.object.isRequired
+    getAllCountryList : PropTypes.func.isRequired,
+    country           : PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    country: state.country,
+    country : state.country,
 });
 
 const mapDispatchToProps = {getAllCountryList};

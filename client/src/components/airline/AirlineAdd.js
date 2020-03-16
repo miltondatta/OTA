@@ -113,7 +113,7 @@ const AirlineAdd = ({getAllCountryList, country: {countries}, history}) => {
     const {show, variant, heading, message, disable} = addMessage;
 
     return <Fragment>
-        <div className="airline-area">
+        <div className="">
             <div className="container-fluid airline-area-container">
                 <div className="row">
                     <div className="col-md-8 mx-auto">
@@ -123,6 +123,10 @@ const AirlineAdd = ({getAllCountryList, country: {countries}, history}) => {
                             heading={heading}
                             message={message}
                         />
+                        <div className="text-center pb-3">
+                            <h2>Add New Airline</h2>
+                        </div>
+                        
                         <div className="card bg-light">
                             <div className="card-header">
                                 Add New Airline
