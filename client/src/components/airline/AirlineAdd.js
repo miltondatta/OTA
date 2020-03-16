@@ -199,8 +199,10 @@ const AirlineAdd = ({getAllCountryList, country: {countries}, history}) => {
                                     <div className="d-flex justify-content-center">
                                         <Button variant="outline-success" type="submit" className="" disabled={disable}>Add
                                             Now</Button>
-                                        <Button variant="outline-warning" type="reset" className="ml-2"
+                                        <Button variant="outline-danger" type="reset" className="ml-2"
                                                 onClick={e => resetFormData(e)}>Reset</Button>
+    
+                                        <Button variant="outline-warning" type="reset" className="ml-2" href="/airline">Back</Button>
                                     </div>
                                 </Form>
                             </div>

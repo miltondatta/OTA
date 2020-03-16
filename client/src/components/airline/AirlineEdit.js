@@ -217,8 +217,10 @@ const AirlineEdit = ({getAllCountryList, country : {countries}, history, match})
                                     
                                     <div className="d-flex justify-content-center">
                                         <Button variant="outline-success" type="submit" className="" disabled={disable}>Update</Button>
-                                        <Button variant="outline-warning" type="reset" className="ml-2"
+                                        <Button variant="outline-danger" type="reset" className="ml-2"
                                                 onClick={e => resetFormData(e)}>Reset</Button>
+    
+                                        <Button variant="outline-warning" type="reset" className="ml-2" href="/airline">Back</Button>
                                     </div>
                                 </Form>
                             </div>
