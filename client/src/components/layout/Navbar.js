@@ -44,15 +44,15 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                         {(isAuthenticated && (admin_role.includes(user.role_id))) && adminLinks}
                         
                         {isAuthenticated && (admin_role.includes(user.role_id)) &&
-                        <NavDropdown title="Master Data" id="collasible-nav-dropdown">
+                        <NavDropdown title="Settings " id="collasible-nav-dropdown">
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/users_index'} className={'dropdown-item'}>Users</Link></NavDropdown.Item>
-                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/airports'} className={'dropdown-item'}>Airports</Link></NavDropdown.Item>
-                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/airline'} className={'dropdown-item'}>Airlines</Link></NavDropdown.Item>
-                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/fixed_values'} className={'dropdown-item'}>Fixed Values</Link></NavDropdown.Item>
-                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/api_sources'} className={'dropdown-item'}>Api Sources</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/user_group'} className={'dropdown-item'}>User Group</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/user_group_mapping'} className={'dropdown-item'}>User Group Mapping</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/fixed_values'} className={'dropdown-item'}>Service Fixed Value</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/configure_promotion'} className={'dropdown-item'}>Promotion Configuration</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/airports'} className={'dropdown-item'}>Airports</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/airline'} className={'dropdown-item'}>Airlines</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/api_sources'} className={'dropdown-item'}>Api Sources</Link></NavDropdown.Item>
                         </NavDropdown>
                         }
                         
