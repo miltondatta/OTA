@@ -213,7 +213,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Ident</Form.Label>
                                                 <Form.Control type="text" name="ident" value={ident}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter ident" required/>
+                                                              placeholder="Enter ident" />
                                             </Form.Group>
                                         </div>
                                         
@@ -233,7 +233,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Name</Form.Label>
                                                 <Form.Control type="text" name="name" value={name}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter name"/>
+                                                              placeholder="Enter name" required/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
@@ -241,7 +241,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Elevation Ft</Form.Label>
                                                 <Form.Control type="text" name="elevation_ft" value={elevation_ft}
                                                               onChange={e => onChange(e)} data-number={'integer_only'}
-                                                              placeholder="Enter elevation Ft" required/>
+                                                              placeholder="Enter elevation Ft" />
                                             </Form.Group>
                                         </div>
                                     </div>
@@ -252,7 +252,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Latitude Deg</Form.Label>
                                                 <Form.Control type="text" name="latitude_deg" value={latitude_deg}
                                                               onChange={e => onChange(e)} data-number={'float_only'}
-                                                              placeholder="Enter latitude nDeg" required/>
+                                                              placeholder="Enter latitude nDeg" />
                                             </Form.Group>
                                         </div>
                                         
@@ -280,10 +280,10 @@ const UserEdit = ({history, match}) => {
                                             <Form.Group controlId="formIso_country">
                                                 <Form.Label>ISO Country</Form.Label>
                                                 <select className="form-control" name="iso_country" value={iso_country}
-                                                        onChange={e => onChange(e)}>
+                                                        onChange={e => onChange(e)} required={true}>
                                                     {countryList.length > 0 ?
                                                      <Fragment>
-                                                         <option>Select Country</option>
+                                                         <option></option>
                                                          {countryList.map((value, key) => (
                                                              <option value={value.iso3166_1_alpha_2}
                                                                      key={key}>{value.country_name}</option>
@@ -301,7 +301,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>ISO Region</Form.Label>
                                                 <Form.Control type="text" name="iso_region" value={iso_region}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter ISO Region"/>
+                                                              placeholder="Enter ISO Region" required/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
@@ -328,7 +328,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Gps Code</Form.Label>
                                                 <Form.Control type="text" name="gps_code" value={gps_code}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Gps Code" required/>
+                                                              placeholder="Enter Gps Code" />
                                             </Form.Group>
                                         </div>
                                     </div>
@@ -339,7 +339,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>IATA Code</Form.Label>
                                                 <Form.Control type="text" name="iata_code" value={iata_code}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter IATA Code"/>
+                                                              placeholder="Enter IATA Code" required/>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6">
@@ -347,7 +347,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Local Code</Form.Label>
                                                 <Form.Control type="text" name="local_code" value={local_code}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Local Code" required/>
+                                                              placeholder="Enter Local Code" />
                                             </Form.Group>
                                         </div>
                                     </div>
@@ -366,7 +366,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Wikipedia Link</Form.Label>
                                                 <Form.Control type="text" name="wikipedia_link" value={wikipedia_link}
                                                               onChange={e => onChange(e)}
-                                                              placeholder="Enter Wikipedia Link" required/>
+                                                              placeholder="Enter Wikipedia Link" />
                                             </Form.Group>
                                         </div>
                                     </div>
@@ -385,7 +385,7 @@ const UserEdit = ({history, match}) => {
                                                 <Form.Label>Score</Form.Label>
                                                 <Form.Control type="text" name="score" value={score}
                                                               onChange={e => onChange(e)} data-number={'integer_only'}
-                                                              placeholder="Enter Score" required/>
+                                                              placeholder="Enter Score" />
                                             </Form.Group>
                                         </div>
                                     </div>
@@ -393,8 +393,10 @@ const UserEdit = ({history, match}) => {
                                     <div className="d-flex justify-content-center">
                                         <Button variant="outline-success" type="submit" className=""
                                                 disabled={disable}>Update</Button>
-                                        <Button variant="outline-warning" type="reset" className="ml-2"
+                                        <Button variant="outline-danger" type="reset" className="ml-2"
                                                 onClick={e => resetFormData(e)}>Reset</Button>
+    
+                                        <Button variant="outline-warning" type="reset" className="ml-2" href="/airports">Back</Button>
                                     </div>
                                 </Form>
                             </div>

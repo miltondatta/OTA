@@ -4666,7 +4666,7 @@ module.exports = {
                 "continent"        : "AS",
                 "iso_country"      : "BD",
                 "iso_region"       : "BD-3",
-                "municipality"     : "Dhaka",
+                "municipality"     : "Tejgaon Airport Dhaka",
                 "scheduled_service": 0,
                 "gps_code"         : "VGTJ",
                 "iata_code"        : "DACT",

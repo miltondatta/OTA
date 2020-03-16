@@ -164,29 +164,16 @@ const AirportIndex = () => {
                     
                     <div className="col-md-12 col-sm-12 col-12 mx-auto">
                         <table
-                            className="table table-bordered table-responsive text-center table-striped table-hover table-condensed ">
+                            className="table table-bordered table-responsive-md text-center">
                             <thead className="font-weight-bold">
                             <tr>
                                 <td>Serial No</td>
-                                <td>Ident</td>
                                 <td>Type</td>
                                 <td>Name</td>
-                                <td>Latitude Deg</td>
-                                <td>Longitude Deg</td>
-                                <td>Elevation FT</td>
-                                <td>Continent</td>
                                 <td>ISO Country</td>
                                 <td>ISO Region</td>
                                 <td>Municipality</td>
-                                <td>Scheduled Service</td>
-                                <td>GPS Code</td>
                                 <td>IATA Code</td>
-                                <td>Local Code</td>
-                                <td>Home_link</td>
-                                <td>Wikipedia Link</td>
-                                <td>Keywords</td>
-                                <td>Score</td>
-                                <td>Last Updated</td>
                                 <td>Action</td>
                             </tr>
                             </thead>
@@ -195,25 +182,12 @@ const AirportIndex = () => {
                                 {airportData.map((value, key) => (
                                     <tr key={key}>
                                         <td>{key + 1}</td>
-                                        <td>{value.ident}</td>
                                         <td>{value.type}</td>
                                         <td>{value.name}</td>
-                                        <td>{value.latitude_deg}</td>
-                                        <td>{value.longitude_deg}</td>
-                                        <td>{value.elevation_ft}</td>
-                                        <td>{value.continent}</td>
                                         <td>{value.iso_country}</td>
                                         <td>{value.iso_region}</td>
                                         <td>{value.municipality}</td>
-                                        <td>{value.scheduled_service}</td>
-                                        <td>{value.gps_code}</td>
                                         <td>{value.iata_code}</td>
-                                        <td>{value.local_code}</td>
-                                        <td>{value.home_link}</td>
-                                        <td>{value.wikipedia_link}</td>
-                                        <td>{value.keywords}</td>
-                                        <td>{value.score}</td>
-                                        <td>{moment(new Date(value.last_updated)).format('YYYY-MM-DD')}</td>
                                         <td className="d-flex justify-content-center">
                                             <Link to={`airport/edit/${value.id}`} className="btn btn-sm btn-info">
                                                 <FontAwesomeIcon icon={faEdit}/>
