@@ -35,6 +35,10 @@ const UserIndex = () => {
     const handleCloseBalance                 = () => setBalanceShow(false);
     const handleShowBalance                  = () => setBalanceShow(true);
     
+    const [modalCrLmShow, setCrLmShow] = useState(false);
+    const handleCloseCrLm                 = () => setCrLmShow(false);
+    const handleShowCrLm                  = () => setCrLmShow(true);
+    
     const [deleteInfo, setDeleteInfo]       = useState({
                                                            id   : '',
                                                            name : ''
@@ -45,10 +49,25 @@ const UserIndex = () => {
                                                            balance   : ''
                                                        });
     
+    const [updateCreditLimit, setUpdateCreditLimit] = useState({
+                                                                   user_id        : '',
+                                                                   user_name      : '',
+                                                                   prev_credit_lm : '',
+                                                                   cur_credit_lm  : 0
+                                                               });
+    
     const setBalanceAmount = e => {
         let valid = validateInput(e);
         if (valid || valid === '') {
             setUpdateBalance({...updateBalance, balance : valid});
+        }
+        
+    };
+    
+    const setCreditLimit = e => {
+        let valid = validateInput(e);
+        if (valid || valid === '') {
+            setUpdateCreditLimit({...updateCreditLimit, cur_credit_lm : valid});
         }
         
     };
@@ -157,6 +176,46 @@ const UserIndex = () => {
         }
     };
     
+    const updateUserCreditLm = async () => {
+        try {
+            const config = {
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            };
+            
+            const data = {
+                update_info : updateCreditLimit
+            };
+            
+            const result = await axios.post(`api/users/updateUsersCreditLimit/`, data, config);
+            
+            setUserIndexMessage({
+                                    show    : true,
+                                    variant : 'success',
+                                    heading : 'Credit Limit has been updated !',
+                                    message : `Amount: ${updateCreditLimit.cur_credit_lm} has been added to ${updateCreditLimit.user_name}`
+                                });
+            setUpdateCreditLimit({
+                                 user_id   : '',
+                                 user_name : '',
+                                 prev_credit_lm   : '',
+                                 cur_credit_lm   : ''
+                             });
+            fetchData();
+            
+            return result.data;
+            
+        } catch (err) {
+            setUserIndexMessage({
+                                    show    : true,
+                                    variant : 'danger',
+                                    heading : 'Credit limit not updated !',
+                                    message : err.response.data.msg,
+                                });
+        }
+    };
+    
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid airline-area-container">
@@ -189,6 +248,7 @@ const UserIndex = () => {
                                 <td>Balance</td>
                                 <td>Status</td>
                                 <td>Assign <br/> Balance</td>
+                                <td>Update <br/> Credit Limit</td>
                                 <td>Action</td>
                             </tr>
                             </thead>
@@ -220,6 +280,19 @@ const UserIndex = () => {
                                                 <FontAwesomeIcon icon={faMoneyBillAlt}/>
                                             </Button>
                                         </td>
+                                        <td>
+                                            <Button className="btn btn-sm btn-success ml-2" onClick={() => {
+                                                setUpdateCreditLimit(prevState => ({
+                                                    ...prevState,
+                                                    user_id   : value.id,
+                                                    user_name : value.name,
+                                                    prev_credit_lm : value.credit_limit,
+                                                    cur_credit_lm : value.credit_limit,
+                                                }));
+                                                handleShowCrLm();
+                                            }}> <span>Update Credit</span>
+                                            </Button>
+                                        </td>
                                         <td className="d-flex justify-content-center">
                                             <Link to={`users/edit/${value.id}`} className="btn btn-sm btn-info">
                                                 <FontAwesomeIcon icon={faEdit}/>
@@ -240,7 +313,7 @@ const UserIndex = () => {
                                     </tr>
                                 ))}
                             </Fragment> : <tr>
-                                 <td colSpan={9}>
+                                 <td colSpan={10}>
                                      No data found!
                                  </td>
                              </tr>}
@@ -271,7 +344,9 @@ const UserIndex = () => {
                     <Modal.Header closeButton>
                         <Modal.Title>Add User Balance</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>You are adding balance for <b>{updateBalance.user_name}</b></Modal.Body>
+                    <Modal.Body>
+                        You are adding balance for <b>{updateBalance.user_name}</b>
+                    </Modal.Body>
                     <div className="col-md-6">
                         <Form.Group controlId="formProfile">
                             <Form.Label>Amount :</Form.Label>
@@ -289,6 +364,35 @@ const UserIndex = () => {
                             handleCloseBalance();
                         }}>
                             Confirm Add
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+    
+                <Modal show={modalCrLmShow} onHide={handleCloseCrLm}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Update Credit Limit</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        You are Updating Credit Limit for <b>{updateCreditLimit.user_name}</b> <br/>
+                        Current Credit Limit : <b>{updateCreditLimit.prev_credit_lm}</b>
+                    </Modal.Body>
+                    <div className="col-md-6">
+                        <Form.Group controlId="formProfile">
+                            <Form.Label>Amount :</Form.Label>
+                            <Form.Control type="text" name="crlm" value={updateCreditLimit.cur_credit_lm}
+                                          onChange={e => setCreditLimit(e)} data-number={'float_only'}
+                                          placeholder="Enter Amount"  required/>
+                        </Form.Group>
+                    </div>
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={handleCloseCrLm}>
+                            Close
+                        </Button>
+                        <Button variant="outline-info" onClick={() => {
+                            updateUserCreditLm();
+                            handleCloseCrLm();
+                        }}>
+                            Confirm Update
                         </Button>
                     </Modal.Footer>
                 </Modal>

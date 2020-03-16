@@ -138,4 +138,6 @@ router.post('/update', users_controller.update);
 
 router.post('/updateUsersBalance', users_controller.updateUsersBalance);
 
+router.post('/updateUsersCreditLimit', users_controller.updateUsersCreditLimit);
+
 module.exports = router;

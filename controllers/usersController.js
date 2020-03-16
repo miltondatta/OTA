@@ -305,3 +305,16 @@ exports.updateUsersBalance = async (req, res) => {
         return res.status(500).json({msg : 'Server Error!'});
     }
 };
+
+exports.updateUsersCreditLimit = async (req, res) => {
+    try {
+        const {user_id, user_name, cur_credit_lm} = req.body.update_info;
+        const status = await user.update({credit_limit : cur_credit_lm}, {where : {id : user_id}});
+        if (!status) return res.status(400).json({msg : 'Please try again!'});
+        
+        return res.status(200).json({msg : 'Credit Limit has been updated successfully!'});
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).json({msg : 'Server Error!'});
+    }
+};
