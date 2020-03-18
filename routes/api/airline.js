@@ -53,4 +53,11 @@ router.post('/delete', airlineController.delete);
  */
 router.get('/getFilteredAirlines', airlineController.getFilteredAirlines);
 
+/*
+    @route          POST api/airline/getAirlinesByFilter/
+    @desc           Delete Airline Data
+    @access         Private
+ */
+router.post('/getAirlinesByFilter', airlineController.getAirlinesByFilter);
+
 module.exports = router;
