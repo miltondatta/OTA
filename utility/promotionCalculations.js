@@ -1,8 +1,8 @@
 const FixedValues   = require('../models').fixed_values;
 const PromotionConf = require('../models').promotion_configurations;
+const airport       = require('../models').airport;
 const moment        = require("moment");
-
-let flightData = [];
+let flightData      = [];
 
 const promotionCalculations = async (flightData_prarm) => {
     flightData       = flightData_prarm;
@@ -116,7 +116,7 @@ const calculatePromotion = async (promotions, flightData) => {
                 }
             }
             //check Plating Carrier
-    
+            
             //check Airlines
             if (promo_data.airline) {
                 if (promo_data.airline === fl_data.segments[0].airline) {
@@ -265,8 +265,32 @@ const calculatePromotion = async (promotions, flightData) => {
     });
 };
 
-const isDomestic = (fl_data_from, fl_data_to) => {
-    return false;//database calling
+const isDomestic = async (fl_data_from, fl_data_to) => {
+    let from_country = '=';
+    let to_country   = '-';
+    await airport.findAll({
+                              attributes : ['iso_country'],
+                              where      : {
+                                  iata_code : fl_data_from
+                              }
+                          }).then(from_country_data => {
+        from_country = from_country_data[0].iso_country;
+    });
+    
+    await airport.findAll({
+                              attributes : ['iso_country'],
+                              where      : {
+                                  iata_code : fl_data_to
+                              }
+                          }).then(to_country_data => {
+        to_country = to_country_data[0].iso_country;
+    });
+    
+    if (from_country === to_country) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 const convertToMinuteInteger = time_string => {

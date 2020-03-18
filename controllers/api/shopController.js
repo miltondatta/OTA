@@ -40,6 +40,7 @@ exports.shop = async (req, res) => {
     let iatas    = [];
     let airlines = [];
     let apiData  = await readFile("api_output/travelport/shop.txt");
+    let currency = 'USD'
     
     let parseData = JSON.parse(apiData);
     for (let i = 0; i < parseData.length; i++) {
@@ -49,14 +50,14 @@ exports.shop = async (req, res) => {
                 let flightData                 = {};
                 flightData['api_source']       = 1;
                 flightData['is_promo_applied'] = 0;
-                flightData['currency']         = 'USD';
-                flightData['totalPrice']       = parseFare(parseData[i].totalPrice, 'USD');
-                flightData['basePrice']        = parseFare(parseData[i].basePrice, 'USD');
-                flightData['taxes']            = parseFare(parseData[i].taxes, 'USD');
-                flightData['execTotalPrice']   = parseFare(parseData[i].totalPrice, 'USD');
-                flightData['execBasePrice']    = parseFare(parseData[i].basePrice, 'USD');
-                flightData['actualTotalPrice'] = parseFare(parseData[i].totalPrice, 'USD');
-                flightData['actualBasePrice']  = parseFare(parseData[i].basePrice, 'USD');
+                flightData['currency']         = currency;
+                flightData['totalPrice']       = parseFare(parseData[i].totalPrice, currency);
+                flightData['basePrice']        = parseFare(parseData[i].basePrice, currency);
+                flightData['taxes']            = parseFare(parseData[i].taxes, currency);
+                flightData['execTotalPrice']   = parseFare(parseData[i].totalPrice, currency);
+                flightData['execBasePrice']    = parseFare(parseData[i].basePrice, currency);
+                flightData['actualTotalPrice'] = parseFare(parseData[i].totalPrice, currency);
+                flightData['actualBasePrice']  = parseFare(parseData[i].basePrice, currency);
                 flightData['from']             = flight[j].from;
                 flightData['to']               = flight[j].to;
                 iatas.push(flight[j].from);
@@ -149,6 +150,7 @@ exports.shop = async (req, res) => {
                 segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
             });
         });
+        
         let shopDataAfterCalculation = await promotionCalculation(shopData);
         let response        = {};
         response['status']  = true;
