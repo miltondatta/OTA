@@ -36565,16 +36565,6 @@ module.exports = {
             },
             {
                 
-                "name"     : "84 Squadron Royal Air Force @ RAF Akrotiri",
-                "alias"    : "",
-                "iata"     : "",
-                "icao"     : "AKG",
-                "callsign" : "GRIFTER",
-                "country"  : "United Kingdom",
-                "active"   : "N"
-            },
-            {
-                
                 "name"     : "Nobil Air",
                 "alias"    : "",
                 "iata"     : "",
@@ -55235,16 +55225,6 @@ module.exports = {
             },
             {
                 
-                "name"     : "1-2-go",
-                "alias"    : "fly 1-2-go",
-                "iata"     : "OG",
-                "icao"     : "",
-                "callsign" : "",
-                "country"  : "Thailand",
-                "active"   : "N"
-            },
-            {
-                
                 "name"     : "Uni Air",
                 "alias"    : "",
                 "iata"     : "B7",
@@ -55435,26 +55415,6 @@ module.exports = {
             },
             {
                 
-                "name"     : "Transport A├⌐rien Transr├⌐gional",
-                "alias"    : "TAT",
-                "iata"     : "IJ",
-                "icao"     : "",
-                "callsign" : "",
-                "country"  : "France",
-                "active"   : "N"
-            },
-            {
-                
-                "name"     : "L├ìO Flugmennt",
-                "alias"    : "",
-                "iata"     : "",
-                "icao"     : "LIO",
-                "callsign" : "",
-                "country"  : "Iceland",
-                "active"   : "N"
-            },
-            {
-                
                 "name"     : "Minerva Airlines",
                 "alias"    : "",
                 "iata"     : "N4",
@@ -55492,16 +55452,6 @@ module.exports = {
                 "callsign" : "",
                 "country"  : "Kuwait",
                 "active"   : "Y"
-            },
-            {
-                
-                "name"     : "A├⌐ris (Priv)",
-                "alias"    : "",
-                "iata"     : "SH",
-                "icao"     : "",
-                "callsign" : "",
-                "country"  : "France",
-                "active"   : "N"
             },
             {
                 
@@ -57075,16 +57025,6 @@ module.exports = {
             },
             {
                 
-                "name"     : "88",
-                "alias"    : "",
-                "iata"     : "47",
-                "icao"     : "VVN",
-                "callsign" : "",
-                "country"  : "Cyprus",
-                "active"   : "Y"
-            },
-            {
-                
                 "name"     : "LCM AIRLINES",
                 "alias"    : "",
                 "iata"     : "LQ",
@@ -58415,16 +58355,6 @@ module.exports = {
             },
             {
                 
-                "name"     : "12 North",
-                "alias"    : "",
-                "iata"     : "12",
-                "icao"     : "N12",
-                "callsign" : "12N",
-                "country"  : "India",
-                "active"   : "Y"
-            },
-            {
-                
                 "name"     : "Holidays Czech Airlines",
                 "alias"    : "",
                 "iata"     : "",
@@ -59572,36 +59502,6 @@ module.exports = {
                 "callsign" : "",
                 "country"  : "Russia",
                 "active"   : "Y"
-            },
-            {
-                
-                "name"     : "╨Ü╨░╤é╤ì╨║╨░╨▓╨╕╨░",
-                "alias"    : "",
-                "iata"     : "",
-                "icao"     : "╨Ü╨ó╨Ü",
-                "callsign" : "",
-                "country"  : "Russia",
-                "active"   : "Y"
-            },
-            {
-                
-                "name"     : "╨ƒ╤ü╨║╨╛╨▓╨░╨▓╨╕╨░",
-                "alias"    : "╨ƒ╤ü╨║╨╛╨▓ ╨É╨▓╨╕╨░",
-                "iata"     : "",
-                "icao"     : "PKV",
-                "callsign" : "",
-                "country"  : "Russia",
-                "active"   : "Y"
-            },
-            {
-                
-                "name"     : "3 Valleys Airlines",
-                "alias"    : "",
-                "iata"     : "3V",
-                "icao"     : "VA3",
-                "callsign" : "3 Valleys",
-                "country"  : "France",
-                "active"   : "N"
             },
             {
                 
@@ -61025,16 +60925,6 @@ module.exports = {
             },
             {
                 
-                "name"     : "╨É╤ì╤Ç╨╛╤ü╨╡╤Ç╨▓╨╕╤ü",
-                "alias"    : "",
-                "iata"     : "╨É╨»",
-                "icao"     : "",
-                "callsign" : "",
-                "country"  : "Russia",
-                "active"   : "Y"
-            },
-            {
-                
                 "name"     : "Aeronautica Militare",
                 "alias"    : "",
                 "iata"     : "",
@@ -61151,16 +61041,6 @@ module.exports = {
                 "icao"     : "",
                 "callsign" : "ATALAR",
                 "country"  : "Iran",
-                "active"   : "Y"
-            },
-            {
-                
-                "name"     : "VIA L├¡neas A├⌐reas",
-                "alias"    : "VIA",
-                "iata"     : "V1",
-                "icao"     : "VIA",
-                "callsign" : "",
-                "country"  : "Argentina",
                 "active"   : "Y"
             },
             {

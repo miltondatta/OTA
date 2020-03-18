@@ -11,7 +11,7 @@ exports.index = async (req, res) => {
         const data_list = await configPromo.findAll(
             {
                 attributes : ["id", "promotion_name", "promotion_code", "from_city_country", "from_city", "to_city_country", "to_city",
-                              "flight_type", "plating_carrier", "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
+                              "flight_type", "plating_carrier","airline", "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
                               "time_from", "time_to", "travel_class_id", "booking_class", "user_group_id", "user_id", "api_source_id",
                               "promo_type", "value_type", "value", "max_amount", "status_id",
                 ],
@@ -48,6 +48,7 @@ exports.store = async (req, res) => {
                   to_city,
                   flight_type,
                   plating_carrier,
+                  airline,
                   issue_date_from,
                   issue_date_to,
                   travel_date_from,
@@ -75,6 +76,7 @@ exports.store = async (req, res) => {
             to_city           : to_city,
             flight_type       : flight_type,
             plating_carrier   : plating_carrier,
+            airline   : airline,
             issue_date_from   : (issue_date_from === '') ? null : moment(issue_date_from).format('YYYY-MM-DD'),
             issue_date_to     : (issue_date_to === '') ? null : moment(issue_date_to).format('YYYY-MM-DD'),
             travel_date_from  : (travel_date_from === '') ? null : moment(travel_date_from).format('YYYY-MM-DD'),
@@ -109,7 +111,7 @@ exports.edit = async (req, res) => {
         const id        = req.params.id;
         const data_list = await configPromo.findOne({
                                                         attributes : ["id", "promotion_name", "promotion_code", "from_city_country", "from_city",
-                                                                      "to_city_country", "to_city", "flight_type", "plating_carrier",
+                                                                      "to_city_country", "to_city", "flight_type", "plating_carrier","airline",
                                                                       "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
                                                                       "time_from", "time_to", "travel_class_id", "booking_class",
                                                                       "user_group_id",
@@ -149,6 +151,7 @@ exports.update = async (req, res) => {
                   to_city,
                   flight_type,
                   plating_carrier,
+                  airline,
                   issue_date_from,
                   issue_date_to,
                   travel_date_from,
@@ -177,6 +180,7 @@ exports.update = async (req, res) => {
             to_city           : to_city,
             flight_type       : flight_type,
             plating_carrier   : plating_carrier,
+            airline   : airline,
             issue_date_from   : (issue_date_from === '') ? null : moment(issue_date_from).format('YYYY-MM-DD'),
             issue_date_to     : (issue_date_to === '') ? null : moment(issue_date_to).format('YYYY-MM-DD'),
             travel_date_from  : (travel_date_from === '') ? null : moment(travel_date_from).format('YYYY-MM-DD'),
@@ -294,7 +298,7 @@ exports.search = async (req, res) => {
         const data_list = await configPromo.findAll(
             {
                 attributes : ["id", "promotion_name", "promotion_code", "from_city_country", "from_city",
-                              "to_city_country", "to_city", "flight_type", "plating_carrier",
+                              "to_city_country", "to_city", "flight_type", "plating_carrier","airline",
                               "issue_date_from", "issue_date_to", "travel_date_from", "travel_date_to",
                               "time_from", "time_to", "travel_class_id", "booking_class", "user_group_id",
                               "user_id", "api_source_id", "promo_type", "value_type", "value",

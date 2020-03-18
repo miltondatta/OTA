@@ -39,6 +39,7 @@ const PromotionConfigurationIndex = () => {
     const [fromCityList, setfromCityList]     = useState([]);
     const [toCityList, settoCityList]         = useState([]);
     const [platingCarrier, setplatingCarrier] = useState([]);
+    const [airlines, setAirlines] = useState([]);
     const [errors, seterrors]                 = useState([]);
     
     const handleClose = () => setShow(false);
@@ -75,11 +76,17 @@ const PromotionConfigurationIndex = () => {
         setplatingCarrier(res.data);
     };
     
+    const fetchAirlines = async () => {
+        const res = await axios.get(base_url + `api/airline/getFilteredAirlines`);
+        setAirlines(res.data);
+    };
+    
     useEffect(() => {
         fetchData();
         fetchApiSourcesList();
         fetchCountryList();
         fetchPlatingCarrier();
+        fetchAirlines();
     }, []);
     
     const [formData, setFormData] = useState({
@@ -92,6 +99,7 @@ const PromotionConfigurationIndex = () => {
                                                  to_city          : '',
                                                  flight_type      : '',
                                                  plating_carrier  : '',
+                                                 airline  : '',
                                                  issue_date_from  : '',
                                                  issue_date_to    : '',
                                                  travel_date_from : '',
@@ -111,7 +119,7 @@ const PromotionConfigurationIndex = () => {
                                              });
     
     const {
-              id, promotion_name, promotion_code, from_city_country, from_city, to_city_country, to_city, flight_type, plating_carrier,
+              id, promotion_name, promotion_code, from_city_country, from_city, to_city_country, to_city, flight_type, plating_carrier,airline,
               issue_date_from, issue_date_to, travel_date_from, travel_date_to, time_from, time_to, travel_class_id, booking_class,
               user_group_id, user_id, api_source_id, promo_type, value_type, value, max_amount, status_id,
           } = formData;
@@ -168,6 +176,7 @@ const PromotionConfigurationIndex = () => {
                         to_city          : '',
                         flight_type      : '',
                         plating_carrier  : '',
+                        airline  : '',
                         issue_date_from  : '',
                         issue_date_to    : '',
                         travel_date_from : '',
@@ -253,6 +262,7 @@ const PromotionConfigurationIndex = () => {
                               to_city_country  : item.data.to_city_country,
                               flight_type      : item.data.flight_type,
                               plating_carrier  : item.data.plating_carrier,
+                              airline  : item.data.airline,
                               issue_date_from  : item.data.issue_date_from ? moment(item.data.issue_date_from) : '',
                               issue_date_to    : item.data.issue_date_to ? moment(item.data.issue_date_to) : '',
                               travel_date_from : item.data.travel_date_from ? moment(item.data.travel_date_from) : '',
@@ -517,6 +527,25 @@ const PromotionConfigurationIndex = () => {
                                          <Fragment>
                                              <option>Select Plating Carrier</option>
                                              {platingCarrier.map((value, key) => (
+                                                 <option value={value.id}
+                                                         key={key}>{value.name}</option>
+                                             ))}
+                                         </Fragment> :
+                                         <option>Select Plating Carrier</option>}
+                                    </select>
+                                
+                                </Form.Group>
+                            </div>
+                            
+                            <div className="col-md-3">
+                                <Form.Group controlId="airline">
+                                    <Form.Label>Airlines</Form.Label>
+                                    <select className="form-control" name="airline" value={airline}
+                                            onChange={e => onChange(e)}>
+                                        {airlines.length > 0 ?
+                                         <Fragment>
+                                             <option>Select Plating Carrier</option>
+                                             {airlines.map((value, key) => (
                                                  <option value={value.id}
                                                          key={key}>{value.name}</option>
                                              ))}
