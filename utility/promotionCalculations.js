@@ -116,6 +116,16 @@ const calculatePromotion = async (promotions, flightData) => {
                 }
             }
             //check Plating Carrier
+    
+            //check Airlines
+            if (promo_data.airline) {
+                if (promo_data.airline === fl_data.segments[0].airline) {
+                    promo_elegibility_arr.push(true);
+                } else {
+                    promo_elegibility_arr.push(false);
+                }
+            }
+            //check Airlines
             
             //check Flight Type
             if (promo_data.flight_type) {
@@ -204,8 +214,8 @@ const calculatePromotion = async (promotions, flightData) => {
                     promo_elegibility_arr.push(false);
                 }
             }
-            
             //check travel_time_from form travel_time_to
+            
             //apply not !
             if (!promo_elegibility_arr.includes(false)) {
                 let promo_amount = 0;
@@ -242,16 +252,16 @@ const calculatePromotion = async (promotions, flightData) => {
                     promo_amount_array.push(promo_amount + '-' + 'addition');
                     promo_id_array.push(promo_data.id);
                 }
+                
+                promo_fare_amount         = parseFloat(fl_data.basePrice) - parseFloat(total_promo_amount);
+                fl_data.totalPrice        = parseFloat(promo_fare_amount) + parseFloat(fl_data.taxes);
+                fl_data.basePrice         = promo_fare_amount;
+                fl_data.promo_amount      = total_promo_amount;
+                fl_data.promo_amount_desc = promo_amount_array.toString();
+                fl_data.promo_id          = promo_id_array.toString();
+                fl_data.is_promo_applied  = 1;
             }
         });
-        
-        promo_fare_amount         = parseFloat(fl_data.basePrice) - parseFloat(total_promo_amount);
-        fl_data.totalPrice        = parseFloat(promo_fare_amount) + parseFloat(fl_data.taxes);
-        fl_data.basePrice         = promo_fare_amount;
-        fl_data.promo_amount      = total_promo_amount;
-        fl_data.promo_amount_desc = promo_amount_array.toString();
-        fl_data.promo_id          = promo_id_array.toString();
-        fl_data.is_promo_applied  = 1;
     });
 };
 

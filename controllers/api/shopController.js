@@ -149,9 +149,7 @@ exports.shop = async (req, res) => {
                 segment.airline_name = airline_names[segment.airline] ? airline_names[segment.airline] : segment.airline;
             });
         });
-        
         let shopDataAfterCalculation = await promotionCalculation(shopData);
-        
         let response        = {};
         response['status']  = true;
         response['message'] = 'Successfully process your request!';
