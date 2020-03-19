@@ -67,7 +67,6 @@ const PromotionConfigurationIndex = () => {
     
     const fetchUserRoleList = async () => {
         const res = await axios.get(base_url + `api/users/all_role`);
-        console.log(res.data);
         setUserGroupList(res.data);
     };
     

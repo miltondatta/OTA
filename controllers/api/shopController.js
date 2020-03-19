@@ -107,9 +107,9 @@ exports.shop = async (req, res) => {
                 }
                 flightData['segments']          = segments;
                 flightData['stoppage']          = (segmentLength > 1) ? ((segmentLength - 1) + ' stops') : 'Direct';
-                flightData['promo_amount']      = '';
-                flightData['promo_amount_desc'] = '';
-                flightData['promo_id']          = '';
+                flightData['promo_amount']      = 0;
+                flightData['promo_amount_desc'] = null;
+                flightData['promo_id']          = null;
                 shopData.push(flightData);
             }
             
@@ -480,5 +480,5 @@ exports.shop = async (req, res) => {
 };
 
 const parseFare = (amount, currency) => {
-    return amount.substring(currency.length);
+    return parseFloat(amount.substring(currency.length));
 };

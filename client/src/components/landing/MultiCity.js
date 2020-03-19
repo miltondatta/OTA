@@ -144,8 +144,7 @@ class MultiCity extends Component {
             INF: this.state.infant,
             cabins: this.state.class
         };
-
-        console.log(searchParams);
+        
         //this.props.shopData(searchParams, this.props.history);
     }
 

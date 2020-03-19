@@ -14,7 +14,6 @@ class FlightPayment extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        console.log(props.shop);
         this.selectedFlight = props.shop.shopData.data[props.location.state.selectedIndex];
     }
 

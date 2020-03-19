@@ -93,7 +93,6 @@ exports.update = async (req, res) => {
             updatedAt : moment(),
         };
         
-        console.log(updateAirline);
         const status = await Airline.findOne({where : {id}});
         if (!status) return res.status(400).json({msg : 'This airline not found!'});
         
