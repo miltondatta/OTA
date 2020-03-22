@@ -1,36 +1,42 @@
 'use strict';
 module.exports = {
-    up  : (queryInterface, Sequelize) => {
+    up   : (queryInterface, Sequelize) => {
         return queryInterface.createTable('payments', {
-            id               : {
-                allowNull    : false,
-                autoIncrement: true,
-                primaryKey   : true,
-                type         : Sequelize.INTEGER
+            id                : {
+                allowNull     : false,
+                autoIncrement : true,
+                primaryKey    : true,
+                type          : Sequelize.INTEGER
             },
-            receivable_amount: {
-                type: Sequelize.DOUBLE
+            flight_booking_id : {
+                type : Sequelize.INTEGER,
             },
-            payment_amount   : {
-                type: Sequelize.DOUBLE
+            transaction_id    : {
+                type : Sequelize.STRING,
             },
-            payment_option   : {
-                type: Sequelize.STRING(27)
+            receivable_amount : {
+                type : Sequelize.DOUBLE
             },
-            transaction_id   : {
-                type: Sequelize.STRING(128)
+            payment_amount    : {
+                type : Sequelize.DOUBLE
             },
-            createdAt        : {
-                allowNull: false,
-                type     : Sequelize.DATE
+            payment_option    : {
+                type : Sequelize.STRING,
             },
-            updatedAt        : {
-                allowNull: true,
-                type     : Sequelize.DATE
+            received_by : {
+                type : Sequelize.INTEGER,
+            },
+            createdAt   : {
+                allowNull : false,
+                type      : Sequelize.DATE
+            },
+            updatedAt   : {
+                allowNull : true,
+                type      : Sequelize.DATE
             }
         });
     },
-    down: (queryInterface, Sequelize) => {
+    down : (queryInterface, Sequelize) => {
         return queryInterface.dropTable('payments');
     }
 };

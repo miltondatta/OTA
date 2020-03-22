@@ -126,7 +126,7 @@ module.exports = {
                 allowNull    : true,
                 defaultValue : null,
             },
-            to_city            : {
+            to_city              : {
                 type         : Sequelize.STRING,
                 allowNull    : true,
                 defaultValue : null,
@@ -179,7 +179,7 @@ module.exports = {
             invoice_id           : {
                 allowNull    : true,
                 defaultValue : null,
-                type         : Sequelize.INTEGER,
+                type         : Sequelize.STRING,
             },
             issue_ticket_status  : {
                 allowNull    : true,
