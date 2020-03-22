@@ -201,6 +201,11 @@ module.exports = {
                 defaultValue : null,
                 type         : Sequelize.TEXT,
             },
+            status_id            : {
+                allowNull    : true,
+                defaultValue : 3,
+                type         : Sequelize.INTEGER
+            },
             createdAt            : {
                 allowNull : false,
                 type      : Sequelize.DATE,

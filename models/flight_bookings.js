@@ -40,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         void_ticket_status   : DataTypes.INTEGER,
         cancel_ticket_status : DataTypes.INTEGER,
         pnr_request_response : DataTypes.TEXT,
+        status_id            : DataTypes.INTEGER,
         createdAt            : DataTypes.DATE,
         updatedAt            : DataTypes.DATE,
         

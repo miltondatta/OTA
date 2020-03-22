@@ -31,7 +31,8 @@ import FixedValuesIndex            from "./components/fixed-values/FixedValuesIn
 import ApiSourcesIndex             from "./components/api-sources/ApiSourcesIndex";
 import PromotionConfigurationIndex from "./components/promotions/PromotionConfigurationIndex";
 import UserGroup                   from "./components/user-group/UserGroupIndex";
-import UserGroupMapping                   from "./components/user-group-mapping/UserGroupMappingIndex";
+import UserGroupMapping            from "./components/user-group-mapping/UserGroupMappingIndex";
+import FlightBookings              from "./components/flight-bookings/flightBookingIndex";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -86,6 +87,7 @@ function App() {
                 <Route exact path='/configure_promotion' component={PromotionConfigurationIndex}/>
                 <Route exact path='/user_group' component={UserGroup}/>
                 <Route exact path='/user_group_mapping' component={UserGroupMapping}/>
+                <Route exact path='/flight_bookings' component={FlightBookings}/>
                 <Footer/>
             </Router>
         </Provider>
