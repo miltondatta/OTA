@@ -1,10 +1,11 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {faEdit, faTrashAlt}                   from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faTrashAlt, faEye}            from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon}                      from "@fortawesome/react-fontawesome";
-import axios  from 'axios';
-import moment from 'moment';
-import Alerts from "../alert/alerts";
+import axios                                  from 'axios';
+import moment                                 from 'moment';
+import Alerts                                 from "../alert/alerts";
 import {Badge, Modal, Button, Form}           from "react-bootstrap";
+import {base_url}                             from "../../utils/Urls";
 
 const FlightBooking = () => {
     const [addMessage, setAddMessage]       = useState({
@@ -16,32 +17,38 @@ const FlightBooking = () => {
                                                        });
     const {show, variant, heading, message} = addMessage;
     const [data_list, set_data_list]        = useState([]);
-    const [deleteInfo, setDeleteInfo]       = useState({id: '', name: ''});
+    const [deleteInfo, setDeleteInfo]       = useState({id : '', name : ''});
+    /*const [detailInfo, setDetailInfo]       = useState({
+                                                           id : ''
+                                                       });*/
     
-    const handleClose = () => setShow(false);
-    const handleShow  = () => setShow(true);
+    const handleClose          = () => setShow(false);
+    const handleShow           = () => setShow(true);
+    const [modalShow, setShow] = useState(false);
     
-    const [modalShow, setShow]                = useState(false);
+    const handleDetailsClose                      = () => setDetailsModalShow(false);
+    const handleDetailShow                        = () => setDetailsModalShow(true);
+    const [detailsModalShow, setDetailsModalShow] = useState(false);
     
     const deleteBooking = async () => {
         try {
             const config = {
-                headers: {
-                    'Content-Type': 'application/json'
+                headers : {
+                    'Content-Type' : 'application/json'
                 }
             };
             
             const data = {
-                id: deleteInfo.id
+                id : deleteInfo.id
             };
             
             const result = await axios.post(`api/flight_booking/delete/`, data, config);
             
             setAddMessage({
-                              show   : true,
-                              variant: 'success',
-                              heading: 'Data Delete Message!',
-                              message: `Promotion condition, ${deleteInfo.name} has been deleted.`
+                              show    : true,
+                              variant : 'success',
+                              heading : 'Data Delete Message!',
+                              message : `Promotion condition, ${deleteInfo.name} has been deleted.`
                           });
             
             fetchData();
@@ -50,10 +57,10 @@ const FlightBooking = () => {
             
         } catch (err) {
             setAddMessage({
-                              show   : true,
-                              variant: 'danger',
-                              heading: 'Data Delete Error!',
-                              message: 'Promotion condition is not deleted',
+                              show    : true,
+                              variant : 'danger',
+                              heading : 'Data Delete Error!',
+                              message : 'Promotion condition is not deleted',
                           });
         }
     };
@@ -89,6 +96,12 @@ const FlightBooking = () => {
         }
     };
     
+    let setDataForDetails = async (booking_id)=>{
+        const result = await axios.get(base_url + `api/flight_booking/flight_details/${booking_id}`);
+        console.log(result);
+        alert('done');
+        //handleDetailShow();
+    };
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid fixedValues-area-container">
@@ -142,9 +155,9 @@ const FlightBooking = () => {
                                             <Button className="btn btn-sm btn-danger ml-2" onClick={() => {
                                                 setDeleteInfo({
                                                                   id   : value.id,
-                                                                  name : "PNR:"+value.pnr+" - From:"+value.from_city+" - To:"+value.to_city+
-                                                                      "- on:"+moment(value.first_departure).format('YYYY-MM-DD')+
-                                                                        "-at:"+moment(value.first_departure).format("HH:mm")
+                                                                  name : "PNR:" + value.pnr + " - From:" + value.from_city + " - To:" + value.to_city +
+                                                                      "- on:" + moment(value.first_departure).format('YYYY-MM-DD') +
+                                                                      "-at:" + moment(value.first_departure).format("HH:mm")
                                                               });
                                                 
                                                 setAddMessage({
@@ -154,6 +167,23 @@ const FlightBooking = () => {
                                             }}>
                                                 <FontAwesomeIcon icon={faTrashAlt}/>
                                             </Button>
+    
+                                            <button onClick={e => setDataForDetails(value.id)} className="btn btn-sm btn-info ml-2">
+                                                <FontAwesomeIcon icon={faEye}/>
+                                            </button>
+                                            
+                                            {/*<Button className="btn btn-sm btn-info ml-2" onClick={() => {
+                                                setDetailInfo({
+                                                                  id : value.id
+                                                              });
+                                                
+                                                setAddMessage({
+                                                                  show : false
+                                                              });
+                                                handleDetailShow();
+                                            }}>
+                                                <FontAwesomeIcon icon={faEye}/>
+                                            </Button>*/}
                                         </td>
                                     </tr>
                                 ))}
@@ -185,6 +215,140 @@ const FlightBooking = () => {
                     </Modal.Footer>
                 </Modal>
                 
+                <Modal show={detailsModalShow} onHide={handleDetailsClose} dialogClassName={"modal-xl"}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Details Show</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>PNR : </Form.Label>
+                                    <Form.Label> Dhaka</Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Invoice Id : </Form.Label>
+                                    <Form.Label> Chittagong</Form.Label>
+                                </Form.Group>
+                            </div>
+                        
+                        </div>
+                        
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>From : </Form.Label>
+                                    <Form.Label> Dhaka</Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>To : </Form.Label>
+                                    <Form.Label> Chittagong</Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Carrier : </Form.Label>
+                                    <Form.Label> Hahn Air</Form.Label>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Flight Data : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Flight Time : </Form.Label>
+                                    <Form.Label> Chittagong</Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Duration : </Form.Label>
+                                    <Form.Label> Hahn Air</Form.Label>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Stoppage : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                            
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Issue Ticket Status : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Cancel Ticket Status : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        
+                        <div className="row">
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Total Price : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Base Price : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-4">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Tax : </Form.Label>
+                                    <Form.Label> ====== </Form.Label>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h5>Passenger Information</h5>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                            
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h5>Segment Information</h5>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                            </div>
+                        </div>
+                    
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={handleDetailsClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            
             </div>
         </div>
     </Fragment>;

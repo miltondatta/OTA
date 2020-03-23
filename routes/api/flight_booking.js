@@ -11,9 +11,16 @@ router.get('/all', flightBooking.index);
 
 /*
  @route          POST api/flight_booking/delete/
- @desc           Delete FixedValues Data
+ @desc           Delete Booked Flight Data
  @access         Private
  */
 router.post('/delete', flightBooking.delete);
+
+/*
+ @route          POST api/flight_booking/flight_details/
+ @desc           show details Booked Flight Data
+ @access         Private
+ */
+router.get('/flight_details/:id', flightBooking.flightDetails);
 
 module.exports = router;

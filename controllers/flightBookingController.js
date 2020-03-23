@@ -36,3 +36,23 @@ exports.delete = async (req, res) => {
         return res.status(500).json({msg : 'Server Error!'});
     }
 };
+
+exports.flightDetails = async (req, res) => {
+    try {
+        const id         = req.params.id;
+        data_list          = {
+            booking_data   : null,
+            segment_data   : null,
+            passenger_data : null,
+        };
+        const booking_data        = await flightBooking.findOne({where : {id:id}});
+        
+        if (booking_data) data_list.booking_data= booking_data;
+        console.log(data_list);
+        if (!data_list) return res.status(400).json({msg : 'Something else!'});
+        
+        return res.status(200).json(data_list);
+    } catch (err) {
+        return res.status(500).json({msg : 'Server Error!'});
+    }
+};
