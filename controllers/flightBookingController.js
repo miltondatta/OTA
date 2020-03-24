@@ -1,7 +1,9 @@
-const flightBooking = require('../models').flight_bookings;
-const {Sequelize}   = require('../models/index');
-const Op            = Sequelize.Op;
-exports.index       = async (req, res) => {
+const flightBooking   = require('../models').flight_bookings;
+const flightPassenger = require('../models').flight_passenger;
+const segments        = require('../models').segments;
+const {Sequelize}     = require('../models/index');
+const Op              = Sequelize.Op;
+exports.index         = async (req, res) => {
     try {
         const data_list = await flightBooking.findAll(
             {
@@ -39,16 +41,35 @@ exports.delete = async (req, res) => {
 
 exports.flightDetails = async (req, res) => {
     try {
-        const id         = req.params.id;
+        const id           = req.params.id;
         data_list          = {
             booking_data   : null,
             segment_data   : null,
             passenger_data : null,
         };
-        const booking_data        = await flightBooking.findOne({where : {id:id}});
+        const booking_data = await flightBooking.findOne({where : {id : id}});
         
-        if (booking_data) data_list.booking_data= booking_data;
-        console.log(data_list);
+        if (booking_data) data_list.booking_data = booking_data;
+        
+        const passenger_data = await flightPassenger.findAll(
+            {
+                where : {
+                    booking_id : id
+                }
+            }
+        );
+        
+        if (passenger_data) data_list.passenger_data = passenger_data;
+        
+        const segment_data = await segments.findAll(
+            {
+                where : {
+                    flight_booking_id : id
+                }
+            }
+        );
+        
+        if (segment_data) data_list.segment_data = segment_data;
         if (!data_list) return res.status(400).json({msg : 'Something else!'});
         
         return res.status(200).json(data_list);

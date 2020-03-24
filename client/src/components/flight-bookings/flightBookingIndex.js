@@ -18,9 +18,6 @@ const FlightBooking = () => {
     const {show, variant, heading, message} = addMessage;
     const [data_list, set_data_list]        = useState([]);
     const [deleteInfo, setDeleteInfo]       = useState({id : '', name : ''});
-    /*const [detailInfo, setDetailInfo]       = useState({
-                                                           id : ''
-                                                       });*/
     
     const handleClose          = () => setShow(false);
     const handleShow           = () => setShow(true);
@@ -29,6 +26,10 @@ const FlightBooking = () => {
     const handleDetailsClose                      = () => setDetailsModalShow(false);
     const handleDetailShow                        = () => setDetailsModalShow(true);
     const [detailsModalShow, setDetailsModalShow] = useState(false);
+    
+    const [booking_data, set_booking_data]     = useState([]);
+    const [passenger_data, set_passenger_data] = useState([]);
+    const [segment_data, set_segment_data]     = useState([]);
     
     const deleteBooking = async () => {
         try {
@@ -96,11 +97,12 @@ const FlightBooking = () => {
         }
     };
     
-    let setDataForDetails = async (booking_id)=>{
+    let setDataForDetails = async (booking_id) => {
         const result = await axios.get(base_url + `api/flight_booking/flight_details/${booking_id}`);
-        console.log(result);
-        alert('done');
-        //handleDetailShow();
+        set_booking_data(result.data.booking_data);
+        set_passenger_data(result.data.passenger_data);
+        set_segment_data(result.data.segment_data);
+        handleDetailShow();
     };
     return <Fragment>
         <div className="user-area">
@@ -167,23 +169,10 @@ const FlightBooking = () => {
                                             }}>
                                                 <FontAwesomeIcon icon={faTrashAlt}/>
                                             </Button>
-    
+                                            
                                             <button onClick={e => setDataForDetails(value.id)} className="btn btn-sm btn-info ml-2">
                                                 <FontAwesomeIcon icon={faEye}/>
                                             </button>
-                                            
-                                            {/*<Button className="btn btn-sm btn-info ml-2" onClick={() => {
-                                                setDetailInfo({
-                                                                  id : value.id
-                                                              });
-                                                
-                                                setAddMessage({
-                                                                  show : false
-                                                              });
-                                                handleDetailShow();
-                                            }}>
-                                                <FontAwesomeIcon icon={faEye}/>
-                                            </Button>*/}
                                         </td>
                                     </tr>
                                 ))}
@@ -224,35 +213,34 @@ const FlightBooking = () => {
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>PNR : </Form.Label>
-                                    <Form.Label> Dhaka</Form.Label>
+                                    <Form.Label> {booking_data.pnr}</Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Invoice Id : </Form.Label>
-                                    <Form.Label> Chittagong</Form.Label>
+                                    <Form.Label> {booking_data.invoice_id}</Form.Label>
                                 </Form.Group>
                             </div>
-                        
                         </div>
                         
                         <div className="row">
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>From : </Form.Label>
-                                    <Form.Label> Dhaka</Form.Label>
+                                    <Form.Label> {booking_data.from_city}</Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>To : </Form.Label>
-                                    <Form.Label> Chittagong</Form.Label>
+                                    <Form.Label> {booking_data.to_city}</Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Carrier : </Form.Label>
-                                    <Form.Label> Hahn Air</Form.Label>
+                                    <Form.Label>{booking_data.platingCarrier_name}</Form.Label>
                                 </Form.Group>
                             </div>
                         </div>
@@ -261,19 +249,19 @@ const FlightBooking = () => {
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Flight Data : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {moment(booking_data.first_departure).format('YYYY-MM-DD')} </Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Flight Time : </Form.Label>
-                                    <Form.Label> Chittagong</Form.Label>
+                                    <Form.Label>{moment(booking_data.first_departure).format('HH:mm')} </Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Duration : </Form.Label>
-                                    <Form.Label> Hahn Air</Form.Label>
+                                    <Form.Label>{booking_data.total_duration}</Form.Label>
                                 </Form.Group>
                             </div>
                         </div>
@@ -282,20 +270,20 @@ const FlightBooking = () => {
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Stoppage : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {booking_data.stoppage} </Form.Label>
                                 </Form.Group>
                             </div>
                             
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Issue Ticket Status : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {ticketStatus(booking_data.issue_ticket_status)} </Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Cancel Ticket Status : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {paymentStatus(booking_data.payment_status)} </Form.Label>
                                 </Form.Group>
                             </div>
                         </div>
@@ -304,19 +292,19 @@ const FlightBooking = () => {
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Total Price : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {booking_data.totalPrice} {booking_data.currency} </Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Base Price : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {booking_data.basePrice} {booking_data.currency} </Form.Label>
                                 </Form.Group>
                             </div>
                             <div className="col-md-4">
                                 <Form.Group controlId="formElevation_ft">
                                     <Form.Label>Tax : </Form.Label>
-                                    <Form.Label> ====== </Form.Label>
+                                    <Form.Label> {booking_data.taxes} {booking_data.currency} </Form.Label>
                                 </Form.Group>
                             </div>
                         </div>
@@ -328,7 +316,41 @@ const FlightBooking = () => {
                         </div>
                         <div className="row">
                             <div className="col-md-12">
-                            
+                                <table className="table table-bordered table-sm table-condensed table-responsive-sm text-center table-striped table-hover">
+                                    <tr>
+                                        <td>SL</td>
+                                        <td>First Name</td>
+                                        <td>Last Name</td>
+                                        <td>Nationality</td>
+                                        <td>Gender</td>
+                                        <td>Birth Date</td>
+                                        <td>Passport No</td>
+                                        <td>Passport Exp</td>
+                                        <td>Passenger Type</td>
+                                    </tr>
+                                    <tbody>
+                                    {passenger_data.length > 0 ? <Fragment>
+                                        {passenger_data.map((pass, key) => (
+                
+                                            <tr key={key} className={'table-info'}>
+                                                <td>{key + 1}</td>
+                                                <td>{pass.first_name}</td>
+                                                <td>{pass.last_name}</td>
+                                                <td>{pass.nationality}</td>
+                                                <td>{pass.gender}</td>
+                                                <td>{moment(pass.date_of_birth).format('YYYY-MM-DD')}</td>
+                                                <td>{pass.passport_number}</td>
+                                                <td>{moment(pass.passport_expiry_date).format('YYYY-MM-DD')}</td>
+                                                <td>{pass.passenger_type}</td>
+                                            </tr>
+                                        ))}
+                                    </Fragment> : <tr>
+                                         <td colSpan={10}>
+                                             No data found!
+                                         </td>
+                                     </tr>}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div className="row">
@@ -338,6 +360,43 @@ const FlightBooking = () => {
                         </div>
                         <div className="row">
                             <div className="col-md-12">
+                                <table className="table table-bordered table-sm table-condensed table-responsive-sm text-center table-striped table-hover">
+                                    <tr>
+                                        <td>SL</td>
+                                        <td>From</td>
+                                        <td>To</td>
+                                        <td>Departure</td>
+                                        <td>Arrival</td>
+                                        <td>Duration</td>
+                                        <td>Airline</td>
+                                        <td>FlightNumber</td>
+                                        <td>Class</td>
+                                        <td>Baggage</td>
+                                    </tr>
+                                    <tbody>
+                                    {segment_data.length > 0 ? <Fragment>
+                                        {segment_data.map((seg, key) => (
+                
+                                            <tr key={key} className={'table-success'}>
+                                                <td>{key + 1}</td>
+                                                <td>{seg.from_city}</td>
+                                                <td>{seg.to_city}</td>
+                                                <td>{moment(seg.departure).format('HH : MM')}</td>
+                                                <td>{moment(seg.arrival).format('HH : MM')}</td>
+                                                <td>{seg.duration}</td>
+                                                <td>{seg.airline_name}</td>
+                                                <td>{seg.flightNumber}</td>
+                                                <td>{seg.bookingClass}</td>
+                                                <td>{seg.baggage}</td>
+                                            </tr>
+                                        ))}
+                                    </Fragment> : <tr>
+                                         <td colSpan={10}>
+                                             No data found!
+                                         </td>
+                                     </tr>}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     
