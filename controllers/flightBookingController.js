@@ -42,7 +42,7 @@ exports.delete = async (req, res) => {
 exports.cashReceive = async (req, res) => {
     try {
         let payment_stat  = 7;
-        let ticket_status = 7;
+        let ticket_status = 5;
         
         const {id, receive_amount, total_amount, paid_amount} = req.body;
         if (total_amount <= receive_amount + paid_amount) {

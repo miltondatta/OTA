@@ -191,6 +191,7 @@ const FlightBooking = () => {
                                 <td>Carrier</td>
                                 <td>Total</td>
                                 <td>Paid</td>
+                                <td>Due</td>
                                 <td>Payment Status</td>
                                 <td>Invoice ID</td>
                                 <td>Ticket Status</td>
@@ -210,8 +211,9 @@ const FlightBooking = () => {
                                         <td>{value.from_city}</td>
                                         <td>{value.to_city}</td>
                                         <td>{value.platingCarrier_name}</td>
-                                        <td>{value.totalPrice} {value.currency}</td>
-                                        <td>{value.paid_amount ? value.paid_amount : 0} {value.currency}</td>
+                                        <td>{parseFloat(value.totalPrice).toFixed(2)} {value.currency}</td>
+                                        <td>{parseFloat(value.paid_amount ? value.paid_amount : 0).toFixed(2)} {value.currency}</td>
+                                        <td>{parseFloat(value.totalPrice - value.paid_amount).toFixed(2)} {value.currency}</td>
                                         <td>{paymentStatus(value.payment_status)}</td>
                                         <td>{value.invoice_id}</td>
                                         <td>{ticketStatus(value.issue_ticket_status)}</td>
@@ -239,10 +241,11 @@ const FlightBooking = () => {
                                             
                                             <Button className="btn btn-sm btn-success ml-2" onClick={() => {
                                                 setCashReceive({
-                                                                   id           : value.id,
-                                                                   total_amount : value.totalPrice,
-                                                                   currency     : value.currency,
-                                                                   paid_amount  : value.paid_amount,
+                                                                   id             : value.id,
+                                                                   total_amount   : value.totalPrice,
+                                                                   currency       : value.currency,
+                                                                   paid_amount    : value.paid_amount,
+                                                                   receive_amount : value.totalPrice - value.paid_amount,
                                                                });
                                                 
                                                 setAddMessage({
@@ -256,7 +259,7 @@ const FlightBooking = () => {
                                     </tr>
                                 ))}
                             </Fragment> : <tr>
-                                 <td colSpan={14}>
+                                 <td colSpan={15}>
                                      No data found!
                                  </td>
                              </tr>}
