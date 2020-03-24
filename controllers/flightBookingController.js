@@ -116,3 +116,52 @@ exports.flightDetails = async (req, res) => {
         return res.status(500).json({msg : 'Server Error!'});
     }
 };
+
+exports.search = async (req, res) => {
+    
+    let obj          = [];
+    let booking_date = '';
+    let flight_date  = '';
+    
+    try {
+        let search_param = req.body;
+        Object.keys(search_param).forEach((item, index) => {
+            if (search_param[item]) {
+                
+                if (item === ("booking_date")) {
+                    booking_date = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                }
+                if (item === ("flight_date")) {
+                    flight_date = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                }
+                if (item === ("payment_status")) {
+                    obj.push({[item] : {[Op.eq] : search_param[item]}});
+                }
+                if (item === ("issue_ticket_status")) {
+                    obj.push({[item] : {[Op.eq] : search_param[item]}});
+                }
+                if (item === ("pnr")) {
+                    obj.push({[item] : {[Op.like] : "%" + search_param[item] + "%"}});
+                }
+                if (item === ("invoice_id")) {
+                    obj.push({[item] : {[Op.like] : "%" + search_param[item] + "%"}});
+                }
+            }
+        });
+        
+        const data_list = await flightBooking.findAll(
+            {
+                where : {
+                    [Op.and] : [
+                        ...obj
+                    ]
+                },
+                order : [['id', 'DESC']]
+            }
+        );
+        return res.status(200).json(data_list);
+        
+    } catch (err) {
+        return res.status(500).json({msg : 'Server Error!'});
+    }
+};

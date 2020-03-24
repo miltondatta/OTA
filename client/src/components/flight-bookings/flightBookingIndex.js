@@ -8,6 +8,7 @@ import {Badge, Modal, Button, Form}           from "react-bootstrap";
 import {base_url}                             from "../../utils/Urls";
 import {validateInput}                        from "../../utils/funcitons";
 import classnames                             from "classnames";
+import DatePicker                             from 'react-datepicker2';
 
 const FlightBooking = () => {
     const [addMessage, setAddMessage]       = useState({
@@ -154,14 +155,14 @@ const FlightBooking = () => {
         handleDetailShow();
     };
     
-    let onChangeReceiveAmount     = (e) => {
+    let onChangeReceiveAmount = (e) => {
         let valid = validateInput(e);
         if (valid || valid === '' || valid !== undefined) {
             setCashReceive({...cashReceive, [e.target.name] : valid});
         }
     };
     
-    const onChange                = e => {
+    const onChange = e => {
         let valid = validateInput(e);
         if (valid || valid === '') {
             setFormData({...formData, [e.target.name] : valid});
@@ -185,26 +186,17 @@ const FlightBooking = () => {
           } = formData;
     
     const searchFormData = async (data) => {
-        /*try {
-         const config = {
-         headers: {
-         'Content-Type': 'application/json'
-         }
-         };
-         let fxd_name = formData.promotion_name;
-         const res    = await axios.post(base_url + `api/configure_promotion/search/`, formData, config);
-         set_data_list(res.data);
-         } catch (err) {
-         seterrors({...err.response.data.errors})
-         if (err.response.data.isValid) {
-         setAddMessage({
-         show   : true,
-         variant: 'danger',
-         heading: 'Add Error!',
-         message: "Error... Please Try again Later. ",
-         });
-         }
-         }*/
+        try {
+            const config = {
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            };
+            const res    = await axios.post(base_url + `api/flight_booking/search/`, formData, config);
+            set_data_list(res.data);
+        } catch (err) {
+            console.log(err);
+        }
         
     };
     
@@ -226,7 +218,84 @@ const FlightBooking = () => {
                 
                 <div className="row pb-3 custom-border-bottom">
                     <div className="col-md-12 col-sm-12 col-12 mx-auto  ">
+                        <div className="row">
+                            <div className="col-md-3">
+                                <Form.Group controlId="promo_type">
+                                    <Form.Label>PNR</Form.Label>
+                                    <Form.Control type="text" name="pnr" value={pnr}
+                                                  onChange={e => onChange(e)}
+                                                  placeholder="Enter PNR"
+                                                  className={'form-control'}/>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-3">
+                                <Form.Group controlId="promo_type">
+                                    <Form.Label>Invoice ID</Form.Label>
+                                    <Form.Control type="text" name="invoice_id" value={invoice_id}
+                                                  onChange={e => onChange(e)}
+                                                  placeholder="Enter Invoice Id"
+                                                  className={'form-control'}/>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-3">
+                                <Form.Group controlId="booking_date">
+                                    <Form.Label>Booking Date</Form.Label>
+                                    <DatePicker timePicker={false}
+                                                placeholder="e.g. 2020/03/03/"
+                                                name="booking_date"
+                                                id="booking_date"
+                                                inputFormat="DD/MM/YYYY"
+                                                value={booking_date}
+                                                onChange={booking_date => setFormData((pv) => ({...pv, booking_date}))}
+                                                className={'form-control'}/>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-3">
+                                <Form.Group controlId="flight_date">
+                                    <Form.Label>Flight Date</Form.Label>
+                                    <DatePicker timePicker={false}
+                                                placeholder="e.g. 2020/03/03/"
+                                                name="flight_date"
+                                                id="flight_date"
+                                                inputFormat="DD/MM/YYYY"
+                                                value={flight_date}
+                                                onChange={flight_date => setFormData((pv) => ({...pv, flight_date}))}
+                                                className={'form-control'}/>
+                                </Form.Group>
+                            </div>
+                        </div>
                         
+                        <div className="row">
+                            <div className="col-md-3">
+                                <Form.Group controlId="payment_status">
+                                    <Form.Label>Payment Status</Form.Label>
+                                    <select name="payment_status" value={payment_status}
+                                            onChange={e => onChange(e)}
+                                            className={'form-control'}>
+                                        <Fragment>
+                                            <option>Select Payment Status</option>
+                                            <option value='7' key='7'>Not Paid</option>
+                                            <option value='8' key='8'>Partially Paid</option>
+                                            <option value='9' key='9'>Paid</option>
+                                        </Fragment>
+                                    </select>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-3">
+                                <Form.Group controlId="issue_ticket_status">
+                                    <Form.Label>Ticket Issue Type</Form.Label>
+                                    <select name="issue_ticket_status" value={issue_ticket_status}
+                                            onChange={e => onChange(e)}
+                                            className={'form-control'}>
+                                        <Fragment>
+                                            <option>Select Issue Type</option>
+                                            <option value='6' key='6'>Confirmed</option>
+                                            <option value='5' key='5'>Booked</option>
+                                        </Fragment>
+                                    </select>
+                                </Form.Group>
+                            </div>
+                        </div>
                         
                         <div className="row">
                             <Button variant="outline-warning" className="ml-2"

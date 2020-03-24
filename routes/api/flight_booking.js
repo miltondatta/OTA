@@ -30,4 +30,11 @@ router.post('/cash-receive', flightBooking.cashReceive);
  */
 router.get('/flight_details/:id', flightBooking.flightDetails);
 
+/*
+ @route          POST api/flight_booking/search/
+ @desc           Search flight_booking Data
+ @access         Private
+ */
+router.post('/search', flightBooking.search);
+
 module.exports = router;
