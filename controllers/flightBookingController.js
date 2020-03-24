@@ -1,6 +1,7 @@
 const flightBooking   = require('../models').flight_bookings;
 const flightPassenger = require('../models').flight_passenger;
 const segments        = require('../models').segments;
+const payment_model   = require('../models').payment;
 const {Sequelize}     = require('../models/index');
 const Op              = Sequelize.Op;
 exports.index         = async (req, res) => {
@@ -58,6 +59,17 @@ exports.cashReceive = async (req, res) => {
                 issue_ticket_status : ticket_status
             },
             {where : {id : id}});
+        
+        const payment_values        = {
+            flight_booking_id : id,
+            transaction_id    : "TRAN-" + Math.random().toString(36).substring(2).toUpperCase(),
+            receivable_amount : total_amount,
+            payment_amount    : receive_amount,
+            payment_option    : 'CASH',
+            received_by       : 1,
+        };
+        const payment_insert_status = await payment_model.create(payment_values);
+        
         if (!status) return res.status(400).json({msg : 'Please try again!'});
         
         return res.status(200).json({msg : 'One Booking has been deleted successfully!'});

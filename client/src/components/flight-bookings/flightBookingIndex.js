@@ -7,6 +7,7 @@ import Alerts                                 from "../alert/alerts";
 import {Badge, Modal, Button, Form}           from "react-bootstrap";
 import {base_url}                             from "../../utils/Urls";
 import {validateInput}                        from "../../utils/funcitons";
+import classnames                             from "classnames";
 
 const FlightBooking = () => {
     const [addMessage, setAddMessage]       = useState({
@@ -153,16 +154,60 @@ const FlightBooking = () => {
         handleDetailShow();
     };
     
-    let onChangeReceiveAmount = (e) => {
+    let onChangeReceiveAmount     = (e) => {
         let valid = validateInput(e);
         if (valid || valid === '' || valid !== undefined) {
             setCashReceive({...cashReceive, [e.target.name] : valid});
         }
     };
     
-    let calculate = (cashReceive_c) => {
-        console.log(cashReceive_c);
+    const onChange                = e => {
+        let valid = validateInput(e);
+        if (valid || valid === '') {
+            setFormData({...formData, [e.target.name] : valid});
+        }
     };
+    
+    const [formData, setFormData] = useState({
+                                                 pnr                 : '',
+                                                 invoice_id          : '',
+                                                 from                : '',
+                                                 to                  : '',
+                                                 platingCarrier      : '',
+                                                 payment_status      : '',
+                                                 issue_ticket_status : '',
+                                                 booking_date        : '',
+                                                 flight_date         : '',
+                                             });
+    
+    const {
+              pnr, invoice_id, from, to, platingCarrier, payment_status, issue_ticket_status, booking_date, flight_date,
+          } = formData;
+    
+    const searchFormData = async (data) => {
+        /*try {
+         const config = {
+         headers: {
+         'Content-Type': 'application/json'
+         }
+         };
+         let fxd_name = formData.promotion_name;
+         const res    = await axios.post(base_url + `api/configure_promotion/search/`, formData, config);
+         set_data_list(res.data);
+         } catch (err) {
+         seterrors({...err.response.data.errors})
+         if (err.response.data.isValid) {
+         setAddMessage({
+         show   : true,
+         variant: 'danger',
+         heading: 'Add Error!',
+         message: "Error... Please Try again Later. ",
+         });
+         }
+         }*/
+        
+    };
+    
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid fixedValues-area-container">
@@ -174,9 +219,22 @@ const FlightBooking = () => {
                         message={message}
                     />
                 </div>
+                
                 <div className="text-center pb-3">
                     <h2>Booking Info</h2>
                 </div>
+                
+                <div className="row pb-3 custom-border-bottom">
+                    <div className="col-md-12 col-sm-12 col-12 mx-auto  ">
+                        
+                        
+                        <div className="row">
+                            <Button variant="outline-warning" className="ml-2"
+                                    onClick={e => searchFormData(e)}>Search</Button>
+                        </div>
+                    </div>
+                </div>
+                
                 <div className="row pb-3">
                     <div className="col-md-12 col-sm-12 col-12 mx-auto mt-4">
                         <table className="table table-bordered table-responsive-md text-center table-striped table-hover table-condensed">
