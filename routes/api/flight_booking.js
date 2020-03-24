@@ -17,6 +17,13 @@ router.get('/all', flightBooking.index);
 router.post('/delete', flightBooking.delete);
 
 /*
+ @route          POST api/flight_booking/cash-receive/
+ @desc           cash receive
+ @access         Private
+ */
+router.post('/cash-receive', flightBooking.cashReceive);
+
+/*
  @route          POST api/flight_booking/flight_details/
  @desc           show details Booked Flight Data
  @access         Private

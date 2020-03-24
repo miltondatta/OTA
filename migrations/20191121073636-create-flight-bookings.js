@@ -176,6 +176,11 @@ module.exports = {
                 defaultValue : null,
                 type         : Sequelize.INTEGER,
             },
+            paid_amount       : {
+                allowNull    : true,
+                defaultValue : 0,
+                type         : Sequelize.DOUBLE,
+            },
             invoice_id           : {
                 allowNull    : true,
                 defaultValue : null,

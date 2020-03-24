@@ -39,6 +39,33 @@ exports.delete = async (req, res) => {
     }
 };
 
+exports.cashReceive = async (req, res) => {
+    try {
+        let payment_stat  = 7;
+        let ticket_status = 7;
+        
+        const {id, receive_amount, total_amount, paid_amount} = req.body;
+        if (total_amount <= receive_amount + paid_amount) {
+            payment_stat  = 9;
+            ticket_status = 6;
+        } else {
+            payment_stat = 8;
+        }
+        const status = await flightBooking.update(
+            {
+                paid_amount         : Sequelize.literal('paid_amount + ' + +receive_amount),
+                payment_status      : payment_stat,
+                issue_ticket_status : ticket_status
+            },
+            {where : {id : id}});
+        if (!status) return res.status(400).json({msg : 'Please try again!'});
+        
+        return res.status(200).json({msg : 'One Booking has been deleted successfully!'});
+    } catch (err) {
+        return res.status(500).json({msg : err});
+    }
+};
+
 exports.flightDetails = async (req, res) => {
     try {
         const id           = req.params.id;

@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         stoppage             : DataTypes.STRING,
         ticket_time_limit    : DataTypes.STRING,
         payment_status       : DataTypes.INTEGER,
+        paid_amount          : DataTypes.DOUBLE,
         invoice_id           : DataTypes.STRING,
         issue_ticket_status  : DataTypes.INTEGER,
         void_ticket_status   : DataTypes.INTEGER,

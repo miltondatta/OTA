@@ -1,11 +1,12 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {faEdit, faTrashAlt, faEye}            from "@fortawesome/free-solid-svg-icons";
+import {faTrashAlt, faEye, faMoneyCheck}      from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon}                      from "@fortawesome/react-fontawesome";
 import axios                                  from 'axios';
 import moment                                 from 'moment';
 import Alerts                                 from "../alert/alerts";
 import {Badge, Modal, Button, Form}           from "react-bootstrap";
 import {base_url}                             from "../../utils/Urls";
+import {validateInput}                        from "../../utils/funcitons";
 
 const FlightBooking = () => {
     const [addMessage, setAddMessage]       = useState({
@@ -19,6 +20,16 @@ const FlightBooking = () => {
     const [data_list, set_data_list]        = useState([]);
     const [deleteInfo, setDeleteInfo]       = useState({id : '', name : ''});
     
+    const [cashReceive, setCashReceive]                                         = useState({
+                                                                                               id             : '',
+                                                                                               total_amount   : '',
+                                                                                               receive_amount : '',
+                                                                                               currency       : '',
+                                                                                               paid_amount    : '',
+                                                                                               due_amount     : '',
+                                                                                           });
+    const {id, total_amount, receive_amount, currency, paid_amount, due_amount} = cashReceive;
+    
     const handleClose          = () => setShow(false);
     const handleShow           = () => setShow(true);
     const [modalShow, setShow] = useState(false);
@@ -26,6 +37,10 @@ const FlightBooking = () => {
     const handleDetailsClose                      = () => setDetailsModalShow(false);
     const handleDetailShow                        = () => setDetailsModalShow(true);
     const [detailsModalShow, setDetailsModalShow] = useState(false);
+    
+    const handleReceiveAmountClose                            = () => setModalReceiveAmountShow(false);
+    const handleReceiveAmountShow                             = () => setModalReceiveAmountShow(true);
+    const [modalReceiveAmountShow, setModalReceiveAmountShow] = useState(false);
     
     const [booking_data, set_booking_data]     = useState([]);
     const [passenger_data, set_passenger_data] = useState([]);
@@ -49,7 +64,7 @@ const FlightBooking = () => {
                               show    : true,
                               variant : 'success',
                               heading : 'Data Delete Message!',
-                              message : `Promotion condition, ${deleteInfo.name} has been deleted.`
+                              message : `Flight Booking, ${deleteInfo.name} has been deleted.`
                           });
             
             fetchData();
@@ -62,6 +77,39 @@ const FlightBooking = () => {
                               variant : 'danger',
                               heading : 'Data Delete Error!',
                               message : 'Promotion condition is not deleted',
+                          });
+        }
+    };
+    
+    const processReceiveAmount = async () => {
+        try {
+            const config = {
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            };
+            
+            const data = cashReceive;
+            
+            const result = await axios.post(`api/flight_booking/cash-receive/`, data, config);
+            
+            setAddMessage({
+                              show    : true,
+                              variant : 'success',
+                              heading : 'Payment Receive Message!',
+                              message : `Flight Booking cash received.`
+                          });
+            
+            fetchData();
+            
+            return result.data;
+            
+        } catch (err) {
+            setAddMessage({
+                              show    : true,
+                              variant : 'danger',
+                              heading : 'Data update Error!',
+                              message : 'Flight booking cash not received',
                           });
         }
     };
@@ -104,6 +152,17 @@ const FlightBooking = () => {
         set_segment_data(result.data.segment_data);
         handleDetailShow();
     };
+    
+    let onChangeReceiveAmount = (e) => {
+        let valid = validateInput(e);
+        if (valid || valid === '' || valid !== undefined) {
+            setCashReceive({...cashReceive, [e.target.name] : valid});
+        }
+    };
+    
+    let calculate = (cashReceive_c) => {
+        console.log(cashReceive_c);
+    };
     return <Fragment>
         <div className="user-area">
             <div className="container-fluid fixedValues-area-container">
@@ -131,9 +190,11 @@ const FlightBooking = () => {
                                 <td>To</td>
                                 <td>Carrier</td>
                                 <td>Total</td>
+                                <td>Paid</td>
                                 <td>Payment Status</td>
                                 <td>Invoice ID</td>
                                 <td>Ticket Status</td>
+                                <td>Booking Date Time</td>
                                 <td>Action</td>
                             </tr>
                             </thead>
@@ -150,9 +211,11 @@ const FlightBooking = () => {
                                         <td>{value.to_city}</td>
                                         <td>{value.platingCarrier_name}</td>
                                         <td>{value.totalPrice} {value.currency}</td>
+                                        <td>{value.paid_amount ? value.paid_amount : 0} {value.currency}</td>
                                         <td>{paymentStatus(value.payment_status)}</td>
                                         <td>{value.invoice_id}</td>
                                         <td>{ticketStatus(value.issue_ticket_status)}</td>
+                                        <td>{moment(value.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                                         <td className="d-flex justify-content-center">
                                             <Button className="btn btn-sm btn-danger ml-2" onClick={() => {
                                                 setDeleteInfo({
@@ -173,11 +236,27 @@ const FlightBooking = () => {
                                             <button onClick={e => setDataForDetails(value.id)} className="btn btn-sm btn-info ml-2">
                                                 <FontAwesomeIcon icon={faEye}/>
                                             </button>
+                                            
+                                            <Button className="btn btn-sm btn-success ml-2" onClick={() => {
+                                                setCashReceive({
+                                                                   id           : value.id,
+                                                                   total_amount : value.totalPrice,
+                                                                   currency     : value.currency,
+                                                                   paid_amount  : value.paid_amount,
+                                                               });
+                                                
+                                                setAddMessage({
+                                                                  show : false
+                                                              });
+                                                handleReceiveAmountShow();
+                                            }}>
+                                                <FontAwesomeIcon icon={faMoneyCheck}/>
+                                            </Button>
                                         </td>
                                     </tr>
                                 ))}
                             </Fragment> : <tr>
-                                 <td colSpan={12}>
+                                 <td colSpan={14}>
                                      No data found!
                                  </td>
                              </tr>}
@@ -200,6 +279,52 @@ const FlightBooking = () => {
                             handleClose();
                         }}>
                             Confirm Delete
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                
+                <Modal show={modalReceiveAmountShow} onHide={handleReceiveAmountClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Receive Amount</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Total Amount : </Form.Label>
+                                    <Form.Label> <b>{cashReceive.total_amount}</b> {cashReceive.currency}</Form.Label>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Paid Amount : </Form.Label>
+                                    <Form.Label> <b>{cashReceive.paid_amount ? cashReceive.paid_amount : 0}</b> {cashReceive.currency}
+                                    </Form.Label>
+                                </Form.Group>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-8">
+                                <Form.Group controlId="formElevation_ft">
+                                    <Form.Label>Receive Amount : </Form.Label>
+                                    <Form.Control type="text" name="receive_amount" value={receive_amount}
+                                                  onChange={e => onChangeReceiveAmount(e)} data-number={'float_only'}
+                                                  placeholder="Enter Amount"/>
+                                </Form.Group>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={handleReceiveAmountClose}>
+                            Close
+                        </Button>
+                        <Button variant="outline-success" onClick={() => {
+                            processReceiveAmount();
+                            handleReceiveAmountClose();
+                        }}>
+                            Receive
                         </Button>
                     </Modal.Footer>
                 </Modal>
@@ -316,7 +441,8 @@ const FlightBooking = () => {
                         </div>
                         <div className="row">
                             <div className="col-md-12">
-                                <table className="table table-bordered table-sm table-condensed table-responsive-sm text-center table-striped table-hover">
+                                <table
+                                    className="table table-bordered table-sm table-condensed table-responsive-sm text-center table-striped table-hover">
                                     <tr>
                                         <td>SL</td>
                                         <td>First Name</td>
@@ -331,7 +457,7 @@ const FlightBooking = () => {
                                     <tbody>
                                     {passenger_data.length > 0 ? <Fragment>
                                         {passenger_data.map((pass, key) => (
-                
+                                            
                                             <tr key={key} className={'table-info'}>
                                                 <td>{key + 1}</td>
                                                 <td>{pass.first_name}</td>
@@ -360,7 +486,8 @@ const FlightBooking = () => {
                         </div>
                         <div className="row">
                             <div className="col-md-12">
-                                <table className="table table-bordered table-sm table-condensed table-responsive-sm text-center table-striped table-hover">
+                                <table
+                                    className="table table-bordered table-sm table-condensed table-responsive-sm text-center table-striped table-hover">
                                     <tr>
                                         <td>SL</td>
                                         <td>From</td>
@@ -376,7 +503,7 @@ const FlightBooking = () => {
                                     <tbody>
                                     {segment_data.length > 0 ? <Fragment>
                                         {segment_data.map((seg, key) => (
-                
+                                            
                                             <tr key={key} className={'table-success'}>
                                                 <td>{key + 1}</td>
                                                 <td>{seg.from_city}</td>
