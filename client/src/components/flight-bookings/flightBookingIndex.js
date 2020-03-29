@@ -172,17 +172,17 @@ const FlightBooking = () => {
     const [formData, setFormData] = useState({
                                                  pnr                 : '',
                                                  invoice_id          : '',
+                                                 s_flight_date       : '',
                                                  from                : '',
                                                  to                  : '',
-                                                 platingCarrier      : '',
                                                  payment_status      : '',
                                                  issue_ticket_status : '',
                                                  booking_date        : '',
-                                                 flight_date         : '',
+                                                 platingCarrier      : '',
                                              });
     
     const {
-              pnr, invoice_id, from, to, platingCarrier, payment_status, issue_ticket_status, booking_date, flight_date,
+              pnr, invoice_id, from, to, platingCarrier, payment_status, issue_ticket_status, booking_date, s_flight_date,
           } = formData;
     
     const searchFormData = async (data) => {
@@ -198,6 +198,21 @@ const FlightBooking = () => {
             console.log(err);
         }
         
+    };
+    
+    const resetFormData = async (data) => {
+        setFormData({
+                        pnr                 : '',
+                        invoice_id          : '',
+                        s_flight_date       : '',
+                        from                : '',
+                        to                  : '',
+                        payment_status      : '',
+                        issue_ticket_status : '',
+                        booking_date        : '',
+                        platingCarrier      : '',
+                    });
+        fetchData();
     };
     
     return <Fragment>
@@ -258,8 +273,8 @@ const FlightBooking = () => {
                                                 name="flight_date"
                                                 id="flight_date"
                                                 inputFormat="DD/MM/YYYY"
-                                                value={flight_date}
-                                                onChange={flight_date => setFormData((pv) => ({...pv, flight_date}))}
+                                                value={s_flight_date}
+                                                onChange={s_flight_date => setFormData((pvf) => ({...pvf, s_flight_date}))}
                                                 className={'form-control'}/>
                                 </Form.Group>
                             </div>
@@ -300,6 +315,9 @@ const FlightBooking = () => {
                         <div className="row">
                             <Button variant="outline-warning" className="ml-2"
                                     onClick={e => searchFormData(e)}>Search</Button>
+                            
+                            <Button variant="outline-danger" className="ml-2"
+                                    onClick={e => resetFormData(e)}>Reset</Button>
                         </div>
                     </div>
                 </div>

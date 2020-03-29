@@ -3,6 +3,7 @@ const flightPassenger = require('../models').flight_passenger;
 const segments        = require('../models').segments;
 const payment_model   = require('../models').payment;
 const {Sequelize}     = require('../models/index');
+const moment          = require("moment");
 const Op              = Sequelize.Op;
 exports.index         = async (req, res) => {
     try {
@@ -119,21 +120,12 @@ exports.flightDetails = async (req, res) => {
 
 exports.search = async (req, res) => {
     
-    let obj          = [];
-    let booking_date = '';
-    let flight_date  = '';
-    
+    let obj = [];
     try {
         let search_param = req.body;
+        obj.push({'status_id' : {[Op.ne] : -1}});/*Filter deleted Flight*/
         Object.keys(search_param).forEach((item, index) => {
             if (search_param[item]) {
-                
-                if (item === ("booking_date")) {
-                    booking_date = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
-                }
-                if (item === ("flight_date")) {
-                    flight_date = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
-                }
                 if (item === ("payment_status")) {
                     obj.push({[item] : {[Op.eq] : search_param[item]}});
                 }
@@ -145,6 +137,16 @@ exports.search = async (req, res) => {
                 }
                 if (item === ("invoice_id")) {
                     obj.push({[item] : {[Op.like] : "%" + search_param[item] + "%"}});
+                }
+                if (item === ("booking_date")) {
+                    let booking_date    = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    let booking_date_to = moment(search_param[item]).format('YYYY-MM-DD 23:59:59 +00:00');
+                    obj.push({"createdAt" : {[Op.between] : [booking_date, booking_date_to]}});
+                }
+                if (item === ("s_flight_date")) {
+                    let flight_date    = moment(search_param[item]).format('YYYY-MM-DD 00:00:00 +00:00');
+                    let flight_date_to = moment(search_param[item]).format('YYYY-MM-DD 23:59:59 +00:00');
+                    obj.push({"first_departure" : {[Op.between] : [flight_date, flight_date_to]}});
                 }
             }
         });
