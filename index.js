@@ -26,6 +26,7 @@ const ConfPromo        = require('./routes/api/configure_promotion');
 const UserGroup        = require('./routes/api/user_group');
 const UserGroupMapping = require('./routes/api/user_group_mapping');
 const flight_booking   = require('./routes/api/flight_booking');
+const ticket   = require('./routes/api/ticket');
 
 //Use All Routes
 app.get('/', (req, res) => res.send("Hello World: Node JS"));
@@ -42,6 +43,7 @@ app.use('/api/configure_promotion/', ConfPromo);
 app.use('/api/user_group/', UserGroup);
 app.use('/api/user_group_mapping/', UserGroupMapping);
 app.use('/api/flight_booking/', flight_booking);
+app.use('/api/ticket/', ticket);
 
 app.use('/api/air/', air);
 app.use('/api/global/', global);

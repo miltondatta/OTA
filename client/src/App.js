@@ -33,6 +33,7 @@ import PromotionConfigurationIndex from "./components/promotions/PromotionConfig
 import UserGroup                   from "./components/user-group/UserGroupIndex";
 import UserGroupMapping            from "./components/user-group-mapping/UserGroupMappingIndex";
 import FlightBookings              from "./components/flight-bookings/flightBookingIndex";
+import Tickets                     from "./components/tickets/TicketIndex";
 
 // Css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -88,6 +89,7 @@ function App() {
                 <Route exact path='/user_group' component={UserGroup}/>
                 <Route exact path='/user_group_mapping' component={UserGroupMapping}/>
                 <Route exact path='/flight_bookings' component={FlightBookings}/>
+                <Route exact path='/tickets' component={Tickets}/>
                 <Footer/>
             </Router>
         </Provider>

@@ -54,6 +54,7 @@ function Menubar({logoutUser, auth: {isAuthenticated, user}}) {
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/airline'} className={'dropdown-item'}>Airlines</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/api_sources'} className={'dropdown-item'}>Api Sources</Link></NavDropdown.Item>
                             <NavDropdown.Item className={'dropdown-item'}><Link to={'/flight_bookings'} className={'dropdown-item'}>Flight Bookings</Link></NavDropdown.Item>
+                            <NavDropdown.Item className={'dropdown-item'}><Link to={'/tickets'} className={'dropdown-item'}>Tickets</Link></NavDropdown.Item>
                         </NavDropdown>
                         }
                         
