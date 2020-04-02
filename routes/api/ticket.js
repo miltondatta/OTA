@@ -9,12 +9,6 @@ const ticketCont = require('../../controllers/ticketController');
  */
 router.get('/all', ticketCont.index);
 
-/*
- @route          POST api/ticket/delete/
- @desc           Delete Booked Flight Data
- @access         Private
- */
-router.post('/delete', ticketCont.delete);
 
 /*
  @route          POST api/ticket/cash-receive/
